@@ -10,5 +10,7 @@ Este sitio es un ecomerce que se enfoca en ofrecer productos tecnológicos en ge
 **Referentes o inspirados en:**
 
 [KINGMONSTER](https://kingmonster.com/)
+
 [Accord] (https://accord.dk/)
+
 [Salomon] (https://salomon.ru/)
