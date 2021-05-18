@@ -11,6 +11,6 @@ Este sitio es un ecomerce que se enfoca en ofrecer productos tecnológicos en ge
 
 [KINGMONSTER](https://kingmonster.com/)
 
-[Accord] (https://accord.dk/)
+[Accord](https://accord.dk/)
 
-[Salomon] (https://salomon.ru/)
+[Salomon](https://salomon.ru/)
