@@ -7,6 +7,8 @@ Este sitio es un ecomerce que se enfoca en ofrecer productos tecnológicos en ge
 - Público en general que necesite comprar algun dispositvivo o gadget tecnologico.
 
 
-**Referentes :**
+**Referentes o inspirados en:**
 
-[Doto](https://www.doto.com.mx/)
+[KINGMONSTER](https://kingmonster.com/)
+[Accord] (https://accord.dk/)
+[Salomon] (https://salomon.ru/)
