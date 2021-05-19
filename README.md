@@ -4,7 +4,7 @@ Este sitio es un ecomerce que se enfoca en ofrecer productos tecnológicos en ge
 
 **Dirigido a :**
 
-- Público en general que necesite comprar algun dispositvivo o gadget tecnologico.
+- Público en general que necesite comprar algun dispositivo o gadget tecnologico.
 
 
 **Referentes o inspirados en:**
