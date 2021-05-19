@@ -9,8 +9,8 @@ Este sitio es un ecomerce que se enfoca en ofrecer productos tecnológicos en ge
 
 **Referentes o inspirados en:**
 
-[KINGMONSTER](https://kingmonster.com/)
-
-[Accord](https://accord.dk/)
-
-[Salomon](https://salomon.ru/)
+- [Accord](https://accord.dk/)
+- [Salomon](https://salomon.ru/)
+- [GitHub Store](https://thegithubshop.com/)
+- [Nike Store](https://www.nike.com/)
+- [KINGMONSTER](https://kingmonster.com/)
