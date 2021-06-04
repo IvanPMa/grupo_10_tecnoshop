@@ -1,10 +1,10 @@
 # Retrospectiva
-## Comenzar a hacer
+**Comenzar a hacer**
 
-## Hacer más
+**Hacer más**
 
-## Continuar haciendo
+**Continuar haciendo**
 
-## Hacer menos
+**Hacer menos**
 
-## Dejar de hacer
+**Dejar de hacer**
