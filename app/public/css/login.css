@@ -1,3 +1,63 @@
+*{
+    box-sizing: border-box;
+}
 body{
-        
+    background-color: #F7F9FB;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* NAVBAR */
+.navbar{
+    width: 100%;
+    height: 80px;
+    background-color: #A0F6D2;
+    padding: 15px 0 0 10px;
+}
+
+.navbar--image{
+    width: 30%;
+}
+
+/* Login section */
+.principal{
+    width: 100%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+}
+
+.login
+{
+    width: 80%;
+    height: 75%;
+    margin-top: 20%;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.login--image{
+    width: 70%;
+}
+
+
+/* Footer */
+.footer{
+    width: 100%;
+    height: 10%;
+    background-color: #03414D;
+    color: white;
+    margin-top: 20px;
 }
