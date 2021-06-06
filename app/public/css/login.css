@@ -54,11 +54,14 @@ body{
     justify-content: space-around;
     align-items: center;
     padding: 10px;
-    overflow: hidden;
+    
 }
 
 .login--image{
     width: 50%;
+    border-radius: 100%;
+    border: 5px solid white;
+    margin-top: -30%;
 }
 
 .login--form{
