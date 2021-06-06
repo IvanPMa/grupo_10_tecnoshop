@@ -1,8 +1,13 @@
-*{
+html {
     box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 body{
     background-color: #F7F9FB;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
 }
 
 .container{
@@ -19,6 +24,7 @@ body{
     height: 80px;
     background-color: #A0F6D2;
     padding: 15px 0 0 10px;
+    border-radius: 0 0 20% 0;
 }
 
 .navbar--image{
@@ -52,12 +58,46 @@ body{
     width: 70%;
 }
 
+.login--form{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login--form > p {
+    width: 80%;
+}
+.loggin--form--input{
+    width: 100%;
+    height: 35px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+.loggin--form--input:last-child{
+    margin-top: -10px;
+}
+.login--form--button{
+    background-color: #03414D;
+    color: white;
+    border: none;
+    width: 80%;
+    height: 30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
 
 /* Footer */
 .footer{
     width: 100%;
     height: 10%;
-    background-color: #03414D;
+    background-color: #333333;
     color: white;
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20% 0 0 0;
 }
