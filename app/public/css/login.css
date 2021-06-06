@@ -65,7 +65,7 @@ body{
 }
 
 .login--form{
-    width: 80%;
+    width: 90%;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -96,6 +96,34 @@ body{
     letter-spacing: 3px;
     border-radius: 5px;
 }
+.remember{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    letter-spacing: .5px;
+    color:rgba(51,51,51,.8);
+}
+.remember > input{
+    margin-right: 2.5px;
+}
+.remember > label{
+    margin-left: 2.5px;
+}
+.forget {
+    width: 100%;
+    text-align: center;
+}
+.forget--link{
+    width: 100%;
+    text-decoration: none;
+    color:  rgba(51,51,51,.6);
+    letter-spacing: .3px;
+}
+.forget--link:hover {
+    color:rgba(51,51,51,1);
+    text-decoration: underline;
+}
+
 
 /* Footer */
 .footer{
