@@ -1,0 +1,15 @@
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body{
+    background-color: #F7F9FB;
+}
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
