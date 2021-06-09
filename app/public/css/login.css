@@ -26,6 +26,7 @@ body{
     display: flex;
     align-items: center;
     border-radius: 0 0 20% 0;
+    margin-bottom: 100px;
 }
 
 .navbar--image{
@@ -58,10 +59,10 @@ body{
 }
 
 .login--image{
-    width: 50%;
+    width: 120px;
     border-radius: 100%;
     border: 5px solid white;
-    margin-top: -30%;
+    margin-top: -80px;
 }
 
 .login--form{
