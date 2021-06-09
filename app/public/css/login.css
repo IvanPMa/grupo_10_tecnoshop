@@ -1,0 +1,167 @@
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body{
+    background-color: #F7F9FB;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* NAVBAR */
+.navbar{
+    width: 100%;
+    height: 100px;
+    background-color: #A0F6D2;
+    display: flex;
+    align-items: center;
+    border-radius: 0 0 20% 0;
+    margin-bottom: 100px;
+}
+
+.navbar--image{
+    width: 40%;
+}
+
+/* Login section */
+.principal{
+    width: 100%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login
+{
+    width: 80%;
+    height: auto;
+    padding: 20px !important;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    
+}
+
+.login--image{
+    width: 120px;
+    border-radius: 100%;
+    border: 5px solid white;
+    margin-top: -80px;
+}
+
+.login--form{
+    width: 90%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login--form > p {
+    width: 80%;
+}
+.loggin--form--input{
+    width: 100%;
+    height: 35px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+.loggin--form--input:last-child{
+    margin-top: -10px;
+}
+.login--form--button{
+    background-color: #03414D;
+    color: white;
+    border: none;
+    width: 80%;
+    height: 30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-radius: 5px;
+}
+.remember{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    letter-spacing: .5px;
+    color:rgba(51,51,51,.8);
+}
+.remember > input{
+    margin-right: 2.5px;
+}
+.remember > label{
+    margin-left: 2.5px;
+}
+.forget {
+    width: 100%;
+    text-align: center;
+}
+.forget--link{
+    width: 100%;
+    text-decoration: none;
+    color:  rgba(51,51,51,.6);
+    letter-spacing: .3px;
+}
+.forget--link:hover {
+    color:rgba(51,51,51,1);
+    text-decoration: underline;
+}
+
+
+/* Footer */
+.footer{
+    width: 100%;
+    height: 10%;
+    background-color: #333333;
+    color: white;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20% 0 0 0;
+}
+
+
+
+/* breakpoints */
+
+@media(min-width: 675px){
+    body{
+        font-size: 16px;
+    }
+    .login{
+        width: 600px
+    }
+    .login--form{
+        width: 80%;
+    }
+    .login--form p > input {
+        height: 40px;
+    }
+    .login--form > button {
+        height: 40px;
+        margin-bottom: 10px;
+    }
+
+    .remember > input {
+        margin-top: -10px;
+    }
+}
