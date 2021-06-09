@@ -138,3 +138,30 @@ body{
     justify-content: center;
     border-radius: 20% 0 0 0;
 }
+
+
+
+/* breakpoints */
+
+@media(min-width: 675px){
+    body{
+        font-size: 16px;
+    }
+    .login{
+        width: 600px
+    }
+    .login--form{
+        width: 80%;
+    }
+    .login--form p > input {
+        height: 40px;
+    }
+    .login--form > button {
+        height: 40px;
+        margin-bottom: 10px;
+    }
+
+    .remember > input {
+        margin-top: -10px;
+    }
+}
