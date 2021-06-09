@@ -13,3 +13,29 @@ body{
     display: flex;
     flex-direction: column;
 }
+
+.header{
+    width: 100%;
+    height: 70px;
+    background-color: #A0F6D2;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.logo{
+    height: 40px;
+}
+.search{
+    margin-left: -35px;
+    height: 25px;
+}
+.icons{
+    margin-left: -30px;
+    font-size: 20px;
+}
+.icons-button{
+    background-color: transparent;
+    border: none;
+    color: #03414D;
+}
