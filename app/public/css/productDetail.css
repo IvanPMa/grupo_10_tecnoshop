@@ -7,11 +7,15 @@ html {
 
 body{
     background-color: #F7F9FB;
+    font-size: 12px;
+    font-family: Helvetica, Arial,  sans-serif;
 }
 .container{
     width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .header{
@@ -22,11 +26,13 @@ body{
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
+    
 }
 .logo{
-    height: 40px;
+    height: 45px;
 }
 .search{
+    width: 130px;
     margin-left: -35px;
     height: 25px;
 }
@@ -38,4 +44,56 @@ body{
     background-color: transparent;
     border: none;
     color: #03414D;
+}
+
+
+/* product section */
+.principal{
+    width: 100%;
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product{
+    background-color:transparent;
+    width: 80%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -80px;
+}
+.product--description{
+    margin: 0 auto;
+}
+
+.product--description--name{
+    color: rgba(51,51,51,1);
+    font-size: 20px;
+}
+.product--description--price{
+    margin-top: -15px;
+    color: #72dfd0;
+}
+.product--description-text{
+    color:  rgba(51,51,51,.8);
+    width: 90%;
+}
+.product--description--quantity >{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.product--description--quantity > input{
+    width: 50px;
+    margin-bottom: 20px;
+}
+
+/* footer */
+.footer{
+    width: 100%;
+    background-color: #333333;
+    padding: 5px;
+    color: white;
 }
