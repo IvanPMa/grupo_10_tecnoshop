@@ -1,0 +1,20 @@
+{
+  "name": "grupo_10_tecnoshop",
+  "version": "1.0.0",
+  "description": "Este sitio es un ecomerce que se enfoca en ofrecer productos tecnológicos en general.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanPMa/grupo_10_tecnoshop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvanPMa/grupo_10_tecnoshop/issues"
+  },
+  "homepage": "https://github.com/IvanPMa/grupo_10_tecnoshop#readme"
+}
