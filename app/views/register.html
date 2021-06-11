@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <title>Registro</title>
+    <!-- Fonts -->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js">
+    </script>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/register.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <a href="/"><img id="logo" src="/images/logo.png" alt="Tecnoshop logo"></a>
+        </header>
+
+        <!-- Main  -->
+        <main>
+            <div id="caja">
+                <h3>Crear cuenta</h3>
+                <form class="register-box">
+                    <div class="element">
+                        <label for="name">Ingresa tu nombre</label>
+                        <input id="name" class="textbox" type="text" placeholder="Nombre completo">
+                    </div>
+                    <div class="element">
+                        <label for="email">Ingresa tu email</label>
+                        <input id="email" class="textbox" type="text" placeholder="Correo electrónico">
+                    </div>
+                    <div class="element">
+                        <label for="username">Crea un nombre de usuario</label>
+                        <input id="username" class="textbox" type="text" placeholder="Nombre de usuario">
+                    </div>
+                    <div class="element">
+                        <label for="password">Crea una sontraseña</label>
+                        <input id="password" class="textbox" type="password" placeholder="Contraseña">
+                    </div>
+                    <div class="element">
+                        <label for="checkpassword">Repite la sontraseña</label>
+                        <input id="checkpassword" class="textbox" type="password" placeholder="Contraseña">
+                    </div>
+                    <div id="terminos">
+                        <a href="#">
+                            Términos y condiciones
+                        </a>
+                    </div>
+                    <div class="element">
+                        <div>
+                            <input type="checkbox" id="aceptar-spam">
+                            <label for="aceptar-spam">Quiero recibir correos con promociones</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="aceptar-terminos">
+                            <label for="aceptar-terminos">Acepto los términos y condiciones</label>
+                        </div>
+                    </div>
+                    <div id="crear-cuenta">
+                        <button type="button">Crear cuenta</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer>
+            <p>Tecnoshop 2021  &copy;</p>
+        </footer>
+    </div>
+</body>
+</html>
