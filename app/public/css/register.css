@@ -1,0 +1,145 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body{
+    background-color: #F7F9FB;
+    font-size: 12px;
+    font-family: Helvetica, Arial,  sans-serif;
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+/* HEADER */
+header{
+    width: 100%;
+    height: 70px;
+    background-color: #A0F6D2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 0 0 20% 0;
+}
+
+#logo{
+    height: 45px;
+}
+
+#buscador{
+    display: flex;
+    align-items: center;
+}
+
+#search-text{
+    width: 40vw;
+}
+
+#search-text, #search-button{
+    height: 28px;
+}
+
+.icons{
+    font-size: 20px;
+}
+
+.icons-button{
+    background-color: transparent;
+    border: none;
+    color: #03414D;
+}
+
+/* MAIN */
+main{
+    width: 100%;
+    flex-grow: 1;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+#caja
+{
+    width: 80%;
+    max-width: 450px;
+    height: fit-content;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.element{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.textbox{
+    width: 100%;
+}
+
+#terminos{
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+#crear-cuenta{
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* FOOTER */
+footer{
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #333333;
+    color: white;
+    padding: 5px;
+    border-radius: 20% 0 0 0;
+}
+
+/* PARA COMPUTADORAS */
+@media (min-width: 768px) {
+    body{
+        background-color: #F7F9FB;
+        font-size: 15px;
+        font-family: Helvetica, Arial,  sans-serif;
+    }
+
+    #caja{
+        height: auto;
+    }
+
+    .element{
+        margin-bottom: 15px;
+    }
+
+    .textbox{
+        height: 28px;
+        margin-top: 5px;
+    }
+
+    #crear-cuenta{
+        justify-content: center;
+    }
+
+    #crear-cuenta > button{
+        width: 180px;
+        height: 30px;
+    }
+}
