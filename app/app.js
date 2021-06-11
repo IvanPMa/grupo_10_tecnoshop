@@ -3,7 +3,7 @@ const { dirname } = require('path');
 const path = require('path');
 
 const app = express();
-const port = 3000;
+var port = process.env.PORT || 3000;
 
 const folderPublicPath = path.resolve(__dirname, './public');
 
