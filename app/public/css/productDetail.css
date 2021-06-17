@@ -30,11 +30,13 @@ body{
 }
 .logo{
     height: 45px;
+    cursor: pointer;
 }
 .search{
     width: 130px;
     margin-left: -35px;
     height: 25px;
+    border: 1px solid #ccc;
 }
 .icons{
     margin-left: -30px;
@@ -114,4 +116,51 @@ body{
 }
 .footer-copy{
     font-size: 11px;
+}
+
+
+/* breakpoints */
+@media(min-width: 465px){
+    .search{
+        width: 55%;
+    }
+    .product--description-text{
+        font-size: 14px;
+    }
+    .product--description--quantity{
+        font-size: 14px;
+    }
+    .footer-copy{
+        font-size: 13px;
+    }
+}
+
+@media(min-width: 824px){
+    .logo{
+        height: 60px;
+    }
+    .product{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .product--image{
+        width: 50%;
+        padding: 60px;
+    }
+    .product--description{
+        width: 50%;
+    }
+    .product--description--name{
+        font-size: 30px;
+    }
+    .product--description--price{
+        font-size: 20px;
+    }
+    .product--description-text{
+        font-size: 16px;
+    }
+    .product--description--button{
+        padding: 15px 30px;
+        font-size: 15px;
+    }
 }
