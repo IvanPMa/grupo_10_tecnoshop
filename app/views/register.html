@@ -16,54 +16,35 @@
 <body>
     <div class="container">
         <!-- Header -->
-        <header>
-            <a href="/"><img id="logo" src="/images/logo.png" alt="Tecnoshop logo"></a>
-        </header>
+        <nav>
+            <a href="/">
+                <img src="/images/logo.png" alt="Logotipo Tecnoshop" class="logo">
+            </a>
+        </nav>
 
         <!-- Main  -->
         <main>
-            <div id="caja">
+            <div id="create-account-box">
                 <h3>Crear cuenta</h3>
-                <form class="register-box">
-                    <div class="element">
-                        <label for="name">Ingresa tu nombre</label>
-                        <input id="name" class="textbox" type="text" placeholder="Nombre completo">
+
+                <form id="create-account-form" action="#">
+                    <input id="name" class="textbox" type="text" placeholder="Nombre completo">
+                    <input id="email" class="textbox" type="email" placeholder="Correo electrónico">
+                    <input id="username" class="textbox" type="text" placeholder="Nombre de usuario">
+                    <input id="password" class="textbox" type="password" placeholder="Crea una contraseña">
+                    <input id="checkpassword" class="textbox" type="password" placeholder="Repite la contraseña">
+                    <a href="#" id="terminos">Términos y condiciones</a>
+                    <div class="checkbox">
+                        <input type="checkbox">
+                        <label for="aceptar-spam">Quiero recibir correos con promociones</label>
                     </div>
-                    <div class="element">
-                        <label for="email">Ingresa tu email</label>
-                        <input id="email" class="textbox" type="text" placeholder="Correo electrónico">
+                    <div class="checkbox">
+                        <input type="checkbox">
+                        <label for="aceptar-terminos">Acepto los términos y condiciones</label>
                     </div>
-                    <div class="element">
-                        <label for="username">Crea un nombre de usuario</label>
-                        <input id="username" class="textbox" type="text" placeholder="Nombre de usuario">
-                    </div>
-                    <div class="element">
-                        <label for="password">Crea una sontraseña</label>
-                        <input id="password" class="textbox" type="password" placeholder="Contraseña">
-                    </div>
-                    <div class="element">
-                        <label for="checkpassword">Repite la sontraseña</label>
-                        <input id="checkpassword" class="textbox" type="password" placeholder="Contraseña">
-                    </div>
-                    <div id="terminos">
-                        <a href="#">
-                            Términos y condiciones
-                        </a>
-                    </div>
-                    <div class="element">
-                        <div>
-                            <input type="checkbox" id="aceptar-spam">
-                            <label for="aceptar-spam">Quiero recibir correos con promociones</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="aceptar-terminos">
-                            <label for="aceptar-terminos">Acepto los términos y condiciones</label>
-                        </div>
-                    </div>
-                    <div id="crear-cuenta">
-                        <button type="button">Crear cuenta</button>
-                    </div>
+                    <button type="submit" class="create-button">Crear cuenta</button>
                 </form>
+                <p><a href="/login" id="login">¿Ya tienes cuenta? Inicia sesión</a></p>
             </div>
         </main>
         <footer>

@@ -14,27 +14,25 @@ body{
 
 .container{
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-wrap: nowrap;
 }
 
 /* HEADER */
-header{
+nav{
     width: 100%;
-    height: 70px;
+    height: 65px;
     background-color: #A0F6D2;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
-    border-radius: 0 0 20% 0;
 }
 
-#logo{
-    height: 45px;
+.logo{
+    height: 65px;
 }
 
 #buscador{
@@ -99,7 +97,7 @@ main{
     justify-content: center;
     align-items: center;
     margin-top: -10px;
-    width: 80px;
+    width: 85px;
 }
 
 .articulo .cantidad .cantidad-text{
@@ -128,8 +126,9 @@ main{
 }
 
 .total .total-text{
-    width: 100px;
+    width: 120px;
     height: 20px;
+    margin-left: 10px;
     text-align: end;
 }
 
@@ -139,8 +138,14 @@ main{
     justify-content: flex-end;
 }
 
-.seguir-comprando{
-    margin-right: 15px;
+.seguir-comprando-button, .proceder-pago-button{
+    margin-left: 15px;
+    background-color: #03414D;
+    color: white;
+    border: none;
+    height: 30px;
+    letter-spacing: 2px;
+    border-radius: 5px;
 }
 
 #detalles{
@@ -155,11 +160,13 @@ footer{
     background-color: #333333;
     color: white;
     padding: 5px;
-    border-radius: 20% 0 0 0;
 }
 
 /* PARA COMPUTADORAS */
 @media (min-width: 768px) {
+    body{
+        font-size: 15px;
+    }
     #nav-buscador input{
         width: 40vw;
     }
