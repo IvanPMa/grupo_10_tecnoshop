@@ -66,6 +66,9 @@ body{
 }
 .product--description{
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .product--description--name{
@@ -88,12 +91,26 @@ body{
 .product--description--quantity > input{
     width: 50px;
     margin-bottom: 20px;
+    border: 1px solid #ccc;
 }
-
+.product--description--quantity > span{
+    color: rgba(51,51,51,.8);
+}
+.product--description--button{
+    color: white;
+    background-color: #03414D;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+}
 /* footer */
 .footer{
+    text-align: center;
     width: 100%;
     background-color: #333333;
     padding: 5px;
     color: white;
+}
+.footer-copy{
+    font-size: 11px;
 }
