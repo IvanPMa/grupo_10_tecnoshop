@@ -113,6 +113,7 @@ body{
 
 .imagenProducto{
     width: 60%;
+    max-height: 197px;
 }
 
 .info{
