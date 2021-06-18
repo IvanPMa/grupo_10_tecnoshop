@@ -42,6 +42,7 @@ body{
 /* Busqueda */
 .form{
     height: 30px;
+    width: 60%;
 }
 .barraBusqueda{
     color: #a5a5a5;
@@ -58,6 +59,7 @@ body{
 }
 .cart{
     margin-left: -25px;
+
 }
 .button-bar{
     background: transparent;
@@ -72,6 +74,7 @@ body{
 /* Login section */
 .principal{
     width: 100%;
+    height: auto;
     display: flex;
     margin-bottom: 50px;
     justify-content: center;
@@ -95,7 +98,7 @@ body{
 .producto{
     background-color: white;
     width: 47%;
-    height: 250px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     padding: 5px;
@@ -137,9 +140,7 @@ body{
 /* breakpoints */
 
 @media(min-width: 400px){
-    .fa-shopping-cart{
-        font-size: 120%;
-    }
+    
 }
 
 @media(min-width: 675px){
