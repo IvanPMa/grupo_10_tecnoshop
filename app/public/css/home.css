@@ -42,28 +42,31 @@ body{
 /* Busqueda */
 .form{
     height: 30px;
-    width: 60%;
+    width: 50%;
 }
 .barraBusqueda{
     color: #a5a5a5;
-    width: 60%;
+    width: 90%;
     height: 100%;
     border: none;
 }
 .search{
-    margin-left: -5px;
+    margin-left: -15px;
     height: 100%;
     background-color: white;
     border: none;
     border-left: 1px solid #ccc;
+    color: rgba(0, 0, 0, 0.5);
 }
 .cart{
-    margin-left: -25px;
-
+    color: #115259 !important;
+    font-size: 1.1rem;
 }
 .button-bar{
     background: transparent;
     border: none;
+    color: #115259;
+    font-size: 1.1rem;
 }
 .login{
     display: none !important;
