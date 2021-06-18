@@ -27,4 +27,3 @@ Ausentes en la toma de desiciones
 **Dejar de hacer:**
 
 Las actividades para ultimos dias y no empezar desde un principio
-

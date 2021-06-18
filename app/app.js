@@ -3,6 +3,7 @@ const { dirname } = require('path');
 const path = require('path');
 
 const app = express();
+
 var port = process.env.PORT || 3000;
 
 const folderPublicPath = path.resolve(__dirname, './public');
@@ -34,3 +35,4 @@ app.get('/login',(req,res)=>{
 
 // Levantamos el servidor
 app.listen(port, ()=> console.log(`Servidor iniciado en el puerto ${port}`));
+
