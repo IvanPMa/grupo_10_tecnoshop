@@ -20,9 +20,7 @@ app.set('view engine', 'ejs');
 // Ruteo de direcciones 
 app.use('/',rutaHome);
 
-app.get('/productDetail', (req,res)=>{
-    res.sendFile(path.resolve(__dirname,'./views/productDetail.html'));
-})
+app.get('/productDetail', rutasProductos);
 
 app.get('/productCart', rutasProductos);
 
