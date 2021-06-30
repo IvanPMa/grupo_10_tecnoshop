@@ -3,7 +3,7 @@ Este sitio es un ecomerce que se enfoca en ofrecer productos tecnológicos en ge
 
 
 > Tablero de trabajo: 
-https://trello.com/b/H78Ap3Mx/sprint-2
+https://trello.com/c/FXmSYfv1/16-tecnoshop-sprint-3
 
 
 **Dirigido a :**
