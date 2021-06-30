@@ -1,6 +1,7 @@
 const express = require('express');
-const { dirname } = require('path');
 const path = require('path');
+
+const rutaHome = require('./routes/home');
 
 const app = express();
 
@@ -11,11 +12,12 @@ const folderPublicPath = path.resolve(__dirname, './public');
 // Establecemos la carpeta publica
 app.use( express.static(folderPublicPath));
 
-// Ruteo de direcciones 
 
-app.get('/',(req, res)=>{
-    res.sendFile(path.resolve(__dirname,'./views/home.html'));
-});
+// Cionfigurando ejs 
+app.set('view engine', 'ejs');
+
+// Ruteo de direcciones 
+app.use('/',rutaHome);
 
 app.get('/productDetail', (req,res)=>{
     res.sendFile(path.resolve(__dirname,'./views/productDetail.html'));
