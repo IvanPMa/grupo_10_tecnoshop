@@ -1,7 +1,7 @@
-const controlador = (){
+const controller = {
     productCart : (req,res ) =>{
-
+        res.render('productCart');
     }
 }
 
-module.exports = controlador;
+module.exports = controller;
