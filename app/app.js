@@ -3,6 +3,7 @@ const path = require('path');
 
 const rutaHome = require('./routes/home');
 const rutasProductos = require('./routes/product');
+const rutasUsers = require('./routes/user');
 
 const app = express();
 
@@ -19,18 +20,14 @@ app.set('view engine', 'ejs');
 
 // Ruteo de direcciones 
 app.use('/',rutaHome);
-
 app.get('/productDetail', rutasProductos);
-
 app.get('/productCart', rutasProductos);
 
-app.get('/register',(req, res)=>{
-    res.sendFile(path.resolve(__dirname,'./views/register.html'));
-});
+app.get('/register',rutasUsers);
 
-app.get('/login',(req,res)=>{
-    res.sendFile(path.resolve(__dirname,'./views/login.html'))
-})
+app.get('/login',rutasUsers)
+
+
 
 // Levantamos el servidor
 app.listen(port, ()=> console.log(`Servidor iniciado en el puerto ${port}`));
