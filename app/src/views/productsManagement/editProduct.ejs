@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Editar Producto</title>
+        <%- include('../partials/head')%>
+        <link rel="stylesheet" href="css/management.css">
+    </head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../partials/header')%>
+
+        <!-- MAIN SECTION -->
+        <main>
+            <div class="product-management-box">
+                <h3>Editar Producto</h3>
+
+                <form class="create-product-form" action="#">
+                    <input id="name" class="textbox" type="text" placeholder="Nombre del producto">
+                    <textarea id="description" class="textbox" placeholder="Descripción del producto"></textarea>
+                    <div class="submit-image">
+                        <label for="productimage">Imagen del producto:</label>
+                        <input type="file" name="image" id="productimage">
+                    </div>
+                    <input type=text list=categories placeholder="Categoría" class="textbox">
+                    <datalist id="categories">
+                        <option value="Televisores"></option>
+                        <option value="Celulares"></option>
+                        <option value="Videojuegos"></option>
+                    </datalist>
+                    <input type="number" id="price" class="textbox" placeholder="Precio">
+                    <div class="checkbox">
+                        <input type="checkbox" id="activate">
+                        <label for="activate">Mostrar producto</label>
+                    </div>
+                    <button type="submit" id="button">Actualizar</button>
+                </form>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <%- include('../partials/footer')%>
+    </div>
+</body>
+</html>
