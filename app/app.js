@@ -1,9 +1,9 @@
 const express = require('express');
 const path = require('path');
 
-const rutaHome = require('./routes/home');
-const rutasProductos = require('./routes/product');
-const rutasUsers = require('./routes/user');
+const rutaHome = require('./src/routes/home');
+const rutasProductos = require('./src/routes/product');
+const rutasUsers = require('./src/routes/user');
 
 const app = express();
 
@@ -17,6 +17,7 @@ app.use( express.static(folderPublicPath));
 
 // Cionfigurando ejs 
 app.set('view engine', 'ejs');
+app.set('views','./src/views' )
 
 // Ruteo de direcciones 
 app.use('/',rutaHome);
