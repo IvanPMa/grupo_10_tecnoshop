@@ -1,37 +1,9 @@
-html {
-    box-sizing: border-box;
-}
-
-*, *:before, *:after {
-    box-sizing: inherit;
-}
-
-body{
-    background-color: #F7F9FB;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-}
-
 .container{
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-/* NAVBAR */
-nav{
-    width: 100%;
-    height: 85px;
-    background-color: #A0F6D2;
-    display: flex;
-    align-items: center;
-    border-radius: 0 0 20% 0;
-}
-
-.logo{
-    width: 40%;
 }
 
 /* MAIN */
@@ -94,35 +66,20 @@ main{
     border-radius: 5px;
 }
 
-.login{
+#login-button{
     text-align: center;
     text-decoration: none;
     color:  rgba(51,51,51,.6);
     letter-spacing: .3px;
 }
 
-.login:hover{
+#login-button:hover{
     color:rgba(51,51,51,1);
     text-decoration: underline;
 }
 
-/* FOOTER */
-footer{
-    width: 100%;
-    text-align: center;
-    background-color: #333333;
-    color: white;
-    padding: 5px;
-    border-radius: 20% 0 0 0;
-}
-
 /* PARA COMPUTADORAS */
 @media (min-width: 768px) {
-    body{
-        font-size: 15px;
-        font-family: Helvetica, Arial,  sans-serif;
-    }
-
     .element{
         margin-bottom: 15px;
     }
@@ -130,9 +87,5 @@ footer{
     .textbox{
         font-size: 17px;
         height: 40px;
-    }
-
-    footer{
-        font-size: 16px;
     }
 }

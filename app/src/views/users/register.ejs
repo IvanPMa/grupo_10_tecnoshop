@@ -1,28 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
-    <title>Registro</title>
-    <!-- Fonts -->
-    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js">
-    </script>
-    <!-- styles -->
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/register.css">
-</head>
+    <head>
+        <title>Register</title>
+        <%- include('../partials/head')%>
+        <link rel="stylesheet" href="css/register.css">
+    </head>
 <body>
     <div class="container">
-        <!-- Header -->
-        <nav>
-            <a href="/">
-                <img src="/images/logo.png" alt="Logotipo Tecnoshop" class="logo">
-            </a>
-        </nav>
+        <!-- HEADER -->
+        <%- include('../partials/header')%>
 
-        <!-- Main  -->
+        <!-- MAIN SECTION -->
         <main>
             <div id="create-account-box">
                 <h3>Crear cuenta</h3>
@@ -44,12 +32,12 @@
                     </div>
                     <button type="submit" class="create-button">Crear cuenta</button>
                 </form>
-                <p><a href="/login" id="login">¿Ya tienes cuenta? Inicia sesión</a></p>
+                <p><a href="/login" id="login-button">¿Ya tienes cuenta? Inicia sesión</a></p>
             </div>
         </main>
-        <footer>
-            <p>Tecnoshop 2021  &copy;</p>
-        </footer>
+
+        <!-- FOOTER -->
+        <%- include('../partials/footer')%>
     </div>
 </body>
 </html>
