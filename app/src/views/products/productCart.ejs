@@ -1,43 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
-    <title>Carrito de compras</title>
-    <!-- Fonts -->
-    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js">
-    </script>
-    <!-- styles -->
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/productCart.css">
-</head>
+    <head>
+        <title>Product Cart</title>
+        <%- include('../partials/head')%>
+        <link rel="stylesheet" href="css/productCart.css">
+    </head>
 <body>
     <div class="container">
-        <!-- Header -->
-        <nav>
-            <a href="/">
-                <img src="/images/logo.png" alt="Logotipo Tecnoshop" class="logo">
-            </a>
-            <form id="buscador" action="#" method="GET">
-                <input id="search-text" type="text">
-                <button id="search-button" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
-            
-            <p class="icons">
-                <button class="icons-button">
-                    <i class="fas fa-bars "></i>
-                </button>
-                <button class="icons-button">
-                    <i class="fas fa-shopping-cart"></i>
-                </button>
-            </p>
-        </nav>
+        <!-- HEADER -->
+        <%- include('../partials/header')%>
 
-        <!-- Main  -->
+        <!-- MAIN SECTION -->
         <main>
             <div id="carrito">
                 <div>
@@ -165,10 +138,8 @@
             </div>
         </main>
 
-        <!-- Footer  -->
-        <footer>
-            <p>Tecnoshop 2021  &copy;</p>
-        </footer>
+        <!-- FOOTER -->
+        <%- include('../partials/footer')%>
     </div>
 </body>
 </html>

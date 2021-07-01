@@ -4,6 +4,7 @@ const path = require('path');
 const rutaHome = require('./src/routes/home');
 const rutasProductos = require('./src/routes/product');
 const rutasUsers = require('./src/routes/user');
+const rutasManagement = require('./src/routes/management');
 
 const app = express();
 
@@ -23,10 +24,10 @@ app.set('views','./src/views' )
 app.use('/',rutaHome);
 app.get('/productDetail', rutasProductos);
 app.get('/productCart', rutasProductos);
-
 app.get('/register',rutasUsers);
-
 app.get('/login',rutasUsers)
+app.get('/addProduct',rutasManagement)
+app.get('/editProduct',rutasManagement)
 
 
 
