@@ -16,21 +16,30 @@
                 <h3>Agregar Producto</h3>
 
                 <form class="create-product-form" action="#">
-                    <input id="name" class="textbox" type="text" placeholder="Nombre del producto">
-                    <textarea id="description" class="textbox" placeholder="Descripción del producto"></textarea>
-                    <div class="submit-image">
-                        <label for="productimage">Imagen del producto:</label>
-                        <input type="file" name="image" id="productimage">
+                    <div class="input-section">
+                        <input id="name" class="textbox" type="text" placeholder="Nombre del producto">
                     </div>
-                    <input type=text list=categories placeholder="Categoría" class="textbox">
-                    <datalist id="categories">
-                        <option value="Televisores"></option>
-                        <option value="Celulares"></option>
-                        <option value="Videojuegos"></option>
-                    </datalist>
-                    <input type="number" id="price" class="textbox" placeholder="Precio">
+                    <div class="input-section">
+                        <textarea id="description" class="textbox" placeholder="Descripción del producto"></textarea>
+                    </div>
+                    <div class="input-section">
+                        <label for="productimage">Imagen del producto:</label>
+                        <input type="file" name="image" id="productimage" accept="image/x-png,image/gif,image/jpeg">
+                    </div>
+                    <div class="input-section">
+                        <input type=text list=categories placeholder="Categoría" class="textbox">
+                        <button type="submit" id="button-add-category">Agregar Categoría</button>
+                        <datalist id="categories">
+                            <option value="Televisores"></option>
+                            <option value="Celulares"></option>
+                            <option value="Videojuegos"></option>
+                        </datalist>
+                    </div>
+                    <div class="input-section">
+                        <input type="number" id="price" class="textbox" placeholder="Precio">
+                    </div>
                     <div class="checkbox">
-                        <input type="checkbox" id="activate">
+                        <input type="checkbox" id="activate" checked>
                         <label for="activate">Mostrar producto</label>
                     </div>
                     <button type="submit" id="button">Agregar</button>
