@@ -15,6 +15,14 @@ main{
     align-items: center;
 }
 
+.input-section{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
 .product-management-box{
     display: flex;
     flex-direction: column;
@@ -35,13 +43,13 @@ main{
 }
 
 .textbox{
-    width: 100%;
+    flex-grow: 1;
     height: 35px;
     border: 1px solid #ccc;
     padding: 5px;
     padding-left: 10px;
     border-radius: 5px;
-    margin-bottom: 15px;
+    margin-right: 5px;
 }
 
 #description{
@@ -58,6 +66,29 @@ main{
     padding-left: 10px;
     border-radius: 5px;
     margin-bottom: 15px;
+}
+
+#button{
+    margin-top: 15px;
+    background-color: #03414D;
+    color: white;
+    border: none;
+    width: 60%;
+    height: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#button-add-category{
+    font-size: 13px;
+    background-color: #03414D;
+    color: white;
+    border: none;
+    width: 40%;
+    height: 30px;
+    border-radius: 5px;
 }
 
 #button{
