@@ -3,7 +3,7 @@
     <head>
         <title>Editar Producto</title>
         <%- include('../partials/head')%>
-        <link rel="stylesheet" href="css/management.css">
+        <link rel="stylesheet" href="/css/management.css">
     </head>
 <body>
     <div class="container">
@@ -15,7 +15,7 @@
             <div class="product-management-box">
                 <h3>Editar Producto</h3>
 
-                <form class="create-product-form" action="#">
+                <form class="create-product-form" action="/products" method="POST">
                     <div class="input-section">
                         <input id="name" class="textbox" type="text" placeholder="Nombre del producto" readonly>
                         <a href="#"><i class="fas fa-edit"></i></a>
