@@ -1,0 +1,10 @@
+[{"id":0, "name":"Gomu Gomu No Mi", "description":"Esta es una descripción genérica.", "image":"product_0.png", "category":"Accesorios", "models":["Morado"], "price":99.00},
+{"id":1, "name":"Audífonos Inalámbricos", "description":"Esta es una descripción genérica.", "image":"product_1.jpg", "category":"Audio y Video", "models":["Negro", "Blanco"], "price":299.00},
+{"id":2, "name":"Funda Dr. Stone", "description":"Funda para celular con diferentes diseños.", "image":"product_2.jpg", "category":"Accesorios", "models":["iPhone 7", "Xiaomi Redmi Note 7"], "price":199.00},
+{"id":3, "name":"Lente para celular", "description":"Esta es una descripción genérica.", "image":"product_3.jpg", "category":"Accesorios", "models":["iPhone 7", "Xiaomi Redmi Note 7"], "price":99.00},
+{"id":4, "name":"Funda One Punch Man", "description":"Funda para celular con diferentes diseños.", "image":"product_4.jpg", "category":"Accesorios", "models":["iPhone 7", "Xiaomi Redmi Note 7"], "price":149.00},
+{"id":5, "name":"Funda Shingeki", "description":"Funda para celular con diferentes diseños.", "image":"product_5.jpg", "category":"Accesorios", "models":["iPhone 7", "Xiaomi Redmi Note 7"], "price":199.00},
+{"id":6, "name":"Nintendo Switch OLED", "description":"Consola de videojuegos diseñada para toda la familia.", "image":"product_6.jpg", "category":"Consolas", "models":["32 GB", "64 GB"], "price":6999.00},
+{"id":7, "name":"Xbox Series X", "description":"Consola de videojuegos diseñada para toda la familia.", "image":"product_7.jpg", "category":"Consolas", "models":["500 GB", "1 TB"], "price":9999.00},
+{"id":8, "name":"Play Station 5", "description":"Consola de videojuegos diseñada para toda la familia.", "image":"product_8.jpg", "category":"Consolas", "models":["500 GB", "1 TB"], "price":9999.00},
+{"id":9, "name":"AirPods", "description":"Esta es una descripción genérica.", "image":"product_9.jpg", "category":"Audio y Video", "models":["Blanco", "Negro"], "price":1999.00}]

@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <title>Detalles del producto</title>
-        <link rel="stylesheet" href="css/productDetail.css">
+        <link rel="stylesheet" href="/css/productDetail.css">
         <%- include('../partials/head')%>
     </head>
 <body>
@@ -13,12 +13,12 @@
         <!-- MAIN SECTION -->
         <section class="principal">
             <article class="product">
-                <img class="product--image" src="/images/150.png" alt="Producto">
+                <img class="product--image" src="/images/products/<%= product.image %>" alt="Producto">
                 <div class="product--description">
-                    <h1 class="product--description--name">Producto</h1>
-                    <h2 class="product--description--price">$$$</h2>
+                    <h1 class="product--description--name"><%= product.name %></h1>
+                    <h2 class="product--description--price">$ <%= product.price %></h2>
                     <p class="product--description-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit tenetur omnis quibusdam doloremque blanditiis. Laboriosam, voluptatum. Vitae, ullam eaque voluptatem libero quis dolorem fugiat ipsa eos voluptate, sed voluptas tenetur?
+                        <%= product.description %>
                     </p>
                     <div class="product--description--quantity">
                         <input type="number" min="1">

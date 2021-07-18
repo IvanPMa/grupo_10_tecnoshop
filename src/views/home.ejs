@@ -12,66 +12,18 @@
 
         <!-- MAIN SECTION -->
         <section class="principal">
-            <a href="/productDetail" class="producto">
-                <img src="/images/GadgetGomuGomu.png" class="imagenProducto">
+        <% for(let i=0; i<products.length; i++){ %>
+            <a href="/productDetail/<%= products[i].id %>" class="producto">
+                <img src="/images/products/<%= products[i].image %>" class="imagenProducto">
                 <div class="info">
                     <div class="cajaPrecioDesc">
-                        <p>Gomu Gomu No Mi</p>
-                        <p class="precio">$6.770</p>
+                        <p><%= products[i].name %></p>
+                        <p class="precio">$<%= products[i].price %></p>
                         <p class="descuento">40% off</p>
                     </div>
                 </div>
             </a>
-            <a href="/productDetail" class="producto">
-                <img src="/images/GadgetAudifonos.jpg" class="imagenProducto">
-                <div class="info">
-                    <div class="cajaPrecioDesc">
-                        <p>Audifonos inalambricos</p>
-                        <p class="precio">$6.770</p>
-                        <p class="descuento">40% off</p>
-                    </div>
-                </div>
-            </a>
-            <a href="/productDetail" class="producto">
-                <img src="/images/GadgetDrStone.jpg" class="imagenProducto">
-                <div class="info">
-                    <div class="cajaPrecioDesc">
-                        <p>Funda Dr Stone</p>
-                        <p class="precio">$6.770</p>
-                        <p class="descuento">40% off</p>
-                    </div>
-                </div>
-            </a>
-            <a href="/productDetail" class="producto">
-                <img src="/images/GadgetLente.jpg" class="imagenProducto">
-                <div class="info">
-                    <div class="cajaPrecioDesc">
-                        <p>Lente para celular</p>
-                        <p class="precio">$6.770</p>
-                        <p class="descuento">40% off</p>
-                    </div>
-                </div>
-            </a>
-            <a href="/productDetail" class="producto">
-                <img src="/images/GadgetOnePunchMan.jpg" class="imagenProducto">
-                <div class="info">
-                    <div class="cajaPrecioDesc">
-                        <p>Funda One Punch Man</p>
-                        <p class="precio">$6.770</p>
-                        <p class="descuento">40% off</p>
-                    </div>
-                </div>
-            </a>
-            <a href="/productDetail" class="producto">
-                <img src="/images/GadgetShingeki.jpg" class="imagenProducto">
-                <div class="info">
-                    <div class="cajaPrecioDesc">
-                        <p>Funda Shingeki</p>
-                        <p class="precio">$6.770</p>
-                        <p class="descuento">40% off</p>
-                    </div>
-                </div>
-            </a>
+        <% } %>
         </section>
 
         <!-- FOOTER -->
