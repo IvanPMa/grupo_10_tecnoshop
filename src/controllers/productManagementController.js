@@ -18,7 +18,7 @@ const controller = {
             //console.log(req.file);
             // console.log(req.body)
             let product = {
-                id: products.length,
+                id: Date.now(),
                 name: req.body.productName,
                 description: req.body.productDescription,
                 image: req.file.filename,
@@ -60,6 +60,19 @@ const controller = {
         } else{
             res.redirect('/products');
         }
+    },
+    deleteProduct : ( req, res) =>{
+        res.send('Producto borrado');
+        let i = 0;
+        let newProductsList = [];
+        for (let product of products){
+
+            if(product.id != req.params.id){
+                newProductsList.push(product);
+            }
+            i++;
+        }
+        console.log(newProductsList);
     }
 }
 

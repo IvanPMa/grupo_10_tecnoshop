@@ -23,6 +23,6 @@ router.get('/:id', productManagementController.detailProduct);   //3. Detalle de
 router.post('/', productManagementController.index);             //4. Acción de creación
 router.get('/edit/:id', productManagementController.editForm);//5. Formulario de edición de productos
 router.put('/edit/:id',upload.single('productImage'), productManagementController.editProduct);              //6. Acción de edición
-router.delete('/', productManagementController.index);           //7. Acción de borrado
+router.delete('/delete/:id', productManagementController.deleteProduct);           //7. Acción de borrado
 
 module.exports = router;
