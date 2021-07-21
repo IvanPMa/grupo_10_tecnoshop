@@ -4,7 +4,8 @@ const dataProduct = fs.readFileSync(path.join(__dirname, '../data/products.json'
 let products = JSON.parse(dataProduct);
 const controller = {
     index: (req, res) => {
-        res.redirect('/');
+        
+        res.render('./productManagement/listProducts', { products });
     },
     detailProduct: (req, res) => {
         res.send('detalles no disponibles por el momento');
