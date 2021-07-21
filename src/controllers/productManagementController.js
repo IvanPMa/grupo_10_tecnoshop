@@ -72,6 +72,9 @@ const controller = {
             }
             i++;
         }
+        let productsJSON = JSON.stringify(newProductsList);
+        fs.writeFileSync(path.join(__dirname, '../data/products.json'),productsJSON);
+        res.redirect('/products');
         console.log(newProductsList);
     }
 }
