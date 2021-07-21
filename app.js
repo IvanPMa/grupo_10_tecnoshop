@@ -23,6 +23,8 @@ app.use(methodOverride('_method'));
 // Cionfigurando ejs 
 app.set('view engine', 'ejs');
 app.set('views','./src/views' )
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
 
 // Ruteo de direcciones
 app.use('/',rutaHome);

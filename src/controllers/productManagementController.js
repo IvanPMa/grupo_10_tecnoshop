@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const dataProduct = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf-8');
+const dataProduct = fs.readFileSync(path.join(__dirname, '../data/products.json'), {encoding : 'utf-8'});
 let products = JSON.parse(dataProduct);
 const controller = {
     index: (req, res) => {
@@ -36,10 +36,15 @@ const controller = {
         }
     },
     editForm: (req, res) => {
-        res.render('./productManagement/editProduct');
+        let idProduct = req.params.id;
+        let product = products.find(element =>{
+            return element.id == idProduct;
+        });
+        res.render('./productManagement/editProduct', { product });
     },
     editProduct: ( req,res )=>{
-        res.redirect('/products');
+        let idProduct = req.params.id;
+        res.send(req.body)
     }
 }
 
