@@ -23,6 +23,9 @@
     align-items: center;
     margin-top: -80px;
 }
+.product--image{
+    height: 150px;
+}
 .product--description{
     margin: 0 auto;
     display: flex;
@@ -80,7 +83,7 @@
         justify-content: space-between;
     }
     .product--image{
-        width: 40%;
+        height: 450px;
         padding: 40px;
     }
     .product--description{
