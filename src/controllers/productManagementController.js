@@ -43,8 +43,21 @@ const controller = {
         res.render('./productManagement/editProduct', { product });
     },
     editProduct: ( req,res )=>{
-        let idProduct = req.params.id;
-        res.send(req.body)
+        // let idProduct = req.params.id;
+        for (let product of products){
+            if(product.id == req.params.id){
+                product.name  = req.body.productName;
+                product.description = req.body.productDescription;
+                product.iamge = req.file.filename;
+                product.category = req.body.productCategory;
+                product.price = parseFloat(req.body.productPrice);
+            }
+        }
+
+
+        let productsJSON = JSON.stringify(products);
+        fs.writeFileSync(path.join(__dirname, '../data/products.json'),productsJSON);
+        res.redirect('/products');
     }
 }
 
