@@ -21,7 +21,8 @@ const controller = {
                 name: req.body.productName,
                 description: req.body.productDescription,
                 image: req.file.filename,
-                category: req.body.productCategory
+                category: req.body.productCategory,
+                prince : parseFloat(req.body.productPrice)
             }
             products.push(product);
 
