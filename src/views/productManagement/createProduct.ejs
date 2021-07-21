@@ -15,20 +15,20 @@
             <div class="product-management-box">
                 <h3>Agregar Producto</h3>
 
-                <form class="create-product-form" action="/products" method="POST">
+                <form class="create-product-form" action="/products/create" method="POST" enctype="multipart/form-data">
                     <div class="input-section">
-                        <input id="name" class="textbox" type="text" placeholder="Nombre del producto">
+                        <input id="name" class="textbox" type="text" placeholder="Nombre del producto" name="product-name">
                     </div>
                     <div class="input-section">
-                        <textarea id="description" class="textbox" placeholder="Descripción del producto"></textarea>
+                        <textarea id="description" class="textbox" placeholder="Descripción del producto" name="product-description"></textarea>
                     </div>
                     <div class="input-section">
                         <label for="productimage">Imagen del producto:</label>
-                        <input type="file" name="image" id="productimage" accept="image/x-png,image/gif,image/jpeg">
+                        <input type="file" name="product-image" id="productimage" accept="image/x-png,image/gif,image/jpeg">
                     </div>
                     <div class="input-section">
                         <input type=text list=categories placeholder="Categoría" class="textbox">
-                        <button type="submit" id="button-add-category">Agregar Categoría</button>
+                        <button type="button" id="button-add-category">Agregar Categoría</button>
                         <datalist id="categories">
                             <option value="Televisores"></option>
                             <option value="Celulares"></option>
@@ -36,7 +36,7 @@
                         </datalist>
                     </div>
                     <div class="input-section">
-                        <input type="number" id="price" class="textbox" placeholder="Precio">
+                        <input type="number" id="price" class="textbox" placeholder="Precio" name="product-price">
                     </div>
                     <div class="checkbox">
                         <input type="checkbox" id="activate" checked>

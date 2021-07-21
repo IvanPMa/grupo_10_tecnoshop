@@ -4,7 +4,9 @@ const productManagementController = require ('../controllers/productManagementCo
 
 
 router.get('/', productManagementController.index);              //1. Listado de productos
-router.get('/create', productManagementController.createProduct);//2. Formulario de creación de productos
+router.get('/create', productManagementController.createForm);//2. Formulario de creación de productos
+router.post('/create', productManagementController.createProduct);
+
 router.get('/:id', productManagementController.detailProduct);   //3. Detalle de un producto particular
 router.post('/', productManagementController.index);             //4. Acción de creación
 router.get('/:id/edit', productManagementController.editProduct);//5. Formulario de edición de productos
