@@ -1,32 +1,22 @@
 # Retrospectiva
 **Comenzar a hacer:**
 
-Debemos estar mas comunicados en el slack, como equipo eso nos puede retrasar en la entrega de los sprints, terminar en tiempo y forma lo que nos corresponde
+Trabajar los integrantes que quedamos en el equipo
 
 
 **Hacer más:**
 
-Más comunicacion en general y proponer ideas
-Ser mas activos en el GitHub
-Estar al pendiente del Trello para ver que tareas faltan por hacer y organizarnos mejor
-Preguntar si hay dudas
-Ayudarnos si hay dudas
+Seguir comunicados en el slack
 
 
 **Continuar haciendo:**
 
-Entregar a tiempo los Sprint
 Cumplir cada uno con su parte del trabajo, en tiempo y forma
-Ayudar a los integrantes del equipo cuando no sepan cómo hacer algo
 
 
 **Hacer menos:**
-
-Ausentes en la toma de desiciones
-
+Dejar el sprint para ultimos dias
 
 
 **Dejar de hacer:**
-
-Las actividades para ultimos dias y no empezar desde un principio
-Estar ausentes en el proyecto
+Entregar el sprint con retraso
