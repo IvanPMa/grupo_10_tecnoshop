@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const methodOverride = require('method-override');
 
 const rutaHome = require('./src/routes/home');
 const rutaProductDetail = require('./src/routes/productDetail');
@@ -16,6 +17,8 @@ const folderPublicPath = path.resolve(__dirname, './public');
 
 // Establecemos la carpeta publica
 app.use( express.static(folderPublicPath));
+//Habilitamos metodos PUT y DELETE
+app.use(methodOverride('_method'));
 
 // Cionfigurando ejs 
 app.set('view engine', 'ejs');
