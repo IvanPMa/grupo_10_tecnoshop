@@ -62,7 +62,6 @@ const controller = {
         }
     },
     deleteProduct : ( req, res) =>{
-        res.send('Producto borrado');
         let i = 0;
         let newProductsList = [];
         for (let product of products){
