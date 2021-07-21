@@ -13,6 +13,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+    margin-bottom: 50px;
 }
 
 .product{
@@ -58,4 +59,17 @@
     background-color: white;
     color: #115259;
     border: 1px solid #115259 !important;
+}
+
+.new-product{
+    text-decoration: none;
+    color: #115259;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 50px;
+    padding: 10px 20px;
+}
+
+.new-product:hover{
+    text-decoration: underline;
 }
