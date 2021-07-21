@@ -35,8 +35,11 @@ const controller = {
             res.redirect('/products/create');
         }
     },
-    editProduct: (req, res) => {
+    editForm: (req, res) => {
         res.render('./productManagement/editProduct');
+    },
+    editProduct: ( req,res )=>{
+        res.redirect('/products');
     }
 }
 
