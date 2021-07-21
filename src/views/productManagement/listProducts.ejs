@@ -17,11 +17,10 @@
                 <img src="/images/products/<%= products[i].image %>" alt="Product image" class="product-image">
                 <h2 class="product-name"><%= products[i].name %></h2>
                 <div class="product-buttons">
-                    <form action="" method="GET">
-                        <button type="submit" class="product-edit">
-                            Editar Producto
-                        </button>
-                    </form>
+                    
+                    <a href="/products/edit/<%= products[i].id %>" class="product-edit">
+                        Editar Producto
+                    </a>
                     <form action="" method="POST">
                         <button type="submit" class="product-delete">
                             Borrar Producto

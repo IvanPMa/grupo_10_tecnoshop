@@ -42,12 +42,14 @@
     display: flex;
     justify-content: space-between;
 }
-.product button{
+.product button,
+.product a{
     font-size: .95rem;
     padding: 5px 10px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
+    text-decoration: none;
 }
 
 .product-edit{
