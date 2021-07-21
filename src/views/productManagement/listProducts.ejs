@@ -16,16 +16,18 @@
             <div class="product">
                 <img src="/images/products/<%= products[i].image %>" alt="Product image" class="product-image">
                 <h2 class="product-name"><%= products[i].name %></h2>
-                <form action="" method="GET">
-                    <button type="submit">
-                        Editar Producto
-                    </button>
-                </form>
-                <form action="" method="POST">
-                    <button type="submit">
-                        Borrar Producto
-                    </button>
-                </form>
+                <div class="product-buttons">
+                    <form action="" method="GET">
+                        <button type="submit" class="product-edit">
+                            Editar Producto
+                        </button>
+                    </form>
+                    <form action="" method="POST">
+                        <button type="submit" class="product-delete">
+                            Borrar Producto
+                        </button>
+                    </form>
+                </div>
             </div>
             <% } %>
         </section>
