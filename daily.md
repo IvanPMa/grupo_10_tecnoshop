@@ -16,10 +16,9 @@ Realizar con las actividades indicadas para este sprint.
 **Impedimentos encontrados:**
 
 
-Comunicación y  participación de los integrantes del equipo
+Confirmacion de resercion de integrante del equipo
 
 
 **Soluciones propuestas:**
 
-
-No confiarse y realizar las actividades aunque no participen algunos compañeros, o no se involucren
+Trabajar los compañeros que seguimos en el equipo
