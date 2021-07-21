@@ -62,14 +62,12 @@ const controller = {
         }
     },
     deleteProduct : ( req, res) =>{
-        let i = 0;
         let newProductsList = [];
         for (let product of products){
 
             if(product.id != req.params.id){
                 newProductsList.push(product);
             }
-            i++;
         }
         let productsJSON = JSON.stringify(newProductsList);
         fs.writeFileSync(path.join(__dirname, '../data/products.json'),productsJSON);
