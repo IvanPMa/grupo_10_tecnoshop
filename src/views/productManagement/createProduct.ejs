@@ -17,31 +17,29 @@
 
                 <form class="create-product-form" action="/products/create" method="POST" enctype="multipart/form-data">
                     <div class="input-section">
-                        <input id="name" class="textbox" type="text" placeholder="Nombre del producto" name="product-name">
+                        <input id="name" class="textbox" type="text" placeholder="Nombre del producto" name="productName">
                     </div>
                     <div class="input-section">
-                        <textarea id="description" class="textbox" placeholder="Descripción del producto" name="product-description"></textarea>
+                        <textarea id="description" class="textbox" placeholder="Descripción del producto" name="productDescription"></textarea>
                     </div>
                     <div class="input-section">
                         <label for="productimage">Imagen del producto:</label>
-                        <input type="file" name="product-image" id="productimage" accept="image/x-png,image/gif,image/jpeg">
+                        <input type="file" name="productImage" id="productimage" accept="image/x-png,image/gif,image/jpeg">
                     </div>
                     <div class="input-section">
-                        <input type=text list=categories placeholder="Categoría" class="textbox">
-                        <button type="button" id="button-add-category">Agregar Categoría</button>
-                        <datalist id="categories">
-                            <option value="Televisores"></option>
-                            <option value="Celulares"></option>
-                            <option value="Videojuegos"></option>
-                        </datalist>
+                        <!-- <input type=text list=categories placeholder="Categoría" class="textbox"> -->
+                        <!-- <button type="button" id="button-add-category">Agregar Categoría</button> -->
+                        <label for="productCategory">Categoria del producto:</label>
+                        <Select id="categories" name='productCategory'>
+                            <option value="Televisores">Televisores</option>
+                            <option value="Celulares">Celulares</option>
+                            <option value="Videojuegos">Videojuegos</option>
+                        </Select>
                     </div>
                     <div class="input-section">
-                        <input type="number" id="price" class="textbox" placeholder="Precio" name="product-price">
+                        <input type="number" id="price" class="textbox" placeholder="Precio" name="productPrice">
                     </div>
-                    <div class="checkbox">
-                        <input type="checkbox" id="activate" checked>
-                        <label for="activate">Mostrar producto</label>
-                    </div>
+                    
                     <button type="submit" id="button">Agregar</button>
                 </form>
             </div>
