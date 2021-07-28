@@ -5,20 +5,20 @@
 **Que se hizo la semana pasada:**
 
 
-Ver que es lo que teniamos que hacer para este sprint y ver la retroalimentacion del anterior sprint.
+Observamos los entregables para este sprint
 
 **Que se hara esta semana:**
 
 
-Realizar con las actividades indicadas para este sprint.
+Realizamos las actividades que se marcan dentro del Sprint
 
 
 **Impedimentos encontrados:**
 
 
-Confirmacion de resercion de integrante del equipo
+Ausencia de un integrante
 
 
 **Soluciones propuestas:**
 
-Trabajar los compañeros que seguimos en el equipo
+Trabajar con los compañeros que continuamos dentro del equipo
