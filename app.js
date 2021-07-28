@@ -9,6 +9,8 @@ const rutaLogin = require('./src/routes/login');
 const rutaRegister = require('./src/routes/register');
 const rutasProductManagement = require('./src/routes/productManagement');
 
+const rutasUsuarios = require('./src/routes/users')
+
 const app = express();
 
 var port = process.env.PORT || 3000;
@@ -33,6 +35,8 @@ app.use('/productCart', rutaProductCart);
 app.use('/register', rutaRegister);
 app.use('/login', rutaLogin);
 app.use('/products', rutasProductManagement);
+
+app.use('/users',rutasUsuarios);
 app.use((req, res, next) => {
     res.status(404).send('Página no encontrada');
 })
