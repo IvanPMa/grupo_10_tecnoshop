@@ -16,19 +16,62 @@
                 <h3>Crear cuenta</h3>
 
                 <form id="create-account-form" action="/users" method="POST">
-                    <input id="first_name" name="first_name" class="textbox" type="text" placeholder="Nombre">
-                    <input id="last_name" name="last_name" class="textbox" type="text" placeholder="Apellido">
-                    <input id="email" name="email" class="textbox" type="email" placeholder="Correo electrónico">
+                    <!-- First Name -->
+                    <input id="first_name" name="first_name" class="textbox" type="text" placeholder="Nombre" value="<%= locals.old && old.first_name ? old.first_name : ''%>">
+                    <% if(locals.errors){ errors.forEach(e => { %>
+                        <% if(e.param == 'first_name'){ %>
+                        <p class="alert"><%= e.msg %></p>
+                        <% } %>
+                    <%  })} %>
+
+                    <!-- Last Name -->
+                    <input id="last_name" name="last_name" class="textbox" type="text" placeholder="Apellido" value="<%= locals.old && old.last_name ? old.last_name : ''%>">
+                    <% if(locals.errors){ errors.forEach(e => { %>
+                        <% if(e.param == 'last_name'){ %>
+                        <p class="alert"><%= e.msg %></p>
+                        <% } %>
+                    <%  })} %>
+
+                    <!-- Email     -->
+                    <input id="email" name="email" class="textbox" type="email" placeholder="Correo electrónico" value="<%= locals.old && old.email ? old.email : ''%>">
+                    <% if(locals.errors){ errors.forEach(e => { %>
+                        <% if(e.param == 'email'){ %>
+                        <p class="alert"><%= e.msg %></p>
+                        <% } %>
+                    <%  })} %>
+
+                    <!-- Password  -->
                     <input id="password" name="password" class="textbox" type="password" placeholder="Crea una contraseña">
+                    <% if(locals.errors){ errors.forEach(e => { %>
+                        <% if(e.param == 'password'){ %>
+                        <p class="alert"><%= e.msg %></p>
+                        <% } %>
+                    <%  })} %>
+
+                    <!-- Check Password  -->
                     <input id="checkpassword" name="checkpassword" class="textbox" type="password" placeholder="Repite la contraseña">
+                    <% if(locals.errors){ errors.forEach(e => { %>
+                        <% if(e.param == 'checkpassword'){ %>
+                        <p class="alert"><%= e.msg %></p>
+                        <% } %>
+                    <%  })} %>
+                    
+                    <!-- Terms and Conditions  -->
                     <a href="#" id="terminos">Términos y condiciones</a>
                     <div class="checkbox">
-                        <input name="spam" type="checkbox">
-                        <label for="aceptar-spam">Quiero recibir correos con promociones</label>
+                        <input id="terms" name="terms" type="checkbox">
+                        <label for="terms">Acepto los términos y condiciones</label>
                     </div>
+                    <% if(locals.errors){ errors.forEach(e => { %>
+                        <% if(e.param == 'terms'){ %>
+                        <p class="alert"><%= e.msg %></p>
+                        <% } %>
+                    <%  })} %>
+
+                    <!-- Promotions  -->
                     <div class="checkbox">
-                        <input name="terminos" type="checkbox">
-                        <label for="aceptar-terminos">Acepto los términos y condiciones</label>
+                        <input id="promos" name="promos" type="checkbox">
+                        <label for="promos">Quiero recibir correos con promociones</label>
                     </div>
                     <button type="submit" class="create-button">Crear cuenta</button>
                 </form>

@@ -14,16 +14,27 @@
         <section class="principal">
             <article class="login--article">
                 <img src="/images/profile-picture.png" alt="Imagen perfil" class="login--image">
-                <form class="login--form">
+
+                <form class="login--form" action="/login" method="POST">
                     <p>
-                        <input type="text" placeholder="Ingresa tu usuario" class="loggin--form--input">
+                        <input name="email" type="email" placeholder="Ingresa tu correo" class="loggin--form--input" value="<%= locals.old && old.email ? old.email : ''%>">
                     </p>
+                    <% if(locals.errors){ errors.forEach(e => { %>
+                        <% if(e.param == 'email'){ %>
+                        <p class="alert"><%= e.msg %></p>
+                        <% } %>
+                    <%  })} %>
                     <p>
-                        <input type="password" placeholder="Ingresa tu contraseña" class="loggin--form--input">
+                        <input name="password" type="password" placeholder="Ingresa tu contraseña" class="loggin--form--input">
                     </p>
-                    <button type="button" class="login--form--button" >Ingresar</button>
+                    <% if(locals.errors){ errors.forEach(e => { %>
+                        <% if(e.param == 'password'){ %>
+                        <p class="alert"><%= e.msg %></p>
+                        <% } %>
+                    <%  })} %>
+                    <button type="submit" class="login--form--button" >Ingresar</button>
                     <p class="remember">
-                        <input type="checkbox" name="remember">
+                        <input id="remember" type="checkbox" name="remember">
                         <label for="remember">Recuérdame</label>
                     </p>
                     <p class="forget">
@@ -32,6 +43,7 @@
                         </a>
                     </p>
                 </form>
+
             </article>
         </section>
 

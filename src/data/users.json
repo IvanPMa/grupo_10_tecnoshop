@@ -6,7 +6,7 @@
   "email": "pachecomaldonadoivan@gmail.com",
   "password": "$2a$10$RqLVVntXjPWrRIjiEH2QWuc/dxYovkEl0AHz5DcFrCtlYHLvEBfK6",
   "category": "admin",
-  "spam": "false",
+  "promos": "false",
   "image": "default.jpg"
  },
  {
@@ -16,7 +16,7 @@
   "email": "axelmanzanilla@gmail.com",
   "password": "$2a$10$RqLVVntXjPWrRIjiEH2QWuc/dxYovkEl0AHz5DcFrCtlYHLvEBfK6",
   "category": "admin",
-  "spam": "false",
+  "promos": "false",
   "image": "default.jpg"
  },
  {
@@ -26,7 +26,7 @@
   "email": "adrianlopez@gmail.com",
   "password": "$2a$10$RqLVVntXjPWrRIjiEH2QWuc/dxYovkEl0AHz5DcFrCtlYHLvEBfK6",
   "category": "user",
-  "spam": "false",
+  "promos": "false",
   "image": "default.jpg"
  },
  {
@@ -36,7 +36,7 @@
   "email": "alfonsobanda@gmail.com",
   "password": "$2a$10$RqLVVntXjPWrRIjiEH2QWuc/dxYovkEl0AHz5DcFrCtlYHLvEBfK6",
   "category": "user",
-  "spam": "false",
+  "promos": "false",
   "image": "default.jpg"
  },
  {
@@ -46,7 +46,7 @@
   "email": "franciscoarce@gmail.com",
   "password": "$2a$10$RqLVVntXjPWrRIjiEH2QWuc/dxYovkEl0AHz5DcFrCtlYHLvEBfK6",
   "category": "user",
-  "spam": "true",
+  "promos": "true",
   "image": "default.jpg"
  }
 ]

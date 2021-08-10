@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const bcrypt = require('bcryptjs');
 let users = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/users.json'), {encoding : 'utf-8'}));
+const { validationResult } = require('express-validator');
 
 const controllers = {
     index : (req, res) => {
@@ -9,18 +11,21 @@ const controllers = {
         res.redirect('/')
     },
     createUser : (req, res) => {
-        if(req.body.terminos){
-            let newId = users[users.length - 1].id + 1;
-            let spam = (req.body.spam) ? "true" : "false";
+        let errors = validationResult(req);
+
+        if(errors.isEmpty()){
+            let id = users[users.length - 1].id + 1;
+            let promos = (req.body.spam) ? "true" : "false";
+            let password = bcrypt.hashSync(req.body.password, 10);
 
             let user = {
-                id: newId,
+                id: id,
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 email: req.body.email,
-                password: req.body.password,
+                password: password,
                 category: "user",
-                spam: spam,
+                promos: promos,
                 image: "default.jpg"
             }
 
@@ -28,10 +33,10 @@ const controllers = {
 
             let usersJSON = JSON.stringify(users, null, 1);
             fs.writeFileSync(path.join(__dirname, '../data/users.json'), usersJSON);
-            res.redirect('/login')
+            res.redirect('/login');
         }
         else{
-            res.redirect('/register');
+            res.render('./users/register', { errors: errors.array(), old: req.body});
         }
     },
     detailUser : (req, res) => {
