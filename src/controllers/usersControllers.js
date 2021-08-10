@@ -1,7 +1,5 @@
-const fs = require('fs');
-const path = require('path');
 const bcrypt = require('bcryptjs');
-let users = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/users.json'), {encoding : 'utf-8'}));
+const User = require('../models/User');
 const { validationResult } = require('express-validator');
 
 const controllers = {
@@ -14,12 +12,10 @@ const controllers = {
         let errors = validationResult(req);
 
         if(errors.isEmpty()){
-            let id = users[users.length - 1].id + 1;
             let promos = (req.body.spam) ? "true" : "false";
             let password = bcrypt.hashSync(req.body.password, 10);
 
             let user = {
-                id: id,
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 email: req.body.email,
@@ -29,14 +25,19 @@ const controllers = {
                 image: "default.jpg"
             }
 
-            users.push(user);
+            // Verificar si el correo no está registrado
+            let emailRegister = User.findByField('email', req.body.email);
 
-            let usersJSON = JSON.stringify(users, null, 1);
-            fs.writeFileSync(path.join(__dirname, '../data/users.json'), usersJSON);
-            res.redirect('/login');
+            if(emailRegister){
+                res.render('./users/register', { errors: { email: { msg: 'El correo ya está registrado' } }, old: req.body });
+            }
+            else{
+                User.create(user);
+                res.redirect('/login');
+            }
         }
         else{
-            res.render('./users/register', { errors: errors.array(), old: req.body});
+            res.render('./users/register', { errors: errors.mapped(), old: req.body});
         }
     },
     detailUser : (req, res) => {
