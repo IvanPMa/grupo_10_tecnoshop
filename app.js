@@ -5,10 +5,7 @@ const methodOverride = require('method-override');
 const rutaHome = require('./src/routes/home');
 const rutaProductDetail = require('./src/routes/productDetail');
 const rutaProductCart = require('./src/routes/productCart');
-const rutaLogin = require('./src/routes/login');
-const rutaRegister = require('./src/routes/register');
 const rutasProductManagement = require('./src/routes/productManagement');
-
 const rutasUsuarios = require('./src/routes/users')
 
 const app = express();
@@ -32,11 +29,10 @@ app.use(express.json())
 app.use('/',rutaHome);
 app.use('/productDetail', rutaProductDetail);
 app.use('/productCart', rutaProductCart);
-app.use('/register', rutaRegister);
-app.use('/login', rutaLogin);
 app.use('/products', rutasProductManagement);
-
 app.use('/users',rutasUsuarios);
+
+// Página de error
 app.use((req, res, next) => {
     res.status(404).send('Página no encontrada');
 })

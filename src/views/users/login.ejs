@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <title>Login</title>
-        <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="../css/login.css">
         <%- include('../partials/head')%>
     </head>
 <body>
@@ -15,7 +15,7 @@
             <article class="login--article">
                 <img src="/images/profile-picture.png" alt="Imagen perfil" class="login--image">
 
-                <form class="login--form" action="/login" method="POST">
+                <form class="login--form" action="/users/login" method="POST">
                     <p>
                         <input name="email" type="email" placeholder="Ingresa tu correo" class="loggin--form--input" value="<%= locals.old && old.email ? old.email : ''%>">
                     </p>

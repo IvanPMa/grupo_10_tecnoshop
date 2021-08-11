@@ -8,6 +8,7 @@ const controllers = {
         // Si es admin te muestra la lista de usuarios
         res.redirect('/')
     },
+
     createUser : (req, res) => {
         let errors = validationResult(req);
 
@@ -33,28 +34,58 @@ const controllers = {
             }
             else{
                 User.create(user);
-                res.redirect('/login');
+                res.redirect('./users/login');
             }
         }
         else{
             res.render('./users/register', { errors: errors.mapped(), old: req.body});
         }
     },
+
     detailUser : (req, res) => {
         // Si es un usuario se regresa al menu
         // Si es admin te muestra la lista de usuarios
         res.send('detalles del usuario')
     },
+
     editUserForm : (req, res) => {
         // Si es un usuario se regresa al menu
         // Si es admin te muestra la lista de usuarios
         res.render('form de edicion del usuario')
     },
+
     editUser : (req, res) => {
         res.send('editar del usuario')
     },
+
     deleteUser : (req, res) => {
         res.send('borrar del usuario')
+    },
+
+    register: (req, res) =>{
+        res.render('./users/register');
+    },
+
+    login : (req, res) => {
+        res.render('./users/login');
+    },
+    
+    verifyLogin : (req, res) => {
+        let errors = validationResult(req);
+
+        if(errors.isEmpty()){
+            user = users.find(u => u.email == req.body.email)
+
+            if(bcrypt.compareSync(user.password, req.body.password)){
+                res.redirect('/');
+            }
+            else{
+                res.render('./users/login', { errors: errors.array(), old: req.body});
+            }
+        }
+        else{
+            res.render('./users/login', { errors: errors.array(), old: req.body});
+        }
     }
 };
 

@@ -48,25 +48,5 @@
   "category": "user",
   "promos": "true",
   "image": "default.jpg"
- },
- {
-  "id": 5,
-  "first_name": "axel",
-  "last_name": "manzanilla",
-  "email": "axelmanzanilla@gmail.com",
-  "password": "$2a$10$KT/5J7.RK8C9riOSWPZ.MePgL1SEXbP81oQ0pr.rSNq36b1xLJ0WG",
-  "category": "user",
-  "promos": "false",
-  "image": "default.jpg"
- },
- {
-  "id": 6,
-  "first_name": "axel",
-  "last_name": "manzanilla",
-  "email": "axelmanzanilla@gsmail.com",
-  "password": "$2a$10$hgSDXR/AxfWiAnSc5o9HI.jft4qJNhejPGGleyWa1WNjNMlOQJKLa",
-  "category": "user",
-  "promos": "false",
-  "image": "default.jpg"
  }
 ]
