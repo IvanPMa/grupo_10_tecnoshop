@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session')
 const path = require('path');
 const methodOverride = require('method-override');
 
@@ -16,8 +17,14 @@ const folderPublicPath = path.resolve(__dirname, './public');
 
 // Establecemos la carpeta publica
 app.use( express.static(folderPublicPath));
-//Habilitamos metodos PUT y DELETE
+// Habilitamos metodos PUT y DELETE
 app.use(methodOverride('_method'));
+// Para guardar datos en el navegador
+app.use(session({
+    secret: "Esta es una palabra secreta",
+    resave: false,
+    saveUninitalized: false
+}));
 
 // Cionfigurando ejs 
 app.set('view engine', 'ejs');

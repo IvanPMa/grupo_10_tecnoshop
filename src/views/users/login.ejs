@@ -16,22 +16,18 @@
                 <img src="/images/profile-picture.png" alt="Imagen perfil" class="login--image">
 
                 <form class="login--form" action="/users/login" method="POST">
-                    <p>
-                        <input name="email" type="email" placeholder="Ingresa tu correo" class="loggin--form--input" value="<%= locals.old && old.email ? old.email : ''%>">
-                    </p>
-                    <% if(locals.errors){ errors.forEach(e => { %>
-                        <% if(e.param == 'email'){ %>
-                        <p class="alert"><%= e.msg %></p>
-                        <% } %>
-                    <%  })} %>
-                    <p>
-                        <input name="password" type="password" placeholder="Ingresa tu contraseña" class="loggin--form--input">
-                    </p>
-                    <% if(locals.errors){ errors.forEach(e => { %>
-                        <% if(e.param == 'password'){ %>
-                        <p class="alert"><%= e.msg %></p>
-                        <% } %>
-                    <%  })} %>
+                    <!-- Email     -->
+                    <p><input name="email" type="email" placeholder="Ingresa tu correo" class="loggin--form--input" value="<%= locals.old && old.email ? old.email : ''%>"></p>
+                    <% if(locals.errors && errors.email){ %>
+                        <p class="alert"><%= errors.email.msg %></p>
+                    <% } %>
+
+                    <!-- Password  -->
+                    <p><input name="password" type="password" placeholder="Ingresa tu contraseña" class="loggin--form--input"></p>
+                    <% if(locals.errors && errors.password){ %>
+                        <p class="alert"><%= errors.password.msg %></p>
+                    <% } %>
+
                     <button type="submit" class="login--form--button" >Ingresar</button>
                     <p class="remember">
                         <input id="remember" type="checkbox" name="remember">

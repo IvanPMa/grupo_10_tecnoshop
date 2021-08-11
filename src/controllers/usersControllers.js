@@ -34,7 +34,7 @@ const controllers = {
             }
             else{
                 User.create(user);
-                res.redirect('./users/login');
+                res.redirect('/users/login');
             }
         }
         else{
@@ -72,19 +72,30 @@ const controllers = {
     
     verifyLogin : (req, res) => {
         let errors = validationResult(req);
+        let msgError = 'Email o contraseña incorrecta';
 
         if(errors.isEmpty()){
-            user = users.find(u => u.email == req.body.email)
-
-            if(bcrypt.compareSync(user.password, req.body.password)){
-                res.redirect('/');
+            let user = User.findByField('email', req.body.email);
+            
+            if(user){
+                verifyPass = bcrypt.compareSync(req.body.password, user.password);
+                
+                if(verifyPass){
+                    // Usuario ingresado correctamente
+                    req.session.userLogged = user;
+                    //res.redirect('/');
+                    res.send(user);
+                }
+                else{
+                    res.render('./users/login', { errors: { password: { msg: msgError }}, old: req.body } )
+                }
             }
             else{
-                res.render('./users/login', { errors: errors.array(), old: req.body});
+                res.render('./users/login', { errors: { password: { msg: msgError }}, old: req.body } )
             }
         }
         else{
-            res.render('./users/login', { errors: errors.array(), old: req.body});
+            res.render('./users/login', { errors: errors.mapped(), old: req.body});
         }
     }
 };
