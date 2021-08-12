@@ -1,0 +1,135 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* MAIN */
+main{
+    width: 100%;
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.user-profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-information-section{
+    width: 80%;
+    height: auto;
+    padding: 20px !important;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.edit-information-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+}
+
+.profile-picture{
+    width: 120px;
+    border-radius: 100%;
+    border: 5px solid white;
+}
+
+.upload-picture{
+    display: flex;
+    margin-top: 20px;
+}
+
+.input-section{
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.input-text{
+    width: 100%;
+    height: 35px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+
+.submit-button{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.submit-button input{
+    margin-top: 15px;
+    background-color: #03414D;
+    color: white;
+    border: none;
+    width: 150px;
+    height: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+}
+
+.edit-button-div{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.edit-button{
+    width: 150px;
+    text-decoration: none;
+    color: white;
+    background-color: #115259;
+    padding: 7px 10px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 450ms;
+}
+
+.edit-button:hover{
+    background-color: white;
+    color: #115259;
+}
+
+
+
+/* breakpoints */
+@media(min-width: 675px){
+    body{
+        font-size: 16px;
+    }
+
+    .user-information-section{
+        width: 80%;
+        max-width: 600px;
+    }
+
+    .input-section{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .input-text{
+        width: 75%;
+        margin-left: 15px;
+    }
+}

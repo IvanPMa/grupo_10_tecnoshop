@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Register</title>
+        <link rel="stylesheet" href="/css/profile.css">
+        <%- include('../partials/head')%>
+    </head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../partials/header')%>
+        
+        <!-- MAIN SECTION -->
+        <main>
+            <div class="user-profile">
+                <div>
+                    <h2>Editar Información</h2>
+                </div>
+            
+                <!-- UPLOAD INFORMATION FORM -->
+                <section class="user-information-section">
+                    <form action="/user/profile/edit" class="edit-information-form" method="POST">
+                        <img src="/images/users/<%= user.image %>" alt="Imagen perfil" class="profile-picture">
+                        <div class="input-section">
+                            <label for="productimage">Subir imagen: </label>
+                            <input type="file" name="productImage" id="productimage" accept="image/x-png,image/gif,image/jpeg">
+                        </div>
+                        <div class="input-section">
+                            <label for="first_name" class="label-form">Nombre:</label>
+                            <input type="text" name="first_name" id="first_name" class="input-text" value="<%= locals.old && old.first_name ? old.first_name : user.first_name %>">
+                        </div>
+                        <% if(locals.errors && errors.first_name){ %>
+                            <p class="alert"><%= errors.first_name.msg %></p>
+                        <% } %>
+                        <div class="input-section">
+                            <label for="last_name" class="label-form">Apellido:</label>
+                            <input type="text" name="last_name" id="last_name" class="input-text" value="<%= locals.old && old.last_name ? old.last_name : user.last_name %>">
+                        </div>
+                        <% if(locals.errors && errors.last_name){ %>
+                            <p class="alert"><%= errors.last_name.msg %></p>
+                        <% } %>
+                        <div class="input-section">
+                            <label for="email" class="label-form">Correo:</label>
+                            <input type="email" name="email" id="email" class="input-text" value="<%= locals.old && old.email ? old.email : user.email %>">
+                        </div>
+                        <% if(locals.errors && errors.email){ %>
+                            <p class="alert"><%= errors.email.msg %></p>
+                        <% } %>
+                        <div class="input-section">
+                            <label for="password" class="label-form">Contraseña:</label>
+                            <input type="password" name="password" id="password" class="input-text" value="prueba">
+                        </div>
+                        <% if(locals.errors && errors.password){ %>
+                            <p class="alert"><%= errors.password.msg %></p>
+                        <% } %>
+                        <div class="input-section">
+                            <label for="checkpassword" class="label-form">Confirmar:</label>
+                            <input type="password" name="checkpassword" id="checkpassword" class="input-text">
+                        </div>
+                        <% if(locals.errors && errors.checkpassword){ %>
+                            <p class="alert"><%= errors.checkpassword.msg %></p>
+                        <% } %>
+                        <div class="submit-button">
+                            <input type="submit" value="Actualizar">
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </main>
+    
+        <!-- FOOTER -->
+        <%- include('../partials/footer')%>
+    </div>
+</body>
+</html>

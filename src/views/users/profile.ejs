@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Register</title>
+        <link rel="stylesheet" href="../css/profile.css">
+        <%- include('../partials/head')%>
+    </head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../partials/header')%>
+        
+        <!-- MAIN SECTION -->
+        <main>
+            <div class="user-profile">
+                <!-- WELCOME MESSAGE -->
+                <div>
+                    <h2>Bienvenido <%= user.first_name %></h2>
+                </div>
+            
+                <!-- INFORMATION FORM -->
+                <section class="user-information-section">
+                    <form class="edit-information-form">
+                        <img src="/images/users/<%= user.image %>" alt="Imagen perfil" class="profile-picture">
+                        <div class="input-section">
+                            <label for="first_name" class="label-form">Nombre:</label>
+                            <input type="text" name="first_name" id="first_name" class="input-text" value="<%= user.first_name %>" readonly>
+                        </div>
+                        <div class="input-section">
+                            <label for="last_name" class="label-form">Apellido:</label>
+                            <input type="text" name="last_name" id="last_name" class="input-text" value="<%= user.last_name %>" readonly>
+                        </div>
+                        <div class="input-section">
+                            <label for="email" class="label-form">Correo:</label>
+                            <input type="email" name="email" id="email" class="input-text" value="<%= user.email %>" readonly>
+                        </div>
+                        <div class="edit-button-div">
+                            <a href="/user/profile/edit" class="edit-button">Editar</a>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </main>
+    
+        <!-- FOOTER -->
+        <%- include('../partials/footer')%>
+    </div>
+</body>
+</html>

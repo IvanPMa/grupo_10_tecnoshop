@@ -23,6 +23,18 @@ const User = {
         fs.writeFileSync(path.join(__dirname, '../data/users.json'), usersJSON);
     },
 
+    edit: function(user){
+        let users = this.getData();
+        let index = users.indexOf(users.find(u => u.id == user.id));
+
+        users[index] = {
+            ...user
+        }
+        
+        let usersJSON = JSON.stringify(users, null, 1);
+        fs.writeFileSync(path.join(__dirname, '../data/users.json'), usersJSON);
+    },
+
     findByField: function(field, text){
         let users = this.getData();
         let user = users.find(u => u[field] == text);

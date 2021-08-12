@@ -7,7 +7,7 @@ const rutaHome = require('./src/routes/home');
 const rutaProductDetail = require('./src/routes/productDetail');
 const rutaProductCart = require('./src/routes/productCart');
 const rutasProductManagement = require('./src/routes/productManagement');
-const rutasUsuarios = require('./src/routes/users')
+const rutasUsuarios = require('./src/routes/user')
 
 const app = express();
 
@@ -37,7 +37,7 @@ app.use('/',rutaHome);
 app.use('/productDetail', rutaProductDetail);
 app.use('/productCart', rutaProductCart);
 app.use('/products', rutasProductManagement);
-app.use('/users',rutasUsuarios);
+app.use('/user',rutasUsuarios);
 
 // Página de error
 app.use((req, res, next) => {
