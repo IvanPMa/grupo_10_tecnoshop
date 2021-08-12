@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <title>Login</title>
-        <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="../css/login.css">
         <%- include('../partials/head')%>
     </head>
 <body>
@@ -14,16 +14,23 @@
         <section class="principal">
             <article class="login--article">
                 <img src="/images/profile-picture.png" alt="Imagen perfil" class="login--image">
-                <form class="login--form">
-                    <p>
-                        <input type="text" placeholder="Ingresa tu usuario" class="loggin--form--input">
-                    </p>
-                    <p>
-                        <input type="password" placeholder="Ingresa tu contraseña" class="loggin--form--input">
-                    </p>
-                    <button type="button" class="login--form--button" >Ingresar</button>
+
+                <form class="login--form" action="/user/login" method="POST">
+                    <!-- Email     -->
+                    <p><input name="email" type="email" placeholder="Ingresa tu correo" class="loggin--form--input" value="<%= locals.old && old.email ? old.email : ''%>"></p>
+                    <% if(locals.errors && errors.email){ %>
+                        <p class="alert"><%= errors.email.msg %></p>
+                    <% } %>
+
+                    <!-- Password  -->
+                    <p><input name="password" type="password" placeholder="Ingresa tu contraseña" class="loggin--form--input"></p>
+                    <% if(locals.errors && errors.password){ %>
+                        <p class="alert"><%= errors.password.msg %></p>
+                    <% } %>
+
+                    <button type="submit" class="login--form--button" >Ingresar</button>
                     <p class="remember">
-                        <input type="checkbox" name="remember">
+                        <input id="remember" type="checkbox" name="remember">
                         <label for="remember">Recuérdame</label>
                     </p>
                     <p class="forget">
@@ -32,6 +39,7 @@
                         </a>
                     </p>
                 </form>
+
             </article>
         </section>
 

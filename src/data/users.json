@@ -1,5 +1,52 @@
-[{"id":0, "firs_name":"Ivan", "last_name":"Pacheco", "email":"pachecomaldonadoivan@gmail.com", "password":"$2a$10$RqLVVntXjPWrRIjiEH2QWuc/dxYovkEl0AHz5DcFrCtlYHLvEBfK6", "category":"user", "image":"default.jpg"},
-{"id":1, "firs_name":"Axel", "last_name":"Manzanilla", "email":"axelmanzanilla@gmail.com", "password":"$2a$10$RqLVVntXjPWrRIjiEH2QWuc/dxYovkEl0AHz5DcFrCtlYHLvEBfK6", "category":"user", "image":"default.jpg"},
-{"id":2, "firs_name":"Adrian", "last_name":"Lopez", "email":"adrianlopez@gmail.com", "password":"$2a$10$RqLVVntXjPWrRIjiEH2QWuc/dxYovkEl0AHz5DcFrCtlYHLvEBfK6", "category":"user", "image":"default.jpg"},
-{"id":3, "firs_name":"Alfonso", "last_name":"Banda", "email":"alfonsobanda@gmail.com", "password":"$2a$10$RqLVVntXjPWrRIjiEH2QWuc/dxYovkEl0AHz5DcFrCtlYHLvEBfK6", "category":"user", "image":"default.jpg"},
-{"id":4, "firs_name":"Francisco", "last_name":"Arce", "email":"franciscoarce@gmail.com", "password":"$2a$10$RqLVVntXjPWrRIjiEH2QWuc/dxYovkEl0AHz5DcFrCtlYHLvEBfK6", "category":"user", "image":"default.jpg"}]
+[
+ {
+  "id": 0,
+  "first_name": "Ivan",
+  "last_name": "Pacheco",
+  "email": "pachecomaldonadoivan@gmail.com",
+  "password": "$2a$10$eyX6ATawV6hmNrRjMlmp4O2p9DCLu28zpq5JYEshY7DZk8lupEZUe",
+  "category": "admin",
+  "promos": "false",
+  "image": "default.jpg"
+ },
+ {
+  "id": 1,
+  "first_name": "Axel",
+  "last_name": "Manzanilla",
+  "email": "axelmanzanilla@gmail.com",
+  "password": "$2a$10$Ckkn/4sJjCSZDxAa2T247epIaN7mQ1Gg58xgL0mN4hZkLU25fPjrm",
+  "category": "admin",
+  "promos": "false",
+  "image": "user_1_picture.jpg"
+ },
+ {
+  "id": 2,
+  "first_name": "Adrian",
+  "last_name": "Lopez",
+  "email": "adrianlopez@gmail.com",
+  "password": "$2a$10$eyX6ATawV6hmNrRjMlmp4O2p9DCLu28zpq5JYEshY7DZk8lupEZUe",
+  "category": "user",
+  "promos": "false",
+  "image": "default.jpg"
+ },
+ {
+  "id": 3,
+  "first_name": "Alfonso",
+  "last_name": "Banda",
+  "email": "alfonsobanda@gmail.com",
+  "password": "$2a$10$eyX6ATawV6hmNrRjMlmp4O2p9DCLu28zpq5JYEshY7DZk8lupEZUe",
+  "category": "user",
+  "promos": "false",
+  "image": "default.jpg"
+ },
+ {
+  "id": 4,
+  "first_name": "Francisco",
+  "last_name": "Arce",
+  "email": "franciscoarce@gmail.com",
+  "password": "$2a$10$eyX6ATawV6hmNrRjMlmp4O2p9DCLu28zpq5JYEshY7DZk8lupEZUe",
+  "category": "user",
+  "promos": "true",
+  "image": "default.jpg"
+ }
+]
