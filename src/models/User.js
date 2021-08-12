@@ -39,7 +39,15 @@ const User = {
         let users = this.getData();
         let user = users.find(u => u[field] == text);
         return user;
-    }
+    },
+
+    isNewEmailInUse: function(user, newEmail){
+        let users = this.getData();
+        let index = users.indexOf(users.find(u => u.id == user.id));
+        let usersWithoutUser = users.slice(index, 1);
+        let existEmail = usersWithoutUser.find(u => u.email == newEmail);
+        return existEmail;
+    },
 }
 
 module.exports = User;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Register</title>
+        <title>Perfil de <%= user.first_name %></title>
         <link rel="stylesheet" href="/css/profile.css">
         <%- include('../partials/head')%>
     </head>
@@ -19,11 +19,11 @@
             
                 <!-- UPLOAD INFORMATION FORM -->
                 <section class="user-information-section">
-                    <form action="/user/profile/edit" class="edit-information-form" method="POST">
+                    <form action="/user/profile/edit" class="edit-information-form" method="POST" enctype="multipart/form-data">
                         <img src="/images/users/<%= user.image %>" alt="Imagen perfil" class="profile-picture">
                         <div class="input-section">
-                            <label for="productimage">Subir imagen: </label>
-                            <input type="file" name="productImage" id="productimage" accept="image/x-png,image/gif,image/jpeg">
+                            <label for="userPicture">Subir imagen: </label>
+                            <input type="file" name="userPicture" id="userPicture" accept="image/x-png,image/gif,image/jpeg">
                         </div>
                         <div class="input-section">
                             <label for="first_name" class="label-form">Nombre:</label>
@@ -48,11 +48,8 @@
                         <% } %>
                         <div class="input-section">
                             <label for="password" class="label-form">Contraseña:</label>
-                            <input type="password" name="password" id="password" class="input-text" value="prueba">
+                            <input type="password" name="password" id="password" class="input-text">
                         </div>
-                        <% if(locals.errors && errors.password){ %>
-                            <p class="alert"><%= errors.password.msg %></p>
-                        <% } %>
                         <div class="input-section">
                             <label for="checkpassword" class="label-form">Confirmar:</label>
                             <input type="password" name="checkpassword" id="checkpassword" class="input-text">

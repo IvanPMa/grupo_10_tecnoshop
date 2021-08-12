@@ -14,10 +14,10 @@
   "first_name": "Axel",
   "last_name": "Manzanilla",
   "email": "axelmanzanilla@gmail.com",
-  "password": "$2a$10$akeu/1JOr5xtxPftqXfHluRtci5GhHtotpb2XD6A4jriAtVrvtTDa",
+  "password": "$2a$10$Ckkn/4sJjCSZDxAa2T247epIaN7mQ1Gg58xgL0mN4hZkLU25fPjrm",
   "category": "admin",
   "promos": "false",
-  "image": "default.jpg"
+  "image": "user_1_picture.jpg"
  },
  {
   "id": 2,

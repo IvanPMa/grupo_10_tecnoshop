@@ -120,9 +120,20 @@ const controllers = {
         let errors = validationResult(req);
 
         if(errors.isEmpty()){
-            let password = bcrypt.hashSync(req.body.password, 10);
+            let userLogged = User.findByField('id', req.session.userLogged.id);
+            let password = userLogged.password;
 
-            let user = {
+            // Si se cambió la contraseña
+            let changePassword = req.body.password.length > 0;
+            if(changePassword){
+                password = bcrypt.hashSync(req.body.password, 10);
+
+                if(password.length < 8){
+                    res.render('./users/editProfile', { errors: { checkpassword: { msg: 'La contraseña debe tener al menos ocho caractéres' } }, user: req.session.userLogged, old: req.body });
+                }
+            }
+
+            let editUser = {
                 id: req.session.userLogged.id,
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
@@ -130,23 +141,23 @@ const controllers = {
                 password: password,
                 category: req.session.userLogged.category,
                 promos: req.session.userLogged.promos,
-                image: "default.jpg"
+                image: req.file.filename
             }
-
+    
             // Verificar si el correo no está registrado
-            let emailRegister = User.findByField('email', req.body.email);
-
+            let emailRegister = User.isNewEmailInUse(editUser, editUser.email);
             if(emailRegister){
-                res.render('./users/editProfile', { errors: { email: { msg: 'El correo ya está en usó' } }, user: req.session.userLogged, old: req.body });
+                // Error de que el correo está en uso
+                res.render('./users/editProfile', { errors: { email: { msg: 'El correo ya está en uso' } }, user: req.session.userLogged, old: req.body });
             }
             else{
-                User.edit(user);
-                delete user.password;
-                req.session.userLogged = user;
+                // Usuario editado
+                User.edit(editUser);
                 res.redirect('/user/profile');
             }
         }
         else{
+            // Error del forms
             res.render('./users/editProfile', { errors: errors.mapped(), user: req.session.userLogged, old: req.body});
         }
     },
