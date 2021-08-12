@@ -10,7 +10,7 @@ const controllers = {
         res.redirect('/')
     },
 
-    createUser: (req, res) => {
+    register: (req, res) => {
         let errors = validationResult(req);
 
         if(errors.isEmpty()){
@@ -85,17 +85,25 @@ const controllers = {
                     // Usuario ingresado correctamente
                     delete user.password;
                     req.session.userLogged = user;
+
+                    if(req.body.remember){
+                        res.cookie('userEmail', req.body.email, { maxAge: 60 * (1000 * 60) })
+                    }
+
                     res.redirect('/');
                 }
                 else{
+                    // Contraseña incorrecta
                     res.render('./users/login', { errors: { password: { msg: msgError }}, old: req.body } )
                 }
             }
             else{
+                // Email incorrecto
                 res.render('./users/login', { errors: { password: { msg: msgError }}, old: req.body } )
             }
         }
         else{
+            // Errores en los inputs del form
             res.render('./users/login', { errors: errors.mapped(), old: req.body});
         }
     },
@@ -144,6 +152,7 @@ const controllers = {
     },
 
     logout: (req, res) => {
+        res.clearCookie('userEmail');
         req.session.destroy();
         res.redirect('/');
     }

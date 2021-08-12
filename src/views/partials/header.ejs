@@ -8,6 +8,11 @@
     </form>
     <button class="button-bar"><i class="fas fa-bars"></i></button>
     <div class="buttons">
+        <% if(locals.isLogged){ %>
+            Hola
+        <% }else{ %>
+            Adiós
+        <% } %>
         <a href="/productCart"><i class="fas fa-shopping-cart cart"></i></a>
         <a href="/user/login" class="botonSuperior login">Log In!</a>
         <a href="/user/register" class="botonSuperior register">Sign up</a>

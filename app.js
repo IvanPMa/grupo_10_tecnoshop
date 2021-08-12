@@ -1,8 +1,12 @@
+// Middlewares
 const express = require('express');
 const session = require('express-session')
 const path = require('path');
 const methodOverride = require('method-override');
+const cookies = require('cookie-parser');
+const userLoggedMiddleware = require('./src/middlewares/userLoggedMiddleware');
 
+// Controllers
 const rutaHome = require('./src/routes/home');
 const rutaProductDetail = require('./src/routes/productDetail');
 const rutaProductCart = require('./src/routes/productCart');
@@ -25,6 +29,10 @@ app.use(session({
     resave: false,
     saveUninitalized: false
 }));
+// Usamos las cookies
+app.use(cookies());
+// Para comprobar si esta logueado
+app.use(userLoggedMiddleware);
 
 // Cionfigurando ejs 
 app.set('view engine', 'ejs');

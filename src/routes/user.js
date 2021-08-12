@@ -15,7 +15,7 @@ router.get('/edit/:id', userController.editUserForm);             // Formulario 
 router.get('/login', guestMiddleware, userController.loginForm);                       // Formulario de acceso de usuario
 router.get('/register', guestMiddleware, userController.registerForm);                 // Formulario de registro de usuario
 router.post('/login', validateLogin, userController.verifyLogin);
-router.post('/register', validateRegister, userController.createUser);    // Acción de creación de usuario
+router.post('/register', validateRegister, userController.register);    // Acción de creación de usuario
 router.get('/profile', authMiddleware, userController.profile);
 router.get('/profile/edit', authMiddleware, userController.editProfile);
 router.post('/profile/edit', validateEditUser, userController.verifyEditProfile);
