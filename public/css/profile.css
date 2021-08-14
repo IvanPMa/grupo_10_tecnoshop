@@ -111,6 +111,15 @@ main{
     color: #115259;
 }
 
+/* ADMIN */
+.admin-products{
+    margin-bottom: 10px;
+}
+
+.admin-button a{
+    text-decoration: none;
+    color: #115259;
+}
 
 
 /* breakpoints */
