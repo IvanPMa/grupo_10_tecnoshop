@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Perfil de <%= user.first_name %></title>
+        <title>Editar Usuario <%= user.id %></title>
         <link rel="stylesheet" href="/css/profile.css">
         <%- include('../partials/head')%>
     </head>
@@ -14,16 +14,17 @@
         <main>
             <div class="user-profile">
                 <div>
-                    <h2>Editar Información</h2>
+                    <h2>Editar Información del usuario <%= user.id %></h2>
                 </div>
             
                 <!-- UPLOAD INFORMATION FORM -->
                 <section class="user-information-section">
-                    <form action="/user/profile/edit?_method=PUT" class="edit-information-form" method="POST" enctype="multipart/form-data">
+
+                    <form action="/users/<%= user.id %>/?_method=PUT" class="edit-information-form" method="POST" enctype="multipart/form-data">
                         <img src="/images/users/<%= user.image %>" alt="Imagen perfil" class="profile-picture">
                         <div class="input-section">
                             <label for="userPicture">Subir imagen: </label>
-                            <input type="file" name="userPicture" id="userPicture" accept="image/x-png,image/gif,image/jpeg">
+                            <input type="file" name="picture" id="userPicture" accept="image/x-png,image/gif,image/jpeg">
                         </div>
                         <div class="input-section">
                             <label for="first_name" class="label-form">Nombre:</label>
@@ -50,13 +51,35 @@
                             <label for="password" class="label-form">Contraseña:</label>
                             <input type="password" name="password" id="password" class="input-text">
                         </div>
-                        <div class="input-section">
-                            <label for="checkpassword" class="label-form">Confirmar:</label>
-                            <input type="password" name="checkpassword" id="checkpassword" class="input-text">
+                        
+                        <!-- Category  -->
+                        <div class="category-div">
+                            <label for="category">Categoría:</label>
+                            <select id="category" name="category">
+                                <option value="user"
+                                <% if(user.category == "user"){ %>
+                                    selected="selected"
+                                <% } %>
+                                >Usuario</option>
+                                <option value="admin"
+                                <% if(user.category == "admin"){ %>
+                                    selected="selected"
+                                <% } %>
+                                >Admin</option>
+                            </select>
                         </div>
-                        <% if(locals.errors && errors.checkpassword){ %>
-                            <p class="alert"><%= errors.checkpassword.msg %></p>
-                        <% } %>
+
+                        <!-- Promotions  -->
+                        <div class="checkbox promos-div">
+                            <input id="promos" name="promos" type="checkbox" 
+                            <% if(user.promos == "true"){ %>
+                                checked
+                            <% } %>
+                            >
+                            <label for="promos">Recibir correos promocionales</label>
+                        </div>
+
+
                         <div class="submit-button">
                             <input type="submit" value="Actualizar">
                         </div>

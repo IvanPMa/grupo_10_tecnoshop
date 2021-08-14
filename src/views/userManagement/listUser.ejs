@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head')%>
+    <link rel="stylesheet" href="/css/userList.css">
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../partials/header')%>
+
+        <!-- MAIN SECTION -->
+        <main class="principal">
+            <% for(let i=0; i<users.length; i++){ %>
+            <div class="user">
+                <a href="/users/<%= users[i].id %>"><img src="/images/users/<%= users[i].image %>" alt="User image" class="user-image"></a>
+                <a href="/users/<%= users[i].id %>" class="user-name"><%= users[i].first_name + ' ' + users[i].last_name %></a>
+                
+                <div class="user-buttons">
+                    <a href="/users/<%= users[i].id %>/edit" class="user-edit">
+                        Editar Usuario
+                    </a>
+                    <form action="/users/<%= users[i].id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="user-delete">
+                            Borrar Usuario
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <% } %>
+        </main>
+        <a href="/users/create" class="new-user">Crear un nuevo usuario</a>
+
+        <!-- FOOTER -->
+        <%- include('../partials/footer')%>
+    </div>
+</body>
+</html>
