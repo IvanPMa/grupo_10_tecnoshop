@@ -8,8 +8,14 @@ const User = {
 
     generateId: function(){
         let users = this.getData();
-        let lastUser = users[users.length - 1];
-        return id = lastUser.id + 1;
+
+        if(users){
+            let lastUser = users[users.length - 1];
+            return id = lastUser.id + 1;
+        }
+        else{
+            return 0;
+        }
     },
 
     create: function(user){
@@ -35,6 +41,14 @@ const User = {
         fs.writeFileSync(path.join(__dirname, '../data/users.json'), usersJSON);
     },
 
+    delete: function(user){
+        let users = this.getData();
+        let index = users.indexOf(users.find(u => u.id == user.id));
+        users.splice(index, 1);
+        let usersJSON = JSON.stringify(users, null, 1);
+        fs.writeFileSync(path.join(__dirname, '../data/users.json'), usersJSON);
+    },
+
     findByField: function(field, text){
         let users = this.getData();
         let user = users.find(u => u[field] == text);
@@ -44,8 +58,8 @@ const User = {
     isNewEmailInUse: function(user, newEmail){
         let users = this.getData();
         let index = users.indexOf(users.find(u => u.id == user.id));
-        let usersWithoutUser = users.slice(index, 1);
-        let existEmail = usersWithoutUser.find(u => u.email == newEmail);
+        users.splice(index, 1);
+        let existEmail = users.find(u => u.email == newEmail);
         return existEmail;
     },
 }

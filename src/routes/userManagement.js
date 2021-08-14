@@ -23,19 +23,19 @@ var storage = multer.diskStorage({
         cb(null,path.join(__dirname, '../../public/images/users'));
     },
     filename : (req, file, cb)=>{
-        cb(null,'user_'+ req.session.newUserId + '_picture' + path.extname(file.originalname));
+        cb(null,'user_'+ req.session.PictureId + '_picture' + path.extname(file.originalname));
     }
 })
 
 var upload = multer ({ storage });
 
 // Gestión de Usuarios
-router.get('/', userManagementController.index);// Listado de usuarios                                  YA
-router.get('/create', userManagementController.createUserForm);// Formulario de creación de usuarios    YA
-router.get('/:id', userManagementController.detailUser);// Detalle de un usuario particular             YA
-router.post('/', upload.single('picture'), validateCreate, userManagementController.createUser);// Acción de creación YA
-router.get('/:id/edit', userManagementController.editUserForm);//Formulario de edición de usuario       YA
-router.put('/:id/edit', upload.single('picture'), validateEdit, userManagementController.editUser);// Acción de edición YA
-router.delete('/', userManagementController.index);// Acción de borrado
+router.get('/', userManagementController.index);                                                // Listado de usuarios
+router.get('/create', userManagementController.createUserForm);                                 // Formulario de creación de usuarios
+router.get('/:id', userManagementController.detailUser);                                        // Detalle de un usuario particular
+router.post('/', upload.single('picture'), validateCreate, userManagementController.createUser);// Acción de creación
+router.get('/:id/edit', userManagementController.editUserForm);                                 //Formulario de edición de usuario
+router.put('/:id', upload.single('picture'), validateEdit, userManagementController.editUser);  // Acción de edición
+router.delete('/:id', userManagementController.deleteUser);                                     // Acción de borrado
 
 module.exports = router;

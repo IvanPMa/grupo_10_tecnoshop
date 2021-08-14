@@ -9,6 +9,7 @@ const controllers = {
     },
 
     createUserForm: (req, res) => {
+        req.session.PictureId = User.generateId();
         res.render('./userManagement/createUser');
     },
 
@@ -35,7 +36,6 @@ const controllers = {
                 image: image
             }
 
-            req.session.newUserId = user.id;
             User.create(user);
             res.redirect('/users');
         }
@@ -51,6 +51,7 @@ const controllers = {
 
     editUserForm: (req, res) => {
         let user = User.findByField('id', req.params.id);
+        req.session.PictureId = user.id;
         res.render('./userManagement/editUser', { user: user });
     },
 
@@ -89,18 +90,18 @@ const controllers = {
                 image: image
             }
 
-            req.session.newUserId = user.id;
             User.edit(userEdited);
-            res.redirect('/users');
+            res.redirect('/users/' + user.id);
         }
         else{
-            res.send(errors);
-            //res.render('./userManagement/editUser', { errors: errors.mapped(), old: req.body, user: user});
+            res.render('./userManagement/editUser', { errors: errors.mapped(), old: req.body, user: user});
         }
     },
 
     deleteUser: (req, res) => {
-        res.send('borrar del usuario')
+        let user = User.findByField('id', req.params.id);
+        User.delete(user);
+        res.redirect('/users');
     }
 };
 

@@ -21,7 +21,7 @@
                     <a href="/users/<%= users[i].id %>/edit" class="user-edit">
                         Editar Usuario
                     </a>
-                    <form action="/products/delete/<%= users[i].id %>?_method=DELETE" method="POST">
+                    <form action="/users/<%= users[i].id %>?_method=DELETE" method="POST">
                         <button type="submit" class="user-delete">
                             Borrar Usuario
                         </button>
@@ -31,6 +31,7 @@
             <% } %>
         </main>
         <a href="/users/create" class="new-user">Crear un nuevo usuario</a>
+
         <!-- FOOTER -->
         <%- include('../partials/footer')%>
     </div>
