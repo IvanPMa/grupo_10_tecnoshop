@@ -122,6 +122,12 @@ const controllers = {
         if(errors.isEmpty()){
             let userLogged = User.findByField('id', req.session.userLogged.id);
             let password = userLogged.password;
+            let filename = userLogged.image;
+
+            // Si se cambió la foto
+            if(req.file){
+                filename = req.file.filename;
+            }
 
             // Si se cambió la contraseña
             let changePassword = req.body.password.length > 0;
@@ -141,7 +147,7 @@ const controllers = {
                 password: password,
                 category: req.session.userLogged.category,
                 promos: req.session.userLogged.promos,
-                image: req.file.filename
+                image: filename
             }
     
             // Verificar si el correo no está registrado
