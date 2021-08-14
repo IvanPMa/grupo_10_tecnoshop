@@ -1,14 +1,13 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const { validationResult } = require('express-validator');
-const session = require('express-session');
 
 const controllers = {
     register: (req, res) => {
         let errors = validationResult(req);
 
         if(errors.isEmpty()){
-            let promos = (req.body.spam) ? "true" : "false";
+            let promos = (req.body.promos) ? "true" : "false";
             let password = bcrypt.hashSync(req.body.password, 10);
 
             let user = {

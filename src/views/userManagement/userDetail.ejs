@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Detalles del Usuario <%= user.id %></title>
+        <%- include('../partials/head')%>
+        <link rel="stylesheet" href="/css/profile.css">
+    </head>
+    <body>
+        <div class="container">
+            <!-- HEADER -->
+            <%- include('../partials/header')%>
+            
+            <!-- MAIN SECTION -->
+            <main>
+                <div class="user-profile">
+                    <!-- WELCOME MESSAGE -->
+                    <div>
+                        <h3>Detalles del usuario <%= user.id %></h3>
+                    </div>
+                
+                    <!-- INFORMATION FORM -->
+                    <section class="user-information-section">
+                        <form class="edit-information-form">
+                            <img src="/images/users/<%= user.image %>" alt="Imagen perfil" class="profile-picture">
+                            <!-- ID -->
+                            <div class="input-section">
+                                <label for="first_name" class="label-form">ID:</label>
+                                <input type="text" name="first_name" id="first_name" class="input-text" placeholder="<%= user.id %>" readonly>
+                            </div>
+                            <!-- Nombre -->
+                            <div class="input-section">
+                                <label for="first_name" class="label-form">Nombre:</label>
+                                <input type="text" name="first_name" id="first_name" class="input-text" placeholder="<%= user.first_name %>" readonly>
+                            </div>
+                            <!-- Apellido -->
+                            <div class="input-section">
+                                <label for="last_name" class="label-form">Apellido:</label>
+                                <input type="text" name="last_name" id="last_name" class="input-text" placeholder="<%= user.last_name %>" readonly>
+                            </div>
+                            <!-- Correo -->
+                            <div class="input-section">
+                                <label for="email" class="label-form">Correo:</label>
+                                <input type="email" name="email" id="email" class="input-text" placeholder="<%= user.email %>" readonly>
+                            </div>
+                            <!-- Categoría -->
+                            <div class="input-section">
+                                <label for="email" class="label-form">Categoría:</label>
+                                <input type="email" name="email" id="email" class="input-text" placeholder="<%= user.category %>" readonly>
+                            </div>
+                            <!-- Promociones -->
+                            <div class="input-section">
+                                <label for="email" class="label-form">Promociones:</label>
+                                <input type="email" name="email" id="email" class="input-text" placeholder="<%= user.promos %>" readonly>
+                            </div>
+
+                            <div class="edit-button-div">
+                                <a href="/users/<%= user.id %>/edit" class="edit-button">Editar</a>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </main>
+        
+            <!-- FOOTER -->
+            <%- include('../partials/footer')%>
+        </div>
+    </body>
+</html>

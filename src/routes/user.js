@@ -26,7 +26,7 @@ router.post('/login', validateLogin, userController.verifyLogin);       //
 router.post('/register', validateRegister, userController.register);    // Acción de creación de usuario
 router.get('/profile', authMiddleware, userController.profile);         //
 router.get('/profile/edit', authMiddleware, userController.editProfile);//
-router.post('/profile/edit', upload.single('userPicture'), validateEditUser, userController.verifyEditProfile);
+router.put('/profile/edit', upload.single('userPicture'), validateEditUser, userController.verifyEditProfile);
 router.get('/logout', userController.logout);
 
 module.exports = router;

@@ -48,5 +48,25 @@
   "category": "user",
   "promos": "true",
   "image": "default.jpg"
+ },
+ {
+  "id": 5,
+  "first_name": "Sherlock",
+  "last_name": "Manzanilla",
+  "email": "sherlock@gmail.com",
+  "password": "$2a$10$mSMJGfEVGkrLNCDtTwQYm.3dyJiycnQy2bZ2QmnR73VzMgX2Fsz9m",
+  "category": "admin",
+  "promos": "false",
+  "image": "user_undefined_picture.jpg"
+ },
+ {
+  "id": 6,
+  "first_name": "promo",
+  "last_name": "promo",
+  "email": "promo@gmail.com",
+  "password": "$2a$10$9ahuunmPtFuN0Ne/dj8FXuInCe5XjOCXI7wBhTgsChG2CLItAMDJO",
+  "category": "admin",
+  "promos": "false",
+  "image": "user_undefined_picture.jpg"
  }
 ]

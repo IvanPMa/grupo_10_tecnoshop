@@ -19,7 +19,7 @@
             
                 <!-- UPLOAD INFORMATION FORM -->
                 <section class="user-information-section">
-                    <form action="/user/profile/edit" class="edit-information-form" method="POST" enctype="multipart/form-data">
+                    <form action="/user/profile/edit?_method=PUT" class="edit-information-form" method="POST" enctype="multipart/form-data">
                         <img src="/images/users/<%= user.image %>" alt="Imagen perfil" class="profile-picture">
                         <div class="input-section">
                             <label for="userPicture">Subir imagen: </label>

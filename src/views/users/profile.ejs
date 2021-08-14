@@ -39,12 +39,8 @@
                             <a href="/user/profile/edit" class="edit-button">Editar</a>
                         </div>
                         <div>
-                            <% if(locals.isLogged){ %>
-                                <% if(locals.userLogged.category == 'admin'){ %>
-                                    <div class="admin-button admin-products"><a href="/products/">Administrar Productos</a></div>
-                                    <div class="admin-button admin-users"><a href="/user/all">Administrar Usuarios</a></div>
-                                <% } %>
-                            <% } %>
+                            <div class="admin-button admin-products"><a href="/products">Administrar Productos</a></div>
+                            <div class="admin-button admin-users"><a href="/users">Administrar Usuarios</a></div>
                         </div>
                     </form>
                 </section>
