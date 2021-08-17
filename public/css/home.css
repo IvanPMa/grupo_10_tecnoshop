@@ -1,12 +1,10 @@
-.container{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#main{
+    background-color: #F7F9FB;
+    flex-grow: 1;
 }
 
 /* Login section */
-.principal{
+.main{
     width: 100%;
     height: auto;
     display: flex;

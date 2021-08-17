@@ -1,20 +1,37 @@
-<nav class="navbar">
-    <a href="/" class='navbarImage'>
-        <img src="/images/logo.png" alt="Logotipo Tecnoshop" class="navbarImage">
-    </a>
-    <form class="form">
-        <input type="search" placeholder="Buscar artículos dentro de la tienda" class="barraBusqueda">
-        <button class="search"><i class="fas fa-search"></i></button>
-    </form>
-    <button class="button-bar"><i class="fas fa-bars"></i></button>
-    <div class="buttons">
-    <% if(locals.isLogged){ %>
-        <a href="/productCart"><i class="fas fa-shopping-cart cart"></i></a>
-        <a href="/user/profile" class="botonSuperior profile">Perfil</a>
-        <a href="/user/logout" class="botonSuperior logout">Cerrar sesión</a>
-    <% }else{ %>
-        <a href="/user/login" class="botonSuperior login">Log In!</a>
-        <a href="/user/register" class="botonSuperior register">Sign up</a>
-    <% } %>
-    </div>
-</nav>
+<header id="header">
+    <nav class="navbar">
+        <!-- LOGO -->
+        <div class="logo">
+            <a href="/"><img src="/images/logo.png" alt="Logo Tecnoshop"></a>
+        </div>
+
+        <!-- SEARCHBAR -->
+        <div class="searchbar">
+            <form action="/" method="GET">
+                <input type="search" placeholder="Buscar artículos" size="1">
+                <button><img src="/images/icons/search.png"></button>
+            </form>
+        </div>
+
+        <!-- MENU -->
+        <div class="menu">
+            <div class="mobile">
+                <img src="/images/icons/menu.png" alt="Menú">
+            </div>
+
+            <div class="computer">
+                <img src="/images/icons/menu.png" alt="Logotipo Tecnoshop" class="navbarImage">
+                <div class="buttons">
+                <% if(locals.isLogged){ %>
+                    <a href="/productCart"><i class="fas fa-shopping-cart cart"></i></a>
+                    <a href="/user/profile" class="botonSuperior profile">Perfil</a>
+                    <a href="/user/logout" class="botonSuperior logout">Cerrar sesión</a>
+                <% }else{ %>
+                    <a href="/user/login" class="botonSuperior login">Log In!</a>
+                    <a href="/user/register" class="botonSuperior register">Sign up</a>
+                <% } %>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

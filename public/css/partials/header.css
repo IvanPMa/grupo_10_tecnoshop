@@ -1,0 +1,49 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    height: 80px;
+    background-color: #A0F6D2;
+}
+
+/* LOGO */
+.navbar .logo{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 85px;
+    padding: 5px;
+}
+
+.navbar .logo img{
+    width: 100%;
+}
+
+/* SEARCHBAR */
+.navbar .searchbar{
+    flex-grow: 1;
+    margin-right: 5px;
+}
+
+.navbar .searchbar form{
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar .searchbar form input{
+    flex-grow: 1;
+    outline: none;
+}
+
+.navbar .searchbar form,
+.navbar .searchbar form input,
+.navbar .searchbar form button{
+    border-radius: 10px;
+    background-color: white;
+    border: none;
+}
+
+/* MENU */
+.navbar .menu img{
+    height: 35px;
+    margin-right: 5px;
+}

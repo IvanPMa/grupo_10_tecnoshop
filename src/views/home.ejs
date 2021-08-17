@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Home</title>
-        <link rel="stylesheet" href="css/home.css">
+        <title>Tecnoshop</title>
         <%- include('./partials/head')%>
+        <link rel="stylesheet" href="css/home.css">
     </head>
 <body>
-    <main class="container">
+    <div class="container">
         <!-- HEADER -->
         <%- include('./partials/header')%>
 
-        <!-- MAIN SECTION -->
-        <section class="principal">
-        <% for(let i=0; i<products.length; i++){ %>
+        <!-- MAIN -->
+        <main id="main">
+        <% for(let i=0; i<number; i++){ %>
             <a href="/productDetail/<%= products[i].id %>" class="producto">
                 <img src="/images/products/<%= products[i].image %>" class="imagenProducto">
                 <div class="info">
@@ -24,10 +24,10 @@
                 </div>
             </a>
         <% } %>
-        </section>
+        </main>
 
         <!-- FOOTER -->
         <%- include('./partials/footer')%>
-    </main>
+    </div>
 </body>
 </html>
