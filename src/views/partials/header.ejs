@@ -16,18 +16,18 @@
         <!-- MENU -->
         <div class="menu">
             <div class="mobile">
-                <img src="/images/icons/menu.png" alt="Menú">
+                <img src="/images/icons/menu.png">
             </div>
 
             <div class="computer">
                 <div class="buttons">
                 <% if(locals.isLogged){ %>
-                    <a href="/productCart"><i class="fas fa-shopping-cart cart"></i></a>
-                    <a href="/user/profile" class="botonSuperior profile">Perfil</a>
-                    <a href="/user/logout" class="botonSuperior logout">Cerrar sesión</a>
+                    <a href="/productCart" class="shopping-cart"><img src="/images/icons/shopping-cart.png"></a>
+                    <a href="/user/profile" class="navbar-button profile">Perfil</a>
+                    <a href="/user/logout" class="navbar-button logout">Cerrar sesión</a>
                 <% }else{ %>
-                    <a href="/user/login" class="botonSuperior login">Log In!</a>
-                    <a href="/user/register" class="botonSuperior register">Sign up</a>
+                    <a href="/user/login" class="navbar-button login">Iniciar Sesión</a>
+                    <a href="/user/register" class="navbar-button signup">Registrarse</a>
                 <% } %>
                 </div>
             </div>

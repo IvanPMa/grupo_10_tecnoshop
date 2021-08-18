@@ -22,7 +22,7 @@ const controller = {
             }
         ]
 
-        res.render('home', { productGroup: products, number: productosAMostrar });
+        res.render('home', { productGroup: products });
     },
 }
 
