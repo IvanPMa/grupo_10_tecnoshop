@@ -9,8 +9,7 @@ const controller = {
 
     detailProduct: (req, res) => {
         let product = Product.findByField('id', req.params.id);
-        //res.render('./productManagement/productDetail', { product: product });
-        res.send('detalles no disponibles por el momento');
+        res.render('./productManagement/productDetail', { product: product });
     },
 
     createForm: (req, res) => {
@@ -35,8 +34,7 @@ const controller = {
             res.redirect('/products');
         }
         else{
-            res.send( errors );
-            //res.render('./productManagement/createProduct', { errors: errors.mapped(), old: req.body});
+            res.render('./productManagement/createProduct', { errors: errors.mapped(), old: req.body});
         }
     },
 

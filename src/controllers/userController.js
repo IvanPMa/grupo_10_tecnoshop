@@ -128,6 +128,7 @@ const controllers = {
             let emailRegister = User.isNewEmailInUse(editUser, editUser.email);
             if(emailRegister){
                 // Error de que el correo está en uso
+                console.log(editUser);
                 res.render('./users/editProfile', { errors: { email: { msg: 'El correo ya está en uso' } }, user: req.session.userLogged, old: req.body });
             }
             else{
@@ -146,6 +147,12 @@ const controllers = {
         res.clearCookie('userEmail');
         req.session.destroy();
         res.redirect('/');
+    },
+
+    deletePicture: (req, res) => {
+        let userLogged = User.findByField('id', req.session.userLogged.id);
+        User.resetPicture(userLogged);
+        res.redirect('/user/profile/edit');
     }
 };
 

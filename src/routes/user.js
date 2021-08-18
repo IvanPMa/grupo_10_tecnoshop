@@ -28,5 +28,6 @@ router.get('/profile', authMiddleware, userController.profile);         //
 router.get('/profile/edit', authMiddleware, userController.editProfile);//
 router.put('/profile/edit', upload.single('userPicture'), validateEditUser, userController.verifyEditProfile);
 router.get('/logout', userController.logout);
+router.get('/deletePicture', authMiddleware, userController.deletePicture);        // Formulario de acceso de usuario
 
 module.exports = router;

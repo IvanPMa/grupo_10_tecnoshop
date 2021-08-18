@@ -37,5 +37,6 @@ router.post('/', upload.single('picture'), validateCreate, userManagementControl
 router.get('/:id/edit', userManagementController.editUserForm);                                 //Formulario de edición de usuario
 router.put('/:id', upload.single('picture'), validateEdit, userManagementController.editUser);  // Acción de edición
 router.delete('/:id', userManagementController.deleteUser);                                     // Acción de borrado
+router.get('/:id/deletePicture', userManagementController.deletePicture);        // Formulario de acceso de usuario
 
 module.exports = router;

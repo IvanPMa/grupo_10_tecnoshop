@@ -101,6 +101,12 @@ const controllers = {
         let user = User.findByField('id', req.params.id);
         User.delete(user);
         res.redirect('/users');
+    },
+
+    deletePicture: (req, res) => {
+        let user = User.findByField('id', req.params.id);
+        User.resetPicture(user);
+        res.redirect('/users/' + user.id + '/edit');
     }
 };
 

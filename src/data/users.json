@@ -28,5 +28,15 @@
   "category": "user",
   "promos": "true",
   "image": "default.jpg"
+ },
+ {
+  "id": 3,
+  "first_name": "Karla Aracely",
+  "last_name": "Perez",
+  "email": "karlafigueroa186@gmail.com",
+  "password": "$2a$10$g8pKz88W/Ymqc7ZLv0phDuWdvLgeY42dG/ECanEvbDEXAz5v0keuy",
+  "category": "admin",
+  "promos": "true",
+  "image": "default.jpg"
  }
 ]
