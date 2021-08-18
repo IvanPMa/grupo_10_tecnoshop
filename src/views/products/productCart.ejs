@@ -2,8 +2,8 @@
 <html lang="en">
     <head>
         <title>Product Cart</title>
-        <%- include('../partials/head')%>
-        <link rel="stylesheet" href="css/productCart.css">
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="css/product/cart.css">
     </head>
 <body>
     <div class="container">
@@ -11,15 +11,11 @@
         <%- include('../partials/header')%>
 
         <!-- MAIN SECTION -->
-        <main>
+        <main id="main">
             <div id="carrito">
-                <div>
-                    <h3>Carrito</h3>
-                </div>
+                <h3>Carrito</h3>
 
                 <div>
-
-
                     <div class="articulo">
                         <div class="descripcion">
                             <p>Este es el nombre de un producto genérico</p>
@@ -56,7 +52,7 @@
 
                 </div>
 
-                <div id="compra-celular">
+                <div class="mobile">
                     <div class="total">
                         <p>Total:</p>
                         <input class="total-text" type="text" value="$0.00" readonly>
@@ -69,7 +65,7 @@
                 </div>
             </div>
 
-            <div id="detalles">
+            <div class="details computer">
                 <div>
                     <h3>Detalles de compra</h3>
                 </div>

@@ -2,16 +2,16 @@
 <html lang="en">
     <head>
         <title>Detalles del producto</title>
-        <link rel="stylesheet" href="/css/productDetail.css">
-        <%- include('../partials/head')%>
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/product/detail.css">
     </head>
 <body>
-    <main class="container">
+    <div class="container">
         <!-- HEADER -->
-        <%- include('../partials/header')%>
+        <%- include('../partials/header') %>
 
-        <!-- MAIN SECTION -->
-        <section class="principal">
+        <!-- MAIN -->
+        <main id="main">
             <article class="product">
                 <img class="product--image" src="/images/products/<%= product.image %>" alt="Producto">
                 <div class="product--description">
@@ -29,11 +29,10 @@
                     </button>
                 </div>
             </article>
-        </section>
+        </main>
 
         <!-- FOOTER -->
-        <%- include('../partials/footer')%>
-    </main>
-
+        <%- include('../partials/footer') %>
+    </div>
 </body>
 </html>

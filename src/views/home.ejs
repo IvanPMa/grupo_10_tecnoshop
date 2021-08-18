@@ -3,7 +3,7 @@
     <head>
         <title>Tecnoshop</title>
         <%- include('./partials/head') %>
-        <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet" href="/css/home.css">
     </head>
 <body>
     <div class="container">
@@ -19,7 +19,7 @@
                 <div class="list-products">
                 <% group.products.forEach(product => { %>
                     <div class="product">
-                        <a href="/productDetail/<%= product.id %>">
+                        <a href="/product/<%= product.id %>">
                             <div class="image">
                                 <img src="/images/products/<%= product.image %>" width="50px">
                             </div>

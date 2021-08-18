@@ -43,7 +43,7 @@ app.use(express.json())
 
 // Ruteo de direcciones
 app.use('/',rutaHome);
-app.use('/productDetail', rutaProductDetail);
+app.use('/product', rutaProductDetail);
 app.use('/productCart', rutaProductCart);
 app.use('/user',rutasUsuarios);
 app.use('/products', rutasProductManagement);
@@ -51,7 +51,7 @@ app.use('/users', rutasUserManagement);
 
 // Página de error
 app.use((req, res, next) => {
-    res.status(404).send('Página no encontrada');
+    res.status(404).render('error');
 })
 
 // Levantamos el servidor

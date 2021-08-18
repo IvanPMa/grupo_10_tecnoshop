@@ -1,7 +1,4 @@
 main{
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
     padding: 20px;
 }
 
@@ -87,6 +84,10 @@ main{
     }
 
     /* PRODUCT GROUP */
+    .product{
+        box-shadow: 5px 5px 10px rgb(150, 150, 150);
+    }
+
     .product-group{
         border: none;
         background-color: inherit;

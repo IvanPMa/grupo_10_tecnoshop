@@ -9,6 +9,21 @@ body{
 .container{
     display: flex;
     flex-direction: column;
+    max-width: 100vw;
+    min-height: 100vh;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.alert{
+    margin: -10px 0 10px 0;
+    top: 50px;
+    color: red;
+    text-align: center;
 }
 
 .computer{
@@ -22,6 +37,6 @@ body{
     }
 
     .computer{
-        display: flex;
+        display: inline;
     }
 }

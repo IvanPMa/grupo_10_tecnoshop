@@ -2,20 +2,20 @@
 <html lang="en">
     <head>
         <title>Detalles del Usuario <%= user.id %></title>
-        <%- include('../partials/head')%>
-        <link rel="stylesheet" href="/css/profile.css">
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/user/profile.css">
     </head>
     <body>
         <div class="container">
             <!-- HEADER -->
-            <%- include('../partials/header')%>
+            <%- include('../partials/header') %>
             
-            <!-- MAIN SECTION -->
-            <main>
+            <!-- MAIN -->
+            <main id="main">
                 <div class="user-profile">
                     <!-- WELCOME MESSAGE -->
                     <div>
-                        <h3>Detalles del usuario <%= user.id %></h3>
+                        <h2 class="title">Detalles del usuario <%= user.id %></h2>
                     </div>
                 
                     <!-- INFORMATION FORM -->
@@ -62,7 +62,7 @@
             </main>
         
             <!-- FOOTER -->
-            <%- include('../partials/footer')%>
+            <%- include('../partials/footer') %>
         </div>
     </body>
 </html>

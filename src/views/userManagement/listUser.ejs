@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('../partials/head')%>
-    <link rel="stylesheet" href="/css/userList.css">
     <title>Lista de Usuarios</title>
+    <%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/userManagement/userList.css">
 </head>
 <body>
     <div class="container">
         <!-- HEADER -->
-        <%- include('../partials/header')%>
+        <%- include('../partials/header') %>
 
-        <!-- MAIN SECTION -->
-        <main class="principal">
+        <!-- MAIN -->
+        <main id="main">
             <% for(let i=0; i<users.length; i++){ %>
             <div class="user">
                 <a href="/users/<%= users[i].id %>"><img src="/images/users/<%= users[i].image %>" alt="User image" class="user-image"></a>
@@ -33,7 +33,7 @@
         <a href="/users/create" class="new-user">Crear un nuevo usuario</a>
 
         <!-- FOOTER -->
-        <%- include('../partials/footer')%>
+        <%- include('../partials/footer') %>
     </div>
 </body>
 </html>

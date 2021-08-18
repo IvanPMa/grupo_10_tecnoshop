@@ -2,19 +2,19 @@
 <html lang="en">
     <head>
         <title>Editar Usuario <%= user.id %></title>
-        <link rel="stylesheet" href="/css/profile.css">
-        <%- include('../partials/head')%>
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/user/profile.css">
     </head>
 <body>
     <div class="container">
         <!-- HEADER -->
-        <%- include('../partials/header')%>
+        <%- include('../partials/header') %>
         
-        <!-- MAIN SECTION -->
-        <main>
+        <!-- MAIN -->
+        <main id="main">
             <div class="user-profile">
                 <div>
-                    <h2>Editar Información del usuario <%= user.id %></h2>
+                    <h2 class="title">Editar Información del usuario <%= user.id %></h2>
                 </div>
             
                 <!-- UPLOAD INFORMATION FORM -->
@@ -89,7 +89,7 @@
         </main>
     
         <!-- FOOTER -->
-        <%- include('../partials/footer')%>
+        <%- include('../partials/footer') %>
     </div>
 </body>
 </html>

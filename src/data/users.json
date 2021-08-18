@@ -6,7 +6,7 @@
   "email": "axelmanzanilla@gmail.com",
   "password": "$2a$10$eZeN/E2OzhuCGE/ROWnWYeqqMzWaJbh5V1jK4vlh5yTCeZY8T5BGC",
   "category": "admin",
-  "promos": "false",
+  "promos": "true",
   "image": "user_0_picture.jpg"
  },
  {
