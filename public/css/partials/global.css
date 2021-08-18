@@ -14,3 +14,14 @@ body{
 .computer{
     display: none;
 }
+
+/* MEDIA QUERIES */
+@media(min-width: 768px){
+    .mobile{
+        display: none;
+    }
+
+    .computer{
+        display: flex;
+    }
+}

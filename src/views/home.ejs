@@ -2,32 +2,40 @@
 <html lang="en">
     <head>
         <title>Tecnoshop</title>
-        <%- include('./partials/head')%>
+        <%- include('./partials/head') %>
         <link rel="stylesheet" href="css/home.css">
     </head>
 <body>
     <div class="container">
         <!-- HEADER -->
-        <%- include('./partials/header')%>
+        <%- include('./partials/header') %>
 
         <!-- MAIN -->
         <main id="main">
-        <% for(let i=0; i<number; i++){ %>
-            <a href="/productDetail/<%= products[i].id %>" class="producto">
-                <img src="/images/products/<%= products[i].image %>" class="imagenProducto">
-                <div class="info">
-                    <div class="cajaPrecioDesc">
-                        <p><%= products[i].name %></p>
-                        <p class="precio">$<%= products[i].price %></p>
-                        <p class="descuento">40% off</p>
+        <% productGroup.forEach(group => { %>
+            <section class="product-group">
+                <h2 class="title"><%= group.name %></h2>
+
+                <div class="list-products">
+                <% group.products.forEach(product => { %>
+                    <div class="product">
+                        <a href="/productDetail/<%= product.id %>">
+                            <div class="image">
+                                <img src="/images/products/<%= product.image %>" width="50px">
+                            </div>
+                            <p class="name"><%= product.name %></p>
+                            <p class="price">$<%= product.price %></p>
+                        </a>
+                        <button>Agregar al carrito</button>
                     </div>
+                <% }); %>
                 </div>
-            </a>
-        <% } %>
+            </section>
+        <% }); %>
         </main>
 
         <!-- FOOTER -->
-        <%- include('./partials/footer')%>
+        <%- include('./partials/footer') %>
     </div>
 </body>
 </html>

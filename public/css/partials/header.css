@@ -21,7 +21,6 @@
 /* SEARCHBAR */
 .navbar .searchbar{
     flex-grow: 1;
-    margin-right: 5px;
 }
 
 .navbar .searchbar form{
@@ -45,5 +44,5 @@
 /* MENU */
 .navbar .menu img{
     height: 35px;
-    margin-right: 5px;
+    margin: 5px;
 }
