@@ -15,7 +15,6 @@ const controllers = {
 
     createUser: (req, res) => {
         let errors = validationResult(req);
-        
 
         if(errors.isEmpty()){ // Crear usuario
             let promos = (req.body.promos) ? "true" : "false";

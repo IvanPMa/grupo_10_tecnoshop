@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('../partials/head')%>
-    <link rel="stylesheet" href="/css/productList.css">
     <title>Lista de productos</title>
+    <%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/productManagement/productList.css">
 </head>
 <body>
     <div class="container">
         <!-- HEADER -->
-        <%- include('../partials/header')%>
+        <%- include('../partials/header') %>
 
-        <!-- LIST PRODUCTS -->
-        <section class="principal">
+        <!-- MAIN -->
+        <main id="main">
+            <!-- LIST PRODUCTS -->
             <% for(let i=0; i<products.length; i++){ %>
             <div class="product">
-                <img src="/images/products/<%= products[i].image %>" alt="Product image" class="product-image">
-                <a href="/productDetail/<%= products[i].id %>" class="product-name"><%= products[i].name %></a>
+                <a href="/products/<%= products[i].id %>">
+                    <img src="/images/products/<%= products[i].image %>" alt="Product image" class="product-image">
+                </a>
+                <a href="/products/<%= products[i].id %>" class="product-name"><%= products[i].name %></a>
                 <div class="product-buttons">
                     
                     <a href="/products/edit/<%= products[i].id %>" class="product-edit">
@@ -29,11 +32,13 @@
                 </div>
             </div>
             <% } %>
-        </section>
-        <!-- BUTTON FOR NEW PRODUCTS -->
-        <a href="/products/create" class="new-product">Crear un nuevo producto</a>
+
+            <!-- BUTTON FOR NEW PRODUCTS -->
+            <a href="/products/create" class="new-product">Crear un nuevo producto</a>
+        </main>
+        
         <!-- FOOTER -->
-        <%- include('../partials/footer')%>
+        <%- include('../partials/footer') %>
     </div>
 </body>
 </html>

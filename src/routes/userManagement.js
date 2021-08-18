@@ -27,7 +27,7 @@ var storage = multer.diskStorage({
     }
 })
 
-var upload = multer ({ storage });
+var upload = multer({ storage });
 
 // Gestión de Usuarios
 router.get('/', userManagementController.index);                                                // Listado de usuarios

@@ -1,12 +1,3 @@
-.container{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* MAIN */
 main{
     width: 100%;
     flex-grow: 1;

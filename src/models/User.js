@@ -18,12 +18,8 @@ const User = {
         }
     },
 
-    create: function(user){
+    create: function(newUser){
         let users = this.getData();
-        let newUser = {
-            id: this.generateId(),
-            ...user
-        }
         users.push(newUser);
         let usersJSON = JSON.stringify(users, null, 1);
         fs.writeFileSync(path.join(__dirname, '../data/users.json'), usersJSON);
