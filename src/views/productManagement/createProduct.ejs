@@ -34,9 +34,12 @@
 
                     <!-- Image  -->
                     <div class="input-section">
-                        <label for="productimage">Imagen del producto:</label>
-                        <input type="file" name="productImage" id="image" accept="image/x-png,image/gif,image/jpeg">
+                        <label for="image">Imagen del producto:</label>
+                        <input type="file" name="image" id="image" accept="image/x-png,image/gif,image/jpeg">
                     </div>
+                    <% if(locals.errors && errors.image){ %>
+                        <p class="alert"><%= errors.image.msg %></p>
+                    <% } %>
 
                     <!-- Category  -->
                     <div class="input-section">
@@ -57,6 +60,16 @@
                                 selected="selected"
                             <% } %>
                             >Videojuegos</option>
+                            <option value="Accesorios"
+                            <% if(locals.old && old.category == "Accesorios"){ %>
+                                selected="selected"
+                            <% } %>
+                            >Accesorios</option>
+                            <option value="Otro"
+                            <% if(locals.old && old.category == "Otro"){ %>
+                                selected="selected"
+                            <% } %>
+                            >Otro</option>
                         </select>
                     </div>
                     <% if(locals.errors && errors.category){ %>

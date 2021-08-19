@@ -20,18 +20,26 @@ const controller = {
     createProduct: (req, res) => {
         let errors = validationResult(req);
 
-        if(errors.isEmpty()){ // Crear producto
-            let product = {
-                id: Product.generateId(),
-                name: req.body.name,
-                description: req.body.description,
-                image: req.file.filename,
-                category: req.body.category,
-                price: parseFloat(req.body.price)
+        if(errors.isEmpty()){
+            if(!req.file){
+                // No hay foto
+                res.render('./productManagement/createProduct', { errors: { image: { msg: 'No hay imagen para subir' } }, old: req.body });
             }
-
-            Product.create(product);
-            res.redirect('/products');
+            else{
+                // Crear producto
+                let product = {
+                    id: Product.generateId(),
+                    name: req.body.name,
+                    description: req.body.description,
+                    image: req.file.filename,
+                    category: req.body.category,
+                    price: parseFloat(req.body.price)
+                }
+    
+                Product.create(product);
+                res.redirect('/products');
+            }
+            
         }
         else{
             res.render('./productManagement/createProduct', { errors: errors.mapped(), old: req.body});
@@ -49,7 +57,7 @@ const controller = {
         let product = Product.findByField('id', req.params.id);
 
         if(errors.isEmpty()){ // Editar producto
-            let image = user.image;
+            let image = product.image;
 
             // Si se cambio la foto
             if(req.file){
@@ -57,7 +65,7 @@ const controller = {
             }
 
             let productEdited = {
-                id: product.id,
+                ...product,
                 name: req.body.name,
                 description: req.body.description,
                 image: image,

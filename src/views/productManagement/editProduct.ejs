@@ -3,50 +3,109 @@
     <head>
         <title>Editar Producto</title>
         <%- include('../partials/head') %>
-        <link rel="stylesheet" href="/css/productManagement/createProduct.css">
+        <link rel="stylesheet" href="/css/productManagement/detailProduct.css">
     </head>
-<body>
-    <div class="container">
-        <!-- HEADER -->
-        <%- include('../partials/header') %>
+    <body>
+        <div class="container">
+            <!-- HEADER -->
+            <%- include('../partials/header') %>
+            
+            <!-- MAIN -->
+            <main id="main">
+                <div class="product-detail">
+                    <!-- WELCOME MESSAGE -->
+                    <div>
+                        <h2 class="title">Editar información del producto</h2>
+                    </div>
+                
+                    <!-- INFORMATION FORM -->
+                    <section class="product-information-section">
+                        <form action="/products/edit/<%= product.id %>/?_method=PUT" class="edit-information-form" method="POST" enctype="multipart/form-data">
+                            <!-- Imagen -->
+                            <img src="/images/products/<%= product.image %>" class="product-image">
+                            <div class="input-section">
+                                <label for="image">Subir imagen: </label>
+                                <input type="file" name="image" id="image" accept="image/x-png,image/gif,image/jpeg">
+                            </div>
 
-        <!-- MAIN -->
-        <main id="main">
-            <div class="product-management-box">
-                <h3>Editar Producto - <%= product.name%></h3>
+                            <!-- ID -->
+                            <div class="input-section">
+                                <label for="id" class="label-form">ID:</label>
+                                <input type="text" name="id" id="id" class="input-text" placeholder="<%= product.id %>" readonly>
+                            </div>
 
-                <form class="create-product-form" action="/products/edit/<%= product.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
-                    <div class="input-section">
-                        <input id="name" class="textbox" type="text" placeholder="Nombre del producto" name="productName">
-                    </div>
-                    <div class="input-section">
-                        <textarea id="description" class="textbox" placeholder="Descripción del producto" name="productDescription"></textarea>
-                    </div>
-                    <div class="input-section">
-                        <label for="productimage">Imagen del producto:</label>
-                        <input type="file" name="productImage" id="productimage" accept="image/x-png,image/gif,image/jpeg">
-                    </div>
-                    <div class="input-section">
-                        <!-- <input type=text list=categories placeholder="Categoría" class="textbox"> -->
-                        <!-- <button type="button" id="button-add-category">Agregar Categoría</button> -->
-                        <label for="productCategory">Categoria del producto:</label>
-                        <Select id="categories" name='productCategory'>
-                            <option value="Televisores">Televisores</option>
-                            <option value="Celulares">Celulares</option>
-                            <option value="Videojuegos">Videojuegos</option>
-                        </Select>
-                    </div>
-                    <div class="input-section">
-                        <input type="number" id="price" class="textbox" placeholder="Precio" name="productPrice">
-                    </div>
-                    
-                    <button type="submit" id="button">Editar</button>
-                </form>
-            </div>
-        </main>
+                            <!-- Nombre -->
+                            <div class="input-section">
+                                <label for="name" class="label-form">Nombre:</label>
+                                <input type="text" name="name" id="name" class="input-text" value="<%= locals.old && old.name ? old.name : product.name %>"">
+                            </div>
+                            <% if(locals.errors && errors.name){ %>
+                                <p class="alert"><%= errors.name.msg %></p>
+                            <% } %>
 
-        <!-- FOOTER -->
-        <%- include('../partials/footer') %>
-    </div>
-</body>
+                            <!-- Descripción -->
+                            <div class="input-section description">
+                                <label for="description" class="label-form">Descripción:</label>
+                                <textarea name="description" id="description" cols="30" rows="10" class="input-text"><%= locals.old && old.description ? old.description : product.description %></textarea>
+                            </div>
+                            <% if(locals.errors && errors.description){ %>
+                                <p class="alert"><%= errors.description.msg %></p>
+                            <% } %>
+                            
+                            <!-- Categoría -->
+                            <div class="input-section category">
+                                <label for="category">Categoria del producto:</label>
+                                <select id="category" name="category">
+                                    <option value="Televisores"
+                                    <% if(product.category == "Televisores"){ %>
+                                        selected="selected"
+                                    <% } %>
+                                    >Televisores</option>
+                                    <option value="Celulares"
+                                    <% if(product.category == "Celulares"){ %>
+                                        selected="selected"
+                                    <% } %>
+                                    >Celulares</option>
+                                    <option value="Videojuegos"
+                                    <% if(product.category == "Videojuegos"){ %>
+                                        selected="selected"
+                                    <% } %>
+                                    >Videojuegos</option>
+                                    <option value="Accesorios"
+                                    <% if(product.category == "Accesorios"){ %>
+                                        selected="selected"
+                                    <% } %>
+                                    >Accesorios</option>
+                                    <option value="Otro"
+                                    <% if(product.category == "Otro"){ %>
+                                        selected="selected"
+                                    <% } %>
+                                    >Otro</option>
+                                </select>
+                            </div>
+                            <% if(locals.errors && errors.category){ %>
+                                <p class="alert"><%= errors.category.msg %></p>
+                            <% } %>
+
+                            <!-- Precio -->
+                            <div class="input-section">
+                                <label for="price" class="label-form">Precio:</label>
+                                <input type="number" name="price" id="price" class="input-text" value="<%= locals.old && old.email ? old.price : product.price %>"">
+                            </div>
+                            <% if(locals.errors && errors.price){ %>
+                                <p class="alert"><%= errors.price.msg %></p>
+                            <% } %>
+
+                            <div class="submit-button">
+                                <input type="submit" value="Actualizar">
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </main>
+        
+            <!-- FOOTER -->
+            <%- include('../partials/footer') %>
+        </div>
+    </body>
 </html>

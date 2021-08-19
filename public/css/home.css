@@ -71,8 +71,9 @@ main{
 }
 
 .product button{
-    background-color: khaki;
+    background-color: #A0F6D2;
     border-radius: 10px;
+    border: 1px solid #115259;
     margin: 5px;
 }
 
@@ -166,6 +167,8 @@ main{
 
     .product button:hover{
         cursor: pointer;
-        background-color: darkkhaki;
+        color: white;
+        background-color: #115259;
+        transition: all 300ms;
     }
 }

@@ -89,8 +89,18 @@ const controllers = {
                 image: image
             }
 
-            User.edit(userEdited);
-            res.redirect('/users/' + user.id);
+            // Verificar si el correo no está registrado
+            let emailRegister = User.isNewEmailInUse(userEdited, userEdited.email);
+            if(emailRegister){
+                // Error de que el correo está en uso
+                console.log(userEdited);
+                res.render('./userManagement/editUser', { errors: { email: { msg: 'El correo ya está en uso' } }, user: user, old: req.body });
+            }
+            else{
+                // Usuario editado
+                User.edit(userEdited);
+                res.redirect('/users/' + user.id);
+            }
         }
         else{
             res.render('./userManagement/editUser', { errors: errors.mapped(), old: req.body, user: user});

@@ -16,13 +16,13 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage });
 
-router.get('/', productManagementController.index);              //1. Listado de productos
-router.get('/create', productManagementController.createForm);//2. Formulario de creación de productos
-router.post('/create', upload.single('productImage'), validateProductMiddleware, productManagementController.createProduct);
-router.get('/:id', productManagementController.detailProduct);   //3. Detalle de un producto particular
-router.post('/', productManagementController.index);             //4. Acción de creación
-router.get('/edit/:id', productManagementController.editForm);//5. Formulario de edición de productos
-router.put('/edit/:id',upload.single('productImage'), productManagementController.editProduct);              //6. Acción de edición
-router.delete('/delete/:id', productManagementController.deleteProduct);           //7. Acción de borrado
+// Gestión de Productos (ToDo: Accesible sólo si eres administrador)
+router.get('/', productManagementController.index);                     // Listado de productos
+router.get('/create', productManagementController.createForm);          // Formulario de creación de productos
+router.post('/create', upload.single('image'), validateProductMiddleware, productManagementController.createProduct);// Acción de creación
+router.get('/:id', productManagementController.detailProduct);          // Detalle de un producto particular
+router.get('/edit/:id', productManagementController.editForm);          // Formulario de edición de productos
+router.put('/edit/:id',upload.single('image'), validateProductMiddleware, productManagementController.editProduct);// Acción de edición
+router.delete('/delete/:id', productManagementController.deleteProduct);// Acción de borrado
 
 module.exports = router;

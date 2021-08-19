@@ -113,7 +113,7 @@ const controllers = {
                 }
             }
 
-            let editUser = {
+            let userEdited = {
                 id: req.session.userLogged.id,
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
@@ -125,15 +125,15 @@ const controllers = {
             }
     
             // Verificar si el correo no está registrado
-            let emailRegister = User.isNewEmailInUse(editUser, editUser.email);
+            let emailRegister = User.isNewEmailInUse(userEdited, userEdited.email);
             if(emailRegister){
                 // Error de que el correo está en uso
-                console.log(editUser);
+                console.log(userEdited);
                 res.render('./users/editProfile', { errors: { email: { msg: 'El correo ya está en uso' } }, user: req.session.userLogged, old: req.body });
             }
             else{
                 // Usuario editado
-                User.edit(editUser);
+                User.edit(userEdited);
                 res.redirect('/user/profile');
             }
         }

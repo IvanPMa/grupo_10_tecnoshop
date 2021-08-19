@@ -3,19 +3,16 @@
   "id": 0,
   "name": "Gomu Gomu No Mi",
   "description": "Esta es una descripción genérica.",
-  "image": "product_0.png",
+  "image": "image_product_0.png",
   "category": "Accesorios",
-  "models": [
-   "Morado"
-  ],
   "price": 99
  },
  {
   "id": 1,
   "name": "Audífonos Inalámbricos",
   "description": "Esta es una descripción genérica.",
-  "image": "product_1.jpg",
-  "category": "Audio y Video",
+  "image": "image_product_1.jpg",
+  "category": "Videojuegos",
   "models": [
    "Negro",
    "Blanco"
@@ -26,7 +23,7 @@
   "id": 2,
   "name": "Funda Dr. Stone",
   "description": "Funda para celular con diferentes diseños.",
-  "image": "product_2.jpg",
+  "image": "image_product_2.jpg",
   "category": "Accesorios",
   "models": [
    "iPhone 7",
@@ -38,7 +35,7 @@
   "id": 3,
   "name": "Lente para celular",
   "description": "Esta es una descripción genérica.",
-  "image": "product_3.jpg",
+  "image": "image_product_3.jpg",
   "category": "Accesorios",
   "models": [
    "iPhone 7",
@@ -50,7 +47,7 @@
   "id": 4,
   "name": "Funda One Punch Man",
   "description": "Funda para celular con diferentes diseños.",
-  "image": "product_4.jpg",
+  "image": "image_product_4.jpg",
   "category": "Accesorios",
   "models": [
    "iPhone 7",
@@ -62,7 +59,7 @@
   "id": 5,
   "name": "Funda Shingeki",
   "description": "Funda para celular con diferentes diseños.",
-  "image": "product_5.jpg",
+  "image": "image_product_5.jpg",
   "category": "Accesorios",
   "models": [
    "iPhone 7",
@@ -74,7 +71,7 @@
   "id": 6,
   "name": "Nintendo Switch OLED",
   "description": "Consola de videojuegos diseñada para toda la familia.",
-  "image": "product_6.jpg",
+  "image": "image_product_6.jpg",
   "category": "Consolas",
   "models": [
    "32 GB",
@@ -86,7 +83,7 @@
   "id": 7,
   "name": "Xbox Series X",
   "description": "Consola de videojuegos diseñada para toda la familia.",
-  "image": "product_7.jpg",
+  "image": "image_product_7.jpg",
   "category": "Consolas",
   "models": [
    "500 GB",
@@ -98,7 +95,7 @@
   "id": 8,
   "name": "Play Station 5",
   "description": "Consola de videojuegos diseñada para toda la familia.",
-  "image": "product_8.jpg",
+  "image": "image_product_8.jpg",
   "category": "Consolas",
   "models": [
    "500 GB",
@@ -110,7 +107,7 @@
   "id": 9,
   "name": "AirPods",
   "description": "Esta es una descripción genérica.",
-  "image": "product_9.jpg",
+  "image": "image_product_9.jpg",
   "category": "Audio y Video",
   "models": [
    "Blanco",
@@ -122,7 +119,7 @@
   "id": 10,
   "name": "Xiaomi mi 11",
   "description": "Telefono movil con sistema operativo android 10, MIU 11 color azul",
-  "image": "product_1626834144217.jpg",
+  "image": "image_product_10.jpg",
   "category": "Celulares",
   "price": 5000
  },
@@ -130,7 +127,7 @@
   "id": 11,
   "name": "Pocophone",
   "description": "ESto es una descipcion generica",
-  "image": "product_1626834675736.jpg",
+  "image": "image_product_11.jpg",
   "category": "Celulares",
   "price": 4534535,
   "iamge": "product_1626880851811.jpg"
@@ -139,7 +136,7 @@
   "id": 12,
   "name": "Apple watch",
   "description": "Reloj inteligente con soporte para telefonos con sistema operativo iOS",
-  "image": "product_1626888165440.jpg",
+  "image": "image_product_12.jpg",
   "category": "Celulares",
   "price": 15000
  },
@@ -147,7 +144,7 @@
   "id": 13,
   "name": "Galaxy A10s",
   "description": "Samsung Galaxy A10s Dual SIM 32 GB azul 2 GB RAM",
-  "image": "product_1626891866540.jpg",
+  "image": "image_product_13.jpg",
   "category": "Celulares",
   "price": 2500
  }

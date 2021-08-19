@@ -6,7 +6,7 @@
   "email": "axelmanzanilla@gmail.com",
   "password": "$2a$10$eZeN/E2OzhuCGE/ROWnWYeqqMzWaJbh5V1jK4vlh5yTCeZY8T5BGC",
   "category": "admin",
-  "promos": "true",
+  "promos": "false",
   "image": "user_0_picture.jpg"
  },
  {
@@ -15,7 +15,7 @@
   "last_name": "Banda",
   "email": "alfonsobanda@gmail.com",
   "password": "$2a$10$eyX6ATawV6hmNrRjMlmp4O2p9DCLu28zpq5JYEshY7DZk8lupEZUe",
-  "category": "user",
+  "category": "admin",
   "promos": "false",
   "image": "default.jpg"
  },
@@ -25,16 +25,6 @@
   "last_name": "Arce",
   "email": "franciscoarce@gmail.com",
   "password": "$2a$10$eyX6ATawV6hmNrRjMlmp4O2p9DCLu28zpq5JYEshY7DZk8lupEZUe",
-  "category": "user",
-  "promos": "true",
-  "image": "default.jpg"
- },
- {
-  "id": 3,
-  "first_name": "Karla Aracely",
-  "last_name": "Perez",
-  "email": "karlafigueroa186@gmail.com",
-  "password": "$2a$10$g8pKz88W/Ymqc7ZLv0phDuWdvLgeY42dG/ECanEvbDEXAz5v0keuy",
   "category": "admin",
   "promos": "true",
   "image": "default.jpg"

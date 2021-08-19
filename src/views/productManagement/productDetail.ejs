@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Detalles del Usuario <%= product.id %></title>
+        <title>Detalles del Producto <%= product.id %></title>
         <%- include('../partials/head') %>
         <link rel="stylesheet" href="/css/productManagement/detailProduct.css">
     </head>
@@ -21,7 +21,7 @@
                     <!-- INFORMATION FORM -->
                     <section class="product-information-section">
                         <form class="edit-information-form">
-                            <img src="/images/products/<%= product.image %>" alt="Imagen perfil" class="profile-picture">
+                            <img src="/images/products/<%= product.image %>" class="product-image">
                             <!-- ID -->
                             <div class="input-section">
                                 <label for="id" class="label-form">ID:</label>

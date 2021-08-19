@@ -33,10 +33,9 @@ main{
     width: 90%;
 }
 
-.profile-picture{
+.product-image{
     width: 120px;
     height: 120px;
-    border-radius: 100%;
     border: 5px solid white;
 }
 
@@ -107,10 +106,10 @@ main{
 }
 
 #description{
+    height: 70px;
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 
 /* MEDIA QUERIES */
 @media(min-width: 768px){
@@ -129,5 +128,10 @@ main{
     .input-text{
         width: 75%;
         margin-left: 15px;
+    }
+
+    .category{
+        display: flex;
+        justify-content: center;
     }
 }

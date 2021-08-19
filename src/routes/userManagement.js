@@ -29,14 +29,14 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage });
 
-// Gestión de Usuarios
+// Gestión de Usuarios (ToDo: Accesible sólo si eres administrador)
 router.get('/', userManagementController.index);                                                // Listado de usuarios
 router.get('/create', userManagementController.createUserForm);                                 // Formulario de creación de usuarios
 router.get('/:id', userManagementController.detailUser);                                        // Detalle de un usuario particular
 router.post('/', upload.single('picture'), validateCreate, userManagementController.createUser);// Acción de creación
-router.get('/:id/edit', userManagementController.editUserForm);                                 //Formulario de edición de usuario
+router.get('/:id/edit', userManagementController.editUserForm);                                 // Formulario de edición de usuario
 router.put('/:id', upload.single('picture'), validateEdit, userManagementController.editUser);  // Acción de edición
 router.delete('/:id', userManagementController.deleteUser);                                     // Acción de borrado
-router.get('/:id/deletePicture', userManagementController.deletePicture);        // Formulario de acceso de usuario
+router.get('/:id/deletePicture', userManagementController.deletePicture);                       // Ruta para restablecer la foto
 
 module.exports = router;
