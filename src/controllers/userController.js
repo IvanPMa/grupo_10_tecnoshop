@@ -11,6 +11,7 @@ const controllers = {
             let password = bcrypt.hashSync(req.body.password, 10);
 
             let user = {
+                id: User.generateId(),
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 email: req.body.email,
@@ -112,7 +113,7 @@ const controllers = {
                 }
             }
 
-            let editUser = {
+            let userEdited = {
                 id: req.session.userLogged.id,
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
@@ -124,14 +125,15 @@ const controllers = {
             }
     
             // Verificar si el correo no está registrado
-            let emailRegister = User.isNewEmailInUse(editUser, editUser.email);
+            let emailRegister = User.isNewEmailInUse(userEdited, userEdited.email);
             if(emailRegister){
                 // Error de que el correo está en uso
+                console.log(userEdited);
                 res.render('./users/editProfile', { errors: { email: { msg: 'El correo ya está en uso' } }, user: req.session.userLogged, old: req.body });
             }
             else{
                 // Usuario editado
-                User.edit(editUser);
+                User.edit(userEdited);
                 res.redirect('/user/profile');
             }
         }
@@ -145,6 +147,12 @@ const controllers = {
         res.clearCookie('userEmail');
         req.session.destroy();
         res.redirect('/');
+    },
+
+    deletePicture: (req, res) => {
+        let userLogged = User.findByField('id', req.session.userLogged.id);
+        User.resetPicture(userLogged);
+        res.redirect('/user/profile/edit');
     }
 };
 

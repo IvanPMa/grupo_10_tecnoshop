@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Editar Usuario <%= user.id %></title>
-        <link rel="stylesheet" href="/css/profile.css">
-        <%- include('../partials/head')%>
+        <title>Editar Usuario</title>
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/user/profile.css">
     </head>
 <body>
     <div class="container">
         <!-- HEADER -->
-        <%- include('../partials/header')%>
+        <%- include('../partials/header') %>
         
-        <!-- MAIN SECTION -->
-        <main>
+        <!-- MAIN -->
+        <main id="main">
             <div class="user-profile">
                 <div>
-                    <h2>Editar Información del usuario <%= user.id %></h2>
+                    <h2 class="title">Editar Información del usuario</h2>
                 </div>
             
                 <!-- UPLOAD INFORMATION FORM -->
@@ -25,6 +25,7 @@
                         <div class="input-section">
                             <label for="userPicture">Subir imagen: </label>
                             <input type="file" name="picture" id="userPicture" accept="image/x-png,image/gif,image/jpeg">
+                            <a href="/users/<%= user.id %>/deletePicture"><input type="button" value="Borrar foto"></a>
                         </div>
                         <div class="input-section">
                             <label for="first_name" class="label-form">Nombre:</label>
@@ -89,7 +90,7 @@
         </main>
     
         <!-- FOOTER -->
-        <%- include('../partials/footer')%>
+        <%- include('../partials/footer') %>
     </div>
 </body>
 </html>

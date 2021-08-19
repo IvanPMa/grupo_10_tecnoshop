@@ -9,13 +9,12 @@ const controllers = {
     },
 
     createUserForm: (req, res) => {
-        req.session.PictureId = User.generateId();
+        req.session.PictureId = User.generateId();  // Para poner el id en el nombre de la foto
         res.render('./userManagement/createUser');
     },
 
     createUser: (req, res) => {
         let errors = validationResult(req);
-        
 
         if(errors.isEmpty()){ // Crear usuario
             let promos = (req.body.promos) ? "true" : "false";
@@ -51,7 +50,7 @@ const controllers = {
 
     editUserForm: (req, res) => {
         let user = User.findByField('id', req.params.id);
-        req.session.PictureId = user.id;
+        req.session.PictureId = user.id; // Para poner el id en el nombre de la foto
         res.render('./userManagement/editUser', { user: user });
     },
 
@@ -90,8 +89,18 @@ const controllers = {
                 image: image
             }
 
-            User.edit(userEdited);
-            res.redirect('/users/' + user.id);
+            // Verificar si el correo no está registrado
+            let emailRegister = User.isNewEmailInUse(userEdited, userEdited.email);
+            if(emailRegister){
+                // Error de que el correo está en uso
+                console.log(userEdited);
+                res.render('./userManagement/editUser', { errors: { email: { msg: 'El correo ya está en uso' } }, user: user, old: req.body });
+            }
+            else{
+                // Usuario editado
+                User.edit(userEdited);
+                res.redirect('/users/' + user.id);
+            }
         }
         else{
             res.render('./userManagement/editUser', { errors: errors.mapped(), old: req.body, user: user});
@@ -102,6 +111,12 @@ const controllers = {
         let user = User.findByField('id', req.params.id);
         User.delete(user);
         res.redirect('/users');
+    },
+
+    deletePicture: (req, res) => {
+        let user = User.findByField('id', req.params.id);
+        User.resetPicture(user);
+        res.redirect('/users/' + user.id + '/edit');
     }
 };
 

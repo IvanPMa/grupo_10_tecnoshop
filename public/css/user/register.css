@@ -1,18 +1,8 @@
-.container{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 /* MAIN */
 main{
-    width: 100%;
-    flex-grow: 1;
-    display: flex;
     justify-content: center;
     align-items: center;
+    padding: 25px;
 }
 
 #create-account-box{
@@ -50,7 +40,7 @@ main{
 
 .checkbox{
     width: 100%;
-    color:rgba(51,51,51,.8);
+    color: rgba(60, 60, 60);
     letter-spacing: .5px;
 }
 
@@ -69,23 +59,19 @@ main{
 #login-button{
     text-align: center;
     text-decoration: none;
-    color:  rgba(51,51,51,.6);
+    color: rgba(60, 60, 60);
     letter-spacing: .3px;
 }
 
 #login-button:hover{
-    color:rgba(51,51,51,1);
+    color: black;
     text-decoration: underline;
 }
 
-/* PARA COMPUTADORAS */
-@media (min-width: 768px) {
-    .element{
-        margin-bottom: 15px;
-    }
-
+/* MEDIA QUERIES */
+@media (min-width: 768px){
     .textbox{
-        font-size: 17px;
-        height: 40px;
+        font-size: 16px;
+        height: 34px;
     }
 }

@@ -1,16 +1,4 @@
-.container{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Login section */
-.principal{
-    width: 100%;
-    flex-grow: 1;
-    display: flex;
+main{
     justify-content: center;
     align-items: center;
 }
@@ -45,9 +33,11 @@
     justify-content: center;
     align-items: center;
 }
+
 .login--form > p {
     width: 80%;
 }
+
 .loggin--form--input{
     width: 100%;
     height: 35px;
@@ -56,9 +46,11 @@
     padding-left: 10px;
     border-radius: 5px;
 }
+
 .loggin--form--input:last-child{
     margin-top: -10px;
 }
+
 .login--form--button{
     background-color: #03414D;
     color: white;
@@ -69,40 +61,42 @@
     letter-spacing: 3px;
     border-radius: 5px;
 }
+
 .remember{
     width: 100%;
     display: flex;
     justify-content: center;
     letter-spacing: .5px;
-    color:rgba(51,51,51,.8);
+    color: rgba(60, 60, 60);
 }
+
 .remember > input{
     margin-right: 2.5px;
 }
+
 .remember > label{
     margin-left: 2.5px;
 }
+
 .forget {
     width: 100%;
     text-align: center;
 }
+
 .forget--link{
     width: 100%;
     text-decoration: none;
-    color:  rgba(51,51,51,.6);
+    color: rgba(60, 60, 60);
     letter-spacing: .3px;
 }
+
 .forget--link:hover {
-    color:rgba(51,51,51,1);
+    color: black;
     text-decoration: underline;
 }
 
-/* breakpoints */
-@media(min-width: 675px){
-    body{
-        font-size: 16px;
-    }
-
+/* MEDIA QUERIES */
+@media (min-width: 768px){
     .login--article{
         width: 600px
     }
@@ -112,7 +106,8 @@
     }
 
     .login--form p > input {
-        height: 40px;
+        font-size: 16px;
+        height: 34px;
     }
 
     .login--form > button {

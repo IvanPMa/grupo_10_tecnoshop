@@ -18,12 +18,8 @@ const User = {
         }
     },
 
-    create: function(user){
+    create: function(newUser){
         let users = this.getData();
-        let newUser = {
-            id: this.generateId(),
-            ...user
-        }
         users.push(newUser);
         let usersJSON = JSON.stringify(users, null, 1);
         fs.writeFileSync(path.join(__dirname, '../data/users.json'), usersJSON);
@@ -62,6 +58,20 @@ const User = {
         let existEmail = users.find(u => u.email == newEmail);
         return existEmail;
     },
+
+    resetPicture: function(user){
+        let users = this.getData();
+        let index = users.indexOf(users.find(u => u.id == user.id));
+
+        users[index] = {
+            ...user,
+            image: "default.jpg"
+        }
+        
+        let usersJSON = JSON.stringify(users, null, 1);
+        fs.writeFileSync(path.join(__dirname, '../data/users.json'), usersJSON);
+        return users[index];
+    }
 }
 
 module.exports = User;

@@ -1,51 +1,31 @@
 [
  {
   "id": 0,
-  "first_name": "Ivan",
-  "last_name": "Pacheco",
-  "email": "pachecomaldonadoivan@gmail.com",
-  "password": "$2a$10$eyX6ATawV6hmNrRjMlmp4O2p9DCLu28zpq5JYEshY7DZk8lupEZUe",
-  "category": "admin",
-  "promos": "false",
-  "image": "default.jpg"
- },
- {
-  "id": 1,
   "first_name": "Axel",
   "last_name": "Manzanilla",
   "email": "axelmanzanilla@gmail.com",
-  "password": "$2a$10$Ckkn/4sJjCSZDxAa2T247epIaN7mQ1Gg58xgL0mN4hZkLU25fPjrm",
+  "password": "$2a$10$eZeN/E2OzhuCGE/ROWnWYeqqMzWaJbh5V1jK4vlh5yTCeZY8T5BGC",
   "category": "admin",
   "promos": "false",
-  "image": "user_1_picture.jpg"
+  "image": "user_0_picture.jpg"
  },
  {
-  "id": 2,
-  "first_name": "Adrian",
-  "last_name": "Lopez",
-  "email": "adrianlopez@gmail.com",
-  "password": "$2a$10$eyX6ATawV6hmNrRjMlmp4O2p9DCLu28zpq5JYEshY7DZk8lupEZUe",
-  "category": "user",
-  "promos": "false",
-  "image": "default.jpg"
- },
- {
-  "id": 3,
+  "id": 1,
   "first_name": "Alfonso",
   "last_name": "Banda",
   "email": "alfonsobanda@gmail.com",
   "password": "$2a$10$eyX6ATawV6hmNrRjMlmp4O2p9DCLu28zpq5JYEshY7DZk8lupEZUe",
-  "category": "user",
+  "category": "admin",
   "promos": "false",
   "image": "default.jpg"
  },
  {
-  "id": 4,
+  "id": 2,
   "first_name": "Francisco",
   "last_name": "Arce",
   "email": "franciscoarce@gmail.com",
   "password": "$2a$10$eyX6ATawV6hmNrRjMlmp4O2p9DCLu28zpq5JYEshY7DZk8lupEZUe",
-  "category": "user",
+  "category": "admin",
   "promos": "true",
   "image": "default.jpg"
  }

@@ -1,25 +1,19 @@
-.container{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 /* MAIN */
 main{
-    width: 100%;
-    flex-grow: 1;
-    padding: 10px;
+    margin: 20px;
 }
 
-.user-profile{
+.product-detail .title{
+    margin: 0 0 10px 0;
+}
+
+.product-detail{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.user-information-section{
+.product-information-section{
     width: 80%;
     height: auto;
     padding: 20px !important;
@@ -39,10 +33,9 @@ main{
     width: 90%;
 }
 
-.profile-picture{
+.product-image{
     width: 120px;
     height: 120px;
-    border-radius: 100%;
     border: 5px solid white;
 }
 
@@ -55,13 +48,14 @@ main{
     display: flex;
     flex-direction: column;
     font-size: 16px;
-    margin-top: 10px;
+    margin-bottom: 10px;
     width: 100%;
 }
 
 .input-text{
     width: 100%;
-    height: 35px;
+    font-size: 16px;
+    height: 34px;
     border: 1px solid #ccc;
     padding: 5px;
     padding-left: 10px;
@@ -111,31 +105,15 @@ main{
     color: #115259;
 }
 
-/* ADMIN */
-.admin-products{
-    margin-bottom: 10px;
-}
-
-.admin-button a{
-    text-decoration: none;
-    color: #115259;
-}
-
-.category-div, .promos-div{
-    display: flex;
-    align-self: center;
-    margin-top: 15px;
+#description{
+    height: 70px;
     font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-
-/* breakpoints */
-@media(min-width: 675px){
-    body{
-        font-size: 16px;
-    }
-
-    .user-information-section{
+/* MEDIA QUERIES */
+@media(min-width: 768px){
+    .product-information-section{
         width: 80%;
         max-width: 600px;
     }
@@ -150,5 +128,10 @@ main{
     .input-text{
         width: 75%;
         margin-left: 15px;
+    }
+
+    .category{
+        display: flex;
+        justify-content: center;
     }
 }

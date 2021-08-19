@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Login</title>
-        <link rel="stylesheet" href="../css/login.css">
-        <%- include('../partials/head')%>
+        <title>Iniciar Sesión</title>
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/user/login.css">
     </head>
 <body>
-    <main class="container">
+    <div class="container">
         <!-- HEADER -->
-        <%- include('../partials/header')%>
+        <%- include('../partials/header') %>
 
-        <!-- MAIN SECTION -->
-        <section class="principal">
-            <article class="login--article">
-                <img src="/images/profile-picture.png" alt="Imagen perfil" class="login--image">
+        <!-- MAIN -->
+        <main id="main">
+            <section class="login--article">
+                <img src="/images/profile-picture.png" alt="Imagen perfil" class="login--image" width="10px">
 
                 <form class="login--form" action="/user/login" method="POST">
                     <!-- Email     -->
@@ -40,11 +40,11 @@
                     </p>
                 </form>
 
-            </article>
-        </section>
+            </section>
+        </main>
 
         <!-- FOOTER -->
-        <%- include('../partials/footer')%>
-    </main>
+        <%- include('../partials/footer') %>
+    </div>
 </body>
 </html>

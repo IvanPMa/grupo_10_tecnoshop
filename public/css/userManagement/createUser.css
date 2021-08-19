@@ -1,14 +1,6 @@
-.container{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 /* MAIN */
 main{
-    width: 100%;
+    margin: 20px;
     flex-grow: 1;
     display: flex;
     justify-content: center;

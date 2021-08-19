@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Register</title>
-        <%- include('../partials/head')%>
-        <link rel="stylesheet" href="../css/register.css">
+        <title>Registro</title>
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/user/register.css">
     </head>
 <body>
     <div class="container">
         <!-- HEADER -->
-        <%- include('../partials/header')%>
+        <%- include('../partials/header') %>
 
-        <!-- MAIN SECTION -->
-        <main>
-            <div id="create-account-box">
+        <!-- MAIN -->
+        <main id="main">
+            <section id="create-account-box">
                 <h3>Crear cuenta</h3>
 
                 <form id="create-account-form" action="/user/register" method="POST">
@@ -64,7 +64,7 @@
                     <button type="submit" class="create-button">Crear cuenta</button>
                 </form>
                 <p><a href="/login" id="login-button">¿Ya tienes cuenta? Inicia sesión</a></p>
-            </div>
+            </section>
         </main>
 
         <!-- FOOTER -->

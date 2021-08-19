@@ -2,43 +2,87 @@
 <html lang="en">
     <head>
         <title>Agregar Producto</title>
-        <%- include('../partials/head')%>
-        <link rel="stylesheet" href="/css/management.css">
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/productManagement/createProduct.css">
     </head>
 <body>
     <div class="container">
         <!-- HEADER -->
-        <%- include('../partials/header')%>
+        <%- include('../partials/header') %>
 
-        <!-- MAIN SECTION -->
-        <main>
+        <!-- MAIN -->
+        <main id="main">
             <div class="product-management-box">
                 <h3>Agregar Producto</h3>
 
                 <form class="create-product-form" action="/products/create" method="POST" enctype="multipart/form-data">
+                    <!-- Name  -->
                     <div class="input-section">
-                        <input id="name" class="textbox" type="text" placeholder="Nombre del producto" name="productName">
+                        <input id="name" class="textbox" type="text" placeholder="Nombre del producto" name="name" value="<%= locals.old && old.name ? old.name : ''%>">
                     </div>
+                    <% if(locals.errors && errors.name){ %>
+                        <p class="alert"><%= errors.name.msg %></p>
+                    <% } %>
+
+                    <!-- Description  -->
                     <div class="input-section">
-                        <textarea id="description" class="textbox" placeholder="Descripción del producto" name="productDescription"></textarea>
+                        <textarea id="description" class="textbox" placeholder="Descripción del producto" name="description"><%= locals.old && old.description ? old.description : ''%></textarea>
                     </div>
+                    <% if(locals.errors && errors.description){ %>
+                        <p class="alert"><%= errors.description.msg %></p>
+                    <% } %>
+
+                    <!-- Image  -->
                     <div class="input-section">
-                        <label for="productimage">Imagen del producto:</label>
-                        <input type="file" name="productImage" id="productimage" accept="image/x-png,image/gif,image/jpeg">
+                        <label for="image">Imagen del producto:</label>
+                        <input type="file" name="image" id="image" accept="image/x-png,image/gif,image/jpeg">
                     </div>
+                    <% if(locals.errors && errors.image){ %>
+                        <p class="alert"><%= errors.image.msg %></p>
+                    <% } %>
+
+                    <!-- Category  -->
                     <div class="input-section">
-                        <!-- <input type=text list=categories placeholder="Categoría" class="textbox"> -->
-                        <!-- <button type="button" id="button-add-category">Agregar Categoría</button> -->
-                        <label for="productCategory">Categoria del producto:</label>
-                        <Select id="categories" name='productCategory'>
-                            <option value="Televisores">Televisores</option>
-                            <option value="Celulares">Celulares</option>
-                            <option value="Videojuegos">Videojuegos</option>
-                        </Select>
+                        <label for="category">Categoria del producto:</label>
+                        <select id="category" name="category">
+                            <option value="Televisores"
+                            <% if(locals.old && old.category == "Televisores"){ %>
+                                selected="selected"
+                            <% } %>
+                            >Televisores</option>
+                            <option value="Celulares"
+                            <% if(locals.old && old.category == "Celulares"){ %>
+                                selected="selected"
+                            <% } %>
+                            >Celulares</option>
+                            <option value="Videojuegos"
+                            <% if(locals.old && old.category == "Videojuegos"){ %>
+                                selected="selected"
+                            <% } %>
+                            >Videojuegos</option>
+                            <option value="Accesorios"
+                            <% if(locals.old && old.category == "Accesorios"){ %>
+                                selected="selected"
+                            <% } %>
+                            >Accesorios</option>
+                            <option value="Otro"
+                            <% if(locals.old && old.category == "Otro"){ %>
+                                selected="selected"
+                            <% } %>
+                            >Otro</option>
+                        </select>
                     </div>
+                    <% if(locals.errors && errors.category){ %>
+                        <p class="alert"><%= errors.category.msg %></p>
+                    <% } %>
+
+                    <!-- Price  -->
                     <div class="input-section">
-                        <input type="number" id="price" class="textbox" placeholder="Precio" name="productPrice">
+                        <input type="number" id="price" class="textbox" placeholder="Precio" name="price" value="<%= locals.old && old.price ? old.price : ''%>">
                     </div>
+                    <% if(locals.errors && errors.price){ %>
+                        <p class="alert"><%= errors.price.msg %></p>
+                    <% } %>
                     
                     <button type="submit" id="button">Agregar</button>
                 </form>
@@ -46,7 +90,7 @@
         </main>
 
         <!-- FOOTER -->
-        <%- include('../partials/footer')%>
+        <%- include('../partials/footer') %>
     </div>
 </body>
 </html>
