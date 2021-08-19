@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require ('path');
+const db = require('../database/models');
 
 const controller = {
     index: (req, res) => {
-        let productosAMostrar = 5;
         let productsJSON = fs.readFileSync(path.join(__dirname,'../data/products.json'), {encoding: "utf-8"});
         let all = JSON.parse(productsJSON);
         let products = 
@@ -22,7 +22,12 @@ const controller = {
             }
         ]
 
-        res.render('home', { productGroup: products });
+        db.Users.findAll()
+            .then(function(usuarios){
+                res.send(usuarios);
+            })
+
+        //res.render('home', { productGroup: products , users: users});
     },
 }
 
