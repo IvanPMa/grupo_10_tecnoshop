@@ -1,22 +1,17 @@
 # Retrospectiva
 **Comenzar a hacer:**
-
-Trabajar de forma colaborativa con los integrantes que quedamos en el equipo
-
+Ser autodidacta.
+Hacer cada día un poco del proyecto para que no se vaya acumulando hasta el final.
 
 **Hacer más:**
-
-Seguir comunicados en el slack
-
+Estudiar sobre los temas que no hayan quedado claros.
+Comentarios en el código.
 
 **Continuar haciendo:**
-
-Cumplir cada uno con su parte del trabajo, en tiempo y forma
-
+Investigar las funcionalidades que no sepa hacer.
 
 **Hacer menos:**
-Dejar para los ultimos dias el sprint
-
+Dejar para los ultimos dias el sprint.
 
 **Dejar de hacer:**
-Olvidar la retroalimentacion del profesor en el último sprint
+Procastinar.

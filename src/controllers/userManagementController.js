@@ -9,7 +9,7 @@ const controllers = {
     },
 
     createUserForm: (req, res) => {
-        req.session.PictureId = User.generateId();
+        req.session.PictureId = User.generateId();  // Para poner el id en el nombre de la foto
         res.render('./userManagement/createUser');
     },
 
@@ -50,7 +50,7 @@ const controllers = {
 
     editUserForm: (req, res) => {
         let user = User.findByField('id', req.params.id);
-        req.session.PictureId = user.id;
+        req.session.PictureId = user.id; // Para poner el id en el nombre de la foto
         res.render('./userManagement/editUser', { user: user });
     },
 

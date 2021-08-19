@@ -13,7 +13,7 @@ const controller = {
     },
 
     createForm: (req, res) => {
-        req.session.ImageId = Product.generateId();
+        req.session.ImageId = Product.generateId();  // Para poner el id en el nombre de la foto
         res.render('./productManagement/createProduct');
     },
 
@@ -48,7 +48,7 @@ const controller = {
 
     editForm: (req, res) => {
         let product = Product.findByField('id', req.params.id);
-        req.session.ImageId = product.id;
+        req.session.ImageId = product.id;  // Para poner el id en el nombre de la foto
         res.render('./productManagement/editProduct', { product: product });
     },
 
