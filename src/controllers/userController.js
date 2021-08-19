@@ -133,6 +133,7 @@ const controllers = {
             }
             else{
                 // Usuario editado
+                req.session.userLogged = userEdited;
                 User.edit(userEdited);
                 res.redirect('/user/profile');
             }
@@ -151,7 +152,8 @@ const controllers = {
 
     deletePicture: (req, res) => {
         let userLogged = User.findByField('id', req.session.userLogged.id);
-        User.resetPicture(userLogged);
+        let userEdited = User.resetPicture(userLogged);
+        req.session.userLogged = userEdited;
         res.redirect('/user/profile/edit');
     }
 };
