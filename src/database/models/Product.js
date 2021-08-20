@@ -7,30 +7,19 @@ module.exports = (sequelize, dataTypes) => {
             primaryKey: true
         },
         
-        first_name: {
-            type: dataTypes.STRING(45),
-            allowNull: false
-        },
-
-        last_name: {
-            type: dataTypes.STRING(45),
-            allowNull: false
-        },
-
-        email: {
-            type: dataTypes.STRING(45),
-            allowNull: false,
-            unique: true
-        },
-
-        password: {
+        name: {
             type: dataTypes.STRING(100),
             allowNull: false
         },
 
-        promotion: {
-            type: dataTypes.BOOLEAN,
+        description: {
+            type: dataTypes.STRING(200),
             allowNull: false
+        },
+
+        price: {
+            type: dataTypes.DECIMAL,
+            allowNull: false,
         },
 
         image: {
@@ -48,7 +37,7 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: false
     };
 
-    const User = sequelize.define('User', cols, config);
+    const Product = sequelize.define('Product', cols, config);
 
-    return User;
+    return Product;
 }
