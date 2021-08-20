@@ -22,12 +22,7 @@ const controller = {
             }
         ]
 
-        db.Users.findAll()
-            .then(function(usuarios){
-                res.send(usuarios);
-            })
-
-        //res.render('home', { productGroup: products , users: users});
+        res.render('home', { productGroup: products , users: users});
     },
 }
 
