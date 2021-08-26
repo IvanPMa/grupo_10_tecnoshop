@@ -8,6 +8,7 @@ const userLoggedMiddleware = require('./src/middlewares/userLoggedMiddleware');
 
 // Controllers
 const rutaHome = require('./src/routes/home');
+const rutaBuscar = require('./src/routes/search');
 const rutaProductDetail = require('./src/routes/productDetail');
 const rutaProductCart = require('./src/routes/productCart');
 const rutasUsuarios = require('./src/routes/user');
@@ -48,6 +49,7 @@ app.use('/productCart', rutaProductCart);
 app.use('/user',rutasUsuarios);
 app.use('/products', rutasProductManagement);
 app.use('/users', rutasUserManagement);
+app.use('/buscar', rutaBuscar);
 
 // Página de error
 app.use((req, res, next) => {
