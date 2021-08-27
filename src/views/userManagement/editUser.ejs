@@ -57,23 +57,23 @@
                         <div class="category-div">
                             <label for="category">Categoría:</label>
                             <select id="category" name="category">
-                                <option value="user"
-                                <% if(user.category == "user"){ %>
+                                <option value="Usuario"
+                                <% if(user.category.name == "Usuario"){ %>
                                     selected="selected"
                                 <% } %>
                                 >Usuario</option>
-                                <option value="admin"
-                                <% if(user.category == "admin"){ %>
+                                <option value="Administrador"
+                                <% if(user.category.name == "Administrador"){ %>
                                     selected="selected"
                                 <% } %>
-                                >Admin</option>
+                                >Administrador</option>
                             </select>
                         </div>
 
                         <!-- Promotions  -->
                         <div class="checkbox promos-div">
                             <input id="promos" name="promos" type="checkbox" 
-                            <% if(user.promos == "true"){ %>
+                            <% if(user.promotion){ %>
                                 checked
                             <% } %>
                             >

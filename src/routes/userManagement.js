@@ -33,7 +33,7 @@ var upload = multer({ storage });
 router.get('/', userManagementController.index);                                                // Listado de usuarios
 router.get('/create', userManagementController.createUserForm);                                 // Formulario de creación de usuarios
 router.get('/:id', userManagementController.detailUser);                                        // Detalle de un usuario particular
-router.post('/', upload.single('picture'), validateCreate, userManagementController.createUser);// Acción de creación
+router.post('/create', validateCreate, userManagementController.createUser);                    // Acción de creación
 router.get('/:id/edit', userManagementController.editUserForm);                                 // Formulario de edición de usuario
 router.put('/:id', upload.single('picture'), validateEdit, userManagementController.editUser);  // Acción de edición
 router.delete('/:id', userManagementController.deleteUser);                                     // Acción de borrado
