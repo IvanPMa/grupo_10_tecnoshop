@@ -35,12 +35,14 @@ module.exports = (sequelize, dataTypes) => {
 
         image: {
             type: dataTypes.STRING(45),
-            allowNull: false
+            allowNull: false,
+            defaultValue: 'default.jpg'
         },
 
         category_id: {
             type: dataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 1
         }
     };
 

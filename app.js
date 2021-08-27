@@ -8,9 +8,8 @@ const userLoggedMiddleware = require('./src/middlewares/userLoggedMiddleware');
 
 // Controllers
 const rutaHome = require('./src/routes/home');
-const rutaBuscar = require('./src/routes/search');
-const rutaProductDetail = require('./src/routes/productDetail');
-const rutaProductCart = require('./src/routes/productCart');
+const rutaProducts = require('./src/routes/products');
+const rutaCart = require('./src/routes/cart');
 const rutasUsuarios = require('./src/routes/user');
 const rutasProductManagement = require('./src/routes/productManagement');
 const rutasUserManagement = require('./src/routes/userManagement');
@@ -44,12 +43,11 @@ app.use(express.json())
 
 // Ruteo de direcciones
 app.use('/',rutaHome);
-app.use('/product', rutaProductDetail);
-app.use('/productCart', rutaProductCart);
 app.use('/user',rutasUsuarios);
-app.use('/products', rutasProductManagement);
-app.use('/users', rutasUserManagement);
-app.use('/buscar', rutaBuscar);
+app.use('/cart', rutaCart);
+app.use('/products', rutaProducts);
+app.use('/productManagement', rutasProductManagement);
+app.use('/userManagement', rutasUserManagement);
 
 // Página de error
 app.use((req, res, next) => {

@@ -23,7 +23,7 @@ var upload = multer ({ storage });
 router.get('/login', guestMiddleware, userController.loginForm);            // Formulario de acceso de usuario
 router.get('/register', guestMiddleware, userController.registerForm);      // Formulario de registro de usuario
 router.post('/login', validateLogin, userController.verifyLogin);           // Acción de acceso de usuario
-router.post('/register', validateRegister, userController.register);        // Acción de creación de usuario
+router.post('/register', validateRegister, userController.verifyRegister);  // Acción de creación de usuario
 router.get('/profile', authMiddleware, userController.profile);             // Formulario del perfil del usuario
 router.get('/profile/edit', authMiddleware, userController.editProfile);    // Formulario del perfil del usuario
 router.put('/profile/edit', upload.single('userPicture'), validateEditUser, userController.verifyEditProfile); // Actualización del perfil del usuario

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Tecnoshop</title>
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/product/search.css">
+        <script src=""></script>
+    </head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../partials/header') %>
+
+        <!-- MAIN -->
+        <main id="main">
+
+            <div class="search-filters">
+                filtros
+            </div>
+
+            <div class="search-result">
+                <h3 class="title">Resultados:</h3>
+                <div class="products-result">
+                    <% products.forEach(product => { %>
+                        <div class="product">
+                            <a href="/products/<%= product.id %>">
+                                <div class="image">
+                                    <img src="/images/products/<%= product.image %>" width="50px">
+                                </div>
+                                <p class="name"><%= product.name %></p>
+                                <p class="price">$<%= product.price %></p>
+                            </a>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- FOOTER -->
+        <%- include('../partials/footer') %>
+    </div>
+</body>
+</html>

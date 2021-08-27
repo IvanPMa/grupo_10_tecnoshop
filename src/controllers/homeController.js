@@ -1,4 +1,3 @@
-const { sequelize } = require('../database/models');
 const db = require('../database/models');
 
 const controller = {
@@ -7,14 +6,14 @@ const controller = {
 
         let recomendados = await db.Product.findAll({
             include: [{ association: "category" }, { association: "models" }],
-            order: sequelize.random(),
+            order: db.sequelize.random(),
             limit: productsInAGroup
         });
         
         let masVendidos = await db.Product.findAll({
             include: [{ association: "shoppingcarts", attributes: [] }],
             group: ['id'],
-            order: [[sequelize.fn('SUM', sequelize.col('shoppingcarts.quantity')), 'DESC']],
+            order: [[db.sequelize.fn('SUM', db.sequelize.col('shoppingcarts.quantity')), 'DESC']],
             limit: productsInAGroup,
             subQuery: false
         });

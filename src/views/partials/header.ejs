@@ -7,8 +7,8 @@
 
         <!-- SEARCHBAR -->
         <div class="searchbar">
-            <form action="/" method="GET">
-                <input type="search" placeholder="Buscar artículos" size="1">
+            <form action="/products" method="GET">
+                <input type="search" name="search" placeholder="Buscar artículos" size="1">
                 <button><img src="/images/icons/search.png"></button>
             </form>
         </div>
@@ -22,7 +22,7 @@
             <div class="computer">
                 <div class="buttons">
                 <% if(locals.isLogged){ %>
-                    <a href="/productCart" class="shopping-cart"><img src="/images/icons/shopping-cart.png"></a>
+                    <a href="/cart" class="shopping-cart"><img src="/images/icons/shopping-cart.png"></a>
                     <a href="/user/profile" class="navbar-button profile">Perfil</a>
                     <a href="/user/logout" class="navbar-button logout">Cerrar sesión</a>
                 <% }else{ %>

@@ -36,7 +36,7 @@ const controllers = {
             }
 
             User.create(user);
-            res.redirect('/users');
+            res.redirect('/userManagement');
         }
         else{
             res.render('./userManagement/createUser', { errors: errors.mapped(), old: req.body});
@@ -93,13 +93,12 @@ const controllers = {
             let emailRegister = User.isNewEmailInUse(userEdited, userEdited.email);
             if(emailRegister){
                 // Error de que el correo está en uso
-                console.log(userEdited);
                 res.render('./userManagement/editUser', { errors: { email: { msg: 'El correo ya está en uso' } }, user: user, old: req.body });
             }
             else{
                 // Usuario editado
                 User.edit(userEdited);
-                res.redirect('/users/' + user.id);
+                res.redirect('/userManagement/' + user.id);
             }
         }
         else{
@@ -110,13 +109,13 @@ const controllers = {
     deleteUser: (req, res) => {
         let user = User.findByField('id', req.params.id);
         User.delete(user);
-        res.redirect('/users');
+        res.redirect('/userManagement');
     },
 
     deletePicture: (req, res) => {
         let user = User.findByField('id', req.params.id);
         User.resetPicture(user);
-        res.redirect('/users/' + user.id + '/edit');
+        res.redirect('/userManagement/' + user.id + '/edit');
     }
 };
 

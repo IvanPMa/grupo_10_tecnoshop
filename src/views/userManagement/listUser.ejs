@@ -14,14 +14,14 @@
         <main id="main">
             <% for(let i=0; i<users.length; i++){ %>
             <div class="user">
-                <a href="/users/<%= users[i].id %>"><img src="/images/users/<%= users[i].image %>" alt="User image" class="user-image"></a>
-                <a href="/users/<%= users[i].id %>" class="user-name"><%= users[i].first_name + ' ' + users[i].last_name %></a>
+                <a href="/userManagement/<%= users[i].id %>"><img src="/images/users/<%= users[i].image %>" alt="User image" class="user-image"></a>
+                <a href="/userManagement/<%= users[i].id %>" class="user-name"><%= users[i].first_name + ' ' + users[i].last_name %></a>
                 
                 <div class="user-buttons">
-                    <a href="/users/<%= users[i].id %>/edit" class="user-edit">
+                    <a href="/userManagement/<%= users[i].id %>/edit" class="user-edit">
                         Editar Usuario
                     </a>
-                    <form action="/users/<%= users[i].id %>?_method=DELETE" method="POST">
+                    <form action="/userManagement/<%= users[i].id %>?_method=DELETE" method="POST">
                         <button type="submit" class="user-delete">
                             Borrar Usuario
                         </button>
@@ -30,7 +30,7 @@
             </div>
             <% } %>
         </main>
-        <a href="/users/create" class="new-user">Crear un nuevo usuario</a>
+        <a href="/userManagement/create" class="new-user">Crear un nuevo usuario</a>
 
         <!-- FOOTER -->
         <%- include('../partials/footer') %>

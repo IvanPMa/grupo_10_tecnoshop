@@ -37,7 +37,7 @@ const controller = {
                 }
     
                 Product.create(product);
-                res.redirect('/products');
+                res.redirect('/productManagement');
             }
             
         }
@@ -74,7 +74,7 @@ const controller = {
             }
 
             Product.edit(productEdited);
-            res.redirect('/products/' + product.id);
+            res.redirect('/productManagement/' + product.id);
         }
         else{
             res.render('./productManagement/editProduct', { errors: errors.mapped(), old: req.body, product: product});
@@ -83,7 +83,7 @@ const controller = {
     deleteProduct: (req, res) => {
         let product = Product.findByField('id', req.params.id);
         Product.delete(product);
-        res.redirect('/products');
+        res.redirect('/productManagement');
     }
 }
 

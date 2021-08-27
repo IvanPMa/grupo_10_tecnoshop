@@ -1,34 +1,37 @@
+const db = require('../database/models');
 const bcrypt = require('bcryptjs');
-const User = require('../models/User');
 const { validationResult } = require('express-validator');
 
 const controllers = {
-    register: (req, res) => {
+    registerForm: (req, res) => {
+        res.render('./users/register');
+    },
+
+    verifyRegister: async (req, res) => {
         let errors = validationResult(req);
 
         if(errors.isEmpty()){
-            let promos = (req.body.promos) ? "true" : "false";
+            let promotion = (req.body.promos) ? true : false;
             let password = bcrypt.hashSync(req.body.password, 10);
 
             let user = {
-                id: User.generateId(),
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 email: req.body.email,
                 password: password,
-                category: "user",
-                promos: promos,
-                image: "default.jpg"
+                promotion: promotion
             }
 
             // Verificar si el correo no está registrado
-            let emailRegister = User.findByField('email', req.body.email);
+            let userByEmail = await db.User.findOne({
+                where: { email: req.body.email }
+            });
 
-            if(emailRegister){
+            if(userByEmail){
                 res.render('./users/register', { errors: { email: { msg: 'El correo ya está registrado' } }, old: req.body });
             }
             else{
-                User.create(user);
+                await db.User.create(user);
                 res.redirect('/user/login');
             }
         }
@@ -37,20 +40,18 @@ const controllers = {
         }
     },
 
-    registerForm: (req, res) =>{
-        res.render('./users/register');
-    },
-
     loginForm: (req, res) => {
         res.render('./users/login');
     },
     
-    verifyLogin: (req, res) => {
+    verifyLogin: async (req, res) => {
         let errors = validationResult(req);
         let msgError = 'Email o contraseña incorrecta';
 
         if(errors.isEmpty()){
-            let user = User.findByField('email', req.body.email);
+            let user = await db.User.findOne({
+                where: { email: req.body.email }
+            });
             
             if(user){
                 verifyPass = bcrypt.compareSync(req.body.password, user.password);
@@ -90,11 +91,11 @@ const controllers = {
         res.render('./users/editProfile', { user: req.session.userLogged });
     },
 
-    verifyEditProfile: (req, res) => {
+    verifyEditProfile: async (req, res) => {
         let errors = validationResult(req);
 
         if(errors.isEmpty()){
-            let userLogged = User.findByField('id', req.session.userLogged.id);
+            let userLogged = await db.User.findByPk(req.session.userLogged.id);
             let password = userLogged.password;
             let filename = userLogged.image;
 
@@ -114,27 +115,41 @@ const controllers = {
             }
 
             let userEdited = {
-                id: req.session.userLogged.id,
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 email: req.body.email,
                 password: password,
-                category: req.session.userLogged.category,
-                promos: req.session.userLogged.promos,
                 image: filename
             }
     
             // Verificar si el correo no está registrado
-            let emailRegister = User.isNewEmailInUse(userEdited, userEdited.email);
+            let emailRegister = await db.User.findOne({
+                where: {
+                    email: req.body.email,
+                    [db.Sequelize.Op.not]: [{
+                        id: req.session.userLogged.id
+                    }]
+                }
+            });
             if(emailRegister){
                 // Error de que el correo está en uso
-                console.log(userEdited);
                 res.render('./users/editProfile', { errors: { email: { msg: 'El correo ya está en uso' } }, user: req.session.userLogged, old: req.body });
             }
             else{
                 // Usuario editado
-                req.session.userLogged = userEdited;
-                User.edit(userEdited);
+                await db.User.update(
+                    {
+                        first_name: userEdited.first_name,
+                        last_name: userEdited.last_name,
+                        email: userEdited.email,
+                        password: userEdited.password,
+                        image: userEdited.image
+                    },
+                    {
+                        where: { id: userLogged.id }
+                    }
+                );
+                req.session.userLogged = await db.User.findByPk(userLogged.id);
                 res.redirect('/user/profile');
             }
         }
@@ -150,10 +165,10 @@ const controllers = {
         res.redirect('/');
     },
 
-    deletePicture: (req, res) => {
-        let userLogged = User.findByField('id', req.session.userLogged.id);
-        let userEdited = User.resetPicture(userLogged);
-        req.session.userLogged = userEdited;
+    deletePicture: async (req, res) => {
+        let userLogged = await db.User.findByPk(req.session.userLogged.id);
+        await db.User.update({ image: 'default.jpg' }, { where: { id: userLogged.id } });
+        req.session.userLogged = await db.User.findByPk(userLogged.id);
         res.redirect('/user/profile/edit');
     }
 };

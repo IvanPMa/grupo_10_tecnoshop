@@ -15,7 +15,7 @@
             <div class="product-management-box">
                 <h3>Agregar Producto</h3>
 
-                <form class="create-product-form" action="/products/create" method="POST" enctype="multipart/form-data">
+                <form class="create-product-form" action="/productManagement/create" method="POST" enctype="multipart/form-data">
                     <!-- Name  -->
                     <div class="input-section">
                         <input id="name" class="textbox" type="text" placeholder="Nombre del producto" name="name" value="<%= locals.old && old.name ? old.name : ''%>">
