@@ -1,19 +1,11 @@
 window.addEventListener("load", function(){
     const darkMode = document.getElementById('darkmode');
     const body = document.querySelector('body');
-    const main = document.querySelector('.product-management-box');
+    const text = document.querySelector('.darkmode-label a');
 
-    darkMode.addEventListener('change', function(){
-        
-        body.classList.toggle('darkMode');
-
-        if(body.classList.contains('darkMode')){
-            body.style.backgroundColor = 'black';
-            main.style.backgroundColor = 'black';
-        }
-        else{
-            body.style.backgroundColor = 'white';
-            main.style.backgroundColor = 'black';
-        }
-    });
+    if(darkMode.checked){
+        body.style.backgroundColor = 'black';
+        text.innerHTML = '<img src="/images/icons/dark.png">Tema oscuro';
+        text.href = '/darkmode/0';
+    }
 });

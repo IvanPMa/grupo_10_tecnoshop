@@ -6,7 +6,7 @@ const usersCategories = [
 ]
 
 const users = [
-    { first_name: 'Axel', last_name: 'Manzanilla', email: 'axelmanzanilla@gmail.com', password:'$2a$10$c6EEtSpZj3.lS0ZNts2v3OGWYoBMUhYs1c6oj.RX.ESulvS4iUJEy', promotion: false, category_id: 2 },
+    { first_name: 'Axel', last_name: 'Manzanilla', email: 'axelmanzanilla@gmail.com', password:'$2a$10$c6EEtSpZj3.lS0ZNts2v3OGWYoBMUhYs1c6oj.RX.ESulvS4iUJEy', promotion: false, dark_mode: true, category_id: 2 },
     { first_name: 'Karla', last_name: 'Figueroa', email: 'karlafigueroa186@gmail.com', password:'$2a$10$C5bHUQLnL8Y4/UhcBvZ8heEQQkHEGg.kw5A1ZxU4uj9koelK2erVq', promotion: true}
 ]
 

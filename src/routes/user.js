@@ -29,6 +29,5 @@ router.get('/profile/edit', authMiddleware, userController.editProfile);    // F
 router.put('/profile/edit', upload.single('userPicture'), validateEditUser, userController.verifyEditProfile); // Actualización del perfil del usuario
 router.get('/logout', authMiddleware, userController.logout);               // Ruta para cerrar sesión
 router.get('/deletePicture', authMiddleware, userController.deletePicture); // Ruta para restablecer la foto del usuario
-router.get('/darkmode/:darkmode', authMiddleware, userController.darkMode); // Ruta para guardar el modo oscuro
 
 module.exports = router;

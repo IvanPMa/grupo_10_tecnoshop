@@ -4,6 +4,7 @@ const { validationResult } = require('express-validator');
 
 const controllers = {
     registerForm: (req, res) => {
+        req.session.currentUrl = '/user/register';
         res.render('./users/register');
     },
 
@@ -62,10 +63,10 @@ const controllers = {
                     req.session.userLogged = user;
 
                     if(req.body.remember){
-                        res.cookie('userEmail', req.body.email, { maxAge: 60 * (1000 * 60) })
+                        res.cookie('userEmail', req.body.email, { maxAge: 60 * (1000 * 60) });
                     }
 
-                    res.redirect('/');
+                    res.redirect(req.session.currentUrl);
                 }
                 else{
                     // Contraseña incorrecta
@@ -89,7 +90,8 @@ const controllers = {
     },
 
     editProfile: (req, res) => {
-        req.session.UserIdPicture = userLogged.id; // Para poner el id en el nombre de la foto
+        req.session.UserIdPicture = req.session.userLogged.id; // Para poner el id en el nombre de la foto
+        req.session.currentUrl = '/user/profile/edit';
         res.render('./users/editProfile', { user: req.session.userLogged });
     },
 
@@ -172,11 +174,6 @@ const controllers = {
         await db.User.update({ image: 'default.jpg' }, { where: { id: userLogged.id } });
         req.session.userLogged = await db.User.findByPk(userLogged.id);
         res.redirect('/user/profile/edit');
-    },
-
-    darkMode: async (req, res) => {
-        //await db.User.update({ darkmode: req.params.darkmode }, { where: { id: req.session.userLogged.id } });
-        res.redirect(req.session.currentUrl);
     }
 };
 

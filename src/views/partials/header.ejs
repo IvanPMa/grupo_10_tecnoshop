@@ -15,10 +15,7 @@
     <nav>
         <input type="checkbox" id="menu-button" class="mobile">
         <label for="menu-button" class="menu-button-label mobile"><img src="/images/icons/menu.png"></label>
-        <input id="darkmode" name="darkmode" type="checkbox" 
-            <% if(locals.darkMode){ %>
-                checked
-            <% } %>>
+        <input id="darkmode" name="darkmode" type="checkbox" <%= (locals.darkMode) ? 'checked' : '' %>>
 
         <ul>
         <% if(locals.isLogged){ %>
@@ -26,7 +23,7 @@
             <li><a href="/user/profile"><img src="/images/users/<%= locals.userLogged.image %>" class="profile-picture"></a></li>
             <li><a href="/user/profile"><p class="profile-button">Ver Perfil</p></a></li>
         <% } %>
-        <li class="darkmode-label"><label for="darkmode"><a href="/user/darkmode/1"><img src="/images/icons/light.png">Modo claro</a></label></li>
+        <li class="darkmode-label"><label for="darkmode"><a href="/darkmode/1"><img src="/images/icons/light.png">Tema claro</a></label></li>
         <li><a href="/"><p class="navbar-button">Inicio</p></a></li>
         <% if(locals.isLogged){ %>
             <li><a href="/cart"><p class="navbar-button"><img src="/images/icons/shopping-cart.png"></p></a></li>
