@@ -5,11 +5,12 @@ const controller = {
     detail: async (req, res) => {
         let product = await db.Product.findByPk(req.params.id);
 
+        req.session.currentUrl = '/products/' + req.params.id;
         res.render('./products/productDetail', {product: product});
     },
 
     search: async (req, res) => {
-        let search = await db.Product.findAll({
+        let searchedProducts = await db.Product.findAll({
             where: {
                 name: {
                     [Op.like]: `%${req.query.search}%`
@@ -17,7 +18,8 @@ const controller = {
             }
         });
 
-        res.render('./products/productSearch', {products: search});
+        req.session.currentUrl = '/products?search=' + req.query.search;
+        res.render('./products/productSearch', { products: searchedProducts, search: req.query.search });
     }
 }
 
