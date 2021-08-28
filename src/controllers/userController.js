@@ -84,6 +84,7 @@ const controllers = {
     },
 
     profile: (req, res) => {
+        req.session.currentUrl = '/user/profile';
         res.render('./users/profile', { user: req.session.userLogged });
     },
 
@@ -171,6 +172,11 @@ const controllers = {
         await db.User.update({ image: 'default.jpg' }, { where: { id: userLogged.id } });
         req.session.userLogged = await db.User.findByPk(userLogged.id);
         res.redirect('/user/profile/edit');
+    },
+
+    darkMode: async (req, res) => {
+        //await db.User.update({ darkmode: req.params.darkmode }, { where: { id: req.session.userLogged.id } });
+        res.redirect(req.session.currentUrl);
     }
 };
 

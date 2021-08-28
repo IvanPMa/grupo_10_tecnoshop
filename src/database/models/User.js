@@ -28,15 +28,21 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
 
+        image: {
+            type: dataTypes.STRING(45),
+            allowNull: false,
+            defaultValue: 'default.jpg'
+        },
+
         promotion: {
             type: dataTypes.BOOLEAN,
             allowNull: false
         },
 
-        image: {
-            type: dataTypes.STRING(45),
+        darkmode: {
+            type: dataTypes.BOOLEAN,
             allowNull: false,
-            defaultValue: 'default.jpg'
+            defaultValue: false
         },
 
         category_id: {

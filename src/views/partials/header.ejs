@@ -1,44 +1,41 @@
-<header id="header">
-    <nav class="navbar">
-        <!-- LOGO -->
-        <div class="logo">
-            <a href="/"><img src="/images/logo.png" alt="Logo Tecnoshop"></a>
-        </div>
+<header>
+    <!-- LOGO -->
+    <div class="logo">
+        <a href="/"><img src="/images/logo.png" alt="Logo Tecnoshop"></a>
+    </div>      
+    <!-- SEARCHBAR -->
+    <div class="searchbar">
+        <form action="/products" method="GET">
+            <input type="search" name="search" placeholder="Buscar artículos" size="1">
+            <button><img src="/images/icons/search.png"></button>
+        </form>
+    </div>
 
-        <!-- SEARCHBAR -->
-        <div class="searchbar">
-            <form action="/products" method="GET">
-                <input type="search" name="search" placeholder="Buscar artículos" size="1">
-                <button><img src="/images/icons/search.png"></button>
-            </form>
-        </div>
+    <!-- MENU -->
+    <nav>
+        <input type="checkbox" id="menu-button" class="mobile">
+        <label for="menu-button" class="menu-button-label mobile"><img src="/images/icons/menu.png"></label>
+        <input id="darkmode" name="darkmode" type="checkbox" 
+            <% if(locals.darkMode){ %>
+                checked
+            <% } %>>
 
-        <!-- MENU -->
-        <div class="menu">
-            <div class="mobile">
-                <img src="/images/icons/menu.png">
-            </div>
-
-            <div class="computer">
-                <div class="buttons">
-                <% if(locals.isLogged){ %>
-                    <a href="/cart" class="shopping-cart"><img src="/images/icons/shopping-cart.png"></a>
-                    <a href="/user/profile" class="navbar-button profile">Perfil</a>
-                    <a href="/user/logout" class="navbar-button logout">Cerrar sesión</a>
-                <% }else{ %>
-                    <a href="/user/login" class="navbar-button login">Iniciar Sesión</a>
-                    <a href="/user/register" class="navbar-button signup">Registrarse</a>
-                <% } %>
-                </div>
-                <div class="checkbox">
-                    <input id="darkmode" name="darkmode" type="checkbox" 
-                    <% if(locals.darkMode){ %>
-                        checked
-                    <% } %>
-                    >
-                    <label for="darkmode">Oscuro</label>
-                </div>
-            </div>
-        </div>
+        <ul>
+        <% if(locals.isLogged){ %>
+            <li><h3 class="bienvenida">Bienvenido <%= locals.userLogged.first_name %></h3></li>
+            <li><a href="/user/profile"><img src="/images/users/<%= locals.userLogged.image %>" class="profile-picture"></a></li>
+            <li><a href="/user/profile"><p class="profile-button">Ver Perfil</p></a></li>
+        <% } %>
+        <li class="darkmode-label"><label for="darkmode"><a href="/user/darkmode/1"><img src="/images/icons/light.png">Modo claro</a></label></li>
+        <li><a href="/"><p class="navbar-button">Inicio</p></a></li>
+        <% if(locals.isLogged){ %>
+            <li><a href="/cart"><p class="navbar-button"><img src="/images/icons/shopping-cart.png"></p></a></li>
+            <li><a href="/"><p class="navbar-button">Historial de compras</p></a></li>
+            <li><a href="/user/logout"><p class="navbar-button">Cerrar Sesión</p></a></li>
+        <% }else{ %>
+            <li><a href="/user/login"><p class="navbar-button">Iniciar Sesión</p></a></li>
+            <li><a href="/user/register"><p class="navbar-button">Registrarse</p></a></li>
+        <% } %>
+        </ul>
     </nav>
 </header>

@@ -36,6 +36,7 @@ const controller = {
             products: recientes
         }];
 
+        req.session.currentUrl = '/';
         res.render('home', { productGroup: homeProducts });
     },
 }
