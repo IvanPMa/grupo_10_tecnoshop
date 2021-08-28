@@ -5,11 +5,11 @@ const { validationResult } = require('express-validator');
 const controllers = {
     index: async (req, res) => {
         let users = await db.User.findAll();
-        res.render('./userManagement/listUser', { users: users });
+        res.render('./manage/users/listUser', { users: users });
     },
 
     createUserForm: (req, res) => {
-        res.render('./userManagement/createUser');
+        res.render('./manage/users/createUser');
     },
 
     createUser: async (req, res) => {
@@ -33,27 +33,27 @@ const controllers = {
             });
 
             if(userByEmail){
-                res.render('./userManagement/createUser', { errors: { email: { msg: 'El correo ya está registrado' } }, old: req.body });
+                res.render('./manage/users/createUser', { errors: { email: { msg: 'El correo ya está registrado' } }, old: req.body });
             }
             else{
                 await db.User.create(user);
-                res.redirect('/userManagement');
+                res.redirect('/manage/users');
             }
         }
         else{
-            res.render('./userManagement/createUser', { errors: errors.mapped(), old: req.body});
+            res.render('./manage/users/createUser', { errors: errors.mapped(), old: req.body});
         }
     },
 
     detailUser: async (req, res) => {
         let user = await db.User.findByPk(req.params.id, { include: [{ association: "category" }] });
-        res.render('./userManagement/userDetail', { user: user });
+        res.render('./manage/users/userDetail', { user: user });
     },
 
     editUserForm: async (req, res) => {
         let user = await db.User.findByPk(req.params.id, { include: [{ association: "category" }] });
-        req.session.PictureId = user.id; // Para poner el id en el nombre de la foto
-        res.render('./userManagement/editUser', { user: user });
+        req.session.UserIdPicture = user.id; // Para poner el id en el nombre de la foto
+        res.render('./manage/users/editUser', { user: user });
     },
 
     editUser: async (req, res) => {
@@ -77,7 +77,7 @@ const controllers = {
                 password = bcrypt.hashSync(req.body.password, 10);
 
                 if(password.length < 8){
-                    res.render('./userManagement/editUser', { errors: { checkpassword: { msg: 'La contraseña debe tener al menos ocho caractéres' } }, user: user, old: req.body });
+                    res.render('./manage/users/editUser', { errors: { checkpassword: { msg: 'La contraseña debe tener al menos ocho caractéres' } }, user: user, old: req.body });
                 }
             }
 
@@ -91,7 +91,7 @@ const controllers = {
                 }
             });
             if(userByEmail){
-                res.render('./userManagement/editUser', { errors: { email: { msg: 'El correo ya está registrado' } }, old: req.body, user: user });
+                res.render('./manage/users/editUser', { errors: { email: { msg: 'El correo ya está registrado' } }, old: req.body, user: user });
             }
             else{
                 // Usuario editado
@@ -107,22 +107,22 @@ const controllers = {
                     },
                     { where: { id: req.params.id } }
                 );
-                res.redirect('/userManagement/' + req.params.id);
+                res.redirect('/manage/users/' + req.params.id);
             }
         }
         else{
-            res.render('./userManagement/editUser', { errors: errors.mapped(), old: req.body, user: user});
+            res.render('./manage/users/editUser', { errors: errors.mapped(), old: req.body, user: user});
         }
     },
 
     deleteUser: async (req, res) => {
         await db.User.destroy({ where: { id: req.params.id } });
-        res.redirect('/userManagement');
+        res.redirect('/manage/users');
     },
 
     deletePicture: async (req, res) => {
         await db.User.update({ image: 'default.jpg' }, { where: { id: req.params.id } });
-        res.redirect('/userManagement/' + req.params.id + '/edit');
+        res.redirect('/manage/users/' + req.params.id + '/edit');
     }
 };
 

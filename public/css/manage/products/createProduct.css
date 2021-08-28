@@ -59,6 +59,10 @@ main{
     margin-bottom: 15px;
 }
 
+.addcategory{
+    display: none;
+}
+
 #button{
     margin-top: 15px;
     background-color: #03414D;
@@ -70,16 +74,6 @@ main{
     letter-spacing: 2px;
     border-radius: 5px;
     margin-bottom: 10px;
-}
-
-#button-add-category{
-    font-size: 13px;
-    background-color: #03414D;
-    color: white;
-    border: none;
-    width: 40%;
-    height: 30px;
-    border-radius: 5px;
 }
 
 #button{

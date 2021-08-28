@@ -88,6 +88,7 @@ const controllers = {
     },
 
     editProfile: (req, res) => {
+        req.session.UserIdPicture = userLogged.id; // Para poner el id en el nombre de la foto
         res.render('./users/editProfile', { user: req.session.userLogged });
     },
 

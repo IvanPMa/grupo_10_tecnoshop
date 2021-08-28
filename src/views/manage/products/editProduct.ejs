@@ -2,13 +2,14 @@
 <html lang="en">
     <head>
         <title>Editar Producto</title>
-        <%- include('../partials/head') %>
-        <link rel="stylesheet" href="/css/productManagement/detailProduct.css">
+        <%- include('../../partials/head') %>
+        <link rel="stylesheet" href="/css/manage/products/detailProduct.css">
+        <script src="/js/addCategory.js"></script>
     </head>
     <body>
         <div class="container">
             <!-- HEADER -->
-            <%- include('../partials/header') %>
+            <%- include('../../partials/header') %>
             
             <!-- MAIN -->
             <main id="main">
@@ -20,7 +21,7 @@
                 
                     <!-- INFORMATION FORM -->
                     <section class="product-information-section">
-                        <form action="/productManagement/edit/<%= product.id %>/?_method=PUT" class="edit-information-form" method="POST" enctype="multipart/form-data">
+                        <form action="/manage/products/edit/<%= product.id %>/?_method=PUT" class="edit-information-form" method="POST" enctype="multipart/form-data">
                             <!-- Imagen -->
                             <img src="/images/products/<%= product.image %>" class="product-image">
                             <div class="input-section">
@@ -51,37 +52,31 @@
                             <% if(locals.errors && errors.description){ %>
                                 <p class="alert"><%= errors.description.msg %></p>
                             <% } %>
-                            
+
                             <!-- Categoría -->
+
                             <div class="input-section category">
                                 <label for="category">Categoria del producto:</label>
                                 <select id="category" name="category">
-                                    <option value="Televisores"
-                                    <% if(product.category == "Televisores"){ %>
-                                        selected="selected"
-                                    <% } %>
-                                    >Televisores</option>
-                                    <option value="Celulares"
-                                    <% if(product.category == "Celulares"){ %>
-                                        selected="selected"
-                                    <% } %>
-                                    >Celulares</option>
-                                    <option value="Videojuegos"
-                                    <% if(product.category == "Videojuegos"){ %>
-                                        selected="selected"
-                                    <% } %>
-                                    >Videojuegos</option>
-                                    <option value="Accesorios"
-                                    <% if(product.category == "Accesorios"){ %>
-                                        selected="selected"
-                                    <% } %>
-                                    >Accesorios</option>
-                                    <option value="Otro"
-                                    <% if(product.category == "Otro"){ %>
-                                        selected="selected"
-                                    <% } %>
-                                    >Otro</option>
-                                </select>
+                                    <% categories.forEach(category => { %>
+                                        <option value="<%= category.name %>"
+                                        <% if(product.category.name == category.name){ %>
+                                            selected="selected"
+                                        <% } %>
+                                        ><%= category.name %></option>
+                                    <% }) %>
+                                        <option value="addcategory"
+                                        <% if(locals.old && old.category == "addcategory"){ %>
+                                            selected="selected"
+                                        <% } %>
+                                        >Crear nueva categoría</option>
+                                    </select>
+                            </div>
+
+                            <!-- Nueva Categoría  -->
+                            <div class="input-section addcategory">
+                                <label for="newcategory" class="label-form">Categoría:</label>
+                                <input id="newcategory" class="input-text" type="text" placeholder="Nombre de la categoría" name="newcategory" value="<%= locals.old && old.newcategory ? old.newcategory : ''%>">
                             </div>
                             <% if(locals.errors && errors.category){ %>
                                 <p class="alert"><%= errors.category.msg %></p>
@@ -90,7 +85,7 @@
                             <!-- Precio -->
                             <div class="input-section">
                                 <label for="price" class="label-form">Precio:</label>
-                                <input type="number" name="price" id="price" class="input-text" value="<%= locals.old && old.email ? old.price : product.price %>"">
+                                <input type="number" name="price" id="price" class="input-text" value="<%= locals.old && old.email ? old.price : product.price %>" step=".01">
                             </div>
                             <% if(locals.errors && errors.price){ %>
                                 <p class="alert"><%= errors.price.msg %></p>
@@ -105,7 +100,7 @@
             </main>
         
             <!-- FOOTER -->
-            <%- include('../partials/footer') %>
+            <%- include('../../partials/footer') %>
         </div>
     </body>
 </html>

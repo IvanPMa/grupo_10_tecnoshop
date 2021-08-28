@@ -26,7 +26,14 @@ module.exports = (sequelize, dataTypes) => {
 
         image: {
             type: dataTypes.STRING(45),
-            allowNull: false
+            allowNull: false,
+            defaultValue: 'default.jpg'
+        },
+
+        active: {
+            type: dataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
         },
 
         category_id: {
@@ -56,17 +63,6 @@ module.exports = (sequelize, dataTypes) => {
             otherKey: 'model_id',
             timestamps: false
         });
-
-        /*
-        // Carritos de compras que tienen el producto
-        Product.belongsToMany(models.ShoppingCart, {
-            as: 'shoppingcarts',
-            through: 'ShoppingCart_Product',
-            foreignKey: 'product_id',
-            otherKey: 'shoppingcart_id',
-            timestamps: false
-        });
-        */
 
         // Carritos de compras que tienen el producto
         Product.hasMany(models.ShoppingCart_Product, {

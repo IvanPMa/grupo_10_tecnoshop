@@ -30,6 +30,14 @@
                     <a href="/user/register" class="navbar-button signup">Registrarse</a>
                 <% } %>
                 </div>
+                <div class="checkbox">
+                    <input id="darkmode" name="darkmode" type="checkbox" 
+                    <% if(locals.darkMode){ %>
+                        checked
+                    <% } %>
+                    >
+                    <label for="darkmode">Oscuro</label>
+                </div>
             </div>
         </div>
     </nav>

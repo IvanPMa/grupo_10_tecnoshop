@@ -2,13 +2,13 @@
 <html lang="en">
     <head>
         <title>Detalles del Producto <%= product.id %></title>
-        <%- include('../partials/head') %>
-        <link rel="stylesheet" href="/css/productManagement/detailProduct.css">
+        <%- include('../../partials/head') %>
+        <link rel="stylesheet" href="/css/manage/products/detailProduct.css">
     </head>
     <body>
         <div class="container">
             <!-- HEADER -->
-            <%- include('../partials/header') %>
+            <%- include('../../partials/header') %>
             
             <!-- MAIN -->
             <main id="main">
@@ -43,7 +43,7 @@
                             <!-- Categoría -->
                             <div class="input-section">
                                 <label for="category" class="label-form">Categoría:</label>
-                                <input type="text" name="category" id="category" class="input-text" placeholder="<%= product.category %>" readonly>
+                                <input type="text" name="category" id="category" class="input-text" placeholder="<%= product.category.name %>" readonly>
                             </div>
 
                             <!-- Precio -->
@@ -52,9 +52,15 @@
                                 <input type="text" name="price" id="price" class="input-text" placeholder="$ <%= product.price %>" readonly>
                             </div>
 
+                            <!-- Activo -->
+                            <div class="input-section">
+                                <label for="active" class="label-form">Activo:</label>
+                                <input type="text" name="active" id="active" class="input-text" placeholder="<%= (product.active) ? 'Sí' : 'No' %>" readonly>
+                            </div>
+
                             <div class="edit-button-div">
-                                <a href="/productManagement" class="edit-button" style="margin-right: 20px;">Regresar</a>
-                                <a href="/productManagement/edit/<%= product.id %>" class="edit-button">Editar</a>
+                                <a href="/manage/products" class="edit-button" style="margin-right: 20px;">Regresar</a>
+                                <a href="/manage/products/edit/<%= product.id %>" class="edit-button">Editar</a>
                             </div>
                         </form>
                     </section>
@@ -62,7 +68,7 @@
             </main>
         
             <!-- FOOTER -->
-            <%- include('../partials/footer') %>
+            <%- include('../../partials/footer') %>
         </div>
     </body>
 </html>

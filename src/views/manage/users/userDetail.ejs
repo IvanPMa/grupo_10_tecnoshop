@@ -2,13 +2,13 @@
 <html lang="en">
     <head>
         <title>Detalles del Usuario <%= user.id %></title>
-        <%- include('../partials/head') %>
+        <%- include('../../partials/head') %>
         <link rel="stylesheet" href="/css/user/profile.css">
     </head>
     <body>
         <div class="container">
             <!-- HEADER -->
-            <%- include('../partials/header') %>
+            <%- include('../../partials/header') %>
             
             <!-- MAIN -->
             <main id="main">
@@ -59,8 +59,8 @@
                             </div>
                             
                             <div class="edit-button-div">
-                                <a href="/userManagement" class="edit-button" style="margin-right: 20px;">Regresar</a>
-                                <a href="/userManagement/<%= user.id %>/edit" class="edit-button">Editar</a>
+                                <a href="/manage/users" class="edit-button" style="margin-right: 20px;">Regresar</a>
+                                <a href="/manage/users/<%= user.id %>/edit" class="edit-button">Editar</a>
                             </div>
                         </form>
                     </section>
@@ -68,7 +68,7 @@
             </main>
         
             <!-- FOOTER -->
-            <%- include('../partials/footer') %>
+            <%- include('../../partials/footer') %>
         </div>
     </body>
 </html>
