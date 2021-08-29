@@ -27,6 +27,11 @@ module.exports = (sequelize, dataTypes) => {
             otherKey: 'product_id',
             timestamps: false
         });
+
+        Model.hasMany(models.ShoppingCart, {
+            as: "shoppingcarts",
+            foreignKey: "model_id"
+        });
     }
 
     return Model;

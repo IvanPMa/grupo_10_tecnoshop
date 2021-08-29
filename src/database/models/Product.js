@@ -65,10 +65,23 @@ module.exports = (sequelize, dataTypes) => {
         });
 
         // Carritos de compras que tienen el producto
-        Product.hasMany(models.ShoppingCart_Product, {
+        Product.hasMany(models.ShoppingCart, {
             as: "shoppingcarts",
             foreignKey: "product_id"
         });
+
+        Product.belongsToMany(models.Check, {
+            as: 'checks',
+            through: 'Check_Product',
+            foreignKey: 'product_id',
+            otherKey: 'check_id',
+            timestamps: false
+        });
+
+        Product.hasMany(models.Check_Product, {
+            as: 'check_product',
+            foreignKey: 'product_id'
+        })
     }
 
     return Product;

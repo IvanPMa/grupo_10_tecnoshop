@@ -7,7 +7,7 @@ module.exports = (sequelize, dataTypes) => {
             primaryKey: true
         },
         
-        shoppingcart_id: {
+        check_id: {
             type: dataTypes.INTEGER,
             allowNull: false,
         },
@@ -19,24 +19,16 @@ module.exports = (sequelize, dataTypes) => {
 
         quantity: {
             type: dataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         }
     };
 
     let config = {
-        tableName: 'ShoppingCart_Product',
+        tableName: 'Check_Product',
         timestamps: false
     };
 
-    const ShoppingCart_Product = sequelize.define('ShoppingCart_Product', cols, config);
+    const Check_Product = sequelize.define('Check_Product', cols, config);
 
-    
-    ShoppingCart_Product.associate = function(models){
-        ShoppingCart_Product.belongsTo(models.Product, {
-            as: "product",
-            foreignKey: "product_id"
-        });
-    }
-
-    return ShoppingCart_Product;
+    return Check_Product;
 }

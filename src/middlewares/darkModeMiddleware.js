@@ -8,6 +8,7 @@ async function darkModeMiddleware(req, res, next){
     if(req.session && req.session.userLogged){
         let user = await db.User.findByPk(req.session.userLogged.id);
         res.locals.darkMode = user.dark_mode;
+        res.cookie('darkMode', user.dark_mode, { maxAge: 60 * (1000 * 60) });
     }
 
     next();

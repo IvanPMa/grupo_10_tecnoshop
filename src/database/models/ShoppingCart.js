@@ -12,8 +12,18 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
         },
 
-        active: {
-            type: dataTypes.BOOLEAN,
+        product_id: {
+            type: dataTypes.INTEGER,
+            allowNull: false,
+        },
+
+        model_id: {
+            type: dataTypes.INTEGER,
+            allowNull: false,
+        },
+
+        quantity: {
+            type: dataTypes.INTEGER,
             allowNull: false,
         }
     };
@@ -25,19 +35,19 @@ module.exports = (sequelize, dataTypes) => {
     const ShoppingCart = sequelize.define('ShoppingCart', cols, config);
 
     ShoppingCart.associate = function(models){
-        // Usuario al que pertenece el carrito de compras
         ShoppingCart.belongsTo(models.User, {
             as: 'user',
             foreignKey: 'user_id'
         });
 
-        // Productos que contiene el carrito de compras
-        ShoppingCart.belongsToMany(models.Product, {
-            as: 'products',
-            through: 'ShoppingCart_Product',
-            foreignKey: 'shoppingcart_id',
-            otherKey: 'product_id',
-            timestamps: false
+        ShoppingCart.belongsTo(models.Product, {
+            as: 'product',
+            foreignKey: 'product_id'
+        });
+
+        ShoppingCart.belongsTo(models.Model, {
+            as: 'model',
+            foreignKey: 'model_id'
         });
     }
 

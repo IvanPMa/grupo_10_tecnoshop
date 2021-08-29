@@ -67,7 +67,7 @@ module.exports = (sequelize, dataTypes) => {
 
         // Productos que ha comprado el usuario
         User.hasMany(models.ShoppingCart, {
-            as: "shoppingcarts",
+            as: "shoppingcart",
             foreignKey: "user_id"
         });
     }

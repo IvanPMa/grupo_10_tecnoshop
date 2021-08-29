@@ -3,10 +3,10 @@ const Op = db.Sequelize.Op;
 
 const controller = {
     detail: async (req, res) => {
-        let product = await db.Product.findByPk(req.params.id);
+        let product = await db.Product.findByPk(req.params.id, { include: [{ association: "category" }, { association: "models" }] });
 
         req.session.currentUrl = '/products/' + req.params.id;
-        res.render('./products/productDetail', {product: product});
+        res.render('./products/productDetail', { product: product });
     },
 
     search: async (req, res) => {

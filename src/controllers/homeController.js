@@ -9,11 +9,11 @@ const controller = {
             order: db.sequelize.random(),
             limit: productsInAGroup
         });
-        
+
         let masVendidos = await db.Product.findAll({
-            include: [{ association: "shoppingcarts", attributes: [] }],
+            include: [{ association: 'check_product', attributes: [] }],
             group: ['id'],
-            order: [[db.sequelize.fn('SUM', db.sequelize.col('shoppingcarts.quantity')), 'DESC']],
+            order: [[db.sequelize.fn('SUM', db.sequelize.col('check_product.quantity')), 'DESC']],
             limit: productsInAGroup,
             subQuery: false
         });
@@ -41,7 +41,7 @@ const controller = {
     },
 
     darkMode: async (req, res) => {
-        let darkModeActive = Boolean(parseInt(req.params.darkmode));
+        let darkModeActive = parseInt(req.params.darkmode);
         
         res.cookie('darkMode', darkModeActive, { maxAge: 60 * (1000 * 60) });
 
