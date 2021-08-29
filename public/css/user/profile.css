@@ -33,7 +33,7 @@ main{
     width: 90%;
 }
 
-.profile-picture{
+.edit-information-form .profile-picture{
     width: 120px;
     height: 120px;
     border-radius: 100%;

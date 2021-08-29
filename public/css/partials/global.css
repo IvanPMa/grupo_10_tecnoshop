@@ -1,4 +1,9 @@
+html, body{
+    overflow-x: hidden;
+}
+
 body{
+    position: relative;
     margin: 0px;
     padding: 0px;
     background-color: #F7F9FB;

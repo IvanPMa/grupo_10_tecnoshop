@@ -5,14 +5,14 @@ const path = require('path');
 const methodOverride = require('method-override');
 const cookies = require('cookie-parser');
 const userLoggedMiddleware = require('./src/middlewares/userLoggedMiddleware');
+const darkModeMiddleware = require('./src/middlewares/darkModeMiddleware');
 
 // Controllers
 const rutaHome = require('./src/routes/home');
-const rutaProductDetail = require('./src/routes/productDetail');
-const rutaProductCart = require('./src/routes/productCart');
+const rutaProducts = require('./src/routes/products');
+const rutaCart = require('./src/routes/cart');
 const rutasUsuarios = require('./src/routes/user');
-const rutasProductManagement = require('./src/routes/productManagement');
-const rutasUserManagement = require('./src/routes/userManagement');
+const rutasManage = require('./src/routes/manage');
 
 const app = express();
 
@@ -30,10 +30,10 @@ app.use(session({
     resave: false,
     saveUninitalized: false
 }));
-// Usamos las cookies
-app.use(cookies());
-// Para comprobar si esta logueado
-app.use(userLoggedMiddleware);
+
+app.use(cookies());             // Usamos las cookies
+app.use(userLoggedMiddleware);  // Para comprobar si esta logueado
+app.use(darkModeMiddleware);    // Para poner el modo oscuro
 
 // Cionfigurando ejs 
 app.set('view engine', 'ejs');
@@ -43,11 +43,10 @@ app.use(express.json())
 
 // Ruteo de direcciones
 app.use('/',rutaHome);
-app.use('/product', rutaProductDetail);
-app.use('/productCart', rutaProductCart);
 app.use('/user',rutasUsuarios);
-app.use('/products', rutasProductManagement);
-app.use('/users', rutasUserManagement);
+app.use('/cart', rutaCart);
+app.use('/products', rutaProducts);
+app.use('/manage', rutasManage);
 
 // Página de error
 app.use((req, res, next) => {

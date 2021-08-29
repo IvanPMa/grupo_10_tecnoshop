@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Crear Usuario</title>
+        <%- include('../../partials/head') %>
+        <link rel="stylesheet" href="/css/manage/users/createUser.css">
+    </head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../../partials/header') %>
+
+        <!-- MAIN -->
+        <main id="main">
+            <div id="create-account-box">
+                <h3>Crear cuenta</h3>
+
+                <form id="create-account-form" action="/manage/users/create" method="POST">
+                    <!-- First Name -->
+                    <input id="first_name" name="first_name" class="textbox" type="text" placeholder="Nombre" value="<%= locals.old && old.first_name ? old.first_name : ''%>">
+                    <% if(locals.errors && errors.first_name){ %>
+                        <p class="alert"><%= errors.first_name.msg %></p>
+                    <% } %>
+
+                    <!-- Last Name -->
+                    <input id="last_name" name="last_name" class="textbox" type="text" placeholder="Apellido" value="<%= locals.old && old.last_name ? old.last_name : ''%>">
+                    <% if(locals.errors && errors.last_name){ %>
+                        <p class="alert"><%= errors.last_name.msg %></p>
+                    <% } %>
+
+                    <!-- Email     -->
+                    <input id="email" name="email" class="textbox" type="email" placeholder="Correo electrónico" value="<%= locals.old && old.email ? old.email : ''%>">
+                    <% if(locals.errors && errors.email){ %>
+                        <p class="alert"><%= errors.email.msg %></p>
+                    <% } %>
+
+                    <!-- Password  -->
+                    <input id="password" name="password" class="textbox" type="password" placeholder="Contraseña">
+                    <% if(locals.errors && errors.password){ %>
+                        <p class="alert"><%= errors.password.msg %></p>
+                    <% } %>
+
+                    <!-- Category  -->
+                    <div class="input-section">
+                        <label for="category">Categoría:</label>
+                        <Select id="category" name='category'>
+                            <option value="user">Usuario</option>
+                            <option value="admin">Admin</option>
+                        </Select>
+                    </div>
+
+                    <!-- Promotions  -->
+                    <div class="checkbox">
+                        <input id="promos" name="promos" type="checkbox">
+                        <label for="promos">Recibir correos promocionales</label>
+                    </div>
+                    <button type="submit" class="create-button">Crear cuenta</button>
+                </form>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <%- include('../../partials/footer') %>
+    </div>
+</body>
+</html>

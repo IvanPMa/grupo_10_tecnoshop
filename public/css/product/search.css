@@ -1,0 +1,50 @@
+main{
+    max-width: 100%;
+}
+
+/* FILTROS */
+.search-filters{
+    background-color: blue;
+}
+
+/* PRODUCTOS BUSCADOS */
+.search-result{
+    display: flex;
+    flex-direction: column;
+}
+
+.products-result{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: gainsboro;
+}
+
+.products-result .product{
+    width: 150px;
+    height: 150px;
+    background-color: gray;
+    margin: 5px;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 768px){
+    main{
+        flex-direction: row;
+    }
+
+    /* FILTROS */
+    .search-filters{
+        width: 30%;
+    }
+
+    /* PRODUCTOS BUSCADOS */
+    .search-result{
+    }
+
+    .products-result .product{
+        width: 250px;
+        height: 250px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

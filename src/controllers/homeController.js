@@ -1,29 +1,55 @@
-const fs = require('fs');
-const path = require ('path');
+const db = require('../database/models');
 
 const controller = {
-    index: (req, res) => {
-        let productosAMostrar = 5;
-        let productsJSON = fs.readFileSync(path.join(__dirname,'../data/products.json'), {encoding: "utf-8"});
-        let all = JSON.parse(productsJSON);
-        let products = 
-        [
-            {
-                name: "Productos recomendados",
-                products: all
-            },
-            {
-                name: "Los más vendidos",
-                products: all
-            },
-            {
-                name: "Agregados recientemente",
-                products: all
-            }
-        ]
+    index: async (req, res) => {
+        let productsInAGroup = 12;
 
-        res.render('home', { productGroup: products });
+        let recomendados = await db.Product.findAll({
+            include: [{ association: "category" }, { association: "models" }],
+            order: db.sequelize.random(),
+            limit: productsInAGroup
+        });
+
+        let masVendidos = await db.Product.findAll({
+            include: [{ association: 'check_product', attributes: [] }],
+            group: ['id'],
+            order: [[db.sequelize.fn('SUM', db.sequelize.col('check_product.quantity')), 'DESC']],
+            limit: productsInAGroup,
+            subQuery: false
+        });
+
+        let recientes = await db.Product.findAll({
+            order: [['id', 'DESC']],
+            limit: productsInAGroup
+        });
+        
+        let homeProducts = [{
+            name: "Productos recomendados",
+            products: recomendados
+        },
+        {
+            name: "Los más vendidos",
+            products: masVendidos
+        },
+        {
+            name: "Agregados recientemente",
+            products: recientes
+        }];
+
+        req.session.currentUrl = '/';
+        res.render('home', { productGroup: homeProducts });
     },
+
+    darkMode: async (req, res) => {
+        let darkModeActive = parseInt(req.params.darkmode);
+        
+        res.cookie('darkMode', darkModeActive, { maxAge: 60 * (1000 * 60) });
+
+        if(req.session.userLogged){
+            await db.User.update({ dark_mode: darkModeActive }, { where: { id: req.session.userLogged.id } });
+        }
+        res.redirect(req.session.currentUrl);
+    }
 }
 
 module.exports = controller;

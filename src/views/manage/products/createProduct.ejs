@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Agregar Producto</title>
+        <%- include('../../partials/head') %>
+        <link rel="stylesheet" href="/css/manage/products/createProduct.css">
+        <script src="/js/addCategory.js"></script>
+    </head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../../partials/header') %>
+
+        <!-- MAIN -->
+        <main id="main">
+            <div class="product-management-box">
+                <h3>Agregar Producto</h3>
+
+                <form class="create-product-form" action="/manage/products/create" method="POST">
+                    <!-- Name  -->
+                    <div class="input-section">
+                        <input id="name" class="textbox" type="text" placeholder="Nombre del producto" name="name" value="<%= locals.old && old.name ? old.name : ''%>">
+                    </div>
+                    <% if(locals.errors && errors.name){ %>
+                        <p class="alert"><%= errors.name.msg %></p>
+                    <% } %>
+
+                    <!-- Description  -->
+                    <div class="input-section">
+                        <textarea id="description" class="textbox" placeholder="Descripción del producto" name="description"><%= locals.old && old.description ? old.description : ''%></textarea>
+                    </div>
+                    <% if(locals.errors && errors.description){ %>
+                        <p class="alert"><%= errors.description.msg %></p>
+                    <% } %>
+
+                    <!-- Category  -->
+                    <div class="input-section">
+                        <label for="category">Categoria del producto:</label>
+                        <select id="category" name="category">
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.name %>"
+                            <% if(locals.old && old.category == category.name){ %>
+                                selected="selected"
+                            <% } %>
+                            ><%= category.name %></option>
+                        <% }) %>
+                            <option value="addcategory"
+                            <% if(locals.old && old.category == "addcategory"){ %>
+                                selected="selected"
+                            <% } %>
+                            >Crear nueva categoría</option>
+                        </select>
+                    </div>
+
+                    <!-- New Category  -->
+                    <div class="input-section addcategory">
+                        <input id="newcategory" class="textbox" type="text" placeholder="Nombre de la categoría" name="newcategory" value="<%= locals.old && old.newcategory ? old.newcategory : ''%>">
+                    </div>
+                    <% if(locals.errors && errors.category){ %>
+                        <p class="alert"><%= errors.category.msg %></p>
+                    <% } %>
+
+                    <!-- Price  -->
+                    <div class="input-section">
+                        <input type="number" id="price" class="textbox" placeholder="Precio" name="price" value="<%= locals.old && old.price ? old.price : ''%>" step=".01">
+                    </div>
+                    <% if(locals.errors && errors.price){ %>
+                        <p class="alert"><%= errors.price.msg %></p>
+                    <% } %>
+
+                    <!-- Active  -->
+                    <div class="checkbox active-div">
+                        <input id="active" name="active" type="checkbox" 
+                        <% if(locals.old && old.active){ %>
+                            checked
+                        <% } %>
+                        >
+                        <label for="active">Activo</label>
+                    </div>
+                    
+                    <button type="submit" id="button">Agregar</button>
+                </form>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <%- include('../../partials/footer') %>
+    </div>
+</body>
+</html>
