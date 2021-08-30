@@ -1,0 +1,70 @@
+.dbtables{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.dbtables a{
+    color: black;
+    text-decoration: none;
+}
+
+/* DATABASE TABLE */
+.dbtable{
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+    height: 150px;
+    margin: 5px;
+    align-items: center;
+}
+
+.dbtable img{
+    width: 110px;
+    border-radius: 100%;
+}
+
+.dbtable h3{
+    text-align: center;
+    margin: 5px 0 0 0;
+}
+
+/* MEDIA QUERIES */
+@media(min-width: 480px){
+    /* DATABASE TABLE */
+    .dbtable{
+        width: 200px;
+        height: 220px;
+    }
+
+    .dbtable img{
+        width: 170px;
+        border-radius: 50px;
+    }
+
+    .dbtable h3{
+        font-size: 20px;
+    }
+}
+
+@media(min-width: 768px){
+    .dbtables{
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        padding: 30px 0 0 0;
+    }
+
+    /* DATABASE TABLE */
+    .dbtable{
+        width: 15%;
+        height: auto;
+        margin: 0;
+    }
+
+    .dbtable > img{
+        width: 90%;
+        border-radius: 0px;
+    }
+}

@@ -3,7 +3,7 @@
     <head>
         <title>Base de Datos</title>
         <%- include('../partials/head') %>
-        <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="/css/manage/index.css">
         <script src=""></script>
     </head>
 <body>
@@ -13,8 +13,43 @@
 
         <!-- MAIN -->
         <main id="main">
-            <a href="/manage/products">Productos</a>
-            <a href="/manage/users">Usuarios</a>
+            <div class="dbtables">
+                <!-- Usuarios -->
+                <a href="/manage/users" class="dbtable">
+                    <img src="/images/db-users.jpg">
+                    <h3>Usuarios</h3>
+                </a>
+
+                <!-- Productos -->
+                <a href="/manage/products" class="dbtable">
+                    <img src="/images/db-products.jpg">
+                    <h3>Productos</h3>
+                </a>
+
+                <!-- Recibos -->
+                <a href="/manage/checks" class="dbtable">
+                    <img src="/images/db-checks.jpg">
+                    <h3>Recibos</h3>
+                </a>
+
+                <!-- Carritos de compra -->
+                <a href="/manage/shoppingcarts" class="dbtable">
+                    <img src="/images/db-shoppingcarts.jpg">
+                    <h3>Carritos</h3>
+                </a>
+
+                <!-- Modelos -->
+                <a href="/manage/models" class="dbtable">
+                    <img src="/images/db-models.jpg">
+                    <h3>Modelos</h3>
+                </a>
+
+                <!-- Categorías -->
+                <a href="/manage/categories" class="dbtable">
+                    <img src="/images/db-categories.jpg">
+                    <h3>Categorías</h3>
+                </a>
+            </div>
         </main>
 
         <!-- FOOTER -->
