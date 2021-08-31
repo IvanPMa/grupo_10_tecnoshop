@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lista de Recibos</title>
+    <%- include('../partials/head') %>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../partials/header') %>
+
+        <!-- MAIN -->
+        <main id="main">
+            <div class="check-list">
+                <div class="table">
+                    <div class="id">ID</div>
+                    <div class="fullName">Nombre</div>
+                    <div class="date">Fecha</div>
+                </div>
+                <% checks.forEach(check => { %>
+                <div class="check table">
+                    <div class="general-info">
+                        <%= check.id %>, <%= check.user.first_name %> <%= check.user.last_name %> <%= check.date.toISOString().slice(0, 10) %>
+                           $ <%= check.total %>
+                    </div>
+                    <div class="products">
+                        Productos:
+                        <ul>
+                        <% check.products.forEach(product => { %>
+                            <li><%= product.name %> <%= product.price %> <%= product.Check_Product.quantity %></li>
+                        <% }) %>
+                        </ul>
+                    </div>
+                    <a href="#">Ver menos</a>
+                </div>
+                <% }) %>
+                <a href="/manage">Regresar</a>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <%- include('../partials/footer') %>
+    </div>
+</body>
+</html>
