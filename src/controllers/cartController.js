@@ -10,8 +10,6 @@ const controller = {
             where: { user_id: 1 }
         })*/
 
-        req.session.currentUrl = '/cart';
-
         let cart = await db.Check.findAll({
             include: { association: 'products' }
         });

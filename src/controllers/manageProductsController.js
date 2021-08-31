@@ -34,19 +34,16 @@ async function verifyCategories(body){
 const controller = {
     index: async (req, res) => {
         let products = await db.Product.findAll();
-        req.session.currentUrl = '/manage/products';
         res.render('./manage/products/listProducts', { products });
     },
 
     detailProduct: async (req, res) => {
         let product = await db.Product.findByPk(req.params.id, { include: [{ association: "category" }] });
-        req.session.currentUrl = '/manage/products/' + req.params.id;
         res.render('./manage/products/productDetail', { product: product });
     },
 
     createForm: async (req, res) => {
         let categories = await db.ProductCategory.findAll();
-        req.session.currentUrl = '/manage/products/create';
         res.render('./manage/products/createProduct', { categories: categories });
     },
 
@@ -111,7 +108,6 @@ const controller = {
         let categories = await db.ProductCategory.findAll();
 
         req.session.ProductIdImage = product.id;  // Para poner el id en el nombre de la foto
-        req.session.currentUrl = '/manage/products/edit' + req.params.id;
         res.render('./manage/products/editProduct', { product: product, categories: categories });
     },
 

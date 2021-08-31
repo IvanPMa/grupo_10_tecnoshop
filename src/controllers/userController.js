@@ -4,7 +4,6 @@ const { validationResult } = require('express-validator');
 
 const controllers = {
     registerForm: (req, res) => {
-        req.session.currentUrl = '/user/register';
         res.render('./users/register');
     },
 
@@ -66,7 +65,7 @@ const controllers = {
                         res.cookie('userEmail', req.body.email, { maxAge: 60 * (1000 * 60) });
                     }
 
-                    res.redirect(req.session.currentUrl);
+                    res.redirect(req.session.previousPageLogin);
                 }
                 else{
                     // Contraseña incorrecta
@@ -85,13 +84,11 @@ const controllers = {
     },
 
     profile: (req, res) => {
-        req.session.currentUrl = '/user/profile';
         res.render('./users/profile', { user: req.session.userLogged });
     },
 
     editProfile: (req, res) => {
         req.session.UserIdPicture = req.session.userLogged.id; // Para poner el id en el nombre de la foto
-        req.session.currentUrl = '/user/profile/edit';
         res.render('./users/editProfile', { user: req.session.userLogged });
     },
 
@@ -164,9 +161,10 @@ const controllers = {
     },
 
     logout: (req, res) => {
+        let previousPage = req.session.previousPage;
         res.clearCookie('userEmail');
         req.session.destroy();
-        res.redirect('/');
+        res.redirect(previousPage);
     },
 
     deletePicture: async (req, res) => {

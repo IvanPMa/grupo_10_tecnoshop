@@ -2,7 +2,7 @@ const db = require('../database/models');
 
 async function darkModeMiddleware(req, res, next){
     // Buscar en la cookie si esta activado el modo oscuro
-    res.locals.darkMode = (req.cookies.darkMode == true) ? true : false;
+    res.locals.darkMode = (req.cookies.darkMode == 'true') ? true : false;
 
     // Buscar en la base de datos si esta activado el modo oscuro
     if(req.session && req.session.userLogged){

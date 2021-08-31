@@ -5,12 +5,10 @@ const { validationResult } = require('express-validator');
 const controllers = {
     index: async (req, res) => {
         let users = await db.User.findAll();
-        req.session.currentUrl = '/manage/users';
         res.render('./manage/users/listUser', { users: users });
     },
 
     createUserForm: (req, res) => {
-        req.session.currentUrl = '/manage/users/create';
         res.render('./manage/users/createUser');
     },
 
@@ -49,14 +47,12 @@ const controllers = {
 
     detailUser: async (req, res) => {
         let user = await db.User.findByPk(req.params.id, { include: [{ association: "category" }] });
-        req.session.currentUrl = '/manage/users/' + req.params.id;
         res.render('./manage/users/userDetail', { user: user });
     },
 
     editUserForm: async (req, res) => {
         let user = await db.User.findByPk(req.params.id, { include: [{ association: "category" }] });
         req.session.UserIdPicture = user.id; // Para poner el id en el nombre de la foto
-        req.session.currentUrl = `/manage/users/${req.params.id}/edit`;
         res.render('./manage/users/editUser', { user: user });
     },
 

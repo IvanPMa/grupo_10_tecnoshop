@@ -5,6 +5,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 const cookies = require('cookie-parser');
 const userLoggedMiddleware = require('./src/middlewares/userLoggedMiddleware');
+const previousPageMiddleware = require('./src/middlewares/previousPageMiddleware');
 const darkModeMiddleware = require('./src/middlewares/darkModeMiddleware');
 
 // Controllers
@@ -30,10 +31,10 @@ app.use(session({
     resave: false,
     saveUninitalized: false
 }));
-
-app.use(cookies());             // Usamos las cookies
+app.use(cookies());             // Para habilitar las cookies
 app.use(userLoggedMiddleware);  // Para comprobar si esta logueado
 app.use(darkModeMiddleware);    // Para poner el modo oscuro
+app.use(previousPageMiddleware);// Para recordar la última página visitada
 
 // Cionfigurando ejs 
 app.set('view engine', 'ejs');
