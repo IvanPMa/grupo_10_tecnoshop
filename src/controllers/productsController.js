@@ -9,26 +9,48 @@ const controller = {
     },
 
     search: async (req, res) => {
-        let productsByPage = 2;
-        let page = req.query.page > 0 ? parseInt(req.query.page) : 1;
+        let limit = 2;
+        let text = req.query.search;
 
-        console.log('\n\n\\nQuery de los productos:');
-        console.log(productsByPage);
-        console.log(page);
-        let searchedProducts = await db.Product.findAll({
+        let params = {
             include: [{ association: 'category' }],
             where: {
                 [Op.or]: [
-                    { name: { [Op.like]: `%${req.query.search}%` } },
-                    { '$category.name$': { [Op.like]: `%${req.query.search}%` }}
+                    { name: { [Op.like]: `%${text}%` } },
+                    { '$category.name$': { [Op.like]: `%${text}%` }}
                 ]
-            },
-            limit: productsByPage,
-            offset: productsByPage * (page - 1),
-            subQuery: false
+            }
+        }
+        
+        let numberOfProducts = await db.Product.count(params);
+        let page;
+        let pages = Math.ceil(numberOfProducts/limit);
+        
+        // Validaciones para que 'pages' sea un número entre el 1 y el número de páginas
+        if(req.query.page < 0 || isNaN(req.query.page)) page = 1;
+        else if(req.query.page > numberOfProducts) page = pages;
+        else page = parseInt(req.query.page);
+
+        let offset = limit * (page - 1);
+
+        let searchedProducts = await db.Product.findAll({
+            ...params,
+            subQuery: false,
+            limit,
+            offset
         });
 
-        res.render('./products/productSearch', { products: searchedProducts, search: req.query.search, page });
+        let search = {
+            text,
+            page,
+            pages,
+            firstPage: function(){ return this.page == 1 },
+            lastPage: function(){ return this.page == this.pages }
+        }
+
+        // Para que no aparezca el url con page=1
+        if(page == 1 && req.url.includes('&page=1')) res.redirect('products?search=' + text);
+        else res.render('./products/productSearch', { products: searchedProducts, search });
     }
 }
 

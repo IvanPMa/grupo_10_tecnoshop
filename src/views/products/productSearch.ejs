@@ -4,7 +4,7 @@
         <title>Tecnoshop</title>
         <%- include('../partials/head') %>
         <link rel="stylesheet" href="/css/product/search.css">
-        <script src=""></script>
+        <script src="/js/searchProducts.js"></script>
     </head>
 <body>
     <div class="container">
@@ -15,7 +15,7 @@
         <main id="main">
 
             <div class="search-filters">
-                filtros
+                Estamos en la página <%= search.page %> de <%= search.pages %>
             </div>
 
             <div class="search-result">
@@ -33,8 +33,15 @@
                         </div>
                     <% }); %>
                 </div>
-                <a href="/products?search=<%= search %>&page=<%= page - 1 %>">Página anterior</a>
-                <a href="/products?search=<%= search %>&page=<%= page + 1 %>">Página siguiente</a>
+                <% if(!search.firstPage()){ %>
+                    <a href="/products?search=<%= search.text %>&page=<%= search.page - 1 %>">Página anterior</a>
+                <% } %>
+                <% for(let i=1; i<=search.pages; i++){ %>
+                    <a href="/products?search=<%= search.text %>&page=<%= i %>"><%= i %></a>
+                <% } %>
+                <% if(!search.lastPage()){ %>
+                    <a href="/products?search=<%= search.text %>&page=<%= search.page + 1 %>">Página siguiente</a>
+                <% } %>
             </div>
 
         </main>
