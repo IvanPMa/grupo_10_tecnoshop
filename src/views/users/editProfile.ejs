@@ -4,6 +4,7 @@
         <title>Perfil de <%= user.first_name %></title>
         <%- include('../partials/head') %>
         <link rel="stylesheet" href="/css/user/profile.css">
+        <script src="/js/editProfile.js"></script>
     </head>
 <body>
     <div class="container">
@@ -47,11 +48,13 @@
                         <% if(locals.errors && errors.email){ %>
                             <p class="alert"><%= errors.email.msg %></p>
                         <% } %>
-                        <div class="input-section">
+
+                        <p class="changepassword">Cambiar contraseña</p>
+                        <div class="input-section password">
                             <label for="password" class="label-form">Contraseña:</label>
                             <input type="password" name="password" id="password" class="input-text">
                         </div>
-                        <div class="input-section">
+                        <div class="input-section password">
                             <label for="checkpassword" class="label-form">Confirmar:</label>
                             <input type="password" name="checkpassword" id="checkpassword" class="input-text">
                         </div>

@@ -106,6 +106,15 @@ main{
     color: #115259;
 }
 
+.changepassword{
+    color: #115259;
+    cursor: pointer;
+}
+
+.password{
+    display: none;
+}
+
 /* ADMIN */
 .admin-products{
     margin-bottom: 10px;
@@ -141,5 +150,9 @@ main{
     .input-text{
         width: 75%;
         margin-left: 15px;
+    }
+
+    .password{
+        display: none;
     }
 }
