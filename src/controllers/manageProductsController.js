@@ -1,36 +1,6 @@
 const db = require('../database/models');
 const { validationResult } = require('express-validator');
 
-async function verifyCategories(body){
-    let inputCategory = body.category;
-
-    // Comprobar si se creó una nueva categoría
-    if(body.category == 'addcategory'){
-        if(body.newcategory && body.newcategory.trim().length > 0){ // Tiene nombre la nueva categoría
-            let exists = await db.ProductCategory.findOne({ where: { name: body.newcategory } });
-            // Comprobar si ya existe una categoría con el mismo nombre
-            if(exists){
-                console.log('\n\n\n\n\n\nYa existe');
-                return ['exists'];
-            }
-            else{
-                await db.ProductCategory.create({ name: body.newcategory });
-                inputCategory = body.newcategory;
-            }
-        }else{ // Está en blanco la nueva categoría
-            return ['blank'];
-        }
-    }
-
-    let category = await db.ProductCategory.findOne({ where: { name: inputCategory } });
-
-    if(category){ // Categoría existente correcta
-        return ['id', category.id];
-    }else{ // La categoría no existe en la base de datos
-        return ['notexists'];
-    }
-}
-
 const controller = {
     index: async (req, res) => {
         let products = await db.Product.findAll();
@@ -58,25 +28,22 @@ const controller = {
             let [status, number] = await verifyCategories(req.body);
 
             const responseCategory = {
-                'blank': () => res.render('./manage/products/createProduct',
-                {
+                'blank': () => res.render('./manage/products/createProduct', {
                     errors: { category: { msg: 'Debes escribir un nombre para la nueva categoría' } },
                     old: req.body,
-                    categories: categories
+                    categories
                 }),
 
-                'exists': () => res.render('./manage/products/createProduct',
-                {
+                'exists': () => res.render('./manage/products/createProduct', {
                     errors: { category: { msg: 'La categoría ya existe' } },
                     old: req.body,
-                    categories: categories
+                    categories
                 }),
 
-                'notexists': () => res.render('./manage/products/createProduct',
-                {
+                'notexists': () => res.render('./manage/products/createProduct', {
                     errors: { category: { msg: 'La categoría no existe' } },
                     old: req.body,
-                    categories: categories
+                    categories
                 }),
 
                 'id': async () => {
@@ -84,9 +51,9 @@ const controller = {
                 }
             }
 
+            // Por si hay algún error en las categorías
             responseCategory[status].call();
             
-            console.log(`${categoryId}`);
             let product = {
                 name: req.body.name,
                 description: req.body.description,
@@ -117,7 +84,6 @@ const controller = {
         let categories = await db.ProductCategory.findAll();
 
         if(errors.isEmpty()){ // Editar producto
-            //let active = (req.body.active) ? true : false;
             let categoryId;
             let [status, number] = await verifyCategories(req.body);
             let image = product.image;
@@ -128,29 +94,26 @@ const controller = {
             }
 
             const responseCategory = {
-                'blank': () => res.render('./manage/products/editProduct',
-                {
+                'blank': () => res.render('./manage/products/editProduct', {
                     errors: { category: { msg: 'Debes escribir un nombre para la nueva categoría' } },
                     old: req.body,
-                    product: product,
-                    categories: categories
+                    product,
+                    categories
                 }),
 
-                'exists': () => res.render('./manage/products/editProduct',
-                {
+                'exists': () => res.render('./manage/products/editProduct', {
                     errors: { category: { msg: 'La categoría ya existe' } },
                     old: req.body,
-                    product: product,
-                    categories: categories
+                    product,
+                    categories
                 }),
                 
 
-                'notexists': () => res.render('./manage/products/editProduct',
-                {
+                'notexists': () => res.render('./manage/products/editProduct', {
                     errors: { category: { msg: 'La categoría no existe' } },
                     old: req.body,
-                    product: product,
-                    categories: categories
+                    product,
+                    categories
                 }),
 
                 'id': async () => {
@@ -158,6 +121,7 @@ const controller = {
                 }
             }
 
+            // Por si hay algún error en las categorías
             responseCategory[status].call();
 
             await db.Product.update(
@@ -179,6 +143,35 @@ const controller = {
     deleteProduct: async (req, res) => {
         await db.Product.destroy({ where: { id: req.params.id } });
         res.redirect('/manage/products');
+    }
+}
+
+async function verifyCategories(body){
+    let inputCategory = body.category;
+
+    // Comprobar si se creó una nueva categoría
+    if(body.category == 'addcategory'){
+        if(body.newcategory && body.newcategory.trim().length > 0){ // Tiene nombre la nueva categoría
+            let exists = await db.ProductCategory.findOne({ where: { name: body.newcategory } });
+            // Comprobar si ya existe una categoría con el mismo nombre
+            if(exists){
+                return ['exists'];
+            }
+            else{
+                await db.ProductCategory.create({ name: body.newcategory });
+                inputCategory = body.newcategory;
+            }
+        }else{ // Está en blanco la nueva categoría
+            return ['blank'];
+        }
+    }
+
+    let category = await db.ProductCategory.findOne({ where: { name: inputCategory } });
+
+    if(category){ // Categoría existente correcta
+        return ['id', category.id];
+    }else{ // La categoría no existe en la base de datos
+        return ['notexists'];
     }
 }
 

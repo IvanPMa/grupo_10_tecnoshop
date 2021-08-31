@@ -2,25 +2,28 @@ const db = require('../database/models');
 
 const controller = {
     index: async (req, res) => {
-        let productsInAGroup = 12;
+        let general = {
+            where: { active: true },
+            limit: 12,
+        }
 
         let recomendados = await db.Product.findAll({
+            ...general,
             include: [{ association: "category" }, { association: "models" }],
-            order: db.sequelize.random(),
-            limit: productsInAGroup
+            order: db.sequelize.random()
         });
 
         let masVendidos = await db.Product.findAll({
+            ...general,
             include: [{ association: 'check_product', attributes: [] }],
             group: ['id'],
             order: [[db.sequelize.fn('SUM', db.sequelize.col('check_product.quantity')), 'DESC']],
-            limit: productsInAGroup,
             subQuery: false
         });
 
         let recientes = await db.Product.findAll({
-            order: [['id', 'DESC']],
-            limit: productsInAGroup
+            ...general,
+            order: [['id', 'DESC']]
         });
         
         let homeProducts = [{

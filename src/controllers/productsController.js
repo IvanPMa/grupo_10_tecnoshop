@@ -4,8 +4,10 @@ const Op = db.Sequelize.Op;
 const controller = {
     detail: async (req, res) => {
         let product = await db.Product.findByPk(req.params.id, { include: [{ association: 'category' }, { association: 'models' }] });
-
-        res.render('./products/productDetail', { product: product });
+        
+        // Si el producto no existe o no esta activo redireccionar al home
+        if(!product || !product.active) res.redirect('/');
+        else res.render('./products/productDetail', { product: product });
     },
 
     search: async (req, res) => {
