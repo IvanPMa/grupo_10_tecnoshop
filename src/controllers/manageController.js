@@ -11,11 +11,27 @@ const controller = {
     },
 
     shoppingCarts: async (req, res) => {
-        let shoppingcarts = await db.ShoppingCart.findAll({
-            include: [{ association: 'user'}]
+        let usersWithShoppingCart = await db.User.findAll({
+            include: [{ association: 'shoppingcart',
+                        required: true,
+                        include: [{ association: 'product', attributes: ['name', 'price'] }],
+                        attributes: ['quantity', [db.Sequelize.literal('price*quantity'), 'total']],
+                        
+                    }],
+            order: [['id', 'ASC']],
+        });
+        
+        let usersShoppingTotal = await db.User.findAll({
+            include: [{ association: 'shoppingcart',
+                        required: true,
+                        include: [{ association: 'product' }]
+                    }],
+            group: 'user.id',
+            order: [['id', 'ASC']],
+            attributes: [[db.Sequelize.fn('SUM', db.Sequelize.literal('quantity*price')), 'total']]
         });
 
-        res.send(shoppingcarts);
+        res.render('./manage/shoppingcarts', { users: usersWithShoppingCart, usertotal: usersShoppingTotal });
     },
 
     models: async (req, res) => {

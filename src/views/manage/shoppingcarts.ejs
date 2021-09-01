@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lista de Recibos</title>
+    <%- include('../partials/head') %>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../partials/header') %>
+
+        <!-- MAIN -->
+        <main id="main">
+            <div class="check-list">
+                <% for(let i=0; i<users.length; i++){ %>
+                <div class="check table">
+                    <h3>Carrito de compras de <%= users[i].first_name %> <%= users[i].last_name %></h3>
+                    <div class="products">
+                        Productos:
+                        <ul>
+                        <% users[i].shoppingcart.forEach(cart => { %>
+                            <li><%= cart.product.name %> <%= cart.quantity %> x $ <%= cart.product.price %></li>
+                        <% }) %>
+                        </ul>
+                    </div>
+                    Total: $ <%= usertotal[i].dataValues.total %>
+                </div>
+                <% } %>
+                <a href="/manage">Regresar</a>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <%- include('../partials/footer') %>
+    </div>
+</body>
+</html>
