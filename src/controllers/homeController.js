@@ -9,10 +9,9 @@ const controller = {
 
         let recomendados = await db.Product.findAll({
             ...general,
-            include: [{ association: "category" }, { association: "models" }],
+            include: [{ association: "models" }],
             order: db.sequelize.random()
         });
-
         let masVendidos = await db.Product.findAll({
             ...general,
             include: [{ association: 'check_product', attributes: [] }],
@@ -20,9 +19,9 @@ const controller = {
             order: [[db.sequelize.fn('SUM', db.sequelize.col('check_product.quantity')), 'DESC']],
             subQuery: false
         });
-
         let recientes = await db.Product.findAll({
             ...general,
+            include: [{ association: "models" }],
             order: [['id', 'DESC']]
         });
         
@@ -38,7 +37,7 @@ const controller = {
             name: "Agregados recientemente",
             products: recientes
         }];
-
+        
         res.render('home', { productGroup: homeProducts });
     },
 

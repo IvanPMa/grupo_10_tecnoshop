@@ -1,8 +1,7 @@
 const db = require('../database/models');
-const Product = require('../database/models/Product');
 
 const controller = {
-    index: async (req,res) => {
+    index: async (req, res) => {
         /*
         let cart = await db.ShoppingCart.findAll({
             include: [{ association: 'product' }, { association: 'model' }],
@@ -27,6 +26,19 @@ const controller = {
             //res.render('./products/cart');
         }
         else res.send('no hay carrito');
+    },
+
+    addProduct: async (req, res) => {
+        let quantity = parseInt(req.body.product_quantity) > 0 ? parseInt(req.body.product_quantity) : 1;
+
+        await db.ShoppingCart.create({
+            user_id: req.session.userLogged.id,
+            product_id: req.body.product_id,
+            model_id: req.body.product_model_id,
+            quantity: quantity
+        });
+        
+        res.redirect(req.session.previousPage);
     }
 }
 

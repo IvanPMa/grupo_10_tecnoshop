@@ -15,18 +15,20 @@
             <article class="product">
                 <img class="product--image" src="/images/products/<%= product.image %>" alt="Producto">
                 <div class="product--description">
-                    <h1 class="product--description--name"><%= product.name %></h1>
-                    <h2 class="product--description--price">$ <%= product.price %></h2>
-                    <p class="product--description-text">
-                        <%= product.description %>
-                    </p>
-                    <div class="product--description--quantity">
-                        <input type="number" min="1">
-                        <span>Cantidad</span>
-                    </div>
-                    <button class="product--description--button">
-                        Agregar al carrito
-                    </button>
+                    <form action="/cart/addproduct" method="post">
+                        <h1 class="product--description--name"><%= product.name %></h1>
+                        <h2 class="product--description--price">$ <%= product.price %></h2>
+                        <p class="product--description-text">
+                            <%= product.description %>
+                        </p>
+                        <div class="product--description--quantity">
+                            <input type="number" min="1" name="product_quantity">
+                            <span>Cantidad</span>
+                        </div>
+                        <input type="hidden" name="product_id" value="<%= product.id %>">
+                        <input type="hidden" name="product_model" value="<%= (product.models && product.models.length) ? product.models[0].name : null %>">
+                        <button class="product--description--button">Agregar al carrito</button>
+                    </form>
                 </div>
             </article>
         </main>

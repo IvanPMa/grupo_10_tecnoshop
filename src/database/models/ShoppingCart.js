@@ -19,7 +19,7 @@ module.exports = (sequelize, dataTypes) => {
 
         model_id: {
             type: dataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
 
         quantity: {
