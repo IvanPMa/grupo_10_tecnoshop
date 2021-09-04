@@ -12,23 +12,25 @@ const controller = {
 
     shoppingCarts: async (req, res) => {
         let usersWithShoppingCart = await db.User.findAll({
-            include: [{ association: 'shoppingcart',
-                        required: true,
-                        include: [{ association: 'product', attributes: ['name', 'price'] }],
-                        attributes: ['quantity', [db.Sequelize.literal('price*quantity'), 'total']],
-                        
-                    }],
-            order: [['id', 'ASC']],
+            include: [{
+                association: 'shoppingcart',
+                attributes: [[db.Sequelize.fn('SUM', db.Sequelize.literal('quantity')), 'cantidad'], [db.Sequelize.fn('SUM', db.Sequelize.literal('price*quantity')), 'total']],
+                include: [{ association: 'product' }, { association: 'model' }],
+                required: true,
+            }],
+            group: ['product_id', 'model_id'],
+            order: [['id', 'ASC']]
         });
         
         let usersShoppingTotal = await db.User.findAll({
-            include: [{ association: 'shoppingcart',
-                        required: true,
-                        include: [{ association: 'product' }]
-                    }],
-            group: 'user.id',
-            order: [['id', 'ASC']],
-            attributes: [[db.Sequelize.fn('SUM', db.Sequelize.literal('quantity*price')), 'total']]
+            include: [{
+                association: 'shoppingcart',
+                required: true,
+                include: [{ association: 'product' }]
+            }],
+            attributes: [[db.Sequelize.fn('SUM', db.Sequelize.literal('quantity*price')), 'total']],
+            group: ['id'],
+            order: [['id', 'ASC']]
         });
 
         res.render('./manage/shoppingcarts', { users: usersWithShoppingCart, usertotal: usersShoppingTotal });

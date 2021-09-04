@@ -19,7 +19,12 @@
                         Productos:
                         <ul>
                         <% users[i].shoppingcart.forEach(cart => { %>
-                            <li><%= cart.product.name %> <%= cart.quantity %> x $ <%= cart.product.price %></li>
+                            <li>
+                                <%= cart.product.name %>
+                                <%= (cart.model) ? cart.model.name : '' %>
+                                <%= cart.dataValues.cantidad %> x $ <%= cart.product.price %> = $ 
+                                <%= cart.dataValues.total %>
+                            </li>
                         <% }) %>
                         </ul>
                     </div>
