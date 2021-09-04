@@ -29,7 +29,7 @@
                         </a>
                         <form action="/cart/addproduct" method="post">
                             <input type="hidden" name="product_id" value="<%= product.id %>">
-                            <input type="hidden" name="product_model_id" value="<%= (product.models && product.models.length) ? product.models[0].id : null %>">
+                            <input type="hidden" name="model_id" value="<%= (product.models && product.models.length) ? product.models[0].id : null %>">
                             <button>Agregar al carrito</button>
                         </form>
                     </div>

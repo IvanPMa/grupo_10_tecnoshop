@@ -49,20 +49,49 @@ const controllers = {
         let msgError = 'Email o contraseña incorrecta';
 
         if(errors.isEmpty()){
-            let user = await db.User.findOne({
-                where: { email: req.body.email }
-            });
+            let user = await db.User.findOne({ where: { email: req.body.email } });
             
             if(user){
                 verifyPass = bcrypt.compareSync(req.body.password, user.password);
                 
+                // Usuario ingresado correctamente
                 if(verifyPass){
-                    // Usuario ingresado correctamente
                     delete user.password;
                     req.session.userLogged = user;
 
+                    // Si activo las cookies
                     if(req.body.remember){
                         res.cookie('userEmail', req.body.email, { maxAge: 60 * (1000 * 60) });
+                    }
+
+                    // Si agrego objetos en el carrito de compras mientras no estaba logueado
+                    if(req.session.tempCart){
+                        for(let i = 0; i < req.session.tempCart.length; i++){
+                            let cart = await db.ShoppingCart.findOne({
+                                where: {
+                                    user_id: req.session.userLogged.id,
+                                    product_id: req.session.tempCart[i].product_id,
+                                    model_id: req.session.tempCart[i].model_id }
+                            });
+                
+                            // Si ya tiene ese producto agregado al carrito actualizar su cantidad
+                            if(cart){
+                                await db.ShoppingCart.update({
+                                    quantity: cart.quantity + req.session.tempCart[i].quantity
+                                },{
+                                    where: { id: cart.id }
+                                });
+                            }
+                            // Si no tiene el producto, anexarlo
+                            else{
+                                await db.ShoppingCart.create({
+                                    user_id: req.session.userLogged.id,
+                                    product_id: req.session.tempCart[i].product_id,
+                                    model_id: req.session.tempCart[i].model_id,
+                                    quantity: req.session.tempCart[i].quantity
+                                });
+                            }
+                        }
                     }
 
                     res.redirect(req.session.previousPageLogin);

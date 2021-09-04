@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Product Cart</title>
+        <title>Carrito de compras</title>
         <%- include('../partials/head') %>
         <link rel="stylesheet" href="/css/product/cart.css">
     </head>
@@ -14,48 +14,36 @@
         <main id="main">
             <div id="carrito">
                 <h3>Carrito</h3>
-
                 <div>
-                    <div class="articulo">
-                        <div class="descripcion">
-                            <p>Este es el nombre de un producto genérico</p>
+                <% if(carts.length > 0){ %>
+                    <% carts.forEach(cart => { %>
+                        <div class="articulo">
+                            <div class="descripcion">
+                                <p><%= cart.product.name %> <%= (cart.model) ? cart.model.name : '' %></p>
+                            </div>
+                            <div class="cantidad">
+                                <p>Cantidad</p>
+                                <input class="cantidad-text" type="text" value="<%= cart.dataValues.cantidad %>" readonly>
+                            </div>
+                            <div class="precio">
+                                <p>Precio (c/u)</p>
+                                <input class="precio-text" type="text" value="$ <%= cart.product.price %>" readonly>
+                            </div>
+                            <form action="/cart/delete" method="post">
+                                <input type="hidden" name="cart_id" value="<%= (cart.id) ? cart.id : 5 %>">
+                                <button class="delete-item"><img src="/images/icons/delete.png"></button>
+                            </form>
                         </div>
-                        <div class="cantidad">
-                            <p>Cantidad:</p>
-                            <input class="cantidad-text" type="text" value="0" readonly>
-                        </div>
-                        <div class="precio">
-                            <p>Precio (c/u):</p>
-                            <input class="precio-text" type="text" value="$0.00" readonly>
-                        </div>
-                        <button class="delete-item">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                    </div>
-
-                    <div class="articulo">
-                        <div class="descripcion">
-                            <p>Este es el nombre de un producto genérico</p>
-                        </div>
-                        <div class="cantidad">
-                            <p>Cantidad:</p>
-                            <input class="cantidad-text" type="text" value="0" readonly>
-                        </div>
-                        <div class="precio">
-                            <p>Precio (c/u):</p>
-                            <input class="precio-text" type="text" value="$0.00" readonly>
-                        </div>
-                        <button class="delete-item">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                    </div>
-
+                    <% }) %>
+                <% }else{ %>
+                    <h3>Aún no has agregado nada a tu carrito</h3>
+                <% } %>
                 </div>
 
                 <div class="mobile">
                     <div class="total">
                         <p>Total:</p>
-                        <input class="total-text" type="text" value="$0.00" readonly>
+                        <input class="total-text" type="text" value="$ <%= (total) ? total : 0 %>" readonly>
                     </div>
                 
                     <div class="comprar">
@@ -66,64 +54,36 @@
             </div>
 
             <div class="details computer">
-                <div>
-                    <h3>Detalles de compra</h3>
-                </div>
+                <div><h3>Detalles de compra</h3></div>
 
                 <div id="detalles-titulo">
-                    <div class="col1">
-                        <h4>Producto</h4>
-                    </div>
-                    <div class="col2">
-                        <h4>Cantidad</h4>
-                    </div>
-                    <div class="col3">
-                        <h4>Total</h4>
-                    </div>
+                    <div class="col1"><h4>Producto</h4></div>
+                    <div class="col2"><h4>Cantidad</h4></div>
+                    <div class="col3"><h4>Total</h4></div>
                 </div>
 
                 <div>
-                    <div class="detalles-producto">
-                        <div class="col1">
-                            <p>Nombre del producto 1</p>
+                <% if(carts.length > 0){ %>
+                    <% carts.forEach(cart => { %>
+                        <div class="detalles-producto">
+                            <div class="col1">
+                                <p><%= cart.product.name %></p>
+                            </div>
+                            <div class="col2">
+                                <p><%= cart.dataValues.cantidad %></p>
+                            </div>
+                            <div class="col3">
+                                <p><%= cart.dataValues.total %></p>
+                            </div>
                         </div>
-                        <div class="col2">
-                            <p>1</p>
-                        </div>
-                        <div class="col3">
-                            <p>$5.00</p>
-                        </div>
-                    </div>
-
-                    <div class="detalles-producto">
-                        <div class="col1">
-                            <p>Nombre del producto 2</p>
-                        </div>
-                        <div class="col2">
-                            <p>10</p>
-                        </div>
-                        <div class="col3">
-                            <p>$50.00</p>
-                        </div>
-                    </div>
-
-                    <div class="detalles-producto">
-                        <div class="col1">
-                            <p>Nombre del producto 3</p>
-                        </div>
-                        <div class="col2">
-                            <p>3</p>
-                        </div>
-                        <div class="col3">
-                            <p>$155.88</p>
-                        </div>
-                    </div>
+                    <% }) %>
+                <% } %>
                 </div>
 
                 <div id="compra-escritorio">
                     <div class="total">
                         <p>Total:</p>
-                        <input class="total-text" type="text" value="$0.00" readonly>
+                        <input class="total-text" type="text" value="$ <%= (total) ? total : 0 %>" readonly>
                     </div>
                 
                     <div class="comprar">

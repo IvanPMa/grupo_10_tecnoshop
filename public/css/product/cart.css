@@ -7,6 +7,7 @@ main{
 
 #carrito{
     display: flex;
+    width: 100%;
     flex-direction: column;
     padding: 10px;
     background-color: #fff;
@@ -51,11 +52,13 @@ main{
 }
 
 .delete-item{
-    height: fit-content;
     background-color: transparent;
     border: none;
-    color: #03414D;
-    font-size: 15px;
+    margin: 0;
+}
+
+.delete-item img{
+    height: 20px;
 }
 
 .total{
