@@ -30,7 +30,7 @@
                                 <input class="precio-text" type="text" value="$ <%= cart.product.price %>" readonly>
                             </div>
                             <form action="/cart/delete" method="post">
-                                <input type="hidden" name="cart_id" value="<%= (cart.id) ? cart.id : 5 %>">
+                                <input type="hidden" name="cart_id" value="<%= cart.id %>">
                                 <button class="delete-item"><img src="/images/icons/delete.png"></button>
                             </form>
                         </div>
@@ -47,8 +47,8 @@
                     </div>
                 
                     <div class="comprar">
-                        <button class="seguir-comprando-button">Seguir comprando</button>
-                        <button class="proceder-pago-button">Proceder al pago</button>
+                        <form action="/"><button class="seguir-comprando-button">Seguir comprando</button></form>
+                        <form action="/cart/buy" method="post"><button class="proceder-pago-button">Proceder al pago</button></form>
                     </div>
                 </div>
             </div>
@@ -87,8 +87,8 @@
                     </div>
                 
                     <div class="comprar">
-                        <button class="seguir-comprando-button">Seguir comprando</button>
-                        <button class="proceder-pago-button">Proceder al pago</button>
+                        <form action="/"><button class="seguir-comprando-button">Seguir comprando</button></form>
+                        <form action="" method="post"><button class="proceder-pago-button">Proceder al pago</button></form>
                     </div>
                 </div>
             </div>

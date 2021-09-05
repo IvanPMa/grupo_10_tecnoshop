@@ -33,7 +33,7 @@ const controller = {
 
                     // Son los datos que mostrará la página del carrito
                     carts.push({
-                        id: null,
+                        id: i,
                         dataValues: {
                             cantidad: req.session.tempCart[i].quantity,
                             total: req.session.tempCart[i].quantity * product.price },
@@ -113,8 +113,48 @@ const controller = {
         if(req.session.userLogged){
             await db.ShoppingCart.destroy({ where: { id: req.body.cart_id }});
         }
+        // Invitado
+        else{
+            req.session.tempCart.splice(req.body.cart_id, 1);
+        }
 
         res.redirect(req.session.previousPage);
+    },
+
+    buyCart: async (req, res) =>{
+        // Obtener la fecha actual y transformarla para sql
+        let date = new Date();
+        let sqlDate = date.toISOString().slice(0, 10);
+        
+        // Obtener los datos del carrito del usuario
+        let carts = await db.ShoppingCart.findAll({ where: { user_id: req.session.userLogged.id } });
+        let cartTotal = await db.ShoppingCart.findAll({
+            include: [{ association: 'product' }],
+            attributes: [[db.Sequelize.fn('SUM', db.Sequelize.literal('price*quantity')), 'total']],
+            where: [{ 'user_id': req.session.userLogged.id }],
+        });
+
+        // Crear el recibo
+        await db.Check.create({
+            user_id: req.session.userLogged.id,
+            date: sqlDate,
+            total: cartTotal[0].dataValues.total,
+        });
+        let newCheck = await db.Check.findOne({ where: { date: sqlDate } });
+        console.log('\n\n\n\nEl check es: ' + newCheck.id);
+        // Anexar los productos del recibo
+        for(let i = 0; i < carts.length; i++){
+            await db.Check_Product.create({
+                check_id: newCheck.id,
+                product_id: carts[i].product_id,
+                quantity: carts[i].quantity
+            })
+        }
+
+        // Borrar el carrito de compras
+        await db.ShoppingCart.destroy({ where: { user_id: req.session.userLogged.id } });
+
+        res.redirect('/');
     }
 }
 
