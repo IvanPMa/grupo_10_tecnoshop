@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Modelos</title>
+    <%- include('../partials/head') %>
+</head>
+<body>
+    <!-- HEADER -->
+    <%- include('../partials/header') %>
+
+    <!-- MAIN -->
+    <main id="main">
+        <div>
+            <h2 class="title">Modelos</h2>
+            <% models.forEach(model => { %>
+                <div>
+                    <%= model.name %>
+                </div>
+            <% }) %>
+            Agregar nuevo modelo
+            <form action="/" method="post">
+                Hola
+            </form>
+        </div>
+    </main>
+    
+    <!-- FOOTER -->
+    <%- include('../partials/footer') %>
+</body>
+</html>

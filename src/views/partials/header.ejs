@@ -6,7 +6,7 @@
     <!-- SEARCHBAR -->
     <div class="searchbar">
         <form action="/products" method="GET">
-            <input type="search" name="search" placeholder="Buscar artículos" size="1" value="<%= locals.search ? search.text : '' %>">
+            <input type="search" class="search" name="search" placeholder="Buscar artículos" size="1" value="<%= locals.search ? search.text : '' %>">
             <button><img src="/images/icons/search.png"></button>
         </form>
     </div>
@@ -25,8 +25,8 @@
         <% } %>
         <li class="darkmode-label"><label for="darkmode"><a href="/darkmode/1"><img src="/images/icons/light.png">Tema claro</a></label></li>
         <li><a href="/"><p class="navbar-button">Inicio</p></a></li>
+        <li><a href="/cart"><p class="navbar-button">Carrito de compras</p></a></li>
         <% if(locals.isLogged){ %>
-            <li><a href="/cart"><p class="navbar-button"><img src="/images/icons/shopping-cart.png"></p></a></li>
             <li><a href="/"><p class="navbar-button">Historial de compras</p></a></li>
             <li><a href="/user/logout"><p class="navbar-button">Cerrar Sesión</p></a></li>
         <% }else{ %>

@@ -135,6 +135,7 @@ const controller = {
         });
 
         // Crear el recibo
+        console.log('\n\n\n\nEl date es: ' + sqlDate);
         await db.Check.create({
             user_id: req.session.userLogged.id,
             date: sqlDate,
@@ -142,6 +143,7 @@ const controller = {
         });
         let newCheck = await db.Check.findOne({ where: { date: sqlDate } });
         console.log('\n\n\n\nEl check es: ' + newCheck.id);
+
         // Anexar los productos del recibo
         for(let i = 0; i < carts.length; i++){
             await db.Check_Product.create({

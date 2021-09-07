@@ -36,12 +36,17 @@ header .searchbar{
     margin-left: 10px;
 }
 
-.searchbar form,
+.searchbar form{
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+}
+
 .searchbar form input,
 .searchbar form button{
     border-radius: 10px;
-    background-color: white;
     border: none;
+    background-color: inherit;
 }
 
 /* MENU */
@@ -61,6 +66,7 @@ header .searchbar{
 .darkmode-label label a{
     display: flex;
     align-items: center;
+    color: black;
 }
 
 nav ul{
@@ -80,7 +86,7 @@ nav ul{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: gray;
+    background-color: whitesmoke;
 }
 
 #menu-button:checked ~ ul{

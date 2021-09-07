@@ -39,7 +39,7 @@ const controller = {
     models: async (req, res) => {
         let models = await db.Model.findAll();
 
-        res.send(models);
+        res.render('./manage/models', { models });
     },
 
     categories: async (req, res) => {
