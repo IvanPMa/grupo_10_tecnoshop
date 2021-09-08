@@ -201,6 +201,14 @@ const controllers = {
         await db.User.update({ image: 'default.jpg' }, { where: { id: userLogged.id } });
         req.session.userLogged = await db.User.findByPk(userLogged.id);
         res.redirect('/user/profile/edit');
+    },
+
+    userHistory: async (req, res) => {
+        let userChecks = await db.Check.findAll({
+            include: [{ association: 'products'}],
+            where: { user_id: req.session.userLogged.id }
+        });
+        res.render('./users/history', { userChecks });
     }
 };
 

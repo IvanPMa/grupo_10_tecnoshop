@@ -27,7 +27,7 @@
         <li><a href="/"><p class="navbar-button">Inicio</p></a></li>
         <li><a href="/cart"><p class="navbar-button">Carrito de compras</p></a></li>
         <% if(locals.isLogged){ %>
-            <li><a href="/"><p class="navbar-button">Historial de compras</p></a></li>
+            <li><a href="/user/history"><p class="navbar-button">Historial de compras</p></a></li>
             <li><a href="/user/logout"><p class="navbar-button">Cerrar Sesión</p></a></li>
         <% }else{ %>
             <li><a href="/user/login"><p class="navbar-button">Iniciar Sesión</p></a></li>
