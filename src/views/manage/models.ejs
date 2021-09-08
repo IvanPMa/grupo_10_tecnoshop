@@ -12,14 +12,21 @@
     <main id="main">
         <div>
             <h2 class="title">Modelos</h2>
+            <% if(locals.errors && errors.delete){ %>
+                <p class="alert"><%= errors.delete.msg %></p>
+            <% } %>
             <% models.forEach(model => { %>
-                <div>
-                    <%= model.name %>
-                </div>
+                <form action="/manage/models/<%= model.id %>/delete?_method=DELETE" class="model" method="POST">
+                    <input type="text" name="model_<%= model.name %>" placeholder="<%= model.name %>" readonly>
+                    <button type="submit"><img src="/images/icons/delete.png" alt=""></button>
+                </form>
             <% }) %>
-            Agregar nuevo modelo
-            <form action="/" method="post">
-                Hola
+            
+            <form action="/manage/models/add" method="POST">
+                <div class="model">
+                    <input type="text" name="newmodel" placeholder="Nuevo modelo">
+                    <button type="submit">Agregar</button>
+                </div>
             </form>
         </div>
     </main>

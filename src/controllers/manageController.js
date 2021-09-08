@@ -42,6 +42,32 @@ const controller = {
         res.render('./manage/models', { models });
     },
 
+    addModel: async (req, res) => {
+        let models = await db.Model.findAll();
+        let modelName = req.body.newmodel;
+        let modelss = await db.Model.findAll({ where: { name: modelName } });
+
+        if(modelss.length > 0){
+            res.render('./manage/models', { models, errors: { delete: { msg: 'No se puede crear el modelo porque ya existe ese nombre' }}});
+        }
+        else{
+            await db.Model.create({ name: req.body.newmodel });
+            res.redirect('/manage/models');
+        }
+    },
+
+    deleteModel: async (req, res) => {
+        let modelToDelete = await db.Model.findByPk(req.params.id, { include: [{ association: 'products' }] });
+        if(modelToDelete.products.length > 0){
+            let models = await db.Model.findAll();
+            res.render('./manage/models', { models, errors: { delete: { msg: 'No se puede borrar el modelo porque hay productos usándolo' }}});
+        }
+        else{
+            await db.Model.destroy({ where: { id: req.params.id } });
+            res.redirect('/manage/models');
+        }
+    },
+
     categories: async (req, res) => {
         let productCategories = await db.ProductCategory.findAll();
         let userCategories = await db.UserCategory.findAll();

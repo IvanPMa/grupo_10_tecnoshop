@@ -4,11 +4,13 @@ const manageProducts = require('../routes/manageProducts');
 const manageUsers = require('../routes/manageUsers');
 const manageController = require ('../controllers/manageController');
 
-router.get('/', manageController.index);
-router.get('/checks', manageController.checks);
-router.get('/shoppingcarts', manageController.shoppingCarts);
-router.get('/models', manageController.models);
-router.get('/categories', manageController.categories);
+router.get('/', manageController.index);                        // Obtener las tablas de la base de datos
+router.get('/checks', manageController.checks);                 // Obtener la tabla de Recibos
+router.get('/shoppingcarts', manageController.shoppingCarts);   // Obtener la tabla de Carrito de compras
+router.get('/models', manageController.models);                 // Obtener la tabla de Modelos
+router.post('/models/add', manageController.addModel);
+router.delete('/models/:id/delete', manageController.deleteModel);
+router.get('/categories', manageController.categories);         // Obtener la tabla de categorías de usuarios y productos
 
 router.use('/products', manageProducts);
 router.use('/users', manageUsers);
