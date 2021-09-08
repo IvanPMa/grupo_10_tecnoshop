@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Categorías</title>
+    <%- include('../partials/head') %>
+</head>
+<body>
+    <!-- HEADER -->
+    <%- include('../partials/header') %>
+
+    <!-- MAIN -->
+    <main id="main">
+        <div>
+            <h2 class="title">Categorías de usuarios</h2>
+            <% if(locals.errors && errors.delete){ %>
+                <p class="alert"><%= errors.delete.msg %></p>
+            <% } %>
+            <% userCategories.forEach(category => { %>
+                <form action="/manage/categories/user/<%= category.id %>/delete?_method=DELETE" class="category" method="POST">
+                    <input type="text" name="model_<%= category.name %>" placeholder="<%= category.name %>" readonly>
+                    <button type="submit"><img src="/images/icons/delete.png" alt=""></button>
+                </form>
+            <% }) %>
+            
+            <form action="/manage/categories/user/add" method="POST">
+                <div class="category">
+                    <input type="text" name="newcategory" placeholder="Nueva categoría">
+                    <button type="submit">Agregar</button>
+                </div>
+            </form>
+        </div>
+        <div>
+            <h2 class="title">Categorías de productos</h2>
+            <% productCategories.forEach(category => { %>
+                <form action="/manage/categories/product/<%= category.id %>/delete?_method=DELETE" class="category" method="POST">
+                    <input type="text" name="category_<%= category.name %>" placeholder="<%= category.name %>" readonly>
+                    <button type="submit"><img src="/images/icons/delete.png" alt=""></button>
+                </form>
+            <% }) %>
+            
+            <form action="/manage/categories/product/add" method="POST">
+                <div class="category">
+                    <input type="text" name="newcategory" placeholder="Nueva categoría">
+                    <button type="submit">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    
+    <!-- FOOTER -->
+    <%- include('../partials/footer') %>
+</body>
+</html>

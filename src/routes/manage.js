@@ -11,6 +11,10 @@ router.get('/models', manageController.models);                 // Obtener la ta
 router.post('/models/add', manageController.addModel);
 router.delete('/models/:id/delete', manageController.deleteModel);
 router.get('/categories', manageController.categories);         // Obtener la tabla de categorías de usuarios y productos
+router.post('/categories/user/add', manageController.addUserCategory);
+router.delete('/categories/user/:id/delete', manageController.deleteUserCategory);
+router.post('/categories/product/add', manageController.addProductCategory);
+router.delete('/categories/product/:id/delete', manageController.deleteProductCategory);
 
 router.use('/products', manageProducts);
 router.use('/users', manageUsers);
