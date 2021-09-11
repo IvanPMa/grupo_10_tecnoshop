@@ -3,6 +3,7 @@
     <head>
         <title>Historial de compras</title>
         <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/user/history.css">
     </head>
 <body>
     <div class="container">
@@ -13,15 +14,15 @@
         <main>
             <% if(userChecks.length > 0){ %>
                 <% userChecks.forEach(check =>{ %>
-                    <div>
-                        <p><%= check.date.toISOString().slice(0, 10) %></p>
-                        Productos:
-                        <ul>
+                    <div class="check">
+                        <h3>Fecha de compra: <%= check.date.toISOString().slice(0, 10) %></h3><br>
+                        <p>Productos:</p>
+                        <ul class="products">
                         <% check.products.forEach(product => { %>
-                            <li><%= product.name %> <%= product.Check_Product.quantity %></li>
+                            <li><%= product.Check_Product.quantity %>, <%= product.name %></li>
                         <% }) %>
                         </ul>
-                        <p>Total: $ <%= check.total %></p>
+                        <p class="total">Total: $ <%= check.total %></p>
                     </div>
                 <% }) %>
             <% }else { %>

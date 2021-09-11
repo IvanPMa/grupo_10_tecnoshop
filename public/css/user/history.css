@@ -1,0 +1,33 @@
+h3, p{
+    margin: 0;
+}
+
+.check{
+    display: flex;
+    flex-direction: column;
+    border: solid 1px rgb(146, 130, 130);
+    border-radius: 10px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.check .products{
+    padding: 0;
+    list-style: none;
+}
+
+.total{
+    align-self: flex-end;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 768px){
+    main{
+        font-size: 16px;
+    }
+
+    .check{
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+}
