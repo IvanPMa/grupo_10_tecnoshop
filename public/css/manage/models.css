@@ -1,0 +1,48 @@
+main{
+    display: flex;
+    align-items: center;
+}
+
+.models{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.model{
+    width: 350px;
+    height: 30px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.model input{
+    flex-grow: 1;
+}
+
+.delete{
+    margin: 0;
+    border: none;
+    background-color: inherit;
+}
+
+@media(min-width: 768px){
+    main{
+        font-size: 18px;
+    }
+
+    .models{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .model{
+        width: 350px;
+        height: 30px;
+        margin: 5px;
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -3,35 +3,36 @@
 <head>
     <title>Modelos</title>
     <%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/manage/models.css">
 </head>
 <body>
-    <!-- HEADER -->
-    <%- include('../partials/header') %>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../partials/header') %>
 
-    <!-- MAIN -->
-    <main id="main">
-        <div>
-            <h2 class="title">Modelos</h2>
-            <% if(locals.errors && errors.delete){ %>
-                <p class="alert"><%= errors.delete.msg %></p>
-            <% } %>
-            <% models.forEach(model => { %>
-                <form action="/manage/models/<%= model.id %>/delete?_method=DELETE" class="model" method="POST">
-                    <input type="text" name="model_<%= model.name %>" placeholder="<%= model.name %>" readonly>
-                    <button type="submit"><img src="/images/icons/delete.png" alt=""></button>
-                </form>
-            <% }) %>
-            
-            <form action="/manage/models/add" method="POST">
-                <div class="model">
+        <!-- MAIN -->
+        <main id="main">
+            <div class="models">
+                <h2 class="title">Modelos</h2>
+                <% if(locals.errors && errors.delete){ %>
+                    <p class="alert"><%= errors.delete.msg %></p>
+                <% } %>
+                <% models.forEach(model => { %>
+                    <form action="/manage/models/<%= model.id %>/delete?_method=DELETE" class="model" method="POST">
+                        <input type="text" name="model_<%= model.name %>" placeholder="<%= model.name %>" readonly>
+                        <button type="submit" class="delete"><img src="/images/icons/delete.png" alt=""></button>
+                    </form>
+                <% }) %>
+                
+                <form action="/manage/models/add" method="POST" class="model">
                     <input type="text" name="newmodel" placeholder="Nuevo modelo">
                     <button type="submit">Agregar</button>
-                </div>
-            </form>
-        </div>
-    </main>
-    
-    <!-- FOOTER -->
-    <%- include('../partials/footer') %>
+                </form>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <%- include('../partials/footer') %>
+    </div>
 </body>
 </html>
