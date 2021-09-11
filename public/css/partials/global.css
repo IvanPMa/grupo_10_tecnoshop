@@ -46,10 +46,10 @@ main{
 /* MEDIA QUERIES */
 @media(min-width: 768px){
     .mobile{
-        display: none;
+        display: none !important;
     }
 
     .computer{
-        display: inline;
+        display: inline !important;
     }
 }

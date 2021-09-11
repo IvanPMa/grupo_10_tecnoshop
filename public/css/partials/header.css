@@ -133,73 +133,30 @@ nav .profile-button{
 }
 
 @media(min-width: 768px){
-    .navbar{
-        height: 90px;
-    }
-
-    /* LOGO */
-    .navbar .logo{
-        height: 100%;
-        width: 180px;
-    }
-
-    .navbar .logo img{
-        max-height: 80px;
-    }
-
     /* SEARCHBAR */
     .searchbar input{
         font-size: 18px;
         height: 40px;
     }
-
-    /* SEARCHBAR */
-    .menu .buttons{
+    
+    /* MENU */
+    nav ul{
+        position: relative;
         display: flex;
         flex-direction: row;
-        width: 250px;
+        width: auto;
+        height: auto;
+        top: 0;
+        left: 0px;
+        transition: none;
+        background-color: inherit;
     }
 
-    .buttons a{
-        text-decoration: none;
-    }
-
-    .buttons .navbar-button{
-        align-self: center;
-        margin-left: 20px;
-    }
-
-    .buttons .shopping-cart{
-        margin-left: 15px;
-        align-self: center;
-    }
-
-    .buttons .login{
-        margin-left: 30px;
-    }
-
-    .profile, .login{
-        color: #115259;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .profile:hover, .login:hover{
-        color: gray;
-    }
-
-    .logout, .signup{
-        text-decoration: none;
-        color: white;
-        background-color: #115259;
-        padding: 7px 10px;
-        font-weight: bold;
-        border-radius: 8px;
-    }
-
-    .logout:hover, .signup:hover{
-        background-color: white;
-        color: #115259;
-        transition: all 300ms;
+    .navbar-button{
+        font-size: 14px;
+        margin: 5px;
+        width: auto;
+        height: auto;
+        background-color: inherit !important;
     }
 }

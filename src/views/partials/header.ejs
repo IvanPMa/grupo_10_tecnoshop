@@ -13,22 +13,23 @@
 
     <!-- MENU -->
     <nav>
-        <input type="checkbox" id="menu-button" class="mobile">
+        <input type="checkbox" id="menu-button">
         <label for="menu-button" class="menu-button-label mobile"><img src="/images/icons/menu.png"></label>
         <input id="darkmode" name="darkmode" type="checkbox" <%= (locals.darkMode) ? 'checked' : '' %>>
 
         <ul>
         <% if(locals.isLogged){ %>
-            <li><h3 class="bienvenida">Bienvenido <%= locals.userLogged.first_name %></h3></li>
-            <li><a href="/user/profile"><img src="/images/users/<%= locals.userLogged.image %>" class="profile-picture"></a></li>
-            <li><a href="/user/profile"><p class="profile-button">Ver Perfil</p></a></li>
+            <li><h3 class="bienvenida mobile">Bienvenido <%= locals.userLogged.first_name %></h3></li>
+            <li><a href="/user/profile" class="mobile"><img src="/images/users/<%= locals.userLogged.image %>" class="profile-picture"></a></li>
+            <li><a href="/user/profile" class="mobile"><p class="profile-button">Ver Perfil</p></a></li>
         <% } %>
-        <li class="darkmode-label"><label for="darkmode"><a href="/darkmode/1"><img src="/images/icons/light.png">Tema claro</a></label></li>
-        <li><a href="/"><p class="navbar-button">Inicio</p></a></li>
-        <li><a href="/cart"><p class="navbar-button">Carrito de compras</p></a></li>
+            <li class="darkmode-label mobiles"><label for="darkmode"><a href="/darkmode/1"><img src="/images/icons/light.png">Tema claro</a></label></li>
+            <li><a href="/"><p class="navbar-button mobile">Inicio</p></a></li>
+            <li><a href="/cart"><p class="navbar-button mobile">Carrito de compras</p></a></li>
         <% if(locals.isLogged){ %>
-            <li><a href="/user/history"><p class="navbar-button">Historial de compras</p></a></li>
-            <li><a href="/manage"><p class="navbar-button">Base de Datos</p></a></li>
+            <li><a href="/user/profile"><p class="navbar-button computer">Perfil</p></a></li>
+            <li><a href="/user/history"><p class="navbar-button mobile">Historial de compras</p></a></li>
+            <li><a href="/manage"><p class="navbar-button mobile">Base de Datos</p></a></li>
             <li><a href="/user/logout"><p class="navbar-button">Cerrar Sesión</p></a></li>
         <% }else{ %>
             <li><a href="/user/login"><p class="navbar-button">Iniciar Sesión</p></a></li>
