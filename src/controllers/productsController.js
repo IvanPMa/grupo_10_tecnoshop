@@ -12,7 +12,7 @@ const controller = {
 
     search: async (req, res) => {
         let categories = await db.ProductCategory.findAll();            // Todas las categorías para mostrar en los filtros
-        let limit = 2;                                                  // Número de productos a mostrar por página
+        let limit = 8;                                                  // Número de productos a mostrar por página
         let text = req.query.search;                                    // Texto que buscó el usuario
         let category = req.query.category || '';                        // Filtro: Categoría
         let minPrice = req.query.min || 0;                              // Filtro: Precio mínimo

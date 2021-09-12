@@ -38,7 +38,32 @@ INSERT INTO products VALUES (null, 'Xiaomi mi 11', 'Telefono movil con sistema o
 INSERT INTO products VALUES (null, 'Pocophone', 'ESto es una descipcion generica', 9499.00, true, 'image_product_12.jpg', 5);
 INSERT INTO products VALUES (null, 'Apple watch', 'Reloj inteligente con soporte para telefonos con sistema operativo iOS.', 3999.49, true, 'image_product_13.jpg', 6);
 INSERT INTO products VALUES (null, 'Galaxy A10s', 'Samsung Galaxy A10s Dual SIM 32 GB azul 2 GB RAM.', 2500.00, true, 'image_product_14.jpg', 5);
-INSERT INTO products VALUES (null, 'Pokémon Leyendas Arceus', 'Videojueo para Nintendo Switch.', 1199.00, true, 'image_product_15.jpg', 2);
+INSERT INTO products VALUES (null, 'Pokémon Leyendas Arceus', 'Videojuego para Nintendo Switch.', 1199.00, true, 'image_product_15.jpg', 2);
+INSERT INTO products VALUES (null, 'PopSocket', 'Esta es una descripción genérica.', 49.99, true, 'image_product_16.jpg', 1);
+INSERT INTO products VALUES (null, 'Power Bank', 'Esta es una descripción genérica.', 129.99, true, 'image_product_17.jpg', 1);
+INSERT INTO products VALUES (null, 'Palo para selfie', 'Esta es una descripción genérica.', 99.99, true, 'image_product_18.jpg', 1);
+INSERT INTO products VALUES (null, 'Funda cartera', 'Esta es una descripción genérica.', 300.00, true, 'image_product_19.jpg', 1);
+INSERT INTO products VALUES (null, 'GTA VI', 'Esta es una descripción genérica.', 999.00, true, 'image_product_20.jpg', 2);
+INSERT INTO products VALUES (null, 'Halo The Master Chief Collection', 'Esta es una descripción genérica.', 899.49, true, 'image_product_21.jpg', 2);
+INSERT INTO products VALUES (null, 'Super Smash Bros', 'Esta es una descripción genérica.', 1199.99, true, 'image_product_22.jpg', 2);
+INSERT INTO products VALUES (null, 'The Legend of Zelda: Breath Of The Wild', 'Esta es una descripción genérica.', 1199.99, true, 'image_product_23.jpg', 2);
+INSERT INTO products VALUES (null, 'Nintendo 3DS', 'Esta es una descripción genérica.', 2499.99, true, 'image_product_24.jpg', 3);
+INSERT INTO products VALUES (null, 'Play Station 4', 'Esta es una descripción genérica.', 4999.99, true, 'image_product_25.jpg', 3);
+INSERT INTO products VALUES (null, 'NES Classic Edition', 'Esta es una descripción genérica.', 1999.00, true, 'image_product_26.jpg', 3);
+INSERT INTO products VALUES (null, 'Play Station Vita', 'Esta es una descripción genérica.', 1999.99, true, 'image_product_27.jpg', 3);
+INSERT INTO products VALUES (null, 'Xiaomi AirDots', 'Esta es una descripción genérica.', 349.00, true, 'image_product_28.jpg', 4);
+INSERT INTO products VALUES (null, 'Audífonos Gamer Razer Kraken Kitty', 'Esta es una descripción genérica.', 999.00, true, 'image_product_29.jpg', 4);
+INSERT INTO products VALUES (null, 'Televisor LG Smart 4K', 'Esta es una descripción genérica.', 14999.00, true, 'image_product_30.jpg', 4);
+INSERT INTO products VALUES (null, 'Bocina Sony EXTRA BASS', 'Esta es una descripción genérica.', 3999.00, true, 'image_product_31.jpg', 4);
+INSERT INTO products VALUES (null, 'iPhone 12 Pro 256 GB', 'Esta es una descripción genérica.', 16999.99, true, 'image_product_32.jpg', 5);
+INSERT INTO products VALUES (null, 'Samsung Galaxy Z Fold 3', 'Esta es una descripción genérica.', 19999.99, true, 'image_product_33.jpg', 5);
+INSERT INTO products VALUES (null, 'Xiaomi Redmi Note 10 Pro', 'Esta es una descripción genérica.', 6999.99, true, 'image_product_34.jpg', 5);
+INSERT INTO products VALUES (null, 'Nokia 3310', 'Esta es una descripción genérica.', 499.00, true, 'image_product_35.jpg', 5);
+INSERT INTO products VALUES (null, 'Xiaomi Mi Band 6', 'Esta es una descripción genérica.', 899.00, true, 'image_product_36.jpg', 6);
+INSERT INTO products VALUES (null, 'Casio CA53W reloj con calculadora', 'Esta es una descripción genérica.', 1499.00, true, 'image_product_37.jpg', 6);
+INSERT INTO products VALUES (null, 'Reloj de Bob Esponja', 'Esta es una descripción genérica.', 0.99, true, 'image_product_38.jpg', 6);
+INSERT INTO products VALUES (null, 'Amazfit', 'Esta es una descripción genérica.', 999.00, true, 'image_product_39.jpg', 6);
+INSERT INTO products VALUES (null, 'Huawei Watch Fit', 'Esta es una descripción genérica.', 849.00, true, 'image_product_40.jpg', 6);
 
 /* MODELOS */
 INSERT INTO models VALUES (null, 'Blanco');
