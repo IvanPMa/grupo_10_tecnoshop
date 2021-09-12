@@ -2,9 +2,39 @@ main{
     max-width: 100%;
 }
 
+.title{
+    align-self: flex-start;
+}
+
 /* FILTROS */
 .search-filters{
-    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-filters .field{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 280px;
+    margin-bottom: 5px;
+}
+
+.submit{
+    display: flex;
+    justify-content: flex-end;
+    width: 280px;
+}
+
+.search-page{
+    display: flex;
+    justify-content: center;
+}
+
+.search-page a{
+    color: black;
+    margin-right: 10px;
 }
 
 /* PRODUCTOS BUSCADOS */
@@ -34,11 +64,21 @@ main{
 
     /* FILTROS */
     .search-filters{
-        width: 30%;
+        flex-grow: 1;
+    }
+
+    .search-filters .field, .submit{
+        width: 90%;
+    }
+
+    .search-filters .field input{
+        height: 20px;
+        width: 100px;
     }
 
     /* PRODUCTOS BUSCADOS */
     .search-result{
+        width: 80%;
     }
 
     .products-result .product{

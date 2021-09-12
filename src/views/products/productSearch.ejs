@@ -13,31 +13,40 @@
 
         <!-- MAIN -->
         <main id="main">
+            <!-- FILTROS -->
             <form class="search-filters" action="/products" method="get">
-                <h3>Filtros:</h3>
+                <h3 class="title">Filtros:</h3>
                 <input type="hidden" name="search" value="<%= search.text %>">
 
                 <!-- PRECIO MÍNIMO -->
-                <label for="min">Precio mínimo</label>
-                <input type="number" name="min" id="min" min="0" value="<%= (locals.old && old.min) ? old.min : '' %>">
+                <div class="field">
+                    <label for="min">Precio mínimo</label>
+                    <input type="number" name="min" id="min" min="0" value="<%= (locals.old && old.min) ? old.min : '' %>">
+                </div>
 
                 <!-- PRECIO MÁXIMO -->
-                <label for="max">Precio máximo</label>
-                <input type="number" name="max" id="max" min="0" value="<%= (locals.old && old.max) ? old.max : '' %>">
+                <div class="field">
+                    <label for="max">Precio máximo</label>
+                    <input type="number" name="max" id="max" min="0" value="<%= (locals.old && old.max) ? old.max : '' %>">
+                </div>
                 
                 <!-- CATEGORÍA -->
-                <label for="category">Categoria del producto:</label>
-                <select id="category" name="category">
-                    <option value="">Seleccionar</option>
-                <% categories.forEach(category => { %>
-                    <option value="<%= category.name %>"
-                    <% if(locals.old && old.category == category.name){ %>
-                        selected="selected"
-                    <% } %>
-                    ><%= category.name %></option>
-                <% }) %>
-                </select>
-                <button type="submit">Aplicar</button>
+                <div class="field">
+                    <label for="category">Categoria del producto:</label>
+                    <select id="category" name="category">
+                        <option value="">Seleccionar</option>
+                    <% categories.forEach(category => { %>
+                        <option value="<%= category.name %>"
+                        <% if(locals.old && old.category == category.name){ %>
+                            selected="selected"
+                        <% } %>
+                        ><%= category.name %></option>
+                    <% }) %>
+                    </select>
+                </div>
+                <div class="submit">
+                    <button type="submit">Aplicar</button>
+                </div>
             </form>
 
             <div class="search-result">
