@@ -13,10 +13,32 @@
 
         <!-- MAIN -->
         <main id="main">
+            <form class="search-filters" action="/products" method="get">
+                <h3>Filtros:</h3>
+                <input type="hidden" name="search" value="<%= search.text %>">
 
-            <div class="search-filters">
-                Estamos en la página <%= search.page %> de <%= search.pages %>
-            </div>
+                <!-- PRECIO MÍNIMO -->
+                <label for="min">Precio mínimo</label>
+                <input type="number" name="min" id="min" min="0" value="<%= (locals.old && old.min) ? old.min : '' %>">
+
+                <!-- PRECIO MÁXIMO -->
+                <label for="max">Precio máximo</label>
+                <input type="number" name="max" id="max" min="0" value="<%= (locals.old && old.max) ? old.max : '' %>">
+                
+                <!-- CATEGORÍA -->
+                <label for="category">Categoria del producto:</label>
+                <select id="category" name="category">
+                    <option value="">Seleccionar</option>
+                <% categories.forEach(category => { %>
+                    <option value="<%= category.name %>"
+                    <% if(locals.old && old.category == category.name){ %>
+                        selected="selected"
+                    <% } %>
+                    ><%= category.name %></option>
+                <% }) %>
+                </select>
+                <button type="submit">Aplicar</button>
+            </form>
 
             <div class="search-result">
                 <h3 class="title">Resultados:</h3>
@@ -33,17 +55,20 @@
                         </div>
                     <% }); %>
                 </div>
-                <% if(!search.firstPage()){ %>
-                    <a href="/products?search=<%= search.text %>&page=<%= search.page - 1 %>">Página anterior</a>
-                <% } %>
-                <% for(let i=1; i<=search.pages; i++){ %>
-                    <a href="/products?search=<%= search.text %>&page=<%= i %>"><%= i %></a>
-                <% } %>
-                <% if(!search.lastPage()){ %>
-                    <a href="/products?search=<%= search.text %>&page=<%= search.page + 1 %>">Página siguiente</a>
-                <% } %>
+                <div class="search-page">
+                    <% if(!search.firstPage()){ %>
+                        <a href="/products<%= url %>&page=<%= search.page - 1 %>">Página anterior</a>
+                    <% } %>
+                    <% if(search.pages > 1){ %>
+                        <% for(let i=1; i<=search.pages; i++){ %>
+                            <a href="/products<%= url %>&page=<%= i %>"><%= i %></a>
+                        <% } %>
+                    <% } %>
+                    <% if(!search.lastPage()){ %>
+                        <a href="/products<%= url %>&page=<%= search.page + 1 %>">Página siguiente</a>
+                    <% } %>
+                </div>
             </div>
-
         </main>
 
         <!-- FOOTER -->
