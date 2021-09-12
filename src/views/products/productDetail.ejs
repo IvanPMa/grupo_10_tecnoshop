@@ -21,6 +21,16 @@
                         <p class="product--description-text">
                             <%= product.description %>
                         </p>
+
+                        <!-- MOSTRAR MODELOS SI HAY -->
+                        <% if(models.length > 0){ %>
+                            <label for="model_id">Selecciona Modelo</label>
+                            <select id="model_id" name="model_id">
+                            <% models.forEach(model => { %>
+                                <option value="<%= model.id %>"><%= model.name %></option>
+                            <% }) %>
+                            </select>
+                        <% } %>
                         <div class="product--description--quantity">
                             <input type="number" min="1" name="product_quantity">
                             <span>Cantidad</span>

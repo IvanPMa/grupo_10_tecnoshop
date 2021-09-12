@@ -6,7 +6,21 @@ const controller = {
     },
 
     checks: async (req, res) => { // YA
-        let checks = await db.Check.findAll({ include: [{ association: 'user' }, { association: 'products' }] });
+        //let checks2 = await db.Check.findAll({ include: [{ association: 'user' }, { association: 'products', include: [{ association:'check_product'}] }, { association: 'model' }] });
+        let checks = await db.Check.findAll({
+            include: [
+                {
+                    association: 'user'
+                },
+                {
+                    association: 'check_product',
+                    attributes: ['quantity', [db.Sequelize.literal('quantity*price'), 'total']],
+                    include: [{ association: 'product' }, { association: 'model' }]
+                }
+            ]
+        });
+        //res.send(checks);
+        console.log(checks[0]);
         res.render('./manage/checks', { checks });
     },
 

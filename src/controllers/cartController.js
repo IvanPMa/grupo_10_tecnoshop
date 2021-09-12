@@ -105,7 +105,7 @@ const controller = {
             }
         }
 
-        res.redirect(req.session.previousPage);
+        res.redirect('/cart');
     },
 
     deleteProduct: async (req, res) => {
@@ -128,6 +128,7 @@ const controller = {
         
         // Obtener los datos del carrito del usuario
         let carts = await db.ShoppingCart.findAll({ where: { user_id: req.session.userLogged.id } });
+        
         let cartTotal = await db.ShoppingCart.findAll({
             include: [{ association: 'product' }],
             attributes: [[db.Sequelize.fn('SUM', db.Sequelize.literal('price*quantity')), 'total']],
@@ -147,6 +148,7 @@ const controller = {
             await db.Check_Product.create({
                 check_id: newCheck.id,
                 product_id: carts[i].product_id,
+                model_id: carts[i].model_id,
                 quantity: carts[i].quantity
             })
         }

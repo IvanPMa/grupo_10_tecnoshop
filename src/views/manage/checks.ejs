@@ -30,8 +30,8 @@
                     <div class="products">
                         <p>Productos:</p>
                         <ul>
-                        <% check.products.forEach(product => { %>
-                            <li><%= product.Check_Product.quantity %>, <%= product.name %> $ <%= product.price %></li>
+                        <% check.check_product.forEach(c => { %>
+                            <li><%= c.quantity %>, <%= c.product.name %> <%= (c.model) ? c.model.name : '' %> $ <%= c.dataValues.total %></li>
                         <% }) %>
                         </ul>
                     </div>

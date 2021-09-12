@@ -35,11 +35,24 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey: 'user_id'
         });
 
+        Check.hasMany(models.Check_Product, {
+            as: 'check_product',
+            foreignKey: 'check_id'
+        })
+
         Check.belongsToMany(models.Product, {
             as: 'products',
             through: 'Check_Product',
             foreignKey: 'check_id',
             otherKey: 'product_id',
+            timestamps: false
+        });
+
+        Check.belongsToMany(models.Model, {
+            as: 'model',
+            through: 'Check_Product',
+            foreignKey: 'check_id',
+            otherKey: 'model_id',
             timestamps: false
         });
     }

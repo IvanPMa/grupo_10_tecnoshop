@@ -114,12 +114,12 @@ INSERT INTO checks VALUES (null, 4, '2021-08-23 03:20:03', 2500.00);
 INSERT INTO checks VALUES (null, 9, '2021-08-01 21:13:07', 19998.00);
 
 /* CONEXION ENTRE RECIBOS Y PRODUCTOS */
-INSERT INTO check_product VALUES (null, 1, 10, 1);
-INSERT INTO check_product VALUES (null, 1, 4, 1);
-INSERT INTO check_product VALUES (null, 2, 1, 1);
-INSERT INTO check_product VALUES (null, 2, 15, 1);
-INSERT INTO check_product VALUES (null, 3, 3, 1);
-INSERT INTO check_product VALUES (null, 3, 5, 1);
-INSERT INTO check_product VALUES (null, 3, 6, 1);
-INSERT INTO check_product VALUES (null, 4, 14, 1);
-INSERT INTO check_product VALUES (null, 5, 8, 2);
+INSERT INTO check_product VALUES (null, 1, 10, null, 1);
+INSERT INTO check_product VALUES (null, 1, 4, null, 1);
+INSERT INTO check_product VALUES (null, 2, 1, null, 1);
+INSERT INTO check_product VALUES (null, 2, 15, null, 1);
+INSERT INTO check_product VALUES (null, 3, 3, null, 1);
+INSERT INTO check_product VALUES (null, 3, 5, null, 1);
+INSERT INTO check_product VALUES (null, 3, 6, null, 1);
+INSERT INTO check_product VALUES (null, 4, 14, null, 1);
+INSERT INTO check_product VALUES (null, 5, 8, null, 2);

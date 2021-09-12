@@ -17,6 +17,11 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
         },
 
+        model_id: {
+            type: dataTypes.INTEGER,
+            allowNull: true,
+        },
+
         quantity: {
             type: dataTypes.INTEGER,
             allowNull: true,
@@ -29,6 +34,18 @@ module.exports = (sequelize, dataTypes) => {
     };
 
     const Check_Product = sequelize.define('Check_Product', cols, config);
+
+    Check_Product.associate = function(models){
+        Check_Product.belongsTo(models.Product, {
+            as: 'product',
+            foreignKey: 'product_id'
+        });
+
+        Check_Product.belongsTo(models.Model, {
+            as: 'model',
+            foreignKey: 'model_id'
+        });
+    }
 
     return Check_Product;
 }

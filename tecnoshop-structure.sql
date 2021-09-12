@@ -83,6 +83,7 @@ CREATE TABLE `tecnoshop`.`check_product` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `check_id` INT NOT NULL,
   `product_id` INT NOT NULL,
+  `model_id` INT,
   `quantity` INT NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`check_id`) REFERENCES `checks` (`id`),
