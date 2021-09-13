@@ -10,15 +10,24 @@ const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 
 var storage = multer.diskStorage({
-    destination : (req, file, cb) =>{
+    destination: (req, file, cb) => {
         cb(null,path.join(__dirname, '../../public/images/users'));
     },
-    filename : (req, file, cb)=>{
+    filename: (req, file, cb) => {
         cb(null,'user_'+ req.session.userLogged.id + '_picture' + path.extname(file.originalname));
     }
 })
 
-var upload = multer ({ storage });
+var upload = multer ({
+    storage,
+    fileFilter: (req, file, cb) => {
+        if(!(file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg")){
+            req.fileValidationError = "Forbidden extension";
+            return cb(null, false);
+        }
+        cb(null, true);
+    }
+});
 
 router.get('/login', guestMiddleware, userController.loginForm);            // Formulario de acceso de usuario
 router.get('/register', guestMiddleware, userController.registerForm);      // Formulario de registro de usuario

@@ -123,65 +123,65 @@ const controllers = {
 
     verifyEditProfile: async (req, res) => {
         let errors = validationResult(req);
+        let userLogged = await db.User.findByPk(req.session.userLogged.id);
+        let password = userLogged.password;
+        let filename = userLogged.image;
 
-        if(errors.isEmpty()){
-            let userLogged = await db.User.findByPk(req.session.userLogged.id);
-            let password = userLogged.password;
-            let filename = userLogged.image;
+        // Validación del formato de la foto
+        if(req.fileValidationError) {
+            errors.errors.push({ msg: 'La imagen debe tener un formato válido', param: 'picture' });
+        }
 
-            // Si se cambió la foto
-            if(req.file){
-                filename = req.file.filename;
+        // Validación de la contraseña
+        let isPasswordChanged = req.body.password.length > 0;
+        if(isPasswordChanged){
+            if(req.body.password.length < 8){
+                errors.errors.push({ msg: 'La contraseña debe tener al menos ocho caractéres', param: 'password' });
             }
-
-            // Si se cambió la contraseña
-            let changePassword = req.body.password.length > 0;
-            if(changePassword){
+            else{
                 password = bcrypt.hashSync(req.body.password, 10);
+            } 
+        }
 
-                if(password.length < 8){
-                    res.render('./users/editProfile', { errors: { checkpassword: { msg: 'La contraseña debe tener al menos ocho caractéres' } }, user: req.session.userLogged, old: req.body });
-                }
+        // Validación para ver si el correo no está registrado
+        let emailRegister = await db.User.findOne({
+            where: {
+                email: req.body.email,
+                [db.Sequelize.Op.not]: [{
+                    id: req.session.userLogged.id
+                }]
             }
+        });
+        if (emailRegister){
+            errors.errors.push({ msg: 'El correo ya está en uso', param: 'email' });
+        }
 
+        // Validaciones del middleware
+        if(errors.isEmpty()){
             let userEdited = {
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 email: req.body.email,
                 password: password,
-                image: filename
+                image: (req.file) ? req.file.filename : userLogged.image
             }
-    
-            // Verificar si el correo no está registrado
-            let emailRegister = await db.User.findOne({
-                where: {
-                    email: req.body.email,
-                    [db.Sequelize.Op.not]: [{
-                        id: req.session.userLogged.id
-                    }]
+
+            await db.User.update(
+                {
+                    first_name: userEdited.first_name,
+                    last_name: userEdited.last_name,
+                    email: userEdited.email,
+                    password: userEdited.password,
+                    image: userEdited.image
+                },
+                {
+                    where: { id: userLogged.id }
                 }
-            });
-            if(emailRegister){
-                // Error de que el correo está en uso
-                res.render('./users/editProfile', { errors: { email: { msg: 'El correo ya está en uso' } }, user: req.session.userLogged, old: req.body });
-            }
-            else{
-                // Usuario editado
-                await db.User.update(
-                    {
-                        first_name: userEdited.first_name,
-                        last_name: userEdited.last_name,
-                        email: userEdited.email,
-                        password: userEdited.password,
-                        image: userEdited.image
-                    },
-                    {
-                        where: { id: userLogged.id }
-                    }
-                );
-                req.session.userLogged = await db.User.findByPk(userLogged.id);
-                res.redirect('/user/profile');
-            }
+            );
+
+            // Actualizar el usuario guardado en sesión
+            req.session.userLogged = await db.User.findByPk(userLogged.id);
+            res.redirect('/user/profile');
         }
         else{
             // Error del forms
