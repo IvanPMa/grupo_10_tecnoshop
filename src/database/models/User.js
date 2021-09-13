@@ -48,7 +48,7 @@ module.exports = (sequelize, dataTypes) => {
         category_id: {
             type: dataTypes.INTEGER,
             allowNull: false,
-            defaultValue: 1
+            defaultValue: 5
         }
     };
 

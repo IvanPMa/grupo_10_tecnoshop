@@ -8,12 +8,14 @@ const controllers = {
         res.render('./manage/users/listUser', { users: users });
     },
 
-    createUserForm: (req, res) => {
-        res.render('./manage/users/createUser');
+    createUserForm: async (req, res) => {
+        let categories = await db.UserCategory.findAll();
+        res.render('./manage/users/createUser', { categories });
     },
 
     createUser: async (req, res) => {
         let errors = validationResult(req);
+        let categories = await db.UserCategory.findAll();
 
         if(errors.isEmpty()){ // Crear usuario
             let promotion = (req.body.promos) ? true : false;
@@ -33,7 +35,7 @@ const controllers = {
             });
 
             if(userByEmail){
-                res.render('./manage/users/createUser', { errors: { email: { msg: 'El correo ya está registrado' } }, old: req.body });
+                res.render('./manage/users/createUser', { errors: { email: { msg: 'El correo ya está registrado' } }, old: req.body, categories });
             }
             else{
                 await db.User.create(user);
@@ -41,7 +43,7 @@ const controllers = {
             }
         }
         else{
-            res.render('./manage/users/createUser', { errors: errors.mapped(), old: req.body});
+            res.render('./manage/users/createUser', { errors: errors.mapped(), old: req.body, categories });
         }
     },
 
@@ -52,19 +54,20 @@ const controllers = {
 
     editUserForm: async (req, res) => {
         let user = await db.User.findByPk(req.params.id, { include: [{ association: "category" }] });
+        let categories = await db.UserCategory.findAll();
         req.session.UserIdPicture = user.id; // Para poner el id en el nombre de la foto
-        res.render('./manage/users/editUser', { user: user });
+        res.render('./manage/users/editUser', { user, categories });
     },
 
     editUser: async (req, res) => {
         let errors = validationResult(req);
         let user = await db.User.findByPk(req.params.id, { include: [{ association: "category" }] });
+        let categories = await db.UserCategory.findAll();
 
         if(errors.isEmpty()){ // Editar usuario
             let promotion = (req.body.promos) ? true : false;
             let image = user.image;
             let password = user.password;
-            let category = await db.UserCategory.findOne({ where: { name: req.body.category } });
 
             // Si se cambio la foto
             if(req.file){
@@ -77,7 +80,7 @@ const controllers = {
                 password = bcrypt.hashSync(req.body.password, 10);
 
                 if(password.length < 8){
-                    res.render('./manage/users/editUser', { errors: { checkpassword: { msg: 'La contraseña debe tener al menos ocho caractéres' } }, user: user, old: req.body });
+                    res.render('./manage/users/editUser', { errors: { checkpassword: { msg: 'La contraseña debe tener al menos ocho caractéres' } }, user, categories, old: req.body });
                 }
             }
 
@@ -91,7 +94,7 @@ const controllers = {
                 }
             });
             if(userByEmail){
-                res.render('./manage/users/editUser', { errors: { email: { msg: 'El correo ya está registrado' } }, old: req.body, user: user });
+                res.render('./manage/users/editUser', { errors: { email: { msg: 'El correo ya está registrado' } }, old: req.body, user, categories });
             }
             else{
                 // Usuario editado
@@ -101,7 +104,7 @@ const controllers = {
                         last_name: req.body.last_name,
                         email: req.body.email,
                         password: password,
-                        category_id: category.id,
+                        category_id: req.body.category,
                         promotion: promotion,
                         image: image
                     },
@@ -111,7 +114,7 @@ const controllers = {
             }
         }
         else{
-            res.render('./manage/users/editUser', { errors: errors.mapped(), old: req.body, user: user});
+            res.render('./manage/users/editUser', { errors: errors.mapped(), old: req.body, user, categories });
         }
     },
 

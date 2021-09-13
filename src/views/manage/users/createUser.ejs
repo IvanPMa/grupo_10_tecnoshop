@@ -44,8 +44,9 @@
                     <div class="input-section">
                         <label for="category">Categoría:</label>
                         <Select id="category" name='category'>
-                            <option value="user">Usuario</option>
-                            <option value="admin">Admin</option>
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.id %>"><%= category.name %></option>
+                        <% }) %>
                         </Select>
                     </div>
 
