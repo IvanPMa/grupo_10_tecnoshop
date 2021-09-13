@@ -52,7 +52,7 @@ app.use('/manage', rutasManage);
 // Página de error
 app.use((req, res, next) => {
     res.status(404).render('error');
-})
+});
 
 // Levantamos el servidor
 app.listen(port, ()=> console.log(`Servidor iniciado en el puerto ${port}`));
