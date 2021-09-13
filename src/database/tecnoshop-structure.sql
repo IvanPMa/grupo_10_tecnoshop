@@ -1,23 +1,19 @@
-DROP DATABASE IF EXISTS `tecnoshop`;
-CREATE DATABASE `tecnoshop` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `tecnoshop`;
-  
 /* CATEGORIAS DE USUARIO */
-CREATE TABLE `tecnoshop`.`usercategories` (
+CREATE TABLE IF NOT EXISTS `usercategories` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`));
     
 /* CATEGORIAS DE PRODUCTOS */
-CREATE TABLE `tecnoshop`.`productcategories` (
+CREATE TABLE IF NOT EXISTS `productcategories` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`));
 
 /* USUARIOS */
-CREATE TABLE `tecnoshop`.`users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `first_name` VARCHAR(45) NOT NULL,
   `last_name` VARCHAR(45) NOT NULL,
@@ -26,13 +22,13 @@ CREATE TABLE `tecnoshop`.`users` (
   `promotion` TINYINT NOT NULL,
   `image` VARCHAR(45) NOT NULL DEFAULT 'default.jpg',
   `dark_mode` TINYINT NOT NULL DEFAULT FALSE,
-  `category_id` INT NOT NULL DEFAULT 1,
+  `category_id` INT NOT NULL DEFAULT 5,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   FOREIGN KEY (`category_id`) REFERENCES `usercategories` (`id`));
   
 /* PRODUCTOS */
-CREATE TABLE `tecnoshop`.`products` (
+CREATE TABLE IF NOT EXISTS `products` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `description` VARCHAR(200) NOT NULL,
@@ -44,13 +40,13 @@ CREATE TABLE `tecnoshop`.`products` (
   FOREIGN KEY (`category_id`) REFERENCES `productcategories` (`id`));
   
 /* MODELOS DE LOS PRODUCTOS */
-CREATE TABLE `tecnoshop`.`models` (
+CREATE TABLE IF NOT EXISTS `models` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`));
   
 /* CONEXIÓN ENTRE PRODUCTOS Y MODELOS */
-CREATE TABLE `tecnoshop`.`product_model` (
+CREATE TABLE IF NOT EXISTS `product_model` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `product_id` INT NOT NULL,
   `model_id` INT NOT NULL,
@@ -59,7 +55,7 @@ CREATE TABLE `tecnoshop`.`product_model` (
   FOREIGN KEY (`model_id`) REFERENCES `models` (`id`));
   
 /* CARRITO DE COMPRAS */
-CREATE TABLE `tecnoshop`.`shoppingcarts` (
+CREATE TABLE IF NOT EXISTS `shoppingcarts` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `product_id` INT NOT NULL,
@@ -70,7 +66,7 @@ CREATE TABLE `tecnoshop`.`shoppingcarts` (
   FOREIGN KEY (`product_id`) REFERENCES `products` (`id`));
 
 /* RECIBOS */
-CREATE TABLE `tecnoshop`.`checks` (
+CREATE TABLE IF NOT EXISTS `checks` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `date` DATETIME NOT NULL,
@@ -79,7 +75,7 @@ CREATE TABLE `tecnoshop`.`checks` (
   FOREIGN KEY (`user_id`) REFERENCES `users` (`id`));
   
 /* CONEXIÓN ENTRE RECIBOS Y PRODUCTOS */
-CREATE TABLE `tecnoshop`.`check_product` (
+CREATE TABLE IF NOT EXISTS `check_product` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `check_id` INT NOT NULL,
   `product_id` INT NOT NULL,

@@ -13,7 +13,7 @@ window.addEventListener("load", function(){
 
     if(darkMode.checked){
         // Logo
-        logo.src = '/images/logodark2.png';
+        logo.src = '/images/logodark.png';
         header.style.backgroundColor = '#2b373d';
 
         // Search
