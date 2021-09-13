@@ -46,7 +46,6 @@ const controllers = {
     
     verifyLogin: async (req, res) => {
         let errors = validationResult(req);
-        let msgError = 'Email o contraseña incorrecta';
 
         if(errors.isEmpty()){
             let user = await db.User.findOne({ where: { email: req.body.email } });
@@ -98,12 +97,12 @@ const controllers = {
                 }
                 else{
                     // Contraseña incorrecta
-                    res.render('./users/login', { errors: { password: { msg: msgError }}, old: req.body } )
+                    res.render('./users/login', { errors: { password: { msg: 'La contraseña ingresada es incorrecta' }}, old: req.body } )
                 }
             }
             else{
                 // Email incorrecto
-                res.render('./users/login', { errors: { password: { msg: msgError }}, old: req.body } )
+                res.render('./users/login', { errors: { email: { msg: 'No existe una cuenta con ese correo' }}, old: req.body } )
             }
         }
         else{
@@ -125,13 +124,13 @@ const controllers = {
         let errors = validationResult(req);
         let userLogged = await db.User.findByPk(req.session.userLogged.id);
         let password = userLogged.password;
-        let filename = userLogged.image;
 
         // Validación del formato de la foto
         if(req.fileValidationError) {
             errors.errors.push({ msg: 'La imagen debe tener un formato válido', param: 'picture' });
         }
 
+        // TODO: Validar que la contraseña sea segura
         // Validación de la contraseña
         let isPasswordChanged = req.body.password.length > 0;
         if(isPasswordChanged){

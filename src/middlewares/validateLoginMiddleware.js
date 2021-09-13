@@ -1,8 +1,11 @@
 const { check } = require('express-validator');
 
 const validateLoginMiddleware = [
-    check('email').isEmail().withMessage('Escribe un correo electrónico válido'),
-    check('password').isLength({ min: 8 }).withMessage('La contraseña debe tener al menos ocho caractéres')
+    check('email')
+        .notEmpty().withMessage('Debes completar este campo')
+        .isEmail().withMessage('Escribe un correo electrónico válido'),
+    check('password')
+        .notEmpty().withMessage('Debes completar este campo')
 ];
 
 module.exports = validateLoginMiddleware;
