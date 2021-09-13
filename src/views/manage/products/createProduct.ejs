@@ -62,7 +62,7 @@
 
                     <!-- Price  -->
                     <div class="input-section">
-                        <input type="number" id="price" class="textbox" placeholder="Precio" name="price" value="<%= locals.old && old.price ? old.price : ''%>" step=".01">
+                        <input type="number" id="price" class="textbox" placeholder="Precio" name="price" value="<%= locals.old && old.price ? old.price : ''%>" step=".01" min="0">
                     </div>
                     <% if(locals.errors && errors.price){ %>
                         <p class="alert"><%= errors.price.msg %></p>

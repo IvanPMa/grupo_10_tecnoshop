@@ -20,40 +20,23 @@ const controller = {
     createProduct: async (req, res) => {
         let errors = validationResult(req);
         let categories = await db.ProductCategory.findAll();
+        let active = (req.body.active) ? true : false;
+        let categoryId;
+        let [status, number] = await verifyCategories(req.body);
+
+        // Validación de las categoría
+        const responseCategory = {
+            'blank': () => errors.errors.push({ msg: 'Debes escribir un nombre para la nueva categoría', param: 'category' }),
+            'exists': () => errors.errors.push({ msg: 'La categoría ya existe', param: 'category' }),
+            'notexists': () => errors.errors.push({ msg: 'La categoría no existe', param: 'category' }),
+            'id': () => {
+                categoryId = number;
+            }
+        }
+        responseCategory[status].call();
 
         if(errors.isEmpty()){
-            // Crear producto
-            let active = (req.body.active) ? true : false;
-            let categoryId;
-            let [status, number] = await verifyCategories(req.body);
-
-            const responseCategory = {
-                'blank': () => res.render('./manage/products/createProduct', {
-                    errors: { category: { msg: 'Debes escribir un nombre para la nueva categoría' } },
-                    old: req.body,
-                    categories
-                }),
-
-                'exists': () => res.render('./manage/products/createProduct', {
-                    errors: { category: { msg: 'La categoría ya existe' } },
-                    old: req.body,
-                    categories
-                }),
-
-                'notexists': () => res.render('./manage/products/createProduct', {
-                    errors: { category: { msg: 'La categoría no existe' } },
-                    old: req.body,
-                    categories
-                }),
-
-                'id': async () => {
-                    categoryId = number;
-                }
-            }
-
-            // Por si hay algún error en las categorías
-            responseCategory[status].call();
-            
+            // Crear producto         
             let product = {
                 name: req.body.name,
                 description: req.body.description,
@@ -79,57 +62,37 @@ const controller = {
     },
 
     editProduct: async (req, res) => {
+        // TODO: Agregar la opción para agregar modelos
         let errors = validationResult(req);
         let product = await db.Product.findByPk(req.params.id, { include: [{ association: "category" }] });
         let categories = await db.ProductCategory.findAll();
+        let categoryId;
+        let [status, number] = await verifyCategories(req.body);
 
-        if(errors.isEmpty()){ // Editar producto
-            let categoryId;
-            let [status, number] = await verifyCategories(req.body);
-            let image = product.image;
+        // Validación del formato de la foto
+        if(req.fileValidationError) {
+            errors.errors.push({ msg: 'La imagen debe tener un formato válido', param: 'image' });
+        }
 
-            // Si se cambio la foto
-            if(req.file){
-                image = req.file.filename;
+        // Validación de las categoría
+        const responseCategory = {
+            'blank': () => errors.errors.push({ msg: 'Debes escribir un nombre para la nueva categoría', param: 'category' }),
+            'exists': () => errors.errors.push({ msg: 'La categoría ya existe', param: 'category' }),
+            'notexists': () => errors.errors.push({ msg: 'La categoría no existe', param: 'category' }),
+            'id': () => {
+                categoryId = number;
             }
+        }
+        responseCategory[status].call();
 
-            const responseCategory = {
-                'blank': () => res.render('./manage/products/editProduct', {
-                    errors: { category: { msg: 'Debes escribir un nombre para la nueva categoría' } },
-                    old: req.body,
-                    product,
-                    categories
-                }),
-
-                'exists': () => res.render('./manage/products/editProduct', {
-                    errors: { category: { msg: 'La categoría ya existe' } },
-                    old: req.body,
-                    product,
-                    categories
-                }),
-                
-
-                'notexists': () => res.render('./manage/products/editProduct', {
-                    errors: { category: { msg: 'La categoría no existe' } },
-                    old: req.body,
-                    product,
-                    categories
-                }),
-
-                'id': async () => {
-                    categoryId = number;
-                }
-            }
-
-            // Por si hay algún error en las categorías
-            responseCategory[status].call();
-
+        if(errors.isEmpty()){
+            // Editar producto
             await db.Product.update(
                 {
                     name: req.body.name,
                     description: req.body.description,
                     price: parseFloat(req.body.price),
-                    image: image,
+                    image: (req.file) ? req.file.filename : product.image,
                     category_id: categoryId
                 },
                 { where: { id: req.params.id } }

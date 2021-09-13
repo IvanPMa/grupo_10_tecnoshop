@@ -28,6 +28,9 @@
                                 <label for="image">Subir imagen: </label>
                                 <input type="file" name="image" id="image" accept="image/x-png,image/gif,image/jpeg">
                             </div>
+                            <% if(locals.errors && errors.image){ %>
+                                <p class="alert"><%= errors.image.msg %></p>
+                            <% } %>
 
                             <!-- ID -->
                             <div class="input-section">
@@ -85,7 +88,7 @@
                             <!-- Precio -->
                             <div class="input-section">
                                 <label for="price" class="label-form">Precio:</label>
-                                <input type="number" name="price" id="price" class="input-text" value="<%= locals.old && old.email ? old.price : product.price %>" step=".01">
+                                <input type="number" name="price" id="price" class="input-text" value="<%= locals.old && old.email ? old.price : product.price %>" step=".01" min="0">
                             </div>
                             <% if(locals.errors && errors.price){ %>
                                 <p class="alert"><%= errors.price.msg %></p>
