@@ -63,55 +63,54 @@ const controllers = {
         let errors = validationResult(req);
         let user = await db.User.findByPk(req.params.id, { include: [{ association: "category" }] });
         let categories = await db.UserCategory.findAll();
+        let promotion = (req.body.promos) ? true : false;
+        let image = user.image;
+        let password = user.password;
 
-        if(errors.isEmpty()){ // Editar usuario
-            let promotion = (req.body.promos) ? true : false;
-            let image = user.image;
-            let password = user.password;
+        // Validación del formato de la foto
+        if(req.fileValidationError) {
+            errors.errors.push({ msg: 'La imagen debe tener un formato válido', param: 'picture' });
+        }
 
-            // Si se cambio la foto
-            if(req.file){
-                image = req.file.filename;
-            }
-
-            // Si se cambió la contraseña
-            let changePassword = req.body.password.length > 0;
-            if(changePassword){
-                password = bcrypt.hashSync(req.body.password, 10);
-
-                if(password.length < 8){
-                    res.render('./manage/users/editUser', { errors: { checkpassword: { msg: 'La contraseña debe tener al menos ocho caractéres' } }, user, categories, old: req.body });
-                }
-            }
-
-            // Verificar si el correo no está registrado
-            let userByEmail = await db.User.findOne({
-                where: {
-                    email: req.body.email,
-                    [db.Sequelize.Op.not]: [{
-                        id: req.params.id
-                    }]
-                }
-            });
-            if(userByEmail){
-                res.render('./manage/users/editUser', { errors: { email: { msg: 'El correo ya está registrado' } }, old: req.body, user, categories });
+        // Validación de la contraseña
+        let isPasswordChanged = req.body.password.length > 0;
+        if(isPasswordChanged){
+            if(req.body.password.length < 8){
+                errors.errors.push({ msg: 'La contraseña debe tener al menos ocho caractéres', param: 'password' });
             }
             else{
-                // Usuario editado
-                await db.User.update(
-                    {
-                        first_name: req.body.first_name,
-                        last_name: req.body.last_name,
-                        email: req.body.email,
-                        password: password,
-                        category_id: req.body.category,
-                        promotion: promotion,
-                        image: image
-                    },
-                    { where: { id: req.params.id } }
-                );
-                res.redirect('/manage/users/' + req.params.id);
+                password = bcrypt.hashSync(req.body.password, 10);
+            } 
+        }
+
+        // Validación para ver si el correo no está registrado
+        let emailRegister = await db.User.findOne({
+            where: {
+                email: req.body.email,
+                [db.Sequelize.Op.not]: [{
+                    id: req.params.id
+                }]
             }
+        });
+        if(emailRegister){
+            errors.errors.push({ msg: 'El correo ya está en uso', param: 'email' });
+        }
+
+        if(errors.isEmpty()){
+            // Editar usuario
+            await db.User.update(
+                {
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name,
+                    email: req.body.email,
+                    password: password,
+                    category_id: req.body.category,
+                    promotion: promotion,
+                    image: (req.file) ? req.file.filename : user.image
+                },
+                { where: { id: req.params.id } }
+            );
+            res.redirect('/manage/users/' + req.params.id);
         }
         else{
             res.render('./manage/users/editUser', { errors: errors.mapped(), old: req.body, user, categories });

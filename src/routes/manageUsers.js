@@ -27,7 +27,16 @@ var storage = multer.diskStorage({
     }
 })
 
-var upload = multer({ storage });
+var upload = multer ({
+    storage,
+    fileFilter: (req, file, cb) => {
+        if(!(file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg")){
+            req.fileValidationError = "Forbidden extension";
+            return cb(null, false);
+        }
+        cb(null, true);
+    }
+});
 
 // Gestión de Usuarios (ToDo: Accesible sólo si eres administrador)
 router.get('/', manageUsersController.index);                                               // Listado de usuarios

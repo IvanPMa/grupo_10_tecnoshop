@@ -135,7 +135,7 @@ const controllers = {
         let isPasswordChanged = req.body.password.length > 0;
         if(isPasswordChanged){
             if(req.body.password.length < 8){
-                errors.errors.push({ msg: 'La contraseña debe tener al menos ocho caractéres', param: 'password' });
+                errors.errors.push({ msg: 'La contraseña debe tener al menos ocho caractéres', param: 'checkpassword' });
             }
             else{
                 password = bcrypt.hashSync(req.body.password, 10);

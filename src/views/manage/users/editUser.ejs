@@ -27,6 +27,9 @@
                             <input type="file" name="picture" id="userPicture" accept="image/x-png,image/gif,image/jpeg">
                             <a href="/manage/users/<%= user.id %>/deletePicture"><input type="button" value="Borrar foto"></a>
                         </div>
+                        <% if(locals.errors && errors.picture){ %>
+                            <p class="alert"><%= errors.picture.msg %></p>
+                        <% } %>
                         <div class="input-section">
                             <label for="first_name" class="label-form">Nombre:</label>
                             <input type="text" name="first_name" id="first_name" class="input-text" value="<%= locals.old && old.first_name ? old.first_name : user.first_name %>">
@@ -52,6 +55,9 @@
                             <label for="password" class="label-form">Contraseña:</label>
                             <input type="password" name="password" id="password" class="input-text">
                         </div>
+                        <% if(locals.errors && errors.password){ %>
+                            <p class="alert"><%= errors.password.msg %></p>
+                        <% } %>
                         
                         <!-- Category  -->
                         <div class="category-div">
