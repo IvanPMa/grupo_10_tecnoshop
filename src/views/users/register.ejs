@@ -4,6 +4,7 @@
         <title>Registro</title>
         <%- include('../partials/head') %>
         <link rel="stylesheet" href="/css/user/register.css">
+        <script src="/js/verifyRegister.js"></script>
     </head>
 <body>
     <div class="container">
@@ -18,33 +19,23 @@
                 <form id="create-account-form" action="/user/register" method="POST">
                     <!-- First Name -->
                     <input id="first_name" name="first_name" class="textbox" type="text" placeholder="Nombre" value="<%= locals.old && old.first_name ? old.first_name : ''%>">
-                    <% if(locals.errors && errors.first_name){ %>
-                        <p class="alert"><%= errors.first_name.msg %></p>
-                    <% } %>
+                    <p class="alert first_name"><%= (locals.errors && errors.first_name) ? errors.first_name.msg : '' %></p>
 
                     <!-- Last Name -->
                     <input id="last_name" name="last_name" class="textbox" type="text" placeholder="Apellido" value="<%= locals.old && old.last_name ? old.last_name : ''%>">
-                    <% if(locals.errors && errors.last_name){ %>
-                        <p class="alert"><%= errors.last_name.msg %></p>
-                    <% } %>
+                    <p class="alert last_name"><%= (locals.errors && errors.last_name) ? errors.last_name.msg : '' %></p>
 
                     <!-- Email     -->
                     <input id="email" name="email" class="textbox" type="email" placeholder="Correo electrónico" value="<%= locals.old && old.email ? old.email : ''%>">
-                    <% if(locals.errors && errors.email){ %>
-                        <p class="alert"><%= errors.email.msg %></p>
-                    <% } %>
+                    <p class="alert email"><%= (locals.errors && errors.email) ? errors.email.msg : '' %></p>
 
                     <!-- Password  -->
                     <input id="password" name="password" class="textbox" type="password" placeholder="Crea una contraseña">
-                    <% if(locals.errors && errors.password){ %>
-                        <p class="alert"><%= errors.password.msg %></p>
-                    <% } %>
+                    <p class="alert password"><%= (locals.errors && errors.password) ? errors.password.msg : '' %></p>
 
                     <!-- Check Password  -->
                     <input id="checkpassword" name="checkpassword" class="textbox" type="password" placeholder="Repite la contraseña">
-                    <% if(locals.errors && errors.checkpassword){ %>
-                        <p class="alert"><%= errors.checkpassword.msg %></p>
-                    <% } %>
+                    <p class="alert checkpassword"><%= (locals.errors && errors.checkpassword) ? errors.checkpassword.msg : '' %></p>
                     
                     <!-- Terms and Conditions  -->
                     <a href="#" id="terminos">Términos y condiciones</a>
@@ -52,9 +43,7 @@
                         <input id="terms" name="terms" type="checkbox">
                         <label for="terms">Acepto los términos y condiciones</label>
                     </div>
-                    <% if(locals.errors && errors.terms){ %>
-                        <p class="alert"><%= errors.terms.msg %></p>
-                    <% } %>
+                    <p class="alert terms"><%= (locals.errors && errors.terms) ? errors.terms.msg : '' %></p>
 
                     <!-- Promotions  -->
                     <div class="checkbox">
