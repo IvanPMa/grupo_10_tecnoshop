@@ -4,6 +4,7 @@
         <title>Iniciar Sesión</title>
         <%- include('../partials/head') %>
         <link rel="stylesheet" href="/css/user/login.css">
+        <script src="/js/verifyLogin.js"></script>
     </head>
 <body>
     <div class="container">
@@ -17,16 +18,12 @@
 
                 <form class="login--form" action="/user/login" method="POST">
                     <!-- Email     -->
-                    <p><input name="email" type="email" placeholder="Ingresa tu correo" class="loggin--form--input" value="<%= locals.old && old.email ? old.email : ''%>"></p>
-                    <% if(locals.errors && errors.email){ %>
-                        <p class="alert"><%= errors.email.msg %></p>
-                    <% } %>
+                    <p><input id="email" name="email" type="email" placeholder="Ingresa tu correo" class="loggin--form--input" value="<%= locals.old && old.email ? old.email : ''%>"></p>
+                    <p class="alert email"><%= (locals.errors && errors.email) ? errors.email.msg : '' %></p>
 
                     <!-- Password  -->
-                    <p><input name="password" type="password" placeholder="Ingresa tu contraseña" class="loggin--form--input"></p>
-                    <% if(locals.errors && errors.password){ %>
-                        <p class="alert"><%= errors.password.msg %></p>
-                    <% } %>
+                    <p><input id="password" name="password" type="password" placeholder="Ingresa tu contraseña" class="loggin--form--input"></p>
+                    <p class="alert password"><%= (locals.errors && errors.password) ? errors.password.msg : '' %></p>
 
                     <button type="submit" class="login--form--button" >Ingresar</button>
                     <p class="remember">
