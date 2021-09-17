@@ -3,25 +3,23 @@ const db = require('../database/models');
 const controller = {
     getAllUsers: async (req, res) => {
         let url = req.protocol + '://' + req.get('host') + '/api/users/';
-        let page = req.query.page;
+        let page = (isNaN(req.query.page) || req.query.page <= 0) ? 1 : parseInt(req.query.page);
+        let offset = 10 * (page - 1);
+        let count = await db.User.count();
+        let next = (count > (10 * page)) ? `${url}?page=${page + 1}` : null;
+        let previous = (page > 1) ? `${url}?page=${page - 1}` : null;
         let users = await db.User.findAll({
             attributes: [
                 'id',
-                [db.Sequelize.fn('concat', db.Sequelize.col("first_name"), ' ', db.Sequelize.col("last_name")), 'name'],
+                [db.Sequelize.fn('concat', db.Sequelize.col('first_name'), ' ', db.Sequelize.col('last_name')), 'name'],
                 'email',
                 [db.Sequelize.fn('concat', url, db.Sequelize.col('id')), 'detail']
-            ]
+            ],
+            limit: 10,
+            offset
         });
-        let count = await db.User.count();
-        let data = {
-            count,
-            users
-        }
 
-        if(!isNaN(page) && page > 0){
-            res.json(page);
-        }
-        res.json(data);
+        res.json({ count, next, previous, users });
     },
 
     getUser: async (req, res) => {
@@ -41,12 +39,57 @@ const controller = {
     },
 
     getAllProducts: async (req, res) => {
-        let products = await db.Product.findAll();
-        res.json(products);
+        let url = req.protocol + '://' + req.get('host') + '/api/products/';
+        let page = (isNaN(req.query.page) || req.query.page <= 0) ? 1 : parseInt(req.query.page);
+        let offset = 10 * (page - 1);
+        let count = await db.Product.count();
+        let next = (count > (10 * page)) ? `${url}?page=${page + 1}` : null;
+        let previous = (page > 1) ? `${url}?page=${page - 1}` : null;
+        let countByCategory = {};
+
+        let products = await db.Product.findAll({
+            include: [{ association: 'category', attributes: [] }],
+            attributes: [
+                'id',
+                'name',
+                'description',
+                [db.Sequelize.col('category.name'), 'categoryName'],
+                [db.Sequelize.fn('concat', url, db.Sequelize.col('product.id')), 'detail']
+            ],
+            limit: 10,
+            offset
+        });
+
+        let categories = await db.ProductCategory.findAll({
+            include: [{ association: 'products', attributes: [] }],
+            attributes: ['name', [db.Sequelize.fn('count', 'products'), 'count']],
+            group: 'id'
+        });
+        
+        categories.forEach(c => {
+            countByCategory[c.name] = c.dataValues.count
+        });
+
+        res.json({ count, countByCategory, next, previous, products });
     },
 
     getProduct: async (req, res) => {
-        let product = await db.Product.findByPk(req.params.id);
+        let url = req.protocol + '://' + req.get('host') + '/images/products/';
+        let product = await db.Product.findByPk(req.params.id, {
+            include: [
+                { association: 'category', attributes: [] },
+                { association: 'models', through: { attributes: [] } }
+            ],
+            attributes: [
+                'id',
+                'name',
+                'description',
+                'price',
+                [db.Sequelize.fn('concat', url, db.Sequelize.col('image')), 'image'],
+                'active',
+                [db.Sequelize.col('category.name'), 'categoryName']
+            ]
+        });
         res.json(product);
     }
 }
