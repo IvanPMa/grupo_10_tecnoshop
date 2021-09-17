@@ -5,6 +5,7 @@
         <%- include('../../partials/head') %>
         <link rel="stylesheet" href="/css/manage/products/createProduct.css">
         <script src="/js/addCategory.js"></script>
+        <script src="/js/verifyCreateProduct.js"></script>
     </head>
 <body>
     <div class="container">
@@ -21,17 +22,13 @@
                     <div class="input-section">
                         <input id="name" class="textbox" type="text" placeholder="Nombre del producto" name="name" value="<%= locals.old && old.name ? old.name : ''%>">
                     </div>
-                    <% if(locals.errors && errors.name){ %>
-                        <p class="alert"><%= errors.name.msg %></p>
-                    <% } %>
+                    <p class="alert name"><%= (locals.errors && errors.name) ? errors.name.msg : '' %></p>
 
                     <!-- Description  -->
                     <div class="input-section">
                         <textarea id="description" class="textbox" placeholder="Descripción del producto" name="description"><%= locals.old && old.description ? old.description : ''%></textarea>
                     </div>
-                    <% if(locals.errors && errors.description){ %>
-                        <p class="alert"><%= errors.description.msg %></p>
-                    <% } %>
+                    <p class="alert description"><%= (locals.errors && errors.description) ? errors.description.msg : '' %></p>
 
                     <!-- Category  -->
                     <div class="input-section">
@@ -56,17 +53,13 @@
                     <div class="input-section addcategory">
                         <input id="newcategory" class="textbox" type="text" placeholder="Nombre de la categoría" name="newcategory" value="<%= locals.old && old.newcategory ? old.newcategory : ''%>">
                     </div>
-                    <% if(locals.errors && errors.category){ %>
-                        <p class="alert"><%= errors.category.msg %></p>
-                    <% } %>
+                    <p class="alert category"><%= (locals.errors && errors.category) ? errors.category.msg : '' %></p>
 
                     <!-- Price  -->
                     <div class="input-section">
                         <input type="number" id="price" class="textbox" placeholder="Precio" name="price" value="<%= locals.old && old.price ? old.price : ''%>" step=".01" min="0">
                     </div>
-                    <% if(locals.errors && errors.price){ %>
-                        <p class="alert"><%= errors.price.msg %></p>
-                    <% } %>
+                    <p class="alert price"><%= (locals.errors && errors.price) ? errors.price.msg : '' %></p>
 
                     <!-- Active  -->
                     <div class="checkbox active-div">

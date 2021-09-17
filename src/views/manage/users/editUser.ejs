@@ -27,37 +27,31 @@
                             <input type="file" name="picture" id="userPicture" accept="image/x-png,image/gif,image/jpeg">
                             <a href="/manage/users/<%= user.id %>/deletePicture"><input type="button" value="Borrar foto"></a>
                         </div>
-                        <% if(locals.errors && errors.picture){ %>
-                            <p class="alert"><%= errors.picture.msg %></p>
-                        <% } %>
+                        <p class="alert picture"><%= (locals.errors && errors.picture) ? errors.picture.msg : '' %></p>
+
                         <div class="input-section">
                             <label for="first_name" class="label-form">Nombre:</label>
                             <input type="text" name="first_name" id="first_name" class="input-text" value="<%= locals.old && old.first_name ? old.first_name : user.first_name %>">
                         </div>
-                        <% if(locals.errors && errors.first_name){ %>
-                            <p class="alert"><%= errors.first_name.msg %></p>
-                        <% } %>
+                        <p class="alert first_name"><%= (locals.errors && errors.first_name) ? errors.first_name.msg : '' %></p>
+
                         <div class="input-section">
                             <label for="last_name" class="label-form">Apellido:</label>
                             <input type="text" name="last_name" id="last_name" class="input-text" value="<%= locals.old && old.last_name ? old.last_name : user.last_name %>">
                         </div>
-                        <% if(locals.errors && errors.last_name){ %>
-                            <p class="alert"><%= errors.last_name.msg %></p>
-                        <% } %>
+                        <p class="alert last_name"><%= (locals.errors && errors.last_name) ? errors.last_name.msg : '' %></p>
+
                         <div class="input-section">
                             <label for="email" class="label-form">Correo:</label>
                             <input type="email" name="email" id="email" class="input-text" value="<%= locals.old && old.email ? old.email : user.email %>">
                         </div>
-                        <% if(locals.errors && errors.email){ %>
-                            <p class="alert"><%= errors.email.msg %></p>
-                        <% } %>
+                        <p class="alert email"><%= (locals.errors && errors.email) ? errors.email.msg : '' %></p>
+
                         <div class="input-section">
                             <label for="password" class="label-form">Contraseña:</label>
                             <input type="password" name="password" id="password" class="input-text">
                         </div>
-                        <% if(locals.errors && errors.password){ %>
-                            <p class="alert"><%= errors.password.msg %></p>
-                        <% } %>
+                        <p class="alert passworderror"><%= (locals.errors && errors.password) ? errors.password.msg : '' %></p>
                         
                         <!-- Category  -->
                         <div class="category-div">

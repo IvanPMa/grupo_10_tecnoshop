@@ -1,5 +1,4 @@
 window.addEventListener('load', function(){
-    console.log('hola');
     let email = document.getElementById('email');
     let emailError = document.querySelector('.email');
     let password = document.getElementById('password');
@@ -33,6 +32,7 @@ window.addEventListener('load', function(){
 
     // Validar contraseña
     password.addEventListener('blur', function(){
+        approve.password = false;
         if(!password.value.length){
             passwordError.innerText = messageEmpty;
         }

@@ -5,6 +5,7 @@
         <%- include('../../partials/head') %>
         <link rel="stylesheet" href="/css/manage/products/detailProduct.css">
         <script src="/js/addCategory.js"></script>
+        <script src="/js/verifyEditProduct.js"></script>
     </head>
     <body>
         <div class="container">
@@ -28,9 +29,7 @@
                                 <label for="image">Subir imagen: </label>
                                 <input type="file" name="image" id="image" accept="image/x-png,image/gif,image/jpeg">
                             </div>
-                            <% if(locals.errors && errors.image){ %>
-                                <p class="alert"><%= errors.image.msg %></p>
-                            <% } %>
+                            <p class="alert image"><%= (locals.errors && errors.image) ? errors.image.msg : '' %></p>
 
                             <!-- ID -->
                             <div class="input-section">
@@ -43,18 +42,14 @@
                                 <label for="name" class="label-form">Nombre:</label>
                                 <input type="text" name="name" id="name" class="input-text" value="<%= locals.old && old.name ? old.name : product.name %>"">
                             </div>
-                            <% if(locals.errors && errors.name){ %>
-                                <p class="alert"><%= errors.name.msg %></p>
-                            <% } %>
+                            <p class="alert name"><%= (locals.errors && errors.name) ? errors.name.msg : '' %></p>
 
                             <!-- Descripción -->
                             <div class="input-section description">
                                 <label for="description" class="label-form">Descripción:</label>
                                 <textarea name="description" id="description" cols="30" rows="10" class="input-text"><%= locals.old && old.description ? old.description : product.description %></textarea>
                             </div>
-                            <% if(locals.errors && errors.description){ %>
-                                <p class="alert"><%= errors.description.msg %></p>
-                            <% } %>
+                            <p class="alert description"><%= (locals.errors && errors.description) ? errors.description.msg : '' %></p>
 
                             <!-- Categoría -->
 
@@ -81,21 +76,17 @@
                                 <label for="newcategory" class="label-form">Categoría:</label>
                                 <input id="newcategory" class="input-text" type="text" placeholder="Nombre de la categoría" name="newcategory" value="<%= locals.old && old.newcategory ? old.newcategory : ''%>">
                             </div>
-                            <% if(locals.errors && errors.category){ %>
-                                <p class="alert"><%= errors.category.msg %></p>
-                            <% } %>
+                            <p class="alert errorcategory"><%= (locals.errors && errors.category) ? errors.category.msg : '' %></p>
 
                             <!-- Precio -->
                             <div class="input-section">
                                 <label for="price" class="label-form">Precio:</label>
                                 <input type="number" name="price" id="price" class="input-text" value="<%= locals.old && old.email ? old.price : product.price %>" step=".01" min="0">
                             </div>
-                            <% if(locals.errors && errors.price){ %>
-                                <p class="alert"><%= errors.price.msg %></p>
-                            <% } %>
+                            <p class="alert price"><%= (locals.errors && errors.price) ? errors.price.msg : '' %></p>
 
                             <div class="submit-button">
-                                <input type="submit" value="Actualizar">
+                                <input type="submit" value="Actualizar" id="button">
                             </div>
                         </form>
                     </section>
