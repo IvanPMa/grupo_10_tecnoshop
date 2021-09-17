@@ -36,12 +36,12 @@ app.use(cookies());             // Para habilitar las cookies
 app.use(userLoggedMiddleware);  // Para comprobar si esta logueado
 app.use(darkModeMiddleware);    // Para poner el modo oscuro
 app.use(previousPageMiddleware);// Para recordar la última página visitada
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
 
 // Cionfigurando ejs 
 app.set('view engine', 'ejs');
 app.set('views','./src/views' )
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json())
 
 // Ruteo de direcciones
 app.use('/',rutaHome);
