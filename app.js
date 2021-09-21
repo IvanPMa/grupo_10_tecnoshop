@@ -2,6 +2,7 @@
 const express = require('express');
 const session = require('express-session')
 const path = require('path');
+const cors = require('cors');
 const methodOverride = require('method-override');
 const cookies = require('cookie-parser');
 const userLoggedMiddleware = require('./src/middlewares/userLoggedMiddleware');
@@ -18,7 +19,7 @@ const rutasApi = require('./src/routes/api');
 
 const app = express();
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 4000;
 
 const folderPublicPath = path.resolve(__dirname, './public');
 
@@ -37,7 +38,8 @@ app.use(userLoggedMiddleware);  // Para comprobar si esta logueado
 app.use(darkModeMiddleware);    // Para poner el modo oscuro
 app.use(previousPageMiddleware);// Para recordar la última página visitada
 app.use(express.urlencoded({ extended: false }));
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
 
 // Cionfigurando ejs 
 app.set('view engine', 'ejs');
