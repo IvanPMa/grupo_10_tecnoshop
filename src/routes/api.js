@@ -9,6 +9,6 @@ router.get('/products/:id', apiController.getProduct);
 router.post('/products', apiController.createProduct);
 router.put('/products', apiController.updateProduct);
 router.delete('/products', apiController.deleteProduct);
-router.get('/best-sellers', apiController.bestSellers);
+router.get('/sales', apiController.sales);
 
 module.exports = router;

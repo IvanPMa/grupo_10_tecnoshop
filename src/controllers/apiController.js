@@ -178,11 +178,18 @@ const controller = {
         }
     },
 
-    bestSellers: async (req, res) => {
+    sales: async (req, res) => {
         let url = new URL(req.protocol + '://' + req.get('host') + req.originalUrl);
 
         try {
-            let products = await db.Product.findAll({
+            // Total de ventas
+            let totalSales = await db.Check.count();
+
+            // Total de productos vendidos
+            let totalProductsSold = await db.Check_Product.sum('quantity');
+
+            // Los cinco productos más vendidos
+            let bestSellers = await db.Product.findAll({
                 include: [
                     { association: 'check_product', attributes: [] },
                     { association: 'category', attributes: [] }],
@@ -191,7 +198,7 @@ const controller = {
                     'name',
                     'description',
                     [db.sequelize.col('category.name'), 'categoryName'],
-                    [db.sequelize.fn('SUM', db.sequelize.col('check_product.quantity')), 'vendidos'],
+                    [db.sequelize.fn('SUM', db.sequelize.col('check_product.quantity')), 'sold'],
                     [db.Sequelize.fn('concat', url.origin + '/api/products/', db.Sequelize.col('product.id')), 'detail']
                 ],
                 group: ['id'],
@@ -199,7 +206,9 @@ const controller = {
                 limit: 5,
                 subQuery: false
             });
-            let products2 = await db.Product.findAll({
+
+            // Todos los productos vendidos ordenados por fecha de venta
+            let allProductsSold = await db.Product.findAll({
                 include: [
                     { association: 'checks', required: true, attributes: [] },
                     { association: 'category', attributes: [] }],
@@ -214,13 +223,14 @@ const controller = {
                 order: [[db.sequelize.col('date'), 'DESC']],
                 subQuery: false
             });
-            let products3 = await db.Check.count(); // Total de ventas
-            let products4 = await db.Check_Product.sum('quantity'); // Total de productos vendidos
-            let products5 = [];
+
+            // Últimos cinco productos vendidos
+            let lastSold = [];
             for(let i = 0; i < 5; i++){
-                if(products2[i]) products5.push(products2[i]);
+                if(allProductsSold[i]) lastSold.push(allProductsSold[i]);
             }
-            res.json(products5);
+            
+            res.json({ totalSales, totalProductsSold, lastSold, bestSellers });
         } catch (error) {
             res.json(error);
         }
