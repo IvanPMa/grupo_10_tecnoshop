@@ -45,7 +45,6 @@ window.addEventListener('load', function(){
     }
 
     // Validar email
-    // TODO: Que no se pueda repetir con la base de datos
     email.addEventListener('change', function(){
         approve.email = false;
         if(!email.value.length) emailError.innerText = messageEmpty;

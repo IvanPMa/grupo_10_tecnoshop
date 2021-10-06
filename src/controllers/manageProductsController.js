@@ -62,7 +62,6 @@ const controller = {
     },
 
     editProduct: async (req, res) => {
-        // TODO: Agregar la opción para agregar modelos
         let errors = validationResult(req);
         let product = await db.Product.findByPk(req.params.id, { include: [{ association: "category" }] });
         let categories = await db.ProductCategory.findAll();
