@@ -145,11 +145,12 @@ const controller = {
         }
 
         try {
-            let category = await db.ProductCategory.findOne({ where: { name: req.body.category } });
-            //product.category_id = category.id;
+            let category = 5;
+            category = await db.ProductCategory.findOne({ where: { name: req.body.category } });
+            product.category_id = category.id;
             //await db.Product.create(product);
             //res.json(product);
-            res.json(category);
+            res.json(product);
         } catch (error) {
             res.json(error);
         }
