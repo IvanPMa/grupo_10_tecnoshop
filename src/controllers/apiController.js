@@ -198,6 +198,7 @@ const controller = {
                     'name',
                     'description',
                     [db.sequelize.col('category.name'), 'categoryName'],
+                    'image'
                     [db.sequelize.fn('SUM', db.sequelize.col('check_product.quantity')), 'sold'],
                     [db.Sequelize.fn('concat', url.origin + '/api/products/', db.Sequelize.col('product.id')), 'detail']
                 ],
@@ -217,6 +218,7 @@ const controller = {
                         'name',
                         'description',
                         [db.sequelize.col('category.name'), 'categoryName'],
+                        'image'
                         [db.sequelize.col('checks.date'), 'date'],
                         [db.Sequelize.fn('concat', url.origin + '/api/products/', db.Sequelize.col('product.id')), 'detail']
                     ],
