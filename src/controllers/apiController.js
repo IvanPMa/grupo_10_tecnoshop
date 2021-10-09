@@ -145,9 +145,7 @@ const controller = {
         }
 
         try {
-            let category = await db.Category.findOne({
-                where: { name: req.body.category }
-            });
+            let category = await db.ProductCategory.findOne({ where: { name: inputCategory } });
             product.category_id = category.id;
             await db.Product.create(product);
             res.json(product);
