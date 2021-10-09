@@ -140,10 +140,11 @@ const controller = {
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
-            category_id: null,
+            category_id: req.body.category,
             active: req.body.active
         }
-
+        res.json(product);
+/*
         try {
             let category = await db.ProductCategory.findOne({ where: { name: req.body.category } });
             product.category_id = category.id;
@@ -151,7 +152,7 @@ const controller = {
             res.json(product);
         } catch (error) {
             res.json(error);
-        }
+        }*/
     },
 
     updateProduct: async (req, res) => {
