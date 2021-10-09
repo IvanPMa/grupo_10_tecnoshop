@@ -143,7 +143,6 @@ const controller = {
             category_id: req.body.category,
             active: req.body.active
         }
-        res.json(product);
 
         try {
             //let category = await db.ProductCategory.findOne({ where: { name: req.body.category } });
