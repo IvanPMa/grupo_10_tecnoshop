@@ -180,6 +180,7 @@ const controller = {
 
     sales: async (req, res) => {
         let url = new URL(req.protocol + '://' + req.get('host') + req.originalUrl);
+        let urlimg = req.protocol + '://' + req.get('host') + '/images/products/';
 
         try {
             // Total de ventas
@@ -198,7 +199,7 @@ const controller = {
                     'name',
                     'description',
                     [db.sequelize.col('category.name'), 'categoryName'],
-                    'image'
+                    [db.Sequelize.fn('concat', urlimg, db.Sequelize.col('image')), 'image'],
                     [db.sequelize.fn('SUM', db.sequelize.col('check_product.quantity')), 'sold'],
                     [db.Sequelize.fn('concat', url.origin + '/api/products/', db.Sequelize.col('product.id')), 'detail']
                 ],
@@ -218,7 +219,7 @@ const controller = {
                         'name',
                         'description',
                         [db.sequelize.col('category.name'), 'categoryName'],
-                        'image'
+                        [db.Sequelize.fn('concat', urlimg, db.Sequelize.col('image')), 'image'],
                         [db.sequelize.col('checks.date'), 'date'],
                         [db.Sequelize.fn('concat', url.origin + '/api/products/', db.Sequelize.col('product.id')), 'detail']
                     ],
