@@ -5,4 +5,7 @@
         <link rel="stylesheet" href="/css/partials/global.css">
         <link rel="stylesheet" href="/css/partials/header.css">
         <link rel="stylesheet" href="/css/partials/footer.css">
-        <script src="/js/darkMode.js"></script>
+        <% if(locals.darkMode){ %>
+        <link rel="stylesheet" href="/css/partials/darkmode.css">
+        <% } %>
+        <script src="/js/changeDarkMode.js"></script>
