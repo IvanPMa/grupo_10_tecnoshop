@@ -64,7 +64,6 @@ const controllers = {
         let user = await db.User.findByPk(req.params.id, { include: [{ association: "category" }] });
         let categories = await db.UserCategory.findAll();
         let promotion = (req.body.promos) ? true : false;
-        let image = user.image;
         let password = user.password;
 
         // Validación del formato de la foto
