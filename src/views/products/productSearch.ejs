@@ -4,7 +4,6 @@
         <title>Tecnoshop</title>
         <%- include('../partials/head') %>
         <link rel="stylesheet" href="/css/product/search.css">
-        <script src="/js/searchProducts.js"></script>
     </head>
 <body>
     <div class="container">
@@ -52,17 +51,22 @@
             <div class="search-result">
                 <h3 class="title">Resultados:</h3>
                 <div class="products-result">
+
+                <% if(products.length == 0){ %>
+                    <h2>No hay productos</h2>
+                <% }else{ %>
                     <% products.forEach(product => { %>
                         <div class="product">
                             <a href="/products/<%= product.id %>">
                                 <div class="image">
-                                    <img src="/images/products/<%= product.image %>" width="50px">
+                                    <img src="/images/products/<%= product.image %>">
                                 </div>
                                 <p class="name"><%= product.name %></p>
                                 <p class="price">$<%= product.price %></p>
                             </a>
                         </div>
                     <% }); %>
+                <% } %>
                 </div>
                 <div class="search-page">
                     <% if(!search.firstPage()){ %>
