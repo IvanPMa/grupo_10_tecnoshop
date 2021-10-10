@@ -130,16 +130,24 @@ const controllers = {
             errors.errors.push({ msg: 'La imagen debe tener un formato válido', param: 'picture' });
         }
 
-        // TODO: Validar que la contraseña sea segura
         // Validación de la contraseña
-        let isPasswordChanged = req.body.password.length > 0;
-        if(isPasswordChanged){
-            if(req.body.password.length < 8){
+        let newpass = req.body.password;
+        if(newpass.length > 0){
+            let passHasNumber = /\d/.test(newpass);
+            let passHasLower = newpass.toUpperCase() !== newpass;
+            let passHasUpper = newpass.toLowerCase() !== newpass;
+            let passHasSpChar = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(newpass);
+
+            if(newpass.length < 8){
                 errors.errors.push({ msg: 'La contraseña debe tener al menos ocho caractéres', param: 'checkpassword' });
+            }
+            else if(!passHasNumber || !passHasLower || !passHasUpper || !passHasSpChar){
+                errors.errors.push({ msg: 'La contraseña debe tener letras mayúsculas, minúsculas, un número y un carácter especial.',
+                    param: 'checkpassword' });
             }
             else{
                 password = bcrypt.hashSync(req.body.password, 10);
-            } 
+            }
         }
 
         // Validación para ver si el correo no está registrado

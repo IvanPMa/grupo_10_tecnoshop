@@ -45,14 +45,13 @@
                             <p class="alert name"><%= (locals.errors && errors.name) ? errors.name.msg : '' %></p>
 
                             <!-- Descripción -->
-                            <div class="input-section description">
+                            <div class="input-section">
                                 <label for="description" class="label-form">Descripción:</label>
                                 <textarea name="description" id="description" cols="30" rows="10" class="input-text"><%= locals.old && old.description ? old.description : product.description %></textarea>
                             </div>
                             <p class="alert description"><%= (locals.errors && errors.description) ? errors.description.msg : '' %></p>
 
                             <!-- Categoría -->
-
                             <div class="input-section category">
                                 <label for="category">Categoria del producto:</label>
                                 <select id="category" name="category">
@@ -81,10 +80,24 @@
                             <!-- Precio -->
                             <div class="input-section">
                                 <label for="price" class="label-form">Precio:</label>
-                                <input type="number" name="price" id="price" class="input-text" value="<%= locals.old && old.email ? old.price : product.price %>" step=".01" min="0">
+                                <input type="number" name="price" id="price" class="input-text" value="<%= locals.old && old.price ? old.price : product.price %>" step=".01" min="0">
                             </div>
                             <p class="alert price"><%= (locals.errors && errors.price) ? errors.price.msg : '' %></p>
 
+                            <!-- Active  -->
+                            <div class="checkbox active-div">
+                                <input id="active" name="active" type="checkbox"
+                                <% if(locals.old){ %>
+                                    <% if(old.active){ %>
+                                        checked
+                                    <% } %>
+                                <% }else if(product.active){ %>
+                                    checked
+                                <% } %>
+                                >
+                                <label for="active">Activo</label>
+                            </div>
+                            
                             <div class="submit-button">
                                 <input type="submit" value="Actualizar" id="button">
                             </div>
