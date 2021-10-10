@@ -43,8 +43,8 @@ const controller = {
 
     darkMode: async (req, res) => {
         let darkModeActive = Boolean(parseInt(req.params.darkmode));
-        res.cookie('darkMode', darkModeActive, { maxAge: 60 * (1000 * 60) });
 
+        res.cookie('darkMode', darkModeActive, { maxAge: 60 * (1000 * 60) });
         if(req.session.userLogged){
             await db.User.update({ dark_mode: darkModeActive }, { where: { id: req.session.userLogged.id } });
         }

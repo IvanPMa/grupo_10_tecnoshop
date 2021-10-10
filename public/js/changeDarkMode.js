@@ -11,7 +11,8 @@ window.addEventListener('load', function(){
             head.appendChild(cssDarkMode);
 
             // Mandar la información al servidor
-            fetch('https://tecnoshop2.herokuapp.com/darkmode/0')
+            fetch('https://tecnoshop2.herokuapp.com/darkmode/1')
+                .then(res => console.log(res))
                 .catch(error => console.log(error));
         }
         else{
@@ -21,7 +22,7 @@ window.addEventListener('load', function(){
             head.removeChild(cssDarkMode);
 
             // Mandar la información al servidor
-            fetch('https://tecnoshop2.herokuapp.com/darkmode/1')
+            fetch('https://tecnoshop2.herokuapp.com/darkmode/0')
                 .catch(error => console.log(error));
         }
     });
