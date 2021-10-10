@@ -1,4 +1,5 @@
 const db = require('../database/models');
+const { validationResult } = require('express-validator');
 
 const controller = {
     getAllUsers: async (req, res) => {
@@ -136,39 +137,54 @@ const controller = {
     },
 
     createProduct: async (req, res) => {
-        let product = {
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price,
-            category_id: null,
-            active: req.body.active
-        }
+        let errors = validationResult(req);
 
-        try {
-            let category = 5;
-            category = await db.ProductCategory.findOne({ where: { name: req.body.category } });
-            product.category_id = category.id;
-            await db.Product.create(product);
-            res.json(product);
-        } catch (error) {
-            res.json(error);
+        if(errors.isEmpty()){
+            let product = {
+                name: req.body.name,
+                description: req.body.description,
+                price: req.body.price,
+                category_id: null,
+                active: req.body.active
+            }
+    
+            try {
+                let category = await db.ProductCategory.findOne({ where: { name: req.body.category } });
+                product.category_id = category.id;
+                await db.Product.create(product);
+                res.json(product);
+            } catch (error) {
+                res.json(error);
+            }
+        }
+        else{
+            res.status(400).send(errors);
         }
     },
 
     updateProduct: async (req, res) => {
-        let productUpdated = {
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price,
-            category_id: req.body.category_id,
-            active: req.body.active
-        }
+        let errors = validationResult(req);
 
-        try {
-            await db.Product.update(productUpdated, { where: { id: req.body.id } });
-            res.json(productUpdated);
-        } catch (error) {
-            res.json(error);
+        if(errors.isEmpty()){
+            let productUpdated = {
+                name: req.body.name,
+                description: req.body.description,
+                price: req.body.price,
+                category_id: null,
+                active: req.body.active
+            }
+
+            try {
+                let category = await db.ProductCategory.findOne({ where: { name: req.body.category } });
+                productUpdated.category_id = category.id;
+                await db.Product.update(productUpdated, { where: { id: req.body.id } });
+                res.json(productUpdated);
+            } catch (error) {
+                res.json(error);
+            }
+        }
+        else{
+            res.status(400).send(errors);
         }
     },
 

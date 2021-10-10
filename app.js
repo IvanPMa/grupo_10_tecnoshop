@@ -19,7 +19,7 @@ const rutasApi = require('./src/routes/api');
 
 const app = express();
 
-var port = process.env.PORT || 4000;
+var port = process.env.PORT || 3000;
 
 const folderPublicPath = path.resolve(__dirname, './public');
 

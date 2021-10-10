@@ -1,0 +1,12 @@
+###
+PUT http://localhost:3000/api/products
+content-type: application/json
+
+{
+    "id": 665,
+    "name": "sample2",
+    "description": "aadasdasdasdsadasdasd",
+    "category": "Consolas",
+    "price": 1,
+    "active": true
+}
