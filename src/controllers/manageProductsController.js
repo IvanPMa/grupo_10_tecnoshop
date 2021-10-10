@@ -65,6 +65,7 @@ const controller = {
         let errors = validationResult(req);
         let product = await db.Product.findByPk(req.params.id, { include: [{ association: "category" }] });
         let categories = await db.ProductCategory.findAll();
+        let active = (req.body.active) ? true : false;
         let categoryId;
         let [status, number] = await verifyCategories(req.body);
 
@@ -92,7 +93,8 @@ const controller = {
                     description: req.body.description,
                     price: parseFloat(req.body.price),
                     image: (req.file) ? req.file.filename : product.image,
-                    category_id: categoryId
+                    category_id: categoryId,
+                    active: active
                 },
                 { where: { id: req.params.id } }
             );
