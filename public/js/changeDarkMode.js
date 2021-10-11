@@ -1,13 +1,14 @@
 window.addEventListener('load', function(){
     const darkMode = document.getElementById('darkmode');
     const head = document.getElementsByTagName('head')[0];
-    const links  = Array.from(document.getElementsByTagName('link'));
-    const cssDarkMode = links.find(l => l.href.includes('/css/partials/darkmode.css'));
     const logo = document.querySelector('.logo');
     const search = document.querySelector('.search-img');
 
     darkMode.addEventListener('change', function(){
         if(darkMode.checked){
+            let links  = Array.from(document.getElementsByTagName('link'));
+            let cssDarkMode = links.find(l => l.href.includes('/css/partials/darkmode.css'));
+            
             // Agregar el css que vuelve oscuro la página
             if(!cssDarkMode){
                 let addCssDarkMode = document.createElement('link');
@@ -23,6 +24,9 @@ window.addEventListener('load', function(){
             }
         }
         else{
+            let links  = Array.from(document.getElementsByTagName('link'));
+            let cssDarkMode = links.find(l => l.href.includes('/css/partials/darkmode.css'));
+
             // Quitar el css que vuelve oscuro la página
             if(cssDarkMode){
                 head.removeChild(cssDarkMode);
