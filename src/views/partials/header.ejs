@@ -1,13 +1,13 @@
 <header>
     <!-- LOGO -->
-    <div class="logo">
-        <a href="/"><img src="/images/logo.png" alt="Logo Tecnoshop"></a>
+    <div class="div-logo">
+        <a href="/"><img src="/images/<%= locals.darkMode ? 'logodark' : 'logo' %>.png" alt="Logo Tecnoshop" class="logo"></a>
     </div>      
     <!-- SEARCHBAR -->
     <div class="searchbar">
         <form action="/products" method="GET">
             <input type="search" class="search" name="search" placeholder="Buscar artículos" size="1" value="<%= locals.search ? search.text : '' %>">
-            <button><img src="/images/icons/search.png"></button>
+            <button><img src="/images/icons/<%= locals.darkMode ? 'searchwhite' : 'search' %>.png" class="search-img"></button>
         </form>
     </div>
 
