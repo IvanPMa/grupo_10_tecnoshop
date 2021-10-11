@@ -19,7 +19,7 @@ window.addEventListener('load', function(){
                 search.src = '/images/icons/searchwhite.png';
     
                 // Mandar la información al servidor
-                fetch('https://tecnoshop2.herokuapp.com/darkmode/1')
+                fetch('https://tecnoshop.herokuapp.com/darkmode/1')
                     .catch(error => console.log(error));
             }
         }
@@ -34,7 +34,7 @@ window.addEventListener('load', function(){
                 search.src = '/images/icons/search.png';
 
                 // Mandar la información al servidor
-                fetch('https://tecnoshop2.herokuapp.com/darkmode/0')
+                fetch('https://tecnoshop.herokuapp.com/darkmode/0')
                     .catch(error => console.log(error));
             }
         }
