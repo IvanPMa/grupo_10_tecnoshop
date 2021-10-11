@@ -3,7 +3,7 @@ const { validationResult } = require('express-validator');
 
 const controller = {
     getAllUsers: async (req, res) => {
-        let url = new URL(req.protocol + '://' + req.get('host') + req.originalUrl);
+        let url = new URL('https://' + req.get('host') + req.originalUrl);
 	    let order = (req.query.order && req.query.order.toUpperCase() == 'DESC') ? 'DESC' : 'ASC';
         let page = (req.query.page && parseInt(req.query.page) > 0) ? parseInt(req.query.page) : null;
         let limit = (page) ? 10 : null;
@@ -40,7 +40,7 @@ const controller = {
     },
 
     getUser: async (req, res) => {
-        let url = req.protocol + '://' + req.get('host') + '/images/users/';
+        let url = 'https://' + req.get('host') + '/images/users/';
 
         try {
             let user = await db.User.findByPk(req.params.id, {
@@ -61,7 +61,7 @@ const controller = {
     },
 
     getAllProducts: async (req, res) => {
-        let url = new URL(req.protocol + '://' + req.get('host') + req.originalUrl);
+        let url = new URL('https://' + req.get('host') + req.originalUrl);
 	    let order = (req.query.order && req.query.order.toUpperCase() == 'DESC') ? 'DESC' : 'ASC';
         let page = (req.query.page && parseInt(req.query.page) > 0) ? parseInt(req.query.page) : null;
         let limit = (page) ? 10 : null;
@@ -112,7 +112,7 @@ const controller = {
     },
 
     getProduct: async (req, res) => {
-        let url = req.protocol + '://' + req.get('host') + '/images/products/';
+        let url = 'https://' + req.get('host') + '/images/products/';
 
         try {
             let product = await db.Product.findByPk(req.params.id, {
@@ -198,8 +198,8 @@ const controller = {
     },
 
     sales: async (req, res) => {
-        let url = new URL(req.protocol + '://' + req.get('host') + req.originalUrl);
-        let urlimg = req.protocol + '://' + req.get('host') + '/images/products/';
+        let url = new URL('https://' + req.get('host') + req.originalUrl);
+        let urlimg = 'https://' + req.get('host') + '/images/products/';
 
         try {
             // Total de ventas
