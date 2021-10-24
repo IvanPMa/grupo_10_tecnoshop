@@ -93,7 +93,7 @@ const controllers = {
                         }
                     }
 
-                    res.redirect(req.session.previousPageLogin);
+                    res.redirect(req.session.previousPage);
                 }
                 else{
                     // Contraseña incorrecta

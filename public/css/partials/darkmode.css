@@ -1,0 +1,28 @@
+body{
+    background-color: #445760;    
+}
+
+header{
+    background-color: #2b373d;
+}
+
+.searchbar form{
+    background-color: #38454c;
+}
+
+.searchbar input{
+    color: whitesmoke;
+}
+
+nav ul{
+    background-color: #2b373d;
+}
+
+.navbar-button{
+    color: whitesmoke;
+    background-color: #445760;
+}
+
+.darkmode-label{
+    color: whitesmoke;
+}

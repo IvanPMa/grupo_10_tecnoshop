@@ -1,13 +1,13 @@
 <header>
     <!-- LOGO -->
-    <div class="logo">
-        <a href="/"><img src="/images/logo.png" alt="Logo Tecnoshop"></a>
+    <div class="div-logo">
+        <a href="/"><img src="/images/<%= locals.darkMode ? 'logodark' : 'logo' %>.png" alt="Logo Tecnoshop" class="logo"></a>
     </div>      
     <!-- SEARCHBAR -->
     <div class="searchbar">
         <form action="/products" method="GET">
             <input type="search" class="search" name="search" placeholder="Buscar artículos" size="1" value="<%= locals.search ? search.text : '' %>">
-            <button><img src="/images/icons/search.png"></button>
+            <button><img src="/images/icons/<%= locals.darkMode ? 'searchwhite' : 'search' %>.png" class="search-img"></button>
         </form>
     </div>
 
@@ -15,7 +15,6 @@
     <nav>
         <input type="checkbox" id="menu-button">
         <label for="menu-button" class="menu-button-label mobile"><img src="/images/icons/menu.png"></label>
-        <input id="darkmode" name="darkmode" type="checkbox" <%= (locals.darkMode) ? 'checked' : '' %>>
 
         <ul>
         <% if(locals.isLogged){ %>
@@ -23,7 +22,10 @@
             <li><a href="/user/profile" class="mobile"><img src="/images/users/<%= locals.userLogged.image %>" class="profile-picture"></a></li>
             <li><a href="/user/profile" class="mobile"><p class="profile-button">Ver Perfil</p></a></li>
         <% } %>
-            <li class="darkmode-label mobiles"><label for="darkmode"><a href="/darkmode/1"><img src="/images/icons/light.png">Tema claro</a></label></li>
+            <div class="darkmode-div">
+                <li class="darkmode-label mobiles"><label for="darkmode">Modo oscuro</label></li>
+                <input id="darkmode" name="darkmode" type="checkbox" <%= (locals.darkMode) ? 'checked' : '' %>>
+            </div>
             <li><a href="/"><p class="navbar-button mobile">Inicio</p></a></li>
             <li><a href="/cart"><p class="navbar-button mobile">Carrito de compras</p></a></li>
         <% if(locals.isLogged){ %>

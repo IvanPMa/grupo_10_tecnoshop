@@ -6,7 +6,7 @@ header{
 }
 
 /* LOGO */
-header .logo{
+header .div-logo{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +16,7 @@ header .logo{
     margin-right: 5px;
 }
 
-header .logo img{
+header .logo{
     width: 100%;
 }
 
@@ -50,7 +50,7 @@ header .searchbar{
 }
 
 /* MENU */
-#menu-button, #darkmode{
+#menu-button{
     display: none;
 }
 
@@ -58,15 +58,38 @@ header .searchbar{
     height: 35px;
 }
 
-.darkmode-label{
+.darkmode-div{
+    display: flex;
     align-self: flex-end;
-    margin: 20px 10px 20px 0;
+    align-items: center;
+    margin-left: 10px;
 }
 
-.darkmode-label label a{
-    display: flex;
-    align-items: center;
-    color: black;
+#darkmode{
+    width: 40px;
+    height: 20px;
+    appearance: none;
+    outline: none;
+    border-radius: 10px;
+    background-color: #bbb;
+}
+
+#darkmode:before{
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    transform: scale(1.1);
+    background-color: black;
+}
+
+#darkmode:checked{
+    background-color: gray;
+}
+
+#darkmode:checked:before{
+    margin-left: 20px;
 }
 
 nav ul{

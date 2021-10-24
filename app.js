@@ -2,6 +2,7 @@
 const express = require('express');
 const session = require('express-session')
 const path = require('path');
+const cors = require('cors');
 const methodOverride = require('method-override');
 const cookies = require('cookie-parser');
 const userLoggedMiddleware = require('./src/middlewares/userLoggedMiddleware');
@@ -14,6 +15,7 @@ const rutaProducts = require('./src/routes/products');
 const rutaCart = require('./src/routes/cart');
 const rutasUsuarios = require('./src/routes/user');
 const rutasManage = require('./src/routes/manage');
+const rutasApi = require('./src/routes/api');
 
 const app = express();
 
@@ -35,12 +37,13 @@ app.use(cookies());             // Para habilitar las cookies
 app.use(userLoggedMiddleware);  // Para comprobar si esta logueado
 app.use(darkModeMiddleware);    // Para poner el modo oscuro
 app.use(previousPageMiddleware);// Para recordar la última página visitada
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(cors());
 
 // Cionfigurando ejs 
 app.set('view engine', 'ejs');
 app.set('views','./src/views' )
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json())
 
 // Ruteo de direcciones
 app.use('/',rutaHome);
@@ -48,6 +51,7 @@ app.use('/user',rutasUsuarios);
 app.use('/cart', rutaCart);
 app.use('/products', rutaProducts);
 app.use('/manage', rutasManage);
+app.use('/api', rutasApi);
 
 // Página de error
 app.use((req, res, next) => {
