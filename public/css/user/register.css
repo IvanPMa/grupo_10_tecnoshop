@@ -1,0 +1,77 @@
+/* MAIN */
+main{
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+#create-account-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 500px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+#create-account-form{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+}
+
+.textbox{
+    width: 100%;
+    height: 35px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+#terminos{
+    margin-bottom: 15px;
+}
+
+.checkbox{
+    width: 100%;
+    color: rgba(60, 60, 60);
+    letter-spacing: .5px;
+}
+
+.create-button{
+    margin-top: 15px;
+    background-color: #03414D;
+    color: white;
+    border: none;
+    width: 60%;
+    height: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 5px;
+}
+
+#login-button{
+    text-align: center;
+    text-decoration: none;
+    color: rgba(60, 60, 60);
+    letter-spacing: .3px;
+}
+
+#login-button:hover{
+    color: black;
+    text-decoration: underline;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 768px){
+    .textbox{
+        font-size: 16px;
+        height: 34px;
+    }
+}

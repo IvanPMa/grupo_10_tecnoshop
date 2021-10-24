@@ -1,0 +1,141 @@
+/* MAIN */
+main{
+    margin: 20px;
+}
+
+.product-detail .title{
+    margin: 0 0 10px 0;
+}
+
+.product-detail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-information-section{
+    width: 80%;
+    height: auto;
+    padding: 20px !important;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.edit-information-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+}
+
+.product-image{
+    width: 100px;
+    height: 100px;
+    border: 5px solid white;
+}
+
+.upload-picture{
+    display: flex;
+    margin-top: 20px;
+}
+
+.input-section{
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.input-text{
+    width: 100%;
+    font-size: 16px;
+    height: 34px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+
+.addcategory{
+    display: none;
+}
+
+.submit-button{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.submit-button input{
+    margin-top: 15px;
+    background-color: #03414D;
+    color: white;
+    border: none;
+    width: 150px;
+    height: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+}
+
+.edit-button-div{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.edit-button{
+    width: 150px;
+    text-decoration: none;
+    color: white;
+    background-color: #115259;
+    padding: 7px 10px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    transition: all 450ms;
+}
+
+.edit-button:hover{
+    background-color: white;
+    color: #115259;
+}
+
+#description{
+    height: 70px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* MEDIA QUERIES */
+@media(min-width: 768px){
+    .product-information-section{
+        width: 80%;
+        max-width: 600px;
+    }
+
+    .input-section{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .input-text{
+        width: 75%;
+        margin-left: 15px;
+    }
+
+    .category{
+        display: flex;
+        justify-content: center;
+    }
+}

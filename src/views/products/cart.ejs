@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Carrito de compras</title>
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/product/cart.css">
+    </head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../partials/header')%>
+
+        <!-- MAIN SECTION -->
+        <main id="main">
+            <div id="carrito">
+                <h3>Carrito</h3>
+                <div>
+                <% if(carts.length > 0){ %>
+                    <% carts.forEach(cart => { %>
+                        <div class="articulo">
+                            <div class="descripcion">
+                                <p><%= cart.product.name %> <%= (cart.model) ? cart.model.name : '' %></p>
+                            </div>
+                            <div class="cantidad">
+                                <p>Cantidad</p>
+                                <input class="cantidad-text" type="text" value="<%= cart.dataValues.cantidad %>" readonly>
+                            </div>
+                            <div class="precio">
+                                <p>Precio (c/u)</p>
+                                <input class="precio-text" type="text" value="$ <%= cart.product.price %>" readonly>
+                            </div>
+                            <form action="/cart/delete" method="post">
+                                <input type="hidden" name="cart_id" value="<%= cart.id %>">
+                                <button class="delete-item"><img src="/images/icons/delete.png"></button>
+                            </form>
+                        </div>
+                    <% }) %>
+                <% }else{ %>
+                    <h3>Aún no has agregado nada a tu carrito</h3>
+                <% } %>
+                </div>
+
+                <div class="mobile">
+                    <div class="total">
+                        <p>Total:</p>
+                        <input class="total-text" type="text" value="$ <%= (total) ? total : 0 %>" readonly>
+                    </div>
+                
+                    <div class="comprar">
+                        <form action="/"><button class="seguir-comprando-button">Seguir comprando</button></form>
+                        <form action="/cart/buy" method="post"><button class="proceder-pago-button">Proceder al pago</button></form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details computer">
+                <div><h3>Detalles de compra</h3></div>
+
+                <div id="detalles-titulo">
+                    <div class="col1"><h4>Producto</h4></div>
+                    <div class="col2"><h4>Cantidad</h4></div>
+                    <div class="col3"><h4>Total</h4></div>
+                </div>
+
+                <div>
+                <% if(carts.length > 0){ %>
+                    <% carts.forEach(cart => { %>
+                        <div class="detalles-producto">
+                            <div class="col1">
+                                <p><%= cart.product.name %></p>
+                            </div>
+                            <div class="col2">
+                                <p><%= cart.dataValues.cantidad %></p>
+                            </div>
+                            <div class="col3">
+                                <p><%= cart.dataValues.total %></p>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } %>
+                </div>
+
+                <div id="compra-escritorio">
+                    <div class="total">
+                        <p>Total:</p>
+                        <input class="total-text" type="text" value="$ <%= (total) ? total : 0 %>" readonly>
+                    </div>
+                
+                    <div class="comprar">
+                        <form action="/"><button class="seguir-comprando-button">Seguir comprando</button></form>
+                        <form action="/cart/buy" method="post"><button class="proceder-pago-button">Proceder al pago</button></form>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <%- include('../partials/footer')%>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+html, body{
+    overflow-x: hidden;
+}
+
+body{
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    background-color: #F7F9FB;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
+    min-height: 100vh;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.alert{
+    margin: -10px 0 10px 0;
+    top: 50px;
+    color: red;
+    text-align: center;
+}
+
+.computer{
+    display: none;
+}
+
+.js-hide{
+    display: none !important;
+}
+
+.js-show{
+    display: inherit !important;
+}
+
+/* MEDIA QUERIES */
+@media(min-width: 768px){
+    .mobile{
+        display: none !important;
+    }
+
+    .computer{
+        display: inline !important;
+    }
+}

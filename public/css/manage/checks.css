@@ -1,0 +1,90 @@
+/* Table Title*/
+.table{
+    display: flex;
+    margin: 10px;
+}
+
+.table h3{
+    margin: 0;
+}
+
+/* Individual Check */
+.check{
+    margin: 5px 5px 10px 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: solid 1px gray;
+    background-color: white;
+}
+
+.general-info{
+    display: flex;
+}
+
+/* Information */
+.id{
+    width: 30px;
+}
+
+.fullName{
+    flex-grow: 1;
+}
+
+.date{
+    width: 80px;
+}
+
+.products{
+    flex-direction: column;
+    margin-top: 10px;
+    display: none;
+}
+
+.products p{
+    margin: 0;
+}
+
+.products ul{
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 10px;
+}
+
+.total{
+    margin: 0;
+    align-self: flex-end;
+}
+
+.more{
+    color: blue;
+    text-decoration: underline;
+    align-self: center;
+    cursor: pointer;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 768px){
+    main{
+        font-size: 16px;
+    }
+
+    .table, .check{
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+    .id{
+        width: 50px;
+    }
+    
+    .fullName{
+        flex-grow: unset;
+        width: 300px;
+    }
+    
+    .date{
+        width: 180px;
+    }
+}

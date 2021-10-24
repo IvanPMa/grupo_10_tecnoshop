@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Iniciar Sesión</title>
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/user/login.css">
+        <script src="/js/verifyLogin.js"></script>
+    </head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../partials/header') %>
+
+        <!-- MAIN -->
+        <main id="main">
+            <section class="login--article">
+                <img src="/images/profile-picture.png" alt="Imagen perfil" class="login--image" width="10px">
+
+                <form class="login--form" action="/user/login" method="POST">
+                    <!-- Email     -->
+                    <p><input id="email" name="email" type="email" placeholder="Ingresa tu correo" class="loggin--form--input" value="<%= locals.old && old.email ? old.email : ''%>"></p>
+                    <p class="alert email"><%= (locals.errors && errors.email) ? errors.email.msg : '' %></p>
+
+                    <!-- Password  -->
+                    <p><input id="password" name="password" type="password" placeholder="Ingresa tu contraseña" class="loggin--form--input"></p>
+                    <p class="alert password"><%= (locals.errors && errors.password) ? errors.password.msg : '' %></p>
+
+                    <button type="submit" class="login--form--button" >Ingresar</button>
+                    <p class="remember">
+                        <input id="remember" type="checkbox" name="remember">
+                        <label for="remember">Recuérdame</label>
+                    </p>
+                    <p class="forget">
+                        <a href="#" class="forget--link">
+                            ¿Olvidaste tu constraseña?
+                        </a>
+                    </p>
+                </form>
+
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <%- include('../partials/footer') %>
+    </div>
+</body>
+</html>

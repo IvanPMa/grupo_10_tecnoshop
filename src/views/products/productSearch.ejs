@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Tecnoshop</title>
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/product/search.css">
+        <script src="/js/searchProducts.js"></script>
+    </head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../partials/header') %>
+
+        <!-- MAIN -->
+        <main id="main">
+            <!-- FILTROS -->
+            <form class="search-filters" action="/products" method="get">
+                <h3 class="title">Filtros:</h3>
+                <input type="hidden" name="search" value="<%= search.text %>">
+
+                <!-- PRECIO MÍNIMO -->
+                <div class="field">
+                    <label for="min">Precio mínimo</label>
+                    <input type="number" name="min" id="min" min="0" value="<%= (locals.old && old.min) ? old.min : '' %>">
+                </div>
+
+                <!-- PRECIO MÁXIMO -->
+                <div class="field">
+                    <label for="max">Precio máximo</label>
+                    <input type="number" name="max" id="max" min="0" value="<%= (locals.old && old.max) ? old.max : '' %>">
+                </div>
+                
+                <!-- CATEGORÍA -->
+                <div class="field">
+                    <label for="category">Categoria del producto:</label>
+                    <select id="category" name="category">
+                        <option value="">Seleccionar</option>
+                    <% categories.forEach(category => { %>
+                        <option value="<%= category.name %>"
+                        <% if(locals.old && old.category == category.name){ %>
+                            selected="selected"
+                        <% } %>
+                        ><%= category.name %></option>
+                    <% }) %>
+                    </select>
+                </div>
+                <div class="submit">
+                    <button type="submit">Aplicar</button>
+                </div>
+            </form>
+
+            <div class="search-result">
+                <h3 class="title">Resultados:</h3>
+                <div class="products-result">
+                    <% products.forEach(product => { %>
+                        <div class="product">
+                            <a href="/products/<%= product.id %>">
+                                <div class="image">
+                                    <img src="/images/products/<%= product.image %>" width="50px">
+                                </div>
+                                <p class="name"><%= product.name %></p>
+                                <p class="price">$<%= product.price %></p>
+                            </a>
+                        </div>
+                    <% }); %>
+                </div>
+                <div class="search-page">
+                    <% if(!search.firstPage()){ %>
+                        <a href="/products<%= url %>&page=<%= search.page - 1 %>">Página anterior</a>
+                    <% } %>
+                    <% if(search.pages > 1){ %>
+                        <% for(let i=1; i<=search.pages; i++){ %>
+                            <a href="/products<%= url %>&page=<%= i %>"><%= i %></a>
+                        <% } %>
+                    <% } %>
+                    <% if(!search.lastPage()){ %>
+                        <a href="/products<%= url %>&page=<%= search.page + 1 %>">Página siguiente</a>
+                    <% } %>
+                </div>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <%- include('../partials/footer') %>
+    </div>
+</body>
+</html>

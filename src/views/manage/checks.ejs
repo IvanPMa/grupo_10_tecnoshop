@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lista de Recibos</title>
+    <%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/manage/checks.css">
+    <script src="/js/seeMoreProducts.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../partials/header') %>
+
+        <!-- MAIN -->
+        <main id="main">
+            <div class="check-list">
+                <div class="table">
+                    <div class="id"><h3>ID</h3></div>
+                    <div class="fullName"><h3>Nombre</h3></div>
+                    <div class="date"><h3>Fecha</h3></div>
+                </div>
+                <% checks.forEach(check => { %>
+                <div class="check">
+                    <div class="general-info">
+                        <div class="id"><%= check.id %></div>
+                        <div class="fullName"><%= check.user.first_name %> <%= check.user.last_name %></div>
+                        <div class="date"><%= check.date.toISOString().slice(0, 10) %></div>
+                    </div>
+
+                    <div class="products">
+                        <p>Productos:</p>
+                        <ul>
+                        <% check.check_product.forEach(c => { %>
+                            <li><%= c.quantity %>, <%= c.product.name %> <%= (c.model) ? c.model.name : '' %> $ <%= c.dataValues.total %></li>
+                        <% }) %>
+                        </ul>
+                    </div>
+
+                    <h4 class="total">Total: $ <%= check.total %></h4>
+                    <p class="more">Ver más</p>
+                </div>
+                <% }) %>
+                <a href="/manage">Regresar</a>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <%- include('../partials/footer') %>
+    </div>
+</body>
+</html>

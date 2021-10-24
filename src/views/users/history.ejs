@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Historial de compras</title>
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/user/history.css">
+    </head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../partials/header') %>
+        
+        <!-- MAIN -->
+        <main>
+            <% if(userChecks.length > 0){ %>
+                <% userChecks.forEach(check =>{ %>
+                    <div class="check">
+                        <h3>Fecha de compra: <%= check.date.toISOString().slice(0, 10) %></h3><br>
+                        <p>Productos:</p>
+                        <ul class="products">
+                        <% check.products.forEach(product => { %>
+                            <li><%= product.Check_Product.quantity %>, <%= product.name %></li>
+                        <% }) %>
+                        </ul>
+                        <p class="total">Total: $ <%= check.total %></p>
+                    </div>
+                <% }) %>
+            <% }else { %>
+                <h2>Aún no has comprado productos</h2>
+            <% } %>
+        </main>
+    
+        <!-- FOOTER -->
+        <%- include('../partials/footer') %>
+    </div>
+</body>
+</html>

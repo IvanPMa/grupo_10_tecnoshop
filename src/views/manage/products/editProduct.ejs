@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Editar Producto</title>
+        <%- include('../../partials/head') %>
+        <link rel="stylesheet" href="/css/manage/products/detailProduct.css">
+        <script src="/js/addCategory.js"></script>
+        <script src="/js/verifyEditProduct.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- HEADER -->
+            <%- include('../../partials/header') %>
+            
+            <!-- MAIN -->
+            <main id="main">
+                <div class="product-detail">
+                    <!-- WELCOME MESSAGE -->
+                    <div>
+                        <h2 class="title">Editar información del producto</h2>
+                    </div>
+                
+                    <!-- INFORMATION FORM -->
+                    <section class="product-information-section">
+                        <form action="/manage/products/edit/<%= product.id %>/?_method=PUT" class="edit-information-form" method="POST" enctype="multipart/form-data">
+                            <!-- Imagen -->
+                            <img src="/images/products/<%= product.image %>" class="product-image">
+                            <div class="input-section">
+                                <label for="image">Subir imagen: </label>
+                                <input type="file" name="image" id="image" accept="image/x-png,image/gif,image/jpeg">
+                            </div>
+                            <p class="alert image"><%= (locals.errors && errors.image) ? errors.image.msg : '' %></p>
+
+                            <!-- ID -->
+                            <div class="input-section">
+                                <label for="id" class="label-form">ID:</label>
+                                <input type="text" name="id" id="id" class="input-text" placeholder="<%= product.id %>" readonly>
+                            </div>
+
+                            <!-- Nombre -->
+                            <div class="input-section">
+                                <label for="name" class="label-form">Nombre:</label>
+                                <input type="text" name="name" id="name" class="input-text" value="<%= locals.old && old.name ? old.name : product.name %>"">
+                            </div>
+                            <p class="alert name"><%= (locals.errors && errors.name) ? errors.name.msg : '' %></p>
+
+                            <!-- Descripción -->
+                            <div class="input-section">
+                                <label for="description" class="label-form">Descripción:</label>
+                                <textarea name="description" id="description" cols="30" rows="10" class="input-text"><%= locals.old && old.description ? old.description : product.description %></textarea>
+                            </div>
+                            <p class="alert description"><%= (locals.errors && errors.description) ? errors.description.msg : '' %></p>
+
+                            <!-- Categoría -->
+                            <div class="input-section category">
+                                <label for="category">Categoria del producto:</label>
+                                <select id="category" name="category">
+                                    <% categories.forEach(category => { %>
+                                        <option value="<%= category.name %>"
+                                        <% if(product.category.name == category.name){ %>
+                                            selected="selected"
+                                        <% } %>
+                                        ><%= category.name %></option>
+                                    <% }) %>
+                                        <option value="addcategory"
+                                        <% if(locals.old && old.category == "addcategory"){ %>
+                                            selected="selected"
+                                        <% } %>
+                                        >Crear nueva categoría</option>
+                                    </select>
+                            </div>
+
+                            <!-- Nueva Categoría  -->
+                            <div class="input-section addcategory">
+                                <label for="newcategory" class="label-form">Categoría:</label>
+                                <input id="newcategory" class="input-text" type="text" placeholder="Nombre de la categoría" name="newcategory" value="<%= locals.old && old.newcategory ? old.newcategory : ''%>">
+                            </div>
+                            <p class="alert errorcategory"><%= (locals.errors && errors.category) ? errors.category.msg : '' %></p>
+
+                            <!-- Precio -->
+                            <div class="input-section">
+                                <label for="price" class="label-form">Precio:</label>
+                                <input type="number" name="price" id="price" class="input-text" value="<%= locals.old && old.price ? old.price : product.price %>" step=".01" min="0">
+                            </div>
+                            <p class="alert price"><%= (locals.errors && errors.price) ? errors.price.msg : '' %></p>
+
+                            <!-- Active  -->
+                            <div class="checkbox active-div">
+                                <input id="active" name="active" type="checkbox"
+                                <% if(locals.old){ %>
+                                    <% if(old.active){ %>
+                                        checked
+                                    <% } %>
+                                <% }else if(product.active){ %>
+                                    checked
+                                <% } %>
+                                >
+                                <label for="active">Activo</label>
+                            </div>
+                            
+                            <div class="submit-button">
+                                <input type="submit" value="Actualizar" id="button">
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </main>
+        
+            <!-- FOOTER -->
+            <%- include('../../partials/footer') %>
+        </div>
+    </body>
+</html>

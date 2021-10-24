@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Perfil de <%= user.first_name %></title>
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/user/profile.css">
+    </head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../partials/header') %>
+        
+        <!-- MAIN -->
+        <main id="main">
+            <div class="user-profile">
+                <!-- WELCOME MESSAGE -->
+                <div><h2 class="title">Bienvenido <%= user.first_name %></h2></div>
+                
+                <div class="sections">
+                    <!-- INFORMATION FORM -->
+                    <section class="user-information-section">
+                        <form class="edit-information-form">
+                            <img src="/images/users/<%= user.image %>" alt="Imagen perfil" class="profile-picture">
+                            <h3>Tu Información:</h3>
+                            <div class="input-section">
+                                <label for="first_name" class="label-form">Nombre:</label>
+                                <input type="text" name="first_name" id="first_name" class="input-text" value="<%= user.first_name %>" readonly>
+                            </div>
+                            <div class="input-section">
+                                <label for="last_name" class="label-form">Apellido:</label>
+                                <input type="text" name="last_name" id="last_name" class="input-text" value="<%= user.last_name %>" readonly>
+                            </div>
+                            <div class="input-section">
+                                <label for="email" class="label-form">Correo:</label>
+                                <input type="email" name="email" id="email" class="input-text" value="<%= user.email %>" readonly>
+                            </div>
+                            <div class="edit-button-div">
+                                <a href="/user/profile/edit" class="edit-button">Editar</a>
+                            </div>
+                        </form>
+                    </section>
+
+                    <section class="settings-section computer">
+                        <h3>Opciones:</h3>
+                        <ul>
+                            <li><a href="/cart"><p>Carrito de compras</p></a></li>
+                            <li><a href="/user/history"><p>Historial de compras</p></a></li>
+                            <li><a href="/manage"><p>Base de Datos</p></a></li>
+                            <li><a href="/user/logout"><p>Cerrar Sesión</p></a></li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </main>
+    
+        <!-- FOOTER -->
+        <%- include('../partials/footer') %>
+    </div>
+</body>
+</html>

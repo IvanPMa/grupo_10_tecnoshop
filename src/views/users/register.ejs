@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Registro</title>
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/user/register.css">
+        <script src="/js/verifyRegister.js"></script>
+    </head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <%- include('../partials/header') %>
+
+        <!-- MAIN -->
+        <main id="main">
+            <section id="create-account-box">
+                <h3>Crear cuenta</h3>
+
+                <form id="create-account-form" action="/user/register" method="POST">
+                    <!-- First Name -->
+                    <input id="first_name" name="first_name" class="textbox" type="text" placeholder="Nombre" value="<%= locals.old && old.first_name ? old.first_name : ''%>">
+                    <p class="alert first_name"><%= (locals.errors && errors.first_name) ? errors.first_name.msg : '' %></p>
+
+                    <!-- Last Name -->
+                    <input id="last_name" name="last_name" class="textbox" type="text" placeholder="Apellido" value="<%= locals.old && old.last_name ? old.last_name : ''%>">
+                    <p class="alert last_name"><%= (locals.errors && errors.last_name) ? errors.last_name.msg : '' %></p>
+
+                    <!-- Email     -->
+                    <input id="email" name="email" class="textbox" type="email" placeholder="Correo electrónico" value="<%= locals.old && old.email ? old.email : ''%>">
+                    <p class="alert email"><%= (locals.errors && errors.email) ? errors.email.msg : '' %></p>
+
+                    <!-- Password  -->
+                    <input id="password" name="password" class="textbox" type="password" placeholder="Crea una contraseña">
+                    <p class="alert password"><%= (locals.errors && errors.password) ? errors.password.msg : '' %></p>
+
+                    <!-- Check Password  -->
+                    <input id="checkpassword" name="checkpassword" class="textbox" type="password" placeholder="Repite la contraseña">
+                    <p class="alert checkpassword"><%= (locals.errors && errors.checkpassword) ? errors.checkpassword.msg : '' %></p>
+                    
+                    <!-- Terms and Conditions  -->
+                    <a href="#" id="terminos">Términos y condiciones</a>
+                    <div class="checkbox">
+                        <input id="terms" name="terms" type="checkbox">
+                        <label for="terms">Acepto los términos y condiciones</label>
+                    </div>
+                    <p class="alert terms" style="margin: 0;"><%= (locals.errors && errors.terms) ? errors.terms.msg : '' %></p>
+
+                    <!-- Promotions  -->
+                    <div class="checkbox">
+                        <input id="promos" name="promos" type="checkbox">
+                        <label for="promos">Quiero recibir correos con promociones</label>
+                    </div>
+                    <button type="submit" class="create-button">Crear cuenta</button>
+                </form>
+                <p><a href="/login" id="login-button">¿Ya tienes cuenta? Inicia sesión</a></p>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <%- include('../partials/footer')%>
+    </div>
+</body>
+</html>

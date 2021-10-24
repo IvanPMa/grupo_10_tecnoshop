@@ -1,0 +1,90 @@
+main{
+    max-width: 100%;
+}
+
+.title{
+    align-self: flex-start;
+}
+
+/* FILTROS */
+.search-filters{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-filters .field{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 280px;
+    margin-bottom: 5px;
+}
+
+.submit{
+    display: flex;
+    justify-content: flex-end;
+    width: 280px;
+}
+
+.search-page{
+    display: flex;
+    justify-content: center;
+}
+
+.search-page a{
+    color: black;
+    margin-right: 10px;
+}
+
+/* PRODUCTOS BUSCADOS */
+.search-result{
+    display: flex;
+    flex-direction: column;
+}
+
+.products-result{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: gainsboro;
+}
+
+.products-result .product{
+    width: 150px;
+    height: 150px;
+    background-color: gray;
+    margin: 5px;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 768px){
+    main{
+        flex-direction: row;
+    }
+
+    /* FILTROS */
+    .search-filters{
+        flex-grow: 1;
+    }
+
+    .search-filters .field, .submit{
+        width: 90%;
+    }
+
+    .search-filters .field input{
+        height: 20px;
+        width: 100px;
+    }
+
+    /* PRODUCTOS BUSCADOS */
+    .search-result{
+        width: 80%;
+    }
+
+    .products-result .product{
+        width: 250px;
+        height: 250px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
